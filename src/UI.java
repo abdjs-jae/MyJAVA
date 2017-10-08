@@ -1,16 +1,14 @@
 
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -27,7 +25,6 @@ public class UI {
     private JScrollPane consolePane;
     private JButton btnRun;
     private JButton btnClear;
-    private JTextArea txtConsole;
 
     // INPUT ELEMENTS
     String code;
@@ -49,14 +46,24 @@ public class UI {
         btnRun.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                System.out.println("Run button clicked!");
                 code = txtArCode.getText();
+                System.out.println(code);
 
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
-                MyJAVAParser parser = new MyJAVAParser(tokens);
-                ParseTree t = parser.compilationUnit();
+                tokens.fill();
 
-                txtConsole.setText("\n Parse tree " + t.toStringTree(parser) );
+                for (Token t : tokens.getTokens()){
+                    System.out.println("Token: " + t.getText() + " | Type: "
+                            + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                    // consolePane.add(new JLabel("Token: " + t.getText() + " | Type: " + t.getType()));
+                }
+
+                //ParseTree t = parser.compilationUnit();
+
+                // txtConsole.setText("\n Parse tree: " + t.toStringTree(parser) );
 
                 /*
                  * get the input file as an InputStream
@@ -87,7 +94,6 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtArCode.setText("");
-                txtConsole.setText("");
             }
         });
     }
