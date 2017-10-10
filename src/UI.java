@@ -25,6 +25,8 @@ public class UI {
     private JScrollPane consolePane;
     private JButton btnRun;
     private JButton btnClear;
+    private JList consoleList;
+    private DefaultListModel tokenListModel;
 
     // INPUT ELEMENTS
     String code;
@@ -32,6 +34,7 @@ public class UI {
     public UI() {
 
         addListeners();
+
     }
 
     public static void main(String[] args) {
@@ -49,51 +52,39 @@ public class UI {
 
                 System.out.println("Run button clicked!");
                 code = txtArCode.getText();
-                System.out.println(code);
 
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 tokens.fill();
 
+                tokenListModel = new DefaultListModel();
+
                 for (Token t : tokens.getTokens()){
-                    System.out.println("Token: " + t.getText() + " | Type: "
-                            + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                    // consolePane.add(new JLabel("Token: " + t.getText() + " | Type: " + t.getType()));
+                    System.out.println("Token #" + t.getTokenIndex() + "!");
+                    System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
+                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                    tokenListModel.addElement("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
+                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                    System.out.println("Token #" + t.getTokenIndex() + "!");
                 }
 
+                consoleList.setModel(tokenListModel);
+                consolePane.setViewportView(consoleList);
+                consoleList.setLayoutOrientation(JList.VERTICAL);
+
                 //ParseTree t = parser.compilationUnit();
-
                 // txtConsole.setText("\n Parse tree: " + t.toStringTree(parser) );
-
-                /*
-                 * get the input file as an InputStream
-                 */
-                //InputStream inputStream = Main.class.getResourceAsStream();
-         /*
-          * make Lexer
-          */
-                //Lexer lexer = new arithmeticLexer(CharStreams.fromStream(inputStream));
-             //   Lexer lexer = new MyJAVALexer(CharStreams.fromString(code));
-         /*
-          * get a TokenStream on the Lexer
-          */
-                //TokenStream tokenStream = new CommonTokenStream(lexer);
-         /*
-          * make a Parser on the token stream
-          */
-             //   MyJAVAParser parser = new MyJAVAParser(tokenStream);
-         /*
-          * get the top node of the AST. This corresponds to the topmost rule of equation.q4, "equation"
-          */
-
-
 
             }
         });
         btnClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                code = "";
                 txtArCode.setText("");
+                consolePane.getViewport().removeAll();
+                consolePane.revalidate();
+                consolePane.repaint();
             }
         });
     }

@@ -158,16 +158,6 @@ public interface MyJAVAListener extends ParseTreeListener {
 	 */
 	void exitEnumBodyDeclarations(MyJAVAParser.EnumBodyDeclarationsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MyJAVAParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceDeclaration(MyJAVAParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MyJAVAParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceDeclaration(MyJAVAParser.InterfaceDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link MyJAVAParser#typeList}.
 	 * @param ctx the parse tree
 	 */
@@ -187,16 +177,6 @@ public interface MyJAVAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitClassBody(MyJAVAParser.ClassBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MyJAVAParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceBody(MyJAVAParser.InterfaceBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MyJAVAParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceBody(MyJAVAParser.InterfaceBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MyJAVAParser#classBodyDeclaration}.
 	 * @param ctx the parse tree

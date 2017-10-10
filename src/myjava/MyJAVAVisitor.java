@@ -101,12 +101,6 @@ public interface MyJAVAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitEnumBodyDeclarations(MyJAVAParser.EnumBodyDeclarationsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MyJAVAParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceDeclaration(MyJAVAParser.InterfaceDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link MyJAVAParser#typeList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -118,12 +112,6 @@ public interface MyJAVAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitClassBody(MyJAVAParser.ClassBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyJAVAParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceBody(MyJAVAParser.InterfaceBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MyJAVAParser#classBodyDeclaration}.
 	 * @param ctx the parse tree

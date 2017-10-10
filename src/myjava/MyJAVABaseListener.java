@@ -196,18 +196,6 @@ public class MyJAVABaseListener implements MyJAVAListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceDeclaration(MyJAVAParser.InterfaceDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInterfaceDeclaration(MyJAVAParser.InterfaceDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterTypeList(MyJAVAParser.TypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,18 +215,6 @@ public class MyJAVABaseListener implements MyJAVAListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitClassBody(MyJAVAParser.ClassBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInterfaceBody(MyJAVAParser.InterfaceBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInterfaceBody(MyJAVAParser.InterfaceBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
