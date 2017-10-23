@@ -30,46 +30,35 @@
  *  Uses ANTLR v4's left-recursive expression notation.
  *  It parses ECJ, Netbeans, JDK etc...
  *
- *  Sam Harwell cleaned this up significantly and updated to 1.7!
+ *  A slightly edited version from the original ANTLR Java version gotten at
+ *  antlr/grammars-v4 section of the ANTLR project github.
  *
- *  You can test with
- *
- *  $ antlr4 Java.g4
- *  $ javac *.java
- *  $ grun Java compilationUnit *.java
+ *  Grammar edited by: JA, JA, NA.
  */
 grammar MyJAVA;
 
 // starting point for parsing a java file
-// missing rule for program here
+compilationUnit
+    :   packageDeclaration? importStatement* typeDeclaration* EOF
+    ;
+
+packageDeclaration // todo
+    :   annotation* 'package' qualifiedName ';'
+    ;
 
 importList
-    :   importStatement importList?
+    :   importStatement importList
+    |   importStatement
     ;
 
 importStatement
-    :   importKeyword filename ';'
+    :   importKeyword filename ';' '\n'
     ;
 
-importKeyword
-    :   'import'
-    |   'IMPORT'
-    ;
-
-filename
-    :   Letter+ '.' extension
-    ;
-
-extension
-    :   '.myj'
-    ;
-
-constDeclist
-    :   constStatement constDeclist
-    ;
-
-constStatement
-    :   constKeyword constName '=' constValue
+// Keywords
+caseKeyword
+    :   'case'
+    |   'CASE'
     ;
 
 constKeyword
@@ -77,37 +66,253 @@ constKeyword
     |   'CONSTANT'
     ;
 
+defaultKeyword
+    :   'default'
+    |   'DEFAULT'
+    ;
+
+doKeyword
+    :   'do'
+    |   'DO'
+    ;
+
+elseKeyword
+    :   'else'
+    |   'ELSE'
+    ;
+
+forKeyword
+    :   'for'
+    |   'FOR'
+    ;
+
+ifKeyword
+    :   'if'
+    |   'IF'
+    ;
+
+importKeyword
+    :   'import'
+    |   'IMPORT'
+    ;
+
+mainKeyword
+    :   'main'
+    |   'MAIN'
+    ;
+
+printKeyword
+    :   'print'
+    |   'PRINT'
+    ;
+
+returnKeyword
+    :   'return'
+    |   'RETURN'
+    ;
+
+scanKeyword
+    :   'scan'
+    |   'SCAN'
+    ;
+
+switchKeyword
+    :   'switch'
+    |   'SWITCH'
+    ;
+
+voidKeyword
+    :   'void'
+    |   'VOID'
+    ;
+
+whileKeyword
+    :   'while'
+    |   'WHILE'
+    ;
+
+filename
+    :   Identifier '.' extension
+    ;
+
+extension
+    :   '.myj'
+    ;
+
+typeDeclaration // todo
+    :   classOrInterfaceModifier* classDeclaration
+    |   classOrInterfaceModifier* enumDeclaration
+    |   classOrInterfaceModifier* interfaceDeclaration
+    |   classOrInterfaceModifier* annotationTypeDeclaration
+    |   ';'
+    ;
+
+modifier // todo
+    :   classOrInterfaceModifier
+    |   (   'native'
+        |   'synchronized'
+        |   'transient'
+        |   'volatile'
+        )
+    ;
+
+classOrInterfaceModifier // todo
+    :   annotation       // class or interface
+    |   (   'public'     // class or interface
+        |   'protected'  // class or interface
+        |   'private'    // class or interface
+        |   'static'     // class or interface
+        |   'abstract'   // class or interface
+        |   'final'      // class only -- does not apply to interfaces
+        |   'strictfp'   // class or interface
+        )
+    ;
+
+variableModifier // todo
+    :   'final'
+    |   annotation
+    ;
+
+classDeclaration // todo
+    :   'class' Identifier typeParameters?
+        ('extends' typeType)?
+        ('implements' typeList)?
+        classBody
+    ;
+
+typeParameters // todo
+    :   '<' typeParameter (',' typeParameter)* '>'
+    ;
+
+typeParameter // todo
+    :   Identifier ('extends' typeBound)?
+    ;
+
+typeBound // todo
+    :   typeType ('&' typeType)*
+    ;
+
+enumDeclaration // todo
+    :   ENUM Identifier ('implements' typeList)?
+        '{' enumConstants? ','? enumBodyDeclarations? '}'
+    ;
+
+enumConstants // todo
+    :   enumConstant (',' enumConstant)*
+    ;
+
+enumConstant // todo
+    :   annotation* Identifier arguments? classBody?
+    ;
+
+enumBodyDeclarations // todo
+    :   ';' classBodyDeclaration*
+    ;
+
+interfaceDeclaration // todo
+    :   'interface' Identifier typeParameters? ('extends' typeList)? interfaceBody
+    ;
+
+typeList
+    :   typeType (',' typeType)*
+    ;
+
+classBody // todo
+    :   '{' classBodyDeclaration* '}'
+    ;
+
+interfaceBody // todo
+    :   '{' interfaceBodyDeclaration* '}'
+    ;
+
+classBodyDeclaration // todo
+    :   ';'
+    |   'static'? block
+    |   modifier* memberDeclaration
+    ;
+
+memberDeclaration
+    :   funcDecList // edited
+    |   genericMethodDeclaration
+    |   fieldDeclaration
+    |   constructorDeclaration
+    |   genericConstructorDeclaration
+    |   interfaceDeclaration
+    |   annotationTypeDeclaration
+    |   classDeclaration
+    |   enumDeclaration
+    ;
+
+/* We use rule this even for void methods which cannot have [] after parameters.
+   This simplifies grammar and we can consider void to be a type, which
+   renders the [] matching as a context-sensitive issue or a semantic check
+   for invalid return type after parsing.
+ */
+genericMethodDeclaration
+    :   typeParameters funcDecList
+    ;
+
+constructorDeclaration
+    :   Identifier formalParameters ('throws' qualifiedNameList)?
+        constructorBody
+    ;
+
+genericConstructorDeclaration
+    :   typeParameters constructorDeclaration
+    ;
+
+fieldDeclaration
+    :   typeType varNameList ';'
+    ;
+
+interfaceBodyDeclaration
+    :   modifier* interfaceMemberDeclaration
+    |   ';'
+    ;
+
+interfaceMemberDeclaration
+    :   constDeclaration
+    |   interfaceMethodDeclaration
+    |   genericInterfaceMethodDeclaration
+    |   interfaceDeclaration
+    |   annotationTypeDeclaration
+    |   classDeclaration
+    |   enumDeclaration
+    ;
+
+constDecList
+    :   constStatement constDecList
+    |   constStatement
+    ;
+
+constStatement
+    :   constKeyword constName '=' constValue ';'
+    ;
+
 constName
-    :   Letter Alphanum*
+    :   Identifier
     ;
 
 constValue
-    :   integer
-    |   float
-    |   char
-    |   string
+    :   Integer
+    |   Float
+    |   Character
+    |   String
     ;
 
-integer
-    :   sign Digits
+constDeclaration
+    :   typeType constDecList (',' constDecList)* ';'
     ;
 
-sign
-    :   '+'
-    |   '-'
+// see matching of [] comment in methodDeclaratorRest
+interfaceMethodDeclaration // todo
+    :   (typeType|'void') Identifier formalParameters ('[' ']')*
+        ('throws' qualifiedNameList)?
+        ';'
     ;
 
-float
-    :   Digits '.' Digits
-    |   '.' Digits
-    ;
-
-char
-    :   '\'' charValue '\''
-    ;
-
-string
-    :   '"' charValue+ '"'
+genericInterfaceMethodDeclaration
+    :   typeParameters interfaceMethodDeclaration
     ;
 
 varDecList
@@ -119,39 +324,79 @@ varDec
     :   dataType varNameList
     ;
 
-dataType
-    :   'int'
-    |   'float'
-    |   'double'
-    |   'char'
-    |   'string'
-    |   'INT'
-    |   'FLOAT'
-    |   'DOUBLE'
-    |   'CHAR'
-    |   'STRING'
-    ;
-
 varNameList
     :   varName ',' varNameList
     |   varName
     ;
 
 varName
-    :   Letter Alphanum* index*
+    :   Identifier index*
     ;
 
 index
-    :   '[' integer ']'
+    :   '[' Integer ']'
     ;
 
-// function declarations
+variableDeclaratorId
+    :   Identifier ('[' ']')*
+    ;
+
+variableInitializer
+    :   arrayInitializer
+    |   expression
+    ;
+
+arrayInitializer
+    :   '{' (variableInitializer (',' variableInitializer)* (',')? )? '}'
+    ;
+
+typeType
+    :   classOrInterfaceType ('[' ']')*
+    |   dataType ('[' ']')*
+    ;
+
+classOrInterfaceType
+    :   Identifier typeArguments? ('.' Identifier typeArguments? )*
+    ;
+
+dataType
+    :   'boolean'
+    |   'char'
+    |   'byte'
+    |   'short'
+    |   'int'
+    |   'long'
+    |   'float'
+    |   'double'
+    |   'string' // temporarily added here as datatype
+    |   'BOOLEAN'
+    |   'CHAR'
+    |   'BYTE'
+    |   'SHORT'
+    |   'INT'
+    |   'LONG'
+    |   'FLOAT'
+    |   'DOUBLE'
+    |   'STRING' // temporarily added here as datatype
+    ;
+
+typeArguments
+    :   '<' typeArgument (',' typeArgument)* '>'
+    ;
+
+typeArgument
+    :   typeType
+    |   '?' (('extends' | 'super') typeType)?
+    ;
+
 funcDecList
     :   funcDec funcDecList
+    |   funcDec
     ;
 
 funcDec
-    :   functionReturn '|' functionVoid
+    :   functionReturn
+    |   functionVoid
     ;
 
 functionReturn
@@ -162,13 +407,8 @@ functionVoid
     :   voidKeyword functionName '(' paramList ')' functionBody
     ;
 
-voidKeyword
-    :   'void'
-    |   'VOID'
-    ;
-
 functionName
-    :   Letter+
+    :   Identifier
     ;
 
 paramList
@@ -176,7 +416,8 @@ paramList
     ;
 
 parameter
-    :   varDec ',' parameter
+    :    varDec ',' parameter
+    |    varDec
     ;
 
 functionBody
@@ -187,49 +428,154 @@ mainFunction
     :   voidKeyword mainKeyword '()' functionBody
     ;
 
-mainKeyword
-    :   'main'
-    |   'MAIN'
+qualifiedNameList
+    :   qualifiedName (',' qualifiedName)*
     ;
 
-// statement declarations
+formalParameters
+    :   '(' formalParameterList? ')'
+    ;
+
+formalParameterList
+    :   formalParameter (',' formalParameter)* (',' lastFormalParameter)?
+    |   lastFormalParameter
+    ;
+
+formalParameter
+    :   variableModifier* typeType variableDeclaratorId
+    ;
+
+lastFormalParameter
+    :   variableModifier* typeType '...' variableDeclaratorId
+    ;
+
+constructorBody
+    :   block
+    ;
+
+qualifiedName
+    :   Identifier ('.' Identifier)*
+    ;
+
+literal
+    :   Integer
+    |   Float
+    |   Character
+    |   String
+    |   Boolean
+    |   'null'
+    ;
+
+// ANNOTATIONS
+
+annotation
+    :   '@' annotationName ( '(' ( elementValuePairs | elementValue )? ')' )?
+    ;
+
+annotationName : qualifiedName ;
+
+elementValuePairs
+    :   elementValuePair (',' elementValuePair)*
+    ;
+
+elementValuePair
+    :   Identifier '=' elementValue
+    ;
+
+elementValue
+    :   expression
+    |   annotation
+    |   elementValueArrayInitializer
+    ;
+
+elementValueArrayInitializer
+    :   '{' (elementValue (',' elementValue)*)? (',')? '}'
+    ;
+
+annotationTypeDeclaration
+    :   '@' 'interface' Identifier annotationTypeBody
+    ;
+
+annotationTypeBody
+    :   '{' (annotationTypeElementDeclaration)* '}'
+    ;
+
+annotationTypeElementDeclaration
+    :   modifier* annotationTypeElementRest
+    |   ';' // this is not allowed by the grammar, but apparently allowed by the actual compiler
+    ;
+
+annotationTypeElementRest
+    :   typeType annotationMethodOrConstantRest ';'
+    |   classDeclaration ';'?
+    |   interfaceDeclaration ';'?
+    |   enumDeclaration ';'?
+    |   annotationTypeDeclaration ';'?
+    ;
+
+annotationMethodOrConstantRest
+    :   annotationMethodRest
+    |   annotationConstantRest
+    ;
+
+annotationMethodRest
+    :   Identifier '(' ')' defaultValue?
+    ;
+
+annotationConstantRest
+    :   varNameList
+    ;
+
+defaultValue
+    :   'default' elementValue
+    ;
+
+// STATEMENTS / BLOCKS
+
+block
+    :   '{' blockStatement* '}'
+    ;
+
+blockStatement
+    :   localVariableDeclarationStatement
+    |   statement
+    |   typeDeclaration
+    ;
+
+localVariableDeclarationStatement
+    :    localVariableDeclaration ';'
+    ;
+
+localVariableDeclaration
+    :   variableModifier* typeType varNameList
+    ;
+
 statement
-    :   assignStatement
-    //|   io_statement
+    :   block
+    |   assignStatement
     |   condStatement
     |   loopStatement
+    |   returnStatement
+    |   ASSERT expression (':' expression)? ';'
+    |   'try' block (catchClause+ finallyBlock? | finallyBlock)
+    |   'try' resourceSpecification block catchClause* finallyBlock?
+    |   'synchronized' '(' expression ')' block
+    |   'throw' expression ';'
+    |   'break' Identifier? ';'
+    |   'continue' Identifier? ';'
+    |   ';'
+    |   statementExpression ';'
+    |   Identifier ':' statement
     ;
 
 assignStatement
-    :   Identifier '->' expression
+    :   Identifier '=' expression
     ;
 
 condStatement
     :   ifStatement
     |   switchStatement
     |   boolStatement
-    ;
-
-ifStatement
-    :   ifKeyword '(' expression ')' statement elseKeyword statement
-    |   ifKeyword '(' expression ')' statement
-    ;
-
-ifKeyword
-    :   'if'
-    |   'IF'
-    ;
-
-elseKeyword
-    :   'else'
-    |   'ELSE'
-    ;
-
-boolStatement
-    :   'true'
-    |   'false'
-    |   'TRUE'
-    |   'FALSE'
     ;
 
 loopStatement
@@ -242,113 +588,127 @@ returnStatement
     :   returnKeyword expression ';'
     ;
 
-returnKeyword
-    :   'return'
-    |   'RETURN'
+ifStatement
+    :   ifKeyword '(' expression ')' statement+ elseKeyword statement+
+    |   ifKeyword '(' expression ')' statement+
     ;
 
 switchStatement
     :   switchKeyword '(' expression ')' '{' caseList defaultStatement '}'
     ;
 
-switchKeyword
-    :   'switch'
-    |   'SWITCH'
+boolStatement
+    :   Boolean
     ;
 
 caseList
     :   caseKeyword expression ':' statementList caseList
-    ;
-
-caseKeyword
-    :   'case'
-    |   'CASE'
-    ;
-
-doWhileLoop
-    :   doKeyword statement whileKeyword '(' condStatement ')'
-    ;
-
-doKeyword
-    :   'do'
-    |   'DO'
-    ;
-
-whileLoop
-    :   whileKeyword '(' condStatement ')' statement
-    ;
-
-whileKeyword
-    :   'while'
-    |   'WHILE'
-    ;
-
-forLoop
-    :   forKeyword '(' assignStatement ';' condStatement ';' assignStatement ')' statement
-    ;
-
-forKeyword
-    :   'for'
-    |   'FOR'
+    |   caseKeyword expression ':' statementList
     ;
 
 defaultStatement
-    :   defaultKeywords ':' statementList
+    :   defaultKeyword ':' statementList
     ;
 
-defaultKeywords
-    :   'default'
-    |   'DEFAULT'
+doWhileLoop
+    :   doKeyword statement whileKeyword '(' expression ')'
+    ;
+
+whileLoop
+    :   whileKeyword '(' expression ')' statement+
+    ;
+
+forLoop
+    :   forKeyword '(' assignStatement ';' expression ';' assignStatement ')' statement+
     ;
 
 statementList
     :   statement statementList
+    |   statement
     ;
 
-// expression declarations
+catchClause
+    :   'catch' '(' variableModifier* catchType Identifier ')' block
+    ;
+
+catchType
+    :   qualifiedName ('|' qualifiedName)*
+    ;
+
+finallyBlock
+    :   'finally' block
+    ;
+
+resourceSpecification
+    :   '(' resources ';'? ')'
+    ;
+
+resources
+    :   resource (';' resource)*
+    ;
+
+resource
+    :   variableModifier* classOrInterfaceType variableDeclaratorId '=' expression
+    ;
+
+// EXPRESSIONS
+expressionList
+    :   expression (',' expression)*
+    ;
+
+statementExpression
+    :   expression
+    ;
+
 expression
-    :   stringExpression
+    :   primary
+    |   stringExpression
     |   numExpression
     |   boolExpression
-    |   functionName '(' paramList ');'
+    |   functionName '(' paramList ')' ';'
+    |   expression '.' Identifier
+    |   expression '.' 'this'
+    |   expression '.' 'new' nonWildcardTypeArguments? innerCreator
+    |   expression '.' 'super' superSuffix
+    |   expression '.' explicitGenericInvocation
+    |   expression '[' expression ']'
+    |   expression '(' expressionList? ')'
+    |   'new' creator
+    |   '(' typeType ')' expression
+    |   expression ('++' | '--')
+    |   ('+'|'-'|'++'|'--') expression
+    |   expression 'instanceof' typeType
+    |   expression '&' expression
+    |   expression '^' expression
+    |   expression '|' expression
+    |   expression '?' expression ':' expression
+    |   <assoc=right> expression
+        (   '='
+        |   '+='
+        |   '-='
+        |   '*='
+        |   '/='
+        |   '&='
+        |   '|='
+        |   '^='
+        |   '>>='
+        |   '>>>='
+        |   '<<='
+        |   '%='
+        )
+        expression
     ;
 
 stringExpression
     :   stringIdentifier '+' stringExpression
-    |   string '+' stringExpression
     |   stringIdentifier
-    |   string
-    |   '!' stringExpression
-    |   '-' stringExpression
-    ;
-
-stringIdentifier
-    :   Identifier
+    |   ('!'|'-') stringExpression
     ;
 
 numExpression
     :   numTerm '+' numExpression
     |   numTerm '-' numExpression
     |   numTerm
-    ;
-
-numTerm
-    :   numFactor '*' numTerm
-    |   numFactor '/' numTerm
-    |   numFactor '%' numTerm
-    |   numFactor
-    ;
-
-numFactor
-    :   '(' numExpression ')'
-    |   char
-    |   integer
-    //|   floatingPoint
-    |   Identifier
-    ;
-
-numIdentifier
-    :   Identifier
     ;
 
 boolExpression
@@ -389,39 +749,123 @@ boolIdentifier
     :   Identifier
     ;
 
-// other declarations
+numTerm
+    :   numFactor '*' numTerm
+    |   numFactor '/' numTerm
+    |   numFactor '%' numTerm
+    |   numFactor
+    ;
+
+numFactor
+    :   '(' numExpression ')'
+    |   numIdentifier
+    ;
+
+numIdentifier
+    :   Integer
+    |   Float
+    ;
+
+stringIdentifier
+    :   Identifier
+    ;
+
+// other stuff
 charValue
-    :   asciiChar asciiChar+
+    :   asciiChar charValue
     |   asciiChar
     |   '\n'
     |   '\\'
     ;
 
 asciiChar
-    :   Letter
-    |   Digit
-    |   '$'
-    |   '&'
-    |   '+'
-    |   ','
-    |   ':'
-    |   ';'
-    |   '='
-    |   '?'
-    |   '@'
-    |   '#'
-    |   '|'
-    |   '\''
-    |   '<'
-    |   '>'
-    |   '.'
-    |   '^'
-    |   '*'
-    |   '('
-    |   ')'
-    |   '%'
-    |   '!'
-    |   '-'
+    :   Character
+    |   Integer
+    ;
+
+printStatement
+    :   printKeyword '(' literal ')'
+    |   printKeyword '(' literal ',' Identifier ')'
+    ;
+
+scanStatement 
+    :   scanKeyword '(' literal ',' varIdentifier ')'
+    ;
+
+varIdentifier
+    :   '%d'
+    |   '%c'
+    |   '%s'
+    |   '%f'
+    |   '%lf'
+    ;
+
+primary
+    :   '(' expression ')'
+    |   'this'
+    |   'super'
+    |   literal
+    |   Identifier
+    |   typeType '.' 'class'
+    |   'void' '.' 'class'
+    |   nonWildcardTypeArguments (explicitGenericInvocationSuffix | 'this' arguments)
+    ;
+
+creator
+    :   nonWildcardTypeArguments createdName classCreatorRest
+    |   createdName (arrayCreatorRest | classCreatorRest)
+    ;
+
+createdName
+    :   Identifier typeArgumentsOrDiamond? ('.' Identifier typeArgumentsOrDiamond?)*
+    |   dataType
+    ;
+
+innerCreator
+    :   Identifier nonWildcardTypeArgumentsOrDiamond? classCreatorRest
+    ;
+
+arrayCreatorRest
+    :   '['
+        (   ']' ('[' ']')* arrayInitializer
+        |   expression ']' ('[' expression ']')* ('[' ']')*
+        )
+    ;
+
+classCreatorRest
+    :   arguments classBody?
+    ;
+
+explicitGenericInvocation
+    :   nonWildcardTypeArguments explicitGenericInvocationSuffix
+    ;
+
+nonWildcardTypeArguments
+    :   '<' typeList '>'
+    ;
+
+typeArgumentsOrDiamond
+    :   '<' '>'
+    |   typeArguments
+    ;
+
+nonWildcardTypeArgumentsOrDiamond
+    :   '<' '>'
+    |   nonWildcardTypeArguments
+    ;
+
+superSuffix
+    :   arguments
+    |   '.' Identifier arguments?
+    ;
+
+explicitGenericInvocationSuffix
+    :   'super' superSuffix
+    |   Identifier arguments
+    ;
+
+arguments
+    :   '(' expressionList? ')'
     ;
 
 // LEXER
@@ -467,7 +911,6 @@ RETURN        : 'return';
 SHORT         : 'short';
 STATIC        : 'static';
 STRICTFP      : 'strictfp';
-STRING        : 'String';
 SUPER         : 'super';
 SWITCH        : 'switch';
 SYNCHRONIZED  : 'synchronized';
@@ -482,7 +925,7 @@ WHILE         : 'while';
 
 // §3.10.1 Integer Literals
 
-IntegerLiteral
+Integer
     :   DecimalIntegerLiteral
     |   HexIntegerLiteral
     |   OctalIntegerLiteral
@@ -612,7 +1055,7 @@ BinaryDigitOrUnderscore
 
 // §3.10.2 Floating-Point Literals
 
-FloatingPointLiteral
+Float
     :   DecimalFloatingPointLiteral
     |   HexadecimalFloatingPointLiteral
     ;
@@ -673,7 +1116,7 @@ BinaryExponentIndicator
 
 // §3.10.3 Boolean Literals
 
-BooleanLiteral
+Boolean
     :   'true'
     |   'false'
     |   'TRUE'
@@ -682,7 +1125,7 @@ BooleanLiteral
 
 // §3.10.4 Character Literals
 
-CharacterLiteral
+Character
     :   '\'' SingleCharacter '\''
     |   '\'' EscapeSequence '\''
     ;
@@ -694,7 +1137,7 @@ SingleCharacter
 
 // §3.10.5 String Literals
 
-StringLiteral
+String
     :   '"' StringCharacters? '"'
     ;
 
@@ -739,7 +1182,6 @@ ZeroToThree
 
 NullLiteral
     :   'null'
-    |   'NULL'
     ;
 
 // §3.11 Separators
