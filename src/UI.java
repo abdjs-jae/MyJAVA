@@ -1,6 +1,11 @@
 
+import Errors.ErrorListener;
+import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
+import myjava.MyJAVAParser;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import uicomp.*;
 
 import javax.swing.*;
@@ -59,22 +64,32 @@ public class UI {
 
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
+                MyJAVAParser parser = new MyJAVAParser(tokens);
+                ParseTree tree = parser.mainFunction();
+
+                ParseTreeWalker walker = new ParseTreeWalker();
+                MyJAVABaseListener myjava = new MyJAVABaseListener();
+
+                parser.removeErrorListeners();
+                parser.addErrorListener(new ErrorListener());
                 tokens.fill();
 
                 tokenListModel = new DefaultListModel();
 
                 for (Token t : tokens.getTokens()){
-                    System.out.println("Token #" + t.getTokenIndex() + "!");
-                    System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
-                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                    //System.out.println("Token #" + t.getTokenIndex() + "!");
+                    //System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
+                    //        + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
                     tokenListModel.addElement("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
                             + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                    System.out.println("Token #" + t.getTokenIndex() + "!");
+                    //System.out.println("Token #" + t.getTokenIndex() + "!");
                 }
 
                 consoleList.setModel(tokenListModel);
                 consolePane.setViewportView(consoleList);
                 consoleList.setLayoutOrientation(JList.VERTICAL);
+
+
 
                 //ParseTree t = parser.compilationUnit();
                 // txtConsole.setText("\n Parse tree: " + t.toStringTree(parser) );
@@ -92,4 +107,9 @@ public class UI {
             }
         });
     }
+
+
+
+
+
 }
