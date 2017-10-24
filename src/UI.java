@@ -71,22 +71,30 @@ public class UI {
 
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
+                MyJAVAParser parser = new MyJAVAParser(tokens);
+                ErrorListener errorListener = new ErrorListener();
+                parser.removeErrorListeners();
+                parser.addErrorListener(errorListener);
+
+                ParseTree tree = parser.mainFunction();
+                ParseTreeWalker walker = new ParseTreeWalker();
+                MyJAVABaseListener myJAVA = new MyJAVABaseListener();
+                walker.walk(new MyJAVABaseListener(), tree);
                 tokens.fill();
 
                 consoleListModel = new DefaultListModel();
+                consoleListModel = errorListener.getConsoleListModel();
 
                 // Function for adding of message to console
                 // consoleListModel.addElement(<input message here>);
 
+                // For example, this below is for tokens :)
+
                 /*
-                For example, this below is for tokens :)
-
-                for (Token t : tokens.getTokens()){
-
-                    // consoleListModel.addElement("[TOKEN] Token " + (t.getTokenIndex() + 1) + ": "
-                //        + t.getText() + " | Type: " + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-
-                }
+                    for (Token t : tokens.getTokens()){
+                        consoleListModel.addElement("[TOKEN] Token " + (t.getTokenIndex() + 1) + ": "
+                           + t.getText() + " | Type: " + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                    }
                 */
 
                 consoleList.setModel(consoleListModel);
@@ -97,12 +105,15 @@ public class UI {
                     @Override
                     public void valueChanged(ListSelectionEvent e) {
                         if (!e.getValueIsAdjusting()) {
-                            // Get the line number of the selected message!
-                            lineNum = extractLineNumber(consoleList.getSelectedValue().toString());
-                            // Moves the highlight text to the line + 1
-                            txtArCode.setCaretPosition(txtArCode.getDocument()
-                                    .getDefaultRootElement().getElement(lineNum - 1)
-                                    .getStartOffset());
+                            String selectedMessage = consoleList.getSelectedValue().toString();
+                            if(selectedMessage.charAt(1) != 'T') { // token message
+                                // Get the line number of the selected message!
+                                lineNum = extractLineNumber(selectedMessage);
+                                // Moves the highlight text to the line + 1
+                                txtArCode.setCaretPosition(txtArCode.getDocument()
+                                        .getDefaultRootElement().getElement(lineNum - 1)
+                                        .getStartOffset());
+                            }
                         }
                     }
                 });
