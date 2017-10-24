@@ -71,6 +71,7 @@ public class UI {
 
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
+                tokens.fill();
                 MyJAVAParser parser = new MyJAVAParser(tokens);
                 ErrorListener errorListener = new ErrorListener();
                 parser.removeErrorListeners();
@@ -80,7 +81,6 @@ public class UI {
                 ParseTreeWalker walker = new ParseTreeWalker();
                 MyJAVABaseListener myJAVA = new MyJAVABaseListener();
                 walker.walk(new MyJAVABaseListener(), tree);
-                tokens.fill();
 
                 consoleListModel = new DefaultListModel();
                 consoleListModel = errorListener.getConsoleListModel();
@@ -106,7 +106,9 @@ public class UI {
                     public void valueChanged(ListSelectionEvent e) {
                         if (!e.getValueIsAdjusting()) {
                             String selectedMessage = consoleList.getSelectedValue().toString();
-                            if(selectedMessage.charAt(1) != 'T') { // token message
+
+                            // Checks if message has a keyword
+                            if(selectedMessage.charAt(1) == 'E') {
                                 // Get the line number of the selected message!
                                 lineNum = extractLineNumber(selectedMessage);
                                 // Moves the highlight text to the line + 1

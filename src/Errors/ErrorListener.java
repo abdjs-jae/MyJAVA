@@ -34,21 +34,22 @@ public class ErrorListener extends BaseErrorListener {
         String[] lines = input.split("\n");
         String errorLine = lines[line - 1];
         System.err.println(errorLine);
-        // consoleListModel.addElement(errorLine);
+        consoleListModel.addElement("[HELPE] Error is near here: " + errorLine);
+        // String message = "";
         for (int i=0; i<charPositionInLine; i++){
             System.err.print(" ");
-            consoleListModel.addElement(" ");
+            // message += " ";
         }
         int start = offendingToken.getStartIndex();
         int stop = offendingToken.getStopIndex();
         if ( start>=0 && stop>=0 ) {
             for (int i=start; i<=stop; i++){
                 System.err.print("^");
-                consoleListModel.addElement("^");
+                // message += "^";
             }
         }
         System.err.println();
-        consoleListModel.addElement("\n");
+        // consoleListModel.addElement(message);
     }
 
     public DefaultListModel getConsoleListModel() {
