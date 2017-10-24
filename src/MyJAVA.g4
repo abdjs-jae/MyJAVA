@@ -42,7 +42,7 @@ compilationUnit
     :   packageDeclaration? importStatement* typeDeclaration* EOF
     ;
 
-packageDeclaration // todo
+packageDeclaration
     :   annotation* 'package' qualifiedName ';'
     ;
 
@@ -96,11 +96,6 @@ importKeyword
     |   'IMPORT'
     ;
 
-mainKeyword
-    :   'main'
-    |   'MAIN'
-    ;
-
 printKeyword
     :   'print'
     |   'PRINT'
@@ -139,7 +134,7 @@ extension
     :   '.myj'
     ;
 
-typeDeclaration // todo
+typeDeclaration
     :   classOrInterfaceModifier* classDeclaration
     |   classOrInterfaceModifier* enumDeclaration
     |   classOrInterfaceModifier* interfaceDeclaration
@@ -147,7 +142,7 @@ typeDeclaration // todo
     |   ';'
     ;
 
-modifier // todo
+modifier
     :   classOrInterfaceModifier
     |   (   'native'
         |   'synchronized'
@@ -156,7 +151,7 @@ modifier // todo
         )
     ;
 
-classOrInterfaceModifier // todo
+classOrInterfaceModifier
     :   annotation       // class or interface
     |   (   'public'     // class or interface
         |   'protected'  // class or interface
@@ -168,48 +163,48 @@ classOrInterfaceModifier // todo
         )
     ;
 
-variableModifier // todo
+variableModifier
     :   'final'
     |   annotation
     ;
 
-classDeclaration // todo
+classDeclaration
     :   'class' Identifier typeParameters?
         ('extends' typeType)?
         ('implements' typeList)?
         classBody
     ;
 
-typeParameters // todo
+typeParameters
     :   '<' typeParameter (',' typeParameter)* '>'
     ;
 
-typeParameter // todo
+typeParameter
     :   Identifier ('extends' typeBound)?
     ;
 
-typeBound // todo
+typeBound
     :   typeType ('&' typeType)*
     ;
 
-enumDeclaration // todo
+enumDeclaration
     :   ENUM Identifier ('implements' typeList)?
         '{' enumConstants? ','? enumBodyDeclarations? '}'
     ;
 
-enumConstants // todo
+enumConstants
     :   enumConstant (',' enumConstant)*
     ;
 
-enumConstant // todo
+enumConstant
     :   annotation* Identifier arguments? classBody?
     ;
 
-enumBodyDeclarations // todo
+enumBodyDeclarations
     :   ';' classBodyDeclaration*
     ;
 
-interfaceDeclaration // todo
+interfaceDeclaration
     :   'interface' Identifier typeParameters? ('extends' typeList)? interfaceBody
     ;
 
@@ -217,22 +212,22 @@ typeList
     :   typeType (',' typeType)*
     ;
 
-classBody // todo
+classBody
     :   '{' classBodyDeclaration* '}'
     ;
 
-interfaceBody // todo
+interfaceBody
     :   '{' interfaceBodyDeclaration* '}'
     ;
 
-classBodyDeclaration // todo
+classBodyDeclaration
     :   ';'
     |   'static'? block
     |   modifier* memberDeclaration
     ;
 
 memberDeclaration
-    :   funcDecList // edited
+    :   funcDecList
     |   genericMethodDeclaration
     |   fieldDeclaration
     |   constructorDeclaration
@@ -249,7 +244,7 @@ memberDeclaration
    for invalid return type after parsing.
  */
 genericMethodDeclaration
-    :   typeParameters funcDecList
+    :  typeParameters* funcDecList
     ;
 
 constructorDeclaration
@@ -305,7 +300,7 @@ constDeclaration
     ;
 
 // see matching of [] comment in methodDeclaratorRest
-interfaceMethodDeclaration // todo
+interfaceMethodDeclaration
     :   (typeType|'void') Identifier formalParameters ('[' ']')*
         ('throws' qualifiedNameList)?
         ';'
@@ -330,7 +325,8 @@ varNameList
     ;
 
 varName
-    :   Identifier index*
+    :   Identifier index
+    |   Identifier
     ;
 
 index
@@ -400,11 +396,13 @@ funcDec
     ;
 
 functionReturn
-    :   dataType functionName '(' paramList ')' functionBody
+    :   dataType functionName '(' paramList* ')' functionBody
+    |   dataType Identifier '(' paramList* ')' functionBody
     ;
 
 functionVoid
-    :   voidKeyword functionName '(' paramList ')' functionBody
+    :   voidKeyword functionName '(' paramList* ')' functionBody
+    |   voidKeyword Identifier '(' paramList* ')' functionBody
     ;
 
 functionName
@@ -425,7 +423,7 @@ functionBody
     ;
 
 mainFunction
-    :   voidKeyword mainKeyword '()' functionBody
+    :   voidKeyword Identifier '(' ')' functionBody
     ;
 
 qualifiedNameList
