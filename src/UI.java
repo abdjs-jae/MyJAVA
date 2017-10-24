@@ -65,17 +65,25 @@ public class UI {
                 MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 MyJAVAParser parser = new MyJAVAParser(tokens);
+
+                ErrorListener errorListener = new ErrorListener();
+
+                parser.removeErrorListeners();
+                parser.addErrorListener(errorListener);
                 ParseTree tree = parser.mainFunction();
+
+
 
                 ParseTreeWalker walker = new ParseTreeWalker();
                 MyJAVABaseListener myjava = new MyJAVABaseListener();
-
-                parser.removeErrorListeners();
-                parser.addErrorListener(new ErrorListener());
+                walker.walk(new MyJAVABaseListener(),tree);
                 tokens.fill();
 
                 tokenListModel = new DefaultListModel();
 
+                tokenListModel = errorListener.getTokenListModel();
+
+                /*
                 for (Token t : tokens.getTokens()){
                     //System.out.println("Token #" + t.getTokenIndex() + "!");
                     //System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
@@ -83,7 +91,9 @@ public class UI {
                     tokenListModel.addElement("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
                             + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
                     //System.out.println("Token #" + t.getTokenIndex() + "!");
-                }
+                } */
+
+                //tokenListModel.addElement();
 
                 consoleList.setModel(tokenListModel);
                 consolePane.setViewportView(consoleList);
