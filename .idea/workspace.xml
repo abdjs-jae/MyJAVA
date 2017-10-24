@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4382db5-65e8-4516-8257-c2ca7476564c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/UI.form" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/UI.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/LinePainter.java" afterPath="$PROJECT_DIR$/src/uicomp/LinePainter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SquigglePainter.java" afterPath="$PROJECT_DIR$/src/uicomp/SquigglePainter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/TextLineNumber.java" afterPath="$PROJECT_DIR$/src/uicomp/TextLineNumber.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Errors/ErrorListener.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnhancedForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForInitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForUpdateContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ImportDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ParExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimitiveTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchBlockStatementGroupContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchLabelContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorsContext.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$1.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/UI$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$2.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/UI$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/UI.class" />
@@ -38,8 +50,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassOrInterfaceTypeContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassOrInterfaceTypeContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CompilationUnitContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CompilationUnitContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantDeclaratorContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantDeclaratorContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstructorBodyContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstructorBodyContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstructorDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstructorDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CreatedNameContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CreatedNameContext.class" />
@@ -49,10 +59,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValueContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValueContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValuePairContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValuePairContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValuePairsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ElementValuePairsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnhancedForControlContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnhancedForControlContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumBodyDeclarationsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumBodyDeclarationsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantNameContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantNameContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumConstantsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnumDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExplicitGenericInvocationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExplicitGenericInvocationContext.class" />
@@ -61,18 +69,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExpressionListContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExpressionListContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FieldDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FieldDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FinallyBlockContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FinallyBlockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForControlContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForControlContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForInitContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForInitContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForUpdateContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForUpdateContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterListContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterListContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParametersContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParametersContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericConstructorDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericConstructorDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericInterfaceMethodDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericInterfaceMethodDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericMethodDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$GenericMethodDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ImportDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ImportDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InnerCreatorContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InnerCreatorContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceBodyContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceBodyContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceBodyDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceBodyDeclarationContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceMemberDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceMemberDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceMethodDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$InterfaceMethodDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LastFormalParameterContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LastFormalParameterContext.class" />
@@ -80,15 +86,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationStatementContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationStatementContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MemberDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MemberDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodBodyContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodBodyContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodDeclarationContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ModifierContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ModifierContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$NonWildcardTypeArgumentsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$NonWildcardTypeArgumentsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$NonWildcardTypeArgumentsOrDiamondContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$NonWildcardTypeArgumentsOrDiamondContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PackageDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PackageDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ParExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ParExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimaryContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimaryContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimitiveTypeContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimitiveTypeContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameListContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameListContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ResourceContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ResourceContext.class" />
@@ -97,8 +99,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SuperSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SuperSuffixContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchBlockStatementGroupContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchBlockStatementGroupContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchLabelContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchLabelContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsOrDiamondContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsOrDiamondContext.class" />
@@ -108,9 +108,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeParameterContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeParameterContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeParametersContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeParametersContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeTypeContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeTypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorIdContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorIdContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorsContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableInitializerContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableInitializerContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableModifierContext.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableModifierContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser.class" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser.class" />
@@ -119,7 +117,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/MyJAVA.g4" afterPath="$PROJECT_DIR$/out/production/MyJAVA/MyJAVA.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVA.tokens" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVA.tokens" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVALexer.tokens" afterPath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVALexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyJAVA.g4" afterPath="$PROJECT_DIR$/src/MyJAVA.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI.java" afterPath="$PROJECT_DIR$/src/UI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVA.tokens" afterPath="$PROJECT_DIR$/src/myjava/MyJAVA.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVABaseVisitor.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVABaseVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVALexer.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVALexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVALexer.tokens" afterPath="$PROJECT_DIR$/src/myjava/MyJAVALexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAListener.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVAListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAParser.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVAParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAVisitor.java" afterPath="$PROJECT_DIR$/src/myjava/MyJAVAVisitor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,7 +138,27 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1902">
+              <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -159,8 +186,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/UI.form" />
         <option value="$PROJECT_DIR$/src/MyJAVA.g4" />
+        <option value="$PROJECT_DIR$/src/UI.form" />
         <option value="$PROJECT_DIR$/src/UI.java" />
       </list>
     </option>
@@ -212,6 +239,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="myJAVA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -705,15 +750,16 @@
       <option name="presentableId" value="Default" />
       <updated>1507280588844</updated>
       <workItem from="1507280592646" duration="1702000" />
-      <workItem from="1508850629778" duration="70000" />
+      <workItem from="1508850629778" duration="7457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15337000" />
+    <option name="totallyTimeSpent" value="22724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="798" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -730,14 +776,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -881,15 +927,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="1088" column="12" lean-forward="false" selection-start-line="1088" selection-start-column="12" selection-end-line="1088" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -903,17 +945,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyJAVA.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="259" column="13" lean-forward="true" selection-start-line="259" selection-start-column="13" selection-end-line="259" selection-end-column="13" />
+        <state relative-caret-position="107">
+          <caret line="1236" column="37" lean-forward="true" selection-start-line="1236" selection-start-column="37" selection-end-line="1236" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="58" column="19" lean-forward="false" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="1902">
+          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
