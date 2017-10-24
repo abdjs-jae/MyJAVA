@@ -784,13 +784,13 @@ asciiChar
     ;
 
 printStatement
-    :   printKeyword '(' '"' literal '"' ')'
-    |   printKeyword '(' '"' literal '"' ',' Identifier ')'
+    :   printKeyword '(' '"' literal '"' ')' ';'
+    |   printKeyword '(' '"' literal '"' ',' Identifier ')' ';'
     ;
 
 scanStatement
-    :   scanKeyword '(' '"' literal '"' ',' Identifier ')'
-    |   scanKeyword '(' '"' literal '"' Identifier ')'
+    :   scanKeyword '(' '"' literal '"' ',' Identifier ')' ';'
+    |   scanKeyword '(' '"' literal '"' Identifier ')' ';'
     ;
 
 primary
@@ -897,10 +897,12 @@ LONG          : 'long';
 NATIVE        : 'native';
 NEW           : 'new';
 PACKAGE       : 'package';
+PRINT         : 'print';
 PRIVATE       : 'private';
 PROTECTED     : 'protected';
 PUBLIC        : 'public';
 RETURN        : 'return';
+SCAN          : 'scan';
 SHORT         : 'short';
 STATIC        : 'static';
 STRICTFP      : 'strictfp';
@@ -917,7 +919,6 @@ VOLATILE      : 'volatile';
 WHILE         : 'while';
 
 // §3.10.1 Integer Literals
-
 Integer
     :   DecimalIntegerLiteral
     |   HexIntegerLiteral
