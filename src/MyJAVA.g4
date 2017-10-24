@@ -397,10 +397,12 @@ funcDec
 
 functionReturn
     :   dataType functionName '(' paramList ')' functionBody
+    |   dataType functionName '(' ')' functionBody
     ;
 
 functionVoid
     :   voidKeyword functionName '(' paramList ')' functionBody
+    |   voidKeyword functionName '(' ')' functionBody
     ;
 
 functionName
@@ -422,6 +424,7 @@ functionBody
 
 mainFunction
     :   voidKeyword Identifier '(' ')' functionBody
+    |   dataType Identifier '(' ')' functionBody
     ;
 
 qualifiedNameList
