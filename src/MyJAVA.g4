@@ -420,6 +420,7 @@ parameter
 
 functionBody
     :   '{' varDecList statementList '}'
+    |   '{' WS varDecList statementList WS '}'
     ;
 
 mainFunction
