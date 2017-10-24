@@ -1,14 +1,12 @@
 
 import myjava.MyJAVALexer;
-import myjava.MyJAVAParser;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.ParseTree;
+import uicomp.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.List;
 
 
 /**
@@ -33,6 +31,12 @@ public class UI {
 
     public UI() {
 
+        // Highlights the line currently beign typed on
+        LinePainter painter = new LinePainter(txtArCode);
+        // Adds the line numbers on the side of the textarea
+        TextLineNumber tln = new TextLineNumber(txtArCode);
+        tln.setFont(new Font("Mono", Font.PLAIN, 12));
+        codePane.setRowHeaderView( tln );
         addListeners();
 
     }
