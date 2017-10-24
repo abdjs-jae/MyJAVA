@@ -396,13 +396,11 @@ funcDec
     ;
 
 functionReturn
-    :   dataType functionName '(' paramList* ')' functionBody
-    |   dataType Identifier '(' paramList* ')' functionBody
+    :   dataType functionName '(' paramList ')' functionBody
     ;
 
 functionVoid
-    :   voidKeyword functionName '(' paramList* ')' functionBody
-    |   voidKeyword Identifier '(' paramList* ')' functionBody
+    :   voidKeyword functionName '(' paramList ')' functionBody
     ;
 
 functionName
