@@ -784,20 +784,13 @@ asciiChar
     ;
 
 printStatement
-    :   printKeyword '(' literal ')'
-    |   printKeyword '(' literal ',' Identifier ')'
+    :   printKeyword '(' '"' literal '"' ')'
+    |   printKeyword '(' '"' literal '"' ',' Identifier ')'
     ;
 
-scanStatement 
-    :   scanKeyword '(' literal ',' varIdentifier ')'
-    ;
-
-varIdentifier
-    :   '%d'
-    |   '%c'
-    |   '%s'
-    |   '%f'
-    |   '%lf'
+scanStatement
+    :   scanKeyword '(' '"' literal '"' ',' Identifier ')'
+    |   scanKeyword '(' '"' literal '"' Identifier ')'
     ;
 
 primary
