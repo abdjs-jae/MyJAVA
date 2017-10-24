@@ -4,9 +4,13 @@ import org.antlr.v4.runtime.*;
 import uicomp.*;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 /**
@@ -24,10 +28,13 @@ public class UI {
     private JButton btnRun;
     private JButton btnClear;
     private JList consoleList;
-    private DefaultListModel tokenListModel;
+    private JPanel consoleCasePane;
+    private JPanel codeCasePane;
+    private DefaultListModel consoleListModel;
 
     // INPUT ELEMENTS
     String code;
+    int lineNum;
 
     public UI() {
 
@@ -61,20 +68,39 @@ public class UI {
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 tokens.fill();
 
-                tokenListModel = new DefaultListModel();
+                consoleListModel = new DefaultListModel();
+
+                // Function for adding of message to console
+                // consoleListModel.addElement(<input message here>);
+
+                /*
+                For example, this below is for tokens :)
 
                 for (Token t : tokens.getTokens()){
-                    System.out.println("Token #" + t.getTokenIndex() + "!");
-                    System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
-                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                    tokenListModel.addElement("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
-                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                    System.out.println("Token #" + t.getTokenIndex() + "!");
-                }
 
-                consoleList.setModel(tokenListModel);
+                    // consoleListModel.addElement("[TOKEN] Token " + (t.getTokenIndex() + 1) + ": "
+                //        + t.getText() + " | Type: " + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+
+                }
+                */
+
+                consoleList.setModel(consoleListModel);
                 consolePane.setViewportView(consoleList);
                 consoleList.setLayoutOrientation(JList.VERTICAL);
+
+                consoleList.addListSelectionListener(new ListSelectionListener() {
+                    @Override
+                    public void valueChanged(ListSelectionEvent e) {
+                        if (!e.getValueIsAdjusting()) {
+                            // Get the line number of the selected message!
+                            lineNum = extractLineNumber(consoleList.getSelectedValue().toString());
+                            // Moves the highlight text to the line + 1
+                            txtArCode.setCaretPosition(txtArCode.getDocument()
+                                    .getDefaultRootElement().getElement(lineNum - 1)
+                                    .getStartOffset());
+                        }
+                    }
+                });
 
                 //ParseTree t = parser.compilationUnit();
                 // txtConsole.setText("\n Parse tree: " + t.toStringTree(parser) );
@@ -91,5 +117,16 @@ public class UI {
                 consolePane.repaint();
             }
         });
+
     }
+
+    // Gets the line number from a message!
+    private int extractLineNumber(String s){
+        // [ERROR] Line 1:2
+        String colonSplit = s.split("\\:")[0];
+        // [ERROR] Line 1
+        String smallESplit = colonSplit.substring(13, colonSplit.length());
+        return Integer.parseInt(smallESplit);
+    }
+
 }
