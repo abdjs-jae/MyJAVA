@@ -317,6 +317,7 @@ varDecList
 
 varDec
     :   dataType varNameList
+    |   dataType WS Identifier '=' constValue ';'
     ;
 
 varNameList
@@ -420,7 +421,8 @@ parameter
 
 functionBody
     :   '{' varDecList statementList '}'
-    |   '{' WS varDecList statementList WS '}'
+    |   '{' '\n' varDecList statementList '\n' '}'
+    |   '{' '\n' '\n' '}'
     ;
 
 mainFunction
@@ -553,6 +555,8 @@ localVariableDeclaration
 statement
     :   block
     |   assignStatement
+    |   printStatement
+    |   scanStatement
     |   condStatement
     |   loopStatement
     |   returnStatement
