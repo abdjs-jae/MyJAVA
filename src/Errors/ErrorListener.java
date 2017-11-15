@@ -1,14 +1,16 @@
-package Errors;
+package errors;
 
 import org.antlr.v4.runtime.*;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ErrorListener extends BaseErrorListener {
 
-    private DefaultListModel consoleListModel;
+    private DefaultListModel consoleListModel = new DefaultListModel();
+    private ArrayList<Integer> errorPositionList = new ArrayList<>();
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer,
@@ -17,8 +19,6 @@ public class ErrorListener extends BaseErrorListener {
                             String msg,
                             RecognitionException e)
     {
-
-        consoleListModel = new DefaultListModel();
 
         System.err.println("[ERROR] line " +line+":"+charPositionInLine+" at " + offendingSymbol+": " +msg);
         consoleListModel.addElement("[ERROR] line " +line+":"+charPositionInLine+" at " + offendingSymbol+": " +msg);
@@ -50,9 +50,25 @@ public class ErrorListener extends BaseErrorListener {
         }
         System.err.println();
         // consoleListModel.addElement(message);
+
+        // Add line, start, and stop positions to array
+        errorPositionList.add(line-1);
+        System.out.println(line-1);
+        errorPositionList.add(start);
+        System.out.println(start);
+        errorPositionList.add(stop);
+        System.out.println(stop);
     }
 
     public DefaultListModel getConsoleListModel() {
+        if(consoleListModel == null){
+            consoleListModel = new DefaultListModel();
+            consoleListModel.addElement("[PARSE] No syntax errors were detected.");
+        }
+
         return consoleListModel;
+    }
+    public ArrayList<Integer> getErrorPositionList() {
+        return errorPositionList;
     }
 }

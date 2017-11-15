@@ -1,21 +1,27 @@
 
-import Errors.ErrorListener;
+import errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import uicomp.*;
+import uicomp.LinePainter;
+import uicomp.SquigglePainter;
+import uicomp.TextLineNumber;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
+import static java.awt.Color.cyan;
 
 
 /**
@@ -38,8 +44,9 @@ public class UI {
     private DefaultListModel consoleListModel;
 
     // INPUT ELEMENTS
-    String code;
-    int lineNum;
+    private String code;
+    private int lineNum;
+    private ArrayList<Integer> errorPositionList;
 
     public UI() {
 
@@ -74,10 +81,11 @@ public class UI {
                 tokens.fill();
                 MyJAVAParser parser = new MyJAVAParser(tokens);
                 ErrorListener errorListener = new ErrorListener();
+                parser.setErrorHandler(new MyJAVAErrorStrategy());
                 parser.removeErrorListeners();
                 parser.addErrorListener(errorListener);
 
-                ParseTree tree = parser.classDeclaration();
+                ParseTree tree = parser.memberDeclaration();
                 ParseTreeWalker walker = new ParseTreeWalker();
                 MyJAVABaseListener myJAVA = new MyJAVABaseListener();
                 walker.walk(myJAVA, tree);
@@ -96,6 +104,9 @@ public class UI {
                            + t.getText() + " | Type: " + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
                     }
                 */
+
+                errorPositionList = errorListener.getErrorPositionList();
+                underlineErrors(errorPositionList);
 
                 consoleList.setModel(consoleListModel);
                 consolePane.setViewportView(consoleList);
@@ -145,6 +156,27 @@ public class UI {
         // [ERROR] Line 1
         String smallESplit = colonSplit.substring(13, colonSplit.length());
         return Integer.parseInt(smallESplit);
+    }
+
+    private void underlineErrors(ArrayList<Integer> errorPositionList){
+        SquigglePainter red = new SquigglePainter( Color.RED );
+        int startIndex, endIndex;
+
+        for(int i = 0; i < errorPositionList.size(); i+=3){
+
+            try {
+                startIndex = txtArCode.getLineStartOffset(errorPositionList.get(i));
+                endIndex = txtArCode.getLineEndOffset(errorPositionList.get(i));
+
+                // startIndex + actual starting in the line
+                // endIndex +  actual ending in the line
+                txtArCode.getHighlighter().addHighlight(errorPositionList.get(i+1)-1,
+                                                             errorPositionList.get(i+2),
+                                                            red);
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
