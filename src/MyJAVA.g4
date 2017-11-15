@@ -30,108 +30,27 @@
  *  Uses ANTLR v4's left-recursive expression notation.
  *  It parses ECJ, Netbeans, JDK etc...
  *
- *  A slightly edited version from the original ANTLR Java version gotten at
- *  antlr/grammars-v4 section of the ANTLR project github.
+ *  Sam Harwell cleaned this up significantly and updated to 1.7!
  *
- *  Grammar edited by: JA, JA, NA.
+ *  You can test with
+ *
+ *  $ antlr4 Java.g4
+ *  $ javac *.java
+ *  $ grun Java compilationUnit *.java
  */
 grammar MyJAVA;
 
 // starting point for parsing a java file
 compilationUnit
-    :   packageDeclaration? importStatement* typeDeclaration* EOF
+    :   packageDeclaration? importDeclaration* typeDeclaration* EOF
     ;
 
 packageDeclaration
     :   annotation* 'package' qualifiedName ';'
     ;
 
-importList
-    :   importStatement importList
-    |   importStatement
-    ;
-
-importStatement
-    :   importKeyword filename ';' '\n'
-    ;
-
-// Keywords
-caseKeyword
-    :   'case'
-    |   'CASE'
-    ;
-
-constKeyword
-    :   'constant'
-    |   'CONSTANT'
-    ;
-
-defaultKeyword
-    :   'default'
-    |   'DEFAULT'
-    ;
-
-doKeyword
-    :   'do'
-    |   'DO'
-    ;
-
-elseKeyword
-    :   'else'
-    |   'ELSE'
-    ;
-
-forKeyword
-    :   'for'
-    |   'FOR'
-    ;
-
-ifKeyword
-    :   'if'
-    |   'IF'
-    ;
-
-importKeyword
-    :   'import'
-    |   'IMPORT'
-    ;
-
-printKeyword
-    :   'print'
-    |   'PRINT'
-    ;
-
-returnKeyword
-    :   'return'
-    |   'RETURN'
-    ;
-
-scanKeyword
-    :   'scan'
-    |   'SCAN'
-    ;
-
-switchKeyword
-    :   'switch'
-    |   'SWITCH'
-    ;
-
-voidKeyword
-    :   'void'
-    |   'VOID'
-    ;
-
-whileKeyword
-    :   'while'
-    |   'WHILE'
-    ;
-
-filename
-    :   Identifier '.' extension
-    ;
-
-extension
-    :   '.myj'
+importDeclaration
+    :   'import' 'static'? qualifiedName ('.' '*')? ';'
     ;
 
 typeDeclaration
@@ -227,7 +146,7 @@ classBodyDeclaration
     ;
 
 memberDeclaration
-    :   funcDecList
+    :   methodDeclaration
     |   genericMethodDeclaration
     |   fieldDeclaration
     |   constructorDeclaration
@@ -243,8 +162,16 @@ memberDeclaration
    renders the [] matching as a context-sensitive issue or a semantic check
    for invalid return type after parsing.
  */
+methodDeclaration
+    :   (typeType|'void') Identifier formalParameters ('[' ']')*
+        ('throws' qualifiedNameList)?
+        (   methodBody
+        |   ';'
+        )
+    ;
+
 genericMethodDeclaration
-    :  typeParameters* funcDecList
+    :   typeParameters methodDeclaration
     ;
 
 constructorDeclaration
@@ -257,7 +184,7 @@ genericConstructorDeclaration
     ;
 
 fieldDeclaration
-    :   typeType varNameList ';'
+    :   typeType variableDeclarators ';'
     ;
 
 interfaceBodyDeclaration
@@ -275,28 +202,12 @@ interfaceMemberDeclaration
     |   enumDeclaration
     ;
 
-constDecList
-    :   constStatement constDecList
-    |   constStatement
-    ;
-
-constStatement
-    :   constKeyword constName '=' constValue ';'
-    ;
-
-constName
-    :   Identifier
-    ;
-
-constValue
-    :   Integer
-    |   Float
-    |   Character
-    |   String
-    ;
-
 constDeclaration
-    :   typeType constDecList (',' constDecList)* ';'
+    :   typeType constantDeclarator (',' constantDeclarator)* ';'
+    ;
+
+constantDeclarator
+    :   Identifier ('[' ']')* '=' variableInitializer
     ;
 
 // see matching of [] comment in methodDeclaratorRest
@@ -310,28 +221,12 @@ genericInterfaceMethodDeclaration
     :   typeParameters interfaceMethodDeclaration
     ;
 
-varDecList
-    :   varDec ';' varDecList
-    |   varDec ';'
+variableDeclarators
+    :   variableDeclarator (',' variableDeclarator)*
     ;
 
-varDec
-    :   dataType varNameList
-    |   dataType WS Identifier '=' constValue ';'
-    ;
-
-varNameList
-    :   varName ',' varNameList
-    |   varName
-    ;
-
-varName
-    :   Identifier index
-    |   Identifier
-    ;
-
-index
-    :   '[' Integer ']'
+variableDeclarator
+    :   variableDeclaratorId ('=' variableInitializer)?
     ;
 
 variableDeclaratorId
@@ -347,16 +242,20 @@ arrayInitializer
     :   '{' (variableInitializer (',' variableInitializer)* (',')? )? '}'
     ;
 
+enumConstantName
+    :   Identifier
+    ;
+
 typeType
     :   classOrInterfaceType ('[' ']')*
-    |   dataType ('[' ']')*
+    |   primitiveType ('[' ']')*
     ;
 
 classOrInterfaceType
     :   Identifier typeArguments? ('.' Identifier typeArguments? )*
     ;
 
-dataType
+primitiveType
     :   'boolean'
     |   'char'
     |   'byte'
@@ -365,7 +264,6 @@ dataType
     |   'long'
     |   'float'
     |   'double'
-    |   'string' // temporarily added here as datatype
     |   'BOOLEAN'
     |   'CHAR'
     |   'BYTE'
@@ -374,7 +272,6 @@ dataType
     |   'LONG'
     |   'FLOAT'
     |   'DOUBLE'
-    |   'STRING' // temporarily added here as datatype
     ;
 
 typeArguments
@@ -384,50 +281,6 @@ typeArguments
 typeArgument
     :   typeType
     |   '?' (('extends' | 'super') typeType)?
-    ;
-
-funcDecList
-    :   funcDec funcDecList
-    |   funcDec
-    ;
-
-funcDec
-    :   functionReturn
-    |   functionVoid
-    ;
-
-functionReturn
-    :   dataType functionName '(' paramList ')' functionBody
-    |   dataType functionName '(' ')' functionBody
-    ;
-
-functionVoid
-    :   voidKeyword functionName '(' paramList ')' functionBody
-    |   voidKeyword functionName '(' ')' functionBody
-    ;
-
-functionName
-    :   Identifier
-    ;
-
-paramList
-    :   parameter
-    ;
-
-parameter
-    :    varDec ',' parameter
-    |    varDec
-    ;
-
-functionBody
-    :   '{' varDecList statementList '}'
-    |   '{' '\n' varDecList statementList '\n' '}'
-    |   '{' '\n' '\n' '}'
-    ;
-
-mainFunction
-    :   voidKeyword Identifier '(' ')' functionBody
-    |   dataType Identifier '(' ')' functionBody
     ;
 
 qualifiedNameList
@@ -451,6 +304,10 @@ lastFormalParameter
     :   variableModifier* typeType '...' variableDeclaratorId
     ;
 
+methodBody
+    :   block
+    ;
+
 constructorBody
     :   block
     ;
@@ -460,11 +317,11 @@ qualifiedName
     ;
 
 literal
-    :   Integer
-    |   Float
-    |   Character
-    |   String
-    |   Boolean
+    :   IntegerLiteral
+    |   FloatingPointLiteral
+    |   CharacterLiteral
+    |   StringLiteral
+    |   BooleanLiteral
     |   'null'
     ;
 
@@ -525,7 +382,7 @@ annotationMethodRest
     ;
 
 annotationConstantRest
-    :   varNameList
+    :   variableDeclarators
     ;
 
 defaultValue
@@ -549,90 +406,48 @@ localVariableDeclarationStatement
     ;
 
 localVariableDeclaration
-    :   variableModifier* typeType varNameList
+    :   variableModifier* typeType variableDeclarators
     ;
 
 statement
     :   block
-    |   assignStatement
-    |   printStatement
-    |   scanStatement
-    |   condStatement
-    |   loopStatement
-    |   returnStatement
     |   ASSERT expression (':' expression)? ';'
+    |   'if' parExpression statement ('else' statement)?
+    |   'if' parExpression statement ('ELSE' statement)?
+    |   'IF' parExpression statement ('else' statement)?
+    |   'IF' parExpression statement ('ELSE' statement)?
+    |   'for' '(' forControl ')' statement
+    |   'FOR' '(' forControl ')' statement
+    |   'while' parExpression statement
+    |   'WHILE' parExpression statement
+    |   'do' statement 'while' parExpression ';'
+    |   'do' statement 'WHILE' parExpression ';'
+    |   'DO' statement 'while' parExpression ';'
+    |   'DO' statement 'WHILE' parExpression ';'
     |   'try' block (catchClause+ finallyBlock? | finallyBlock)
     |   'try' resourceSpecification block catchClause* finallyBlock?
-    |   'synchronized' '(' expression ')' block
+    |   'TRY' block (catchClause+ finallyBlock? | finallyBlock)
+    |   'TRY' resourceSpecification block catchClause* finallyBlock?
+    |   'switch' parExpression '{' switchBlockStatementGroup* switchLabel* '}'
+    |   'SWITCH' parExpression '{' switchBlockStatementGroup* switchLabel* '}'
+    |   'synchronized' parExpression block
+    |   'SYNCHRONIZED' parExpression block
+    |   'return' expression? ';'
+    |   'RETURN' expression? ';'
     |   'throw' expression ';'
+    |   'THROW' expression ';'
     |   'break' Identifier? ';'
+    |   'BREAK' Identifier? ';'
     |   'continue' Identifier? ';'
+    |   'CONTINUE' Identifier? ';'
     |   ';'
     |   statementExpression ';'
     |   Identifier ':' statement
     ;
 
-assignStatement
-    :   Identifier '=' expression
-    ;
-
-condStatement
-    :   ifStatement
-    |   switchStatement
-    |   boolStatement
-    ;
-
-loopStatement
-    :   doWhileLoop
-    |   whileLoop
-    |   forLoop
-    ;
-
-returnStatement
-    :   returnKeyword expression ';'
-    ;
-
-ifStatement
-    :   ifKeyword '(' expression ')' statement+ elseKeyword statement+
-    |   ifKeyword '(' expression ')' statement+
-    ;
-
-switchStatement
-    :   switchKeyword '(' expression ')' '{' caseList defaultStatement '}'
-    ;
-
-boolStatement
-    :   Boolean
-    ;
-
-caseList
-    :   caseKeyword expression ':' statementList caseList
-    |   caseKeyword expression ':' statementList
-    ;
-
-defaultStatement
-    :   defaultKeyword ':' statementList
-    ;
-
-doWhileLoop
-    :   doKeyword statement whileKeyword '(' expression ')'
-    ;
-
-whileLoop
-    :   whileKeyword '(' expression ')' statement+
-    ;
-
-forLoop
-    :   forKeyword '(' assignStatement ';' expression ';' assignStatement ')' statement+
-    ;
-
-statementList
-    :   statement statementList
-    |   statement
-    ;
-
 catchClause
     :   'catch' '(' variableModifier* catchType Identifier ')' block
+    |   'CATCH' '(' variableModifier* catchType Identifier ')' block
     ;
 
 catchType
@@ -641,6 +456,7 @@ catchType
 
 finallyBlock
     :   'finally' block
+    |   'FINALLY' block
     ;
 
 resourceSpecification
@@ -655,7 +471,46 @@ resource
     :   variableModifier* classOrInterfaceType variableDeclaratorId '=' expression
     ;
 
+/** Matches cases then statements, both of which are mandatory.
+ *  To handle empty cases at the end, we add switchLabel* to statement.
+ */
+switchBlockStatementGroup
+    :   switchLabel+ blockStatement+
+    ;
+
+switchLabel
+    :   'case' constantExpression ':'
+    |   'case' enumConstantName ':'
+    |   'default' ':'
+    |   'CASE' constantExpression ':'
+    |   'CASE' enumConstantName ':'
+    |   'DEFAULT' ':'
+    ;
+
+forControl
+    :   enhancedForControl
+    |   forInit? ';' expression? ';' forUpdate?
+    ;
+
+forInit
+    :   localVariableDeclaration
+    |   expressionList
+    ;
+
+enhancedForControl
+    :   variableModifier* typeType variableDeclaratorId ':' expression
+    ;
+
+forUpdate
+    :   expressionList
+    ;
+
 // EXPRESSIONS
+
+parExpression
+    :   '(' expression ')'
+    ;
+
 expressionList
     :   expression (',' expression)*
     ;
@@ -664,27 +519,39 @@ statementExpression
     :   expression
     ;
 
+constantExpression
+    :   expression
+    ;
+
 expression
     :   primary
-    |   stringExpression
-    |   numExpression
-    |   boolExpression
-    |   functionName '(' paramList ')' ';'
     |   expression '.' Identifier
     |   expression '.' 'this'
+    |   expression '.' 'THIS'
     |   expression '.' 'new' nonWildcardTypeArguments? innerCreator
+    |   expression '.' 'NEW' nonWildcardTypeArguments? innerCreator
     |   expression '.' 'super' superSuffix
+    |   expression '.' 'SUPER' superSuffix
     |   expression '.' explicitGenericInvocation
     |   expression '[' expression ']'
     |   expression '(' expressionList? ')'
     |   'new' creator
+    |   'NEW' creator
     |   '(' typeType ')' expression
     |   expression ('++' | '--')
     |   ('+'|'-'|'++'|'--') expression
+    |   ('~'|'!') expression
+    |   expression ('*'|'/'|'%') expression
+    |   expression ('+'|'-') expression
+    |   expression ('<' '<' | '>' '>' '>' | '>' '>') expression
+    |   expression ('<=' | '>=' | '>' | '<') expression
     |   expression 'instanceof' typeType
+    |   expression ('==' | '!=') expression
     |   expression '&' expression
     |   expression '^' expression
     |   expression '|' expression
+    |   expression '&&' expression
+    |   expression '||' expression
     |   expression '?' expression ':' expression
     |   <assoc=right> expression
         (   '='
@@ -703,109 +570,22 @@ expression
         expression
     ;
 
-stringExpression
-    :   stringIdentifier '+' stringExpression
-    |   stringIdentifier
-    |   ('!'|'-') stringExpression
-    ;
-
-numExpression
-    :   numTerm '+' numExpression
-    |   numTerm '-' numExpression
-    |   numTerm
-    ;
-
-boolExpression
-    :   numExpression relOp numExpression
-    |   stringExpression '==' stringExpression
-    |   stringExpression '!=' stringExpression
-    |   boolLogical '==' boolExpression
-    |   boolLogical '!=' boolExpression
-    |   boolLogical
-    ;
-
-relOp
-    :   '=='
-    |   '!='
-    |   '<='
-    |   '>='
-    |   '<'
-    |   '>'
-    ;
-
-boolLogical
-    :   boolTerm '||' boolLogical
-    |   boolTerm
-    ;
-
-boolTerm
-    :   boolFactor '&&' boolTerm
-    |   boolFactor
-    ;
-
-boolFactor
-    :   '(' boolLogical ')'
-    |   '!' boolLogical
-    |   boolIdentifier
-    ;
-
-boolIdentifier
-    :   Identifier
-    ;
-
-numTerm
-    :   numFactor '*' numTerm
-    |   numFactor '/' numTerm
-    |   numFactor '%' numTerm
-    |   numFactor
-    ;
-
-numFactor
-    :   '(' numExpression ')'
-    |   numIdentifier
-    ;
-
-numIdentifier
-    :   Integer
-    |   Float
-    ;
-
-stringIdentifier
-    :   Identifier
-    ;
-
-// other stuff
-charValue
-    :   asciiChar charValue
-    |   asciiChar
-    |   '\n'
-    |   '\\'
-    ;
-
-asciiChar
-    :   Character
-    |   Integer
-    ;
-
-printStatement
-    :   printKeyword '(' '"' literal '"' ')' ';'
-    |   printKeyword '(' '"' literal '"' ',' Identifier ')' ';'
-    ;
-
-scanStatement
-    :   scanKeyword '(' '"' literal '"' ',' Identifier ')' ';'
-    |   scanKeyword '(' '"' literal '"' Identifier ')' ';'
-    ;
-
 primary
     :   '(' expression ')'
     |   'this'
+    |   'THIS'
     |   'super'
+    |   'SUPER'
     |   literal
     |   Identifier
     |   typeType '.' 'class'
+    |   typeType '.' 'CLASS'
     |   'void' '.' 'class'
+    |   'void' '.' 'CLASS'
+    |   'VOID' '.' 'class'
+    |   'VOID' '.' 'CLASS'
     |   nonWildcardTypeArguments (explicitGenericInvocationSuffix | 'this' arguments)
+    |   nonWildcardTypeArguments (explicitGenericInvocationSuffix | 'THIS' arguments)
     ;
 
 creator
@@ -815,7 +595,7 @@ creator
 
 createdName
     :   Identifier typeArgumentsOrDiamond? ('.' Identifier typeArgumentsOrDiamond?)*
-    |   dataType
+    |   primitiveType
     ;
 
 innerCreator
@@ -858,12 +638,28 @@ superSuffix
 
 explicitGenericInvocationSuffix
     :   'super' superSuffix
+    |   'SUPER' superSuffix
     |   Identifier arguments
     ;
 
 arguments
     :   '(' expressionList? ')'
     ;
+
+printStatement
+    :   'print' '(' '"' literal '"' ')' ';'
+    |   'PRINT' '(' '"' literal '"' ')' ';'
+    |   'print' '(' '"' literal '"' ',' Identifier ')' ';'
+    |   'PRINT' '(' '"' literal '"' ',' Identifier ')' ';'
+    ;
+
+scanStatement
+    :   'scan' '(' '"' literal '"' ',' Identifier ')' ';'
+    |   'scan' '(' '"' literal '"' ',' Identifier ')' ';'
+    |   'scan' '(' '"' literal '"' Identifier ')' ';'
+    |   'SCAN' '(' '"' literal '"' Identifier ')' ';'
+    ;
+
 
 // LEXER
 
@@ -923,7 +719,8 @@ VOLATILE      : 'volatile';
 WHILE         : 'while';
 
 // §3.10.1 Integer Literals
-Integer
+
+IntegerLiteral
     :   DecimalIntegerLiteral
     |   HexIntegerLiteral
     |   OctalIntegerLiteral
@@ -1053,7 +850,7 @@ BinaryDigitOrUnderscore
 
 // §3.10.2 Floating-Point Literals
 
-Float
+FloatingPointLiteral
     :   DecimalFloatingPointLiteral
     |   HexadecimalFloatingPointLiteral
     ;
@@ -1114,7 +911,7 @@ BinaryExponentIndicator
 
 // §3.10.3 Boolean Literals
 
-Boolean
+BooleanLiteral
     :   'true'
     |   'false'
     |   'TRUE'
@@ -1123,7 +920,7 @@ Boolean
 
 // §3.10.4 Character Literals
 
-Character
+CharacterLiteral
     :   '\'' SingleCharacter '\''
     |   '\'' EscapeSequence '\''
     ;
@@ -1135,7 +932,7 @@ SingleCharacter
 
 // §3.10.5 String Literals
 
-String
+StringLiteral
     :   '"' StringCharacters? '"'
     ;
 
@@ -1180,6 +977,7 @@ ZeroToThree
 
 NullLiteral
     :   'null'
+    |   'NULL'
     ;
 
 // §3.11 Separators
@@ -1235,11 +1033,11 @@ URSHIFT_ASSIGN  : '>>>=';
 // §3.8 Identifiers (must appear after all keywords in the grammar)
 
 Identifier
-    :   Letter Alphanum*
+    :   JavaLetter JavaLetterOrDigit*
     ;
 
 fragment
-Letter
+JavaLetter
     :   [a-zA-Z$_] // these are the "java letters" below 0x7F
     |   // covers all characters above 0x7F which are not a surrogate
         ~[\u0000-\u007F\uD800-\uDBFF]
@@ -1248,7 +1046,7 @@ Letter
     ;
 
 fragment
-Alphanum
+JavaLetterOrDigit
     :   [a-zA-Z0-9$_] // these are the "java letters or digits" below 0x7F
     |   // covers all characters above 0x7F which are not a surrogate
         ~[\u0000-\u007F\uD800-\uDBFF]
