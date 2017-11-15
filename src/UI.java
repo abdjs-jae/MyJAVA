@@ -77,10 +77,10 @@ public class UI {
                 parser.removeErrorListeners();
                 parser.addErrorListener(errorListener);
 
-                ParseTree tree = parser.mainFunction();
+                ParseTree tree = parser.classDeclaration();
                 ParseTreeWalker walker = new ParseTreeWalker();
                 MyJAVABaseListener myJAVA = new MyJAVABaseListener();
-                walker.walk(new MyJAVABaseListener(), tree);
+                walker.walk(myJAVA, tree);
 
                 consoleListModel = new DefaultListModel();
                 consoleListModel = errorListener.getConsoleListModel();
