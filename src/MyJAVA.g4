@@ -231,6 +231,7 @@ variableDeclarator
 
 variableDeclaratorId
     :   Identifier ('[' ']')*
+    |   Identifier ('[' IntegerLiteral ']')*
     ;
 
 variableInitializer
@@ -649,17 +650,13 @@ arguments
     ;
 
 printStatement
-    :   'print' '(' literal ')' ';'
-    |   'PRINT' '(' literal ')' ';'
-    |   'print' '(' literal ',' Identifier ')' ';'
-    |   'PRINT' '(' literal ',' Identifier ')' ';'
+    :   'print' parExpression ';'
+    |   'PRINT' parExpression ';'
     ;
 
 scanStatement
-    :   'scan' '(' literal ',' Identifier ')' ';'
-    |   'SCAN' '(' literal ',' Identifier ')' ';'
-    |   'scan' '(' literal Identifier ')' ';'
-    |   'SCAN' '(' literal Identifier ')' ';'
+    :   'scan' '(' expression ',' variableDeclaratorId ')' ';'
+    |   'SCAN' '(' expression ',' variableDeclaratorId ')' ';'
     ;
 
 
