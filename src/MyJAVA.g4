@@ -133,10 +133,13 @@ typeList
 
 classBody
     :   '{' classBodyDeclaration* '}'
+    |   '{'                            {notifyErrorListeners("Missing closing '}'");}
+    |   '{' classBodyDeclaration* '}}' {notifyErrorListeners("Too many brackets");}
     ;
 
 interfaceBody
     :   '{' interfaceBodyDeclaration* '}'
+    |   '{' interfaceBodyDeclaration* '}}' {notifyErrorListeners("Too many brackets");}
     ;
 
 classBodyDeclaration
