@@ -443,6 +443,8 @@ statement
     |   ';'
     |   statementExpression ';'
     |   Identifier ':' statement
+    |   printStatement
+    |   scanStatement
     ;
 
 catchClause
@@ -647,17 +649,17 @@ arguments
     ;
 
 printStatement
-    :   'print' '(' '"' literal '"' ')' ';'
-    |   'PRINT' '(' '"' literal '"' ')' ';'
-    |   'print' '(' '"' literal '"' ',' Identifier ')' ';'
-    |   'PRINT' '(' '"' literal '"' ',' Identifier ')' ';'
+    :   'print' '(' literal ')' ';'
+    |   'PRINT' '(' literal ')' ';'
+    |   'print' '(' literal ',' Identifier ')' ';'
+    |   'PRINT' '(' literal ',' Identifier ')' ';'
     ;
 
 scanStatement
-    :   'scan' '(' '"' literal '"' ',' Identifier ')' ';'
-    |   'scan' '(' '"' literal '"' ',' Identifier ')' ';'
-    |   'scan' '(' '"' literal '"' Identifier ')' ';'
-    |   'SCAN' '(' '"' literal '"' Identifier ')' ';'
+    :   'scan' '(' literal ',' Identifier ')' ';'
+    |   'SCAN' '(' literal ',' Identifier ')' ';'
+    |   'scan' '(' literal Identifier ')' ';'
+    |   'SCAN' '(' literal Identifier ')' ';'
     ;
 
 
