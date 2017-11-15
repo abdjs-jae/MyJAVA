@@ -133,13 +133,10 @@ typeList
 
 classBody
     :   '{' classBodyDeclaration* '}'
-    |   '{'                            {notifyErrorListeners("Missing closing '}'");}
-    |   '{' classBodyDeclaration* '}}' {notifyErrorListeners("Too many brackets");}
     ;
 
 interfaceBody
     :   '{' interfaceBodyDeclaration* '}'
-    |   '{' interfaceBodyDeclaration* '}}' {notifyErrorListeners("Too many brackets");}
     ;
 
 classBodyDeclaration
@@ -397,6 +394,9 @@ defaultValue
 
 block
     :   '{' blockStatement* '}'
+    |   '{' blockStatement* '}}' {notifyErrorListeners("Too many brackets");}
+    |   '{'                      {notifyErrorListeners("Missing closing '}'");}
+    |   '}'                      {notifyErrorListeners("Missing opening '{'");}
     ;
 
 blockStatement
