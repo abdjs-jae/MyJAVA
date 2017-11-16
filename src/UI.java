@@ -4,6 +4,7 @@ import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import uicomp.LinePainter;
@@ -76,35 +77,22 @@ public class UI {
                 System.out.println("Run button clicked!");
                 code = txtArCode.getText();
 
-                MyJAVALexer lex = new MyJAVALexer(CharStreams.fromString(code));
+                MyJAVALexer lex = new MyJAVALexer(new ANTLRInputStream(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
-                tokens.fill();
                 MyJAVAParser parser = new MyJAVAParser(tokens);
                 ErrorListener errorListener = new ErrorListener();
                 parser.setErrorHandler(new MyJAVAErrorStrategy());
                 parser.removeErrorListeners();
                 parser.addErrorListener(errorListener);
+                parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
-                ParseTree tree = parser.memberDeclaration();
-                ParseTreeWalker walker = new ParseTreeWalker();
-                MyJAVABaseListener myJAVA = new MyJAVABaseListener();
-                walker.walk(myJAVA, tree);
+                ParseTree parserRuleContext = parser.compilationUnit();
+                ParseTreeWalker treeWalker = new ParseTreeWalker();
+                treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
 
                 consoleListModel = new DefaultListModel();
+                consoleList.setSelectedIndex(0);
                 consoleListModel = errorListener.getConsoleListModel();
-
-                // Function for adding of message to console
-                // consoleListModel.addElement(<input message here>);
-
-                // For example, this below is for tokens :)
-
-                /*
-                    for (Token t : tokens.getTokens()){
-                        consoleListModel.addElement("[TOKEN] Token " + (t.getTokenIndex() + 1) + ": "
-                           + t.getText() + " | Type: " + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                    }
-                */
-
                 errorPositionList = errorListener.getErrorPositionList();
                 underlineErrors(errorPositionList);
 
@@ -112,28 +100,28 @@ public class UI {
                 consolePane.setViewportView(consoleList);
                 consoleList.setLayoutOrientation(JList.VERTICAL);
 
-                consoleList.addListSelectionListener(new ListSelectionListener() {
-                    @Override
-                    public void valueChanged(ListSelectionEvent e) {
-                        if (!e.getValueIsAdjusting()) {
-                            String selectedMessage = consoleList.getSelectedValue().toString();
+            }
+        });
+        consoleList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
 
-                            // Checks if message has a keyword
-                            if(selectedMessage.charAt(1) == 'E') {
-                                // Get the line number of the selected message!
-                                lineNum = extractLineNumber(selectedMessage);
-                                // Moves the highlight text to the line + 1
-                                txtArCode.setCaretPosition(txtArCode.getDocument()
-                                        .getDefaultRootElement().getElement(lineNum - 1)
-                                        .getStartOffset());
-                            }
-                        }
+                    if(consoleList.getSelectedIndex() == -1)
+                        consoleList.setSelectedIndex(0);
+
+                    String selectedMessage = consoleList.getSelectedValue().toString();
+
+                    // Checks if message has a keyword
+                    if(selectedMessage.charAt(1) == 'E') {
+                        // Get the line number of the selected message!
+                        lineNum = extractLineNumber(selectedMessage);
+                        // Moves the highlight text to the line + 1
+                        txtArCode.setCaretPosition(txtArCode.getDocument()
+                                .getDefaultRootElement().getElement(lineNum - 1)
+                                .getStartOffset());
                     }
-                });
-
-                //ParseTree t = parser.compilationUnit();
-                // txtConsole.setText("\n Parse tree: " + t.toStringTree(parser) );
-
+                }
             }
         });
         btnClear.addActionListener(new ActionListener() {
@@ -160,16 +148,10 @@ public class UI {
 
     private void underlineErrors(ArrayList<Integer> errorPositionList){
         SquigglePainter red = new SquigglePainter( Color.RED );
-        int startIndex, endIndex;
 
         for(int i = 0; i < errorPositionList.size(); i+=3){
 
             try {
-                startIndex = txtArCode.getLineStartOffset(errorPositionList.get(i));
-                endIndex = txtArCode.getLineEndOffset(errorPositionList.get(i));
-
-                // startIndex + actual starting in the line
-                // endIndex +  actual ending in the line
                 txtArCode.getHighlighter().addHighlight(errorPositionList.get(i+1)-1,
                                                              errorPositionList.get(i+2),
                                                             red);
