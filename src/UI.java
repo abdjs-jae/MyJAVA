@@ -1,5 +1,5 @@
 
-import errors.*;
+import myjava.errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
@@ -18,11 +18,7 @@ import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
-import static java.awt.Color.cyan;
 
 
 /**

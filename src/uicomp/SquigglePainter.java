@@ -18,7 +18,7 @@ public class SquigglePainter extends DefaultHighlighter.DefaultHighlightPainter
 	/**
 	 * Paints a portion of a highlight.
 	 *
-	 * @param  g the graphics execution
+	 * @param  g the graphics myjava.execution
 	 * @param  offs0 the starting model offset >= 0
 	 * @param  offs1 the ending model offset >= offs1
 	 * @param  bounds the bounding box of the view, which is not

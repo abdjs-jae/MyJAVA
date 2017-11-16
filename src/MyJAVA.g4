@@ -70,7 +70,7 @@ memberDeclaration
 
 /* We use rule this even for void methods which cannot have [] after parameters.
    This simplifies grammar and we can consider void to be a type, which
-   renders the [] matching as a execution-sensitive issue or a semantic check
+   renders the [] matching as a myjava.execution-sensitive issue or a semantic check
    for invalid return type after parsing.
  */
 methodDeclaration
