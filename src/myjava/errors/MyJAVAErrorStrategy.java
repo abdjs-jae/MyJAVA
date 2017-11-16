@@ -22,6 +22,24 @@ public class MyJAVAErrorStrategy extends DefaultErrorStrategy {
     }
 
     @Override
+    public void reportError(Parser recognizer, RecognitionException e) {
+        if(!this.inErrorRecoveryMode(recognizer)) {
+            this.beginErrorCondition(recognizer);
+            if(e instanceof NoViableAltException) {
+                this.reportNoViableAlternative(recognizer, (NoViableAltException)e);
+            } else if(e instanceof InputMismatchException) {
+                this.reportInputMismatch(recognizer, (InputMismatchException)e);
+            } else if(e instanceof FailedPredicateException) {
+                this.reportFailedPredicate(recognizer, (FailedPredicateException)e);
+            } else {
+                System.err.println("Oops! Unknown recognition error type found: " + e.getClass().getName());
+                recognizer.notifyErrorListeners(e.getOffendingToken(), e.getMessage(), e);
+            }
+
+        }
+    }
+
+    @Override
     protected void reportNoViableAlternative(Parser recognizer, NoViableAltException e) {
         TokenStream tokens = recognizer.getInputStream();
         String input;

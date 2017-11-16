@@ -12,6 +12,8 @@ import uicomp.SquigglePainter;
 import uicomp.TextLineNumber;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.BadLocationException;
@@ -36,14 +38,19 @@ public class UI {
     private JButton btnRun;
     private JButton btnClear;
     private JList consoleList;
-    private JPanel consoleCasePane;
     private JPanel codeCasePane;
+    private JTabbedPane consoleTabPane;
+    private JPanel allTab;
+    private JPanel verboseTab;
+    private JPanel errorTab;
+    private JPanel debugTab;
     private DefaultListModel consoleListModel;
 
     // INPUT ELEMENTS
     private String code;
     private int lineNum;
     private ArrayList<Integer> errorPositionList;
+    private int selectedTabIndex = 0;
 
     public UI() {
 
@@ -92,10 +99,13 @@ public class UI {
                 errorPositionList = errorListener.getErrorPositionList();
                 underlineErrors(errorPositionList);
 
+                if(consoleListModel.getSize() == 0){
+                    consoleListModel.addElement("[DEBUG] No syntax errors were detected.");
+                }
+
                 consoleList.setModel(consoleListModel);
                 consolePane.setViewportView(consoleList);
                 consoleList.setLayoutOrientation(JList.VERTICAL);
-
             }
         });
         consoleList.addListSelectionListener(new ListSelectionListener() {
@@ -103,19 +113,19 @@ public class UI {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
 
-                    if(consoleList.getSelectedIndex() == -1)
-                        consoleList.setSelectedIndex(0);
+                    if(consoleList.getSelectedIndex() != -1) {
+                        System.out.println(consoleList.getSelectedIndex());
+                        String selectedMessage = consoleList.getSelectedValue().toString();
 
-                    String selectedMessage = consoleList.getSelectedValue().toString();
-
-                    // Checks if message has a keyword
-                    if(selectedMessage.charAt(1) == 'E') {
-                        // Get the line number of the selected message!
-                        lineNum = extractLineNumber(selectedMessage);
-                        // Moves the highlight text to the line + 1
-                        txtArCode.setCaretPosition(txtArCode.getDocument()
-                                .getDefaultRootElement().getElement(lineNum - 1)
-                                .getStartOffset());
+                        // Checks if message has a keyword
+                        if (selectedMessage.charAt(1) == 'E') {
+                            // Get the line number of the selected message!
+                            lineNum = extractLineNumber(selectedMessage);
+                            // Moves the highlight text to the line + 1
+                            txtArCode.setCaretPosition(txtArCode.getDocument()
+                                    .getDefaultRootElement().getElement(lineNum - 1)
+                                    .getStartOffset());
+                        }
                     }
                 }
             }
@@ -130,7 +140,56 @@ public class UI {
                 consolePane.repaint();
             }
         });
+        consoleTabPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("Current tab: " + consoleTabPane.getSelectedIndex());
+                JScrollPane newPane = consolePane;
+                JList newList = (JList)newPane.getViewport().getView();
 
+                // Clear the consolePane of the last selected tab
+                ((JPanel)consoleTabPane.getComponentAt(selectedTabIndex)).removeAll();
+
+                switch(consoleTabPane.getSelectedIndex()){
+                    case 0: { // ALL
+                        consoleList.setModel(consoleListModel);
+                        allTab.add(consolePane);
+                    } break;
+                    case 1: { // Verbose
+                        consoleList.setModel(generateDListModel(consoleListModel, 'V'));
+                        verboseTab.add(newPane);
+                    } break;
+                    case 2: { // Error
+                        consoleList.setModel(generateDListModel(consoleListModel, 'E'));
+                        errorTab.add(newPane);
+                    } break;
+                    case 3: { // Debug
+                        consoleList.setModel(generateDListModel(consoleListModel, 'D'));
+                        debugTab.add(newPane);
+                    } break;
+                }
+                selectedTabIndex = consoleTabPane.getSelectedIndex();
+
+            }
+        });
+    }
+
+    private DefaultListModel generateDListModel(DefaultListModel defaultListModel, char messageType){
+
+        DefaultListModel newModel = new DefaultListModel();
+
+        for(int i = 0; i < defaultListModel.getSize(); i++){
+            // if message does not contain the required type
+            if(defaultListModel.get(i).toString().charAt(1) == messageType)
+                newModel.addElement(defaultListModel.get(i));
+        }
+
+        System.out.println("newModel size: " + newModel.getSize());
+
+        if(newModel.getSize() == 0)
+            newModel.addElement("No messages of this type.");
+
+        return newModel;
     }
 
     // Gets the line number from a message!
@@ -148,9 +207,9 @@ public class UI {
         for(int i = 0; i < errorPositionList.size(); i+=3){
 
             try {
-                txtArCode.getHighlighter().addHighlight(errorPositionList.get(i+1)-1,
-                                                             errorPositionList.get(i+2),
-                                                            red);
+                txtArCode.getHighlighter().addHighlight(errorPositionList.get(i+1),
+                                                    errorPositionList.get(i+2)+1,
+                                                        red);
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }

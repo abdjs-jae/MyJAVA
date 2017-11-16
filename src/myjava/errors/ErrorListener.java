@@ -18,10 +18,21 @@ public class ErrorListener extends BaseErrorListener {
                             RecognitionException e)
     {
 
-        // Change the error messages!!!
-        consoleListModel.addElement("[ERROR] Line " + line + ":" + charPositionInLine + ": " + msg);
+        consoleListModel.addElement("[ERROR] Line " + line + ": " + msg);
         underlineError(recognizer, (Token)offendingSymbol, line, charPositionInLine);
 
+    }
+
+    public void postError(String message){
+        consoleListModel.addElement("[ERROR] " + message);
+    }
+
+    public void postVerbose(String message){
+        consoleListModel.addElement("[VERBO] " + message);
+    }
+
+    public void postDebug(String message){
+        consoleListModel.addElement("[DEBUG] " + message);
     }
 
     protected void underlineError(Recognizer recognizer,
@@ -39,13 +50,9 @@ public class ErrorListener extends BaseErrorListener {
     }
 
     public DefaultListModel getConsoleListModel() {
-        if(consoleListModel == null){
-            consoleListModel = new DefaultListModel();
-            consoleListModel.addElement("[PARSE] No syntax myjava.errors were detected.");
-        }
-
         return consoleListModel;
     }
+
     public ArrayList<Integer> getErrorPositionList() {
         return errorPositionList;
     }
