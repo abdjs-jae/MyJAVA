@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class ErrorListener extends BaseErrorListener {
 
+    TXTWriter txtWriter = new TXTWriter();
     private DefaultListModel consoleListModel = new DefaultListModel();
     private ArrayList<Integer> errorPositionList = new ArrayList<>();
 
@@ -18,21 +19,10 @@ public class ErrorListener extends BaseErrorListener {
                             RecognitionException e)
     {
 
-        consoleListModel.addElement("[ERROR] Line " + line + ": " + msg);
+        txtWriter.writeMessage("[ERROR] Line " + line + ": " + msg);
+        // consoleListModel.addElement("[ERROR] Line " + line + ": " + msg);
         underlineError(recognizer, (Token)offendingSymbol, line, charPositionInLine);
 
-    }
-
-    public void postError(String message){
-        consoleListModel.addElement("[ERROR] " + message);
-    }
-
-    public void postVerbose(String message){
-        consoleListModel.addElement("[VERBO] " + message);
-    }
-
-    public void postDebug(String message){
-        consoleListModel.addElement("[DEBUG] " + message);
     }
 
     protected void underlineError(Recognizer recognizer,
@@ -50,10 +40,15 @@ public class ErrorListener extends BaseErrorListener {
     }
 
     public DefaultListModel getConsoleListModel() {
+
+        // Read log.txt
+        // Add each line to consoleListModel
+
         return consoleListModel;
     }
 
     public ArrayList<Integer> getErrorPositionList() {
         return errorPositionList;
     }
+
 }

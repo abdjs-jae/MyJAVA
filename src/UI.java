@@ -22,7 +22,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
 /**
  * Created by jasonsapdos on 06/10/2017.
  */
@@ -44,7 +43,7 @@ public class UI {
     private JPanel verboseTab;
     private JPanel errorTab;
     private JPanel debugTab;
-    private DefaultListModel consoleListModel;
+    public DefaultListModel consoleListModel;
 
     // INPUT ELEMENTS
     private String code;
@@ -103,7 +102,13 @@ public class UI {
                     consoleListModel.addElement("[DEBUG] No syntax errors were detected.");
                 }
 
-                consoleList.setModel(consoleListModel);
+                switch(consoleTabPane.getSelectedIndex()){
+                    case 0: consoleList.setModel(generateDListModel(consoleListModel, 'A')); break;
+                    case 1: consoleList.setModel(generateDListModel(consoleListModel, 'P')); break;
+                    case 2: consoleList.setModel(generateDListModel(consoleListModel, 'E')); break;
+                    case 3: consoleList.setModel(generateDListModel(consoleListModel, 'D')); break;
+                }
+
                 consolePane.setViewportView(consoleList);
                 consoleList.setLayoutOrientation(JList.VERTICAL);
             }
@@ -117,7 +122,7 @@ public class UI {
                         System.out.println(consoleList.getSelectedIndex());
                         String selectedMessage = consoleList.getSelectedValue().toString();
 
-                        // Checks if message has a keyword
+                        // Checks if message has an error keyword
                         if (selectedMessage.charAt(1) == 'E') {
                             // Get the line number of the selected message!
                             lineNum = extractLineNumber(selectedMessage);
@@ -143,38 +148,47 @@ public class UI {
         consoleTabPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                System.out.println("Current tab: " + consoleTabPane.getSelectedIndex());
-                JScrollPane newPane = consolePane;
-                JList newList = (JList)newPane.getViewport().getView();
+                if(consoleListModel != null) {
+                    System.out.println("Current tab: " + consoleTabPane.getSelectedIndex());
+                    JScrollPane newPane = consolePane;
+                    JList newList = (JList) newPane.getViewport().getView();
 
-                // Clear the consolePane of the last selected tab
-                ((JPanel)consoleTabPane.getComponentAt(selectedTabIndex)).removeAll();
+                    // Clear the consolePane of the last selected tab
+                    ((JPanel) consoleTabPane.getComponentAt(selectedTabIndex)).removeAll();
 
-                switch(consoleTabPane.getSelectedIndex()){
-                    case 0: { // ALL
-                        consoleList.setModel(consoleListModel);
-                        allTab.add(consolePane);
-                    } break;
-                    case 1: { // Verbose
-                        consoleList.setModel(generateDListModel(consoleListModel, 'V'));
-                        verboseTab.add(newPane);
-                    } break;
-                    case 2: { // Error
-                        consoleList.setModel(generateDListModel(consoleListModel, 'E'));
-                        errorTab.add(newPane);
-                    } break;
-                    case 3: { // Debug
-                        consoleList.setModel(generateDListModel(consoleListModel, 'D'));
-                        debugTab.add(newPane);
-                    } break;
+                    switch (consoleTabPane.getSelectedIndex()) {
+                        case 0: { // ALL
+                            consoleList.setModel(consoleListModel);
+                            allTab.add(consolePane);
+                        }
+                        break;
+                        case 1: { // Program output
+                            consoleList.setModel(generateDListModel(consoleListModel, 'P'));
+                            verboseTab.add(newPane);
+                        }
+                        break;
+                        case 2: { // Error
+                            consoleList.setModel(generateDListModel(consoleListModel, 'E'));
+                            errorTab.add(newPane);
+                        }
+                        break;
+                        case 3: { // Debug
+                            consoleList.setModel(generateDListModel(consoleListModel, 'D'));
+                            debugTab.add(newPane);
+                        }
+                        break;
+                    }
+                    selectedTabIndex = consoleTabPane.getSelectedIndex();
                 }
-                selectedTabIndex = consoleTabPane.getSelectedIndex();
-
             }
         });
     }
 
     private DefaultListModel generateDListModel(DefaultListModel defaultListModel, char messageType){
+
+        // No need to be filtered, all messages needed.
+        if(messageType == 'A')
+            return defaultListModel;
 
         DefaultListModel newModel = new DefaultListModel();
 
@@ -215,6 +229,5 @@ public class UI {
             }
         }
     }
-
 }
 
