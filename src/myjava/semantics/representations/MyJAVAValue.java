@@ -1,12 +1,13 @@
 package myjava.semantics.representations;
 
+import myjava.ITextWriter;
 import myjava.semantics.utils.RecognizedKeywords;
 import myjava.semantics.utils.StringUtils;
 
 /**
  * Created by jasonsapdos on 16/11/2017.
  */
-public class MyJAVAValue {
+public class MyJAVAValue implements ITextWriter {
 
     // Accepted primitive types
     public enum PrimitiveType {
@@ -34,7 +35,7 @@ public class MyJAVAValue {
             this.primitiveType = primitiveType;
         }
         else {
-            System.err.println("MyJAVAValue: " + "Entered value is not accepted for type " + primitiveType);
+            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + "Entered value is not accepted for type " + primitiveType));
         }
     }
 
@@ -68,15 +69,13 @@ public class MyJAVAValue {
     public void setValue(String value) {
 
         if(this.primitiveType == PrimitiveType.NOT_YET_IDENTIFIED) {
-            System.err.println("LocalScopeCreator: "
-                    + "Primitive type is not yet identified.");
+            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + "Primitive type is not yet identified."));
         }
         else if(this.primitiveType == PrimitiveType.STRING) {
             this.value = StringUtils.removeQuotes(value);
         }
         else if(this.primitiveType == PrimitiveType.ARRAY) {
-            System.err.println("LocalScopeCreator: "
-                    + this.primitiveType + " is an array. Cannot directly change value.");
+            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + this.primitiveType + " is an array. Cannot directly change value."));
         }
         else {
             //attempts to type cast the value

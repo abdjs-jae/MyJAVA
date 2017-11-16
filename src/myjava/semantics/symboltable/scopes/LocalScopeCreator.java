@@ -1,12 +1,14 @@
 package myjava.semantics.symboltable.scopes;
 
+import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class LocalScopeCreator {
+public class LocalScopeCreator implements ITextWriter {
     private static LocalScopeCreator sharedInstance = null;
 
     public static LocalScopeCreator getInstance() {
@@ -58,12 +60,12 @@ public class LocalScopeCreator {
             this.activeLocalScope = (LocalScope) this.activeLocalScope.getParent();
         }
         else if(this.activeLocalScope.getParent() == null) {
-            System.err.println("LocalScopeCreator: " +
-                    "Cannot change parent. Current active local scope no longer has a parent.");
+            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " +
+                    "Cannot change parent. Current active local scope no longer has a parent."));
         }
         else {
-            System.err.println("LocalScopeCreator: " +
-                    "Cannot change parent. Current active local scope's parent is now a class scope.");
+            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " +
+                    "Cannot change parent. Current active local scope's parent is now a class scope."));
         }
     }
 
@@ -73,7 +75,7 @@ public class LocalScopeCreator {
     public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 
         if(localScope == null) {
-            System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
+            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
             return null;
         }
 
@@ -101,7 +103,7 @@ public class LocalScopeCreator {
             }
         }
 
-        System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
+        txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
         return null;
     }
 }

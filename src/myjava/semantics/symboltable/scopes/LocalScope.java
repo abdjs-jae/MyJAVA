@@ -1,11 +1,13 @@
 package myjava.semantics.symboltable.scopes;
 
+import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LocalScope implements IScope{
+public class LocalScope implements IScope, ITextWriter {
 
     private IScope parentScope;
     private ArrayList<LocalScope> childScopeList = null;
@@ -76,7 +78,7 @@ public class LocalScope implements IScope{
             return this.localVariables.get(identifier);
         }
         else {
-            System.err.println("LocalScope: " + identifier + " not found!");
+            txtWriter.writeMessage(StringUtils.formatError("LocalScope: " + identifier + " not found!"));
             return null;
         }
     }

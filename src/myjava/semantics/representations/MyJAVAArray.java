@@ -1,9 +1,11 @@
 package myjava.semantics.representations;
 
+import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.utils.RecognizedKeywords;
+import myjava.semantics.utils.StringUtils;
 
-public class MyJAVAArray {
+public class MyJAVAArray implements ITextWriter {
 
     private MyJAVAValue[] myJAVAValueArray;
     private PrimitiveType arrayPrimitiveType;
@@ -33,7 +35,8 @@ public class MyJAVAArray {
 
     public void initializeSize(int size) {
         this.myJAVAValueArray = new MyJAVAValue[size];
-        System.out.println("MyJAVAArray: " + "MyJAVA array initialized to size " + this.myJAVAValueArray.length);
+        txtWriter.writeMessage(StringUtils.formatDebug("MyJAVAArray: "
+                + "MyJAVA array initialized to size " + this.myJAVAValueArray.length));
     }
 
     public int getSize() {
@@ -42,7 +45,8 @@ public class MyJAVAArray {
 
     public void updateValueAt(MyJAVAValue mobiValue, int index) {
         if(index >= this.myJAVAValueArray.length) {
-            System.err.println("MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier);
+            txtWriter.writeMessage(StringUtils.formatError(
+                    "MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier));
             return;
         }
         this.myJAVAValueArray[index] = mobiValue;
@@ -50,7 +54,8 @@ public class MyJAVAArray {
 
     public MyJAVAValue getValueAt(int index) {
         if(index >= this.myJAVAValueArray.length) {
-            System.err.println("MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier);
+            txtWriter.writeMessage(StringUtils.formatError(
+                    "MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier));
             return this.myJAVAValueArray[this.myJAVAValueArray.length - 1];
         }
         else {
