@@ -394,6 +394,9 @@ defaultValue
 
 block
     :   '{' blockStatement* '}'
+    |   '{' blockStatement* '}}' {notifyErrorListeners("Too many brackets");}
+    |   '{'                      {notifyErrorListeners("Missing closing '}'");}
+    |   '}'                      {notifyErrorListeners("Missing opening '{'");}
     ;
 
 blockStatement
