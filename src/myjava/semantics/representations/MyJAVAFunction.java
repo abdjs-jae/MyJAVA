@@ -138,12 +138,14 @@ public class MyJAVAFunction implements ITextWriter{
      * Maps parameters by reference, in this case, accept a class scope.
      */
     public void mapParameterByReference(ClassScope... classScopes) {
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: Mapping of parameter by reference not yet supported.");
+        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " +
+                "Mapping of parameter by reference not yet supported."));
     }
 
     public void addParameter(String identifierString, MyJAVAValue myJAVAValue) {
         this.parameterValues.put(identifierString, myJAVAValue);
-        txtWriter.writeMessage(StringUtils.formatDebug( this.functionName + " added an empty parameter " +identifierString+ " of type " +myJAVAValue.getPrimitiveType());
+        txtWriter.writeMessage(StringUtils.formatDebug(this.functionName +
+                " added an empty parameter " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()));
     }
 
     public boolean hasParameter(String identifierString) {
@@ -154,7 +156,8 @@ public class MyJAVAFunction implements ITextWriter{
             return this.parameterValues.get(identifierString);
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " + identifierString + " not found in parameter list");
+            txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+                    + identifierString + " not found in parameter list"));
             return null;
         }
     }
@@ -170,7 +173,8 @@ public class MyJAVAFunction implements ITextWriter{
             i++;
         }
 
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " + index + " has exceeded parameter list.");
+        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+                + index + " has exceeded parameter list."));
         return null;
     }
 
@@ -185,13 +189,15 @@ public class MyJAVAFunction implements ITextWriter{
             i++;
         }
 
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " + index + " has exceeded parameter list.");
+        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+                + index + " has exceeded parameter list."));
         return null;
     }
 
     public MyJAVAValue getReturnValue() {
         if(this.returnType == FunctionType.VOID_TYPE) {
-            txtWriter.writeMessage(StringUtils.formatDebug(this.functionName + " is a void function. Null myJAVA value will be returned.");
+            txtWriter.writeMessage(StringUtils.formatDebug(this.functionName
+                    + " is a void function. Null myJAVA value will be returned."));
             return null;
         }
         else {
@@ -215,7 +221,8 @@ public class MyJAVAFunction implements ITextWriter{
             }
 
         } catch(InterruptedException e) {
-             "Monitor block interrupted! " +e.getMessage());
+            txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " +
+                    "Monitor block interrupted! " + e.getMessage()));
         }
 
         FunctionTracker.getInstance().reportExitFunction();

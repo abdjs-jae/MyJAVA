@@ -1,13 +1,14 @@
 package myjava.errors;
 
+import myjava.ITextWriter;
 import org.antlr.v4.runtime.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class ErrorListener extends BaseErrorListener {
+public class ErrorListener extends BaseErrorListener implements ITextWriter{
 
-    TXTWriter txtWriter = new TXTWriter();
+    TXTReader txtReader = new TXTReader();
     private DefaultListModel consoleListModel = new DefaultListModel();
     private ArrayList<Integer> errorPositionList = new ArrayList<>();
 
@@ -43,6 +44,10 @@ public class ErrorListener extends BaseErrorListener {
 
         // Read log.txt
         // Add each line to consoleListModel
+        String[] messages = txtReader.read();
+        for(String m : messages){
+            consoleListModel.addElement(m);
+        }
 
         return consoleListModel;
     }
