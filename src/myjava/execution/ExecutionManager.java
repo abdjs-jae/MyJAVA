@@ -1,32 +1,23 @@
 package myjava.execution;
 
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
+
+import myjava.ITextWriter;
 import myjava.execution.adders.FunctionExecutionAdder;
 import myjava.execution.adders.IExecutionAdder;
 import myjava.execution.adders.MainExecutionAdder;
 import myjava.execution.commands.ICommand;
 import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.symboltable.SymbolTableManager;
-import myjava.semantics.utils.notifications.NotificationCenter;
-import myjava.semantics.utils.notifications.NotificationListener;
-import myjava.semantics.utils.notifications.Notifications;
-import myjava.semantics.utils.notifications.Parameters;
+import myjava.semantics.utils.StringUtils;
 
 /**
  * Manages the sequence of execution of statements
  * @author Patrick
  *
  */
-public class ExecutionManager implements NotificationListener {
+public class ExecutionManager implements ITextWriter {
 
-    private final static String TAG = "ExecutionManager";
-
-    private static ExecutionManager sharedInstance = null;
-
-    public static ExecutionManager getInstance() {
-        return sharedInstance;
-    }
+    private static ExecutionManager executionManager = null;
 
     private ArrayList<ICommand> executionList = new ArrayList<ICommand>();
     private boolean foundEntryPoint = false;
@@ -43,17 +34,18 @@ public class ExecutionManager implements NotificationListener {
         this.activeExecutionAdder = this.mainExecutionAdder;
     }
 
+    public static ExecutionManager getExecutionManager() {
+        return executionManager;
+    }
+
     public static void initialize() {
-        sharedInstance = new ExecutionManager();
-        NotificationCenter.getInstance().addObserver(Notifications.ON_EXECUTION_FINISHED, sharedInstance);
+        executionManager = new ExecutionManager();
     }
 
     public static void reset() {
-        sharedInstance.foundEntryPoint = false;
-        sharedInstance.entryClassName = null;
-        sharedInstance.clearAllActions();
-
-        NotificationCenter.getInstance().removeObserver(Notifications.ON_EXECUTION_FINISHED, sharedInstance);
+        executionManager.foundEntryPoint = false;
+        executionManager.entryClassName = null;
+        executionManager.clearAllActions();
     }
 
     /*
@@ -87,8 +79,8 @@ public class ExecutionManager implements NotificationListener {
     /*
      * Opens a function. Any succeeding commands to be added will be put to the function control flow.
      */
-    public void openFunctionExecution(MobiFunction mobiFunction) {
-        FunctionExecutionAdder functionExecutionAdder = new FunctionExecutionAdder(mobiFunction);
+    public void openFunctionExecution(MyJAVAFunction myJAVAFunction) {
+        FunctionExecutionAdder functionExecutionAdder = new FunctionExecutionAdder(myJAVAFunction);
         this.activeExecutionAdder = functionExecutionAdder;
     }
 
@@ -109,7 +101,7 @@ public class ExecutionManager implements NotificationListener {
             return functionExecAdder.getAssignedFunction();
         }
         else {
-            //Log.e(TAG, "Execution manager is not in a function!");
+            txtWriter.writeMessage(StringUtils.formatError("Execution manager is not in a function!");
             return null;
         }
     }
@@ -156,10 +148,4 @@ public class ExecutionManager implements NotificationListener {
         return this.executionMonitor;
     }
 
-    @Override
-    public void onNotify(String notificationString, Parameters params) {
-        if(notificationString == Notifications.ON_EXECUTION_FINISHED) {
-            //SymbolTableManager.getInstance().resetClassTables(); //TODO: does not work as intended
-        }
-    }
 }

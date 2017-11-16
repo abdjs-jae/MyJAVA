@@ -10,22 +10,21 @@ import myjava.semantics.representations.MyJAVAFunction;
  *
  */
 public class FunctionTracker {
-    private final static String TAG = "MyJAVA CallGraphManager";
 
-    private static FunctionTracker sharedInstance = null;
+    private static FunctionTracker functionTracker = null;
 
     private Stack<MyJAVAFunction> callStack;
 
-    public static FunctionTracker getInstance() {
-        return sharedInstance;
+    private FunctionTracker() {
+        this.callStack = new Stack<>();
     }
 
-    private FunctionTracker() {
-        this.callStack = new Stack<MyJAVAFunction>();
+    public static FunctionTracker getFunctionTracker() {
+        return functionTracker;
     }
 
     public static void initialize() {
-        sharedInstance = new FunctionTracker();
+        functionTracker = new FunctionTracker();
     }
 
     public static void reset() {

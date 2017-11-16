@@ -2,8 +2,12 @@ package myjava.semantics.representations;
 
 import myjava.ITextWriter;
 import myjava.MyJAVAParser.*;
+import myjava.execution.ExecutionManager;
+import myjava.execution.ExecutionMonitor;
+import myjava.execution.FunctionTracker;
+import myjava.execution.commands.controlled.IControlledCommand;
 import myjava.semantics.representations.MyJAVAValue.*;
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.RecognizedKeywords;
@@ -13,7 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class MyJAVAFunction implements ITextWriter{
+public class MyJAVAFunction implements ITextWriter, IControlledCommand {
     public enum FunctionType {
         INT_TYPE,
         BOOLEAN_TYPE,
@@ -124,14 +128,15 @@ public class MyJAVAFunction implements ITextWriter{
         return this.parameterValues.size();
     }
 
-    public void verifyParameterByValueAt(ExpressionContext exprCtx, int index) {
+    public void verifyParameterByValueAt(ExpressionContext exprContext, int index) {
         if(index >= this.parameterValues.size()) {
             return;
         }
 
         MyJAVAValue myJAVAValue = this.getParameterAt(index);
-        TypeChecker typeChecker = new TypeChecker(myJAVAValue, exprCtx);
-        typeChecker.verify();
+        // TODO
+        // TypeChecker typeChecker = new TypeChecker(myJAVAValue, exprContext);
+        // typeChecker.verify();
     }
 
     /*
@@ -212,7 +217,7 @@ public class MyJAVAFunction implements ITextWriter{
 
     @Override
     public void execute() {
-        ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+        ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
         FunctionTracker.getInstance().reportEnterFunction(this);
         try {
             for(ICommand command : this.commandSequences) {

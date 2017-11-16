@@ -2,19 +2,18 @@ package myjava.execution;
 
 
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
-import myjava.execution.ICommand;
 
-import myjava.semantics.utils.notifications.NotificationCenter;
-import myjava.semantics.utils.notifications.Notifications;
+import myjava.ITextWriter;
+
+import myjava.execution.commands.ICommand;
+import myjava.semantics.utils.StringUtils;
 
 /**
  * A worker thread that handles the execution of actions from ExecutionManager
  * @author NeilDG
  *
  */
-public class ExecutionThread extends Thread {
-    private final static String TAG = "ExecutionThread";
+public class ExecutionThread extends Thread implements ITextWriter {
 
     private ArrayList<ICommand> executionList = new ArrayList<ICommand>();
     private ExecutionMonitor executionMonitor;
@@ -40,9 +39,7 @@ public class ExecutionThread extends Thread {
             }
         }
         catch(InterruptedException e) {
-            //Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
+            txtWriter.writeMessage(StringUtils.formatError("ExecutionThread: Monitor block interrupted! " +e.getMessage()));
         }
-
-        NotificationCenter.getInstance().postNotification(Notifications.ON_EXECUTION_FINISHED);
     }
 }
