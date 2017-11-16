@@ -49,6 +49,8 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
             consoleListModel.addElement(m);
         }
 
+        txtWriter.clear();
+
         return consoleListModel;
     }
 

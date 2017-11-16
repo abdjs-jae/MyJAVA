@@ -1,5 +1,6 @@
 package myjava.semantics.representations;
 
+import myjava.execution.FunctionTracker;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 public class MyJAVAValueSearcher {
@@ -8,8 +9,8 @@ public class MyJAVAValueSearcher {
 
         MyJAVAValue myJAVAValue = null;
 
-        if(FunctionTracker.getInstance().isInsideFunction()) {
-            MyJAVAFunction myJAVAFunction = FunctionTracker.getInstance().getLatestFunction();
+        if(FunctionTracker.getFunctionTracker().isInsideFunction()) {
+            MyJAVAFunction myJAVAFunction = FunctionTracker.getFunctionTracker().getLatestFunction();
 
             if(myJAVAFunction.hasParameter(identifier)) {
                 myJAVAValue =  myJAVAFunction.getParameter(identifier);

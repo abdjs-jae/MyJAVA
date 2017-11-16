@@ -218,7 +218,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
     @Override
     public void execute() {
         ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
-        FunctionTracker.getInstance().reportEnterFunction(this);
+        FunctionTracker.getFunctionTracker().reportEnterFunction(this);
         try {
             for(ICommand command : this.commandSequences) {
                 executionMonitor.tryExecution();
@@ -230,7 +230,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
                     "Monitor block interrupted! " + e.getMessage()));
         }
 
-        FunctionTracker.getInstance().reportExitFunction();
+        FunctionTracker.getFunctionTracker().reportExitFunction();
     }
 
     @Override

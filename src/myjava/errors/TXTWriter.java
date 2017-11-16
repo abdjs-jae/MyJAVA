@@ -10,6 +10,15 @@ import javax.swing.JOptionPane;
 public class TXTWriter
 {
     private static String LOG_FILE = "log.txt";
+    BufferedWriter fileWriter;
+
+    public void clear(){
+        try {
+            fileWriter = new BufferedWriter(new FileWriter(LOG_FILE, false));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void writeMessage(String printString){
         write(printString, LOG_FILE);
@@ -17,8 +26,6 @@ public class TXTWriter
 
     private void write(String printString, String fileName)
     {
-        BufferedWriter fileWriter = null;
-
         try
         {
             fileWriter = new BufferedWriter(new FileWriter(fileName, true));
