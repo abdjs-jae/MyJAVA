@@ -17,6 +17,8 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Highlighter;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,6 +80,7 @@ public class UI {
 
                 System.out.println("Run button clicked!");
                 code = txtArCode.getText();
+                removeHighlights(txtArCode);
 
                 MyJAVALexer lex = new MyJAVALexer(new ANTLRInputStream(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
@@ -226,6 +229,17 @@ public class UI {
                                                         red);
             } catch (BadLocationException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    private static void removeHighlights(JTextComponent textComp) {
+        Highlighter hilite = textComp.getHighlighter();
+        Highlighter.Highlight[] hilites = hilite.getHighlights();
+
+        for (Highlighter.Highlight hilite1 : hilites) {
+            if (hilite1.getPainter() instanceof SquigglePainter) {
+                hilite.removeHighlight(hilite1);
             }
         }
     }
