@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import myjava.ITextWriter;
 
 import myjava.execution.commands.ICommand;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 /**
  * A worker thread that handles the execution of actions from ExecutionManager
@@ -39,7 +39,7 @@ public class ExecutionThread extends Thread implements ITextWriter {
             }
         }
         catch(InterruptedException e) {
-            txtWriter.writeMessage(StringUtils.formatError("ExecutionThread: Monitor block interrupted! " +e.getMessage()));
+            txtWriter.writeMessage(StringHelper.formatError("ExecutionThread: Monitor block interrupted! " +e.getMessage()));
         }
     }
 }

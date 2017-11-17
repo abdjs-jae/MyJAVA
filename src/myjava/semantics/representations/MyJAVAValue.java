@@ -2,7 +2,7 @@ package myjava.semantics.representations;
 
 import myjava.ITextWriter;
 import myjava.semantics.utils.RecognizedKeywords;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 /**
  * Created by jasonsapdos on 16/11/2017.
@@ -35,7 +35,7 @@ public class MyJAVAValue implements ITextWriter {
             this.primitiveType = primitiveType;
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + "Entered value is not accepted for type " + primitiveType));
+            txtWriter.writeMessage(StringHelper.formatError("MyJAVAValue: " + "Entered value is not accepted for type " + primitiveType));
         }
     }
 
@@ -69,13 +69,13 @@ public class MyJAVAValue implements ITextWriter {
     public void setValue(String value) {
 
         if(this.primitiveType == PrimitiveType.NOT_YET_IDENTIFIED) {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + "Primitive type is not yet identified."));
+            txtWriter.writeMessage(StringHelper.formatError("MyJAVAValue: " + "Primitive type is not yet identified."));
         }
         else if(this.primitiveType == PrimitiveType.STRING) {
-            this.value = StringUtils.removeQuotes(value);
+            this.value = StringHelper.removeQuotes(value);
         }
         else if(this.primitiveType == PrimitiveType.ARRAY) {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAValue: " + this.primitiveType + " is an array. Cannot directly change value."));
+            txtWriter.writeMessage(StringHelper.formatError("MyJAVAValue: " + this.primitiveType + " is an array. Cannot directly change value."));
         }
         else {
             //attempts to type cast the value

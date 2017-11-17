@@ -2,7 +2,7 @@ package myjava.semantics.symboltable.scopes;
 
 import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +60,11 @@ public class LocalScopeCreator implements ITextWriter {
             this.activeLocalScope = (LocalScope) this.activeLocalScope.getParent();
         }
         else if(this.activeLocalScope.getParent() == null) {
-            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " +
+            txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: " +
                     "Cannot change parent. Current active local scope no longer has a parent."));
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " +
+            txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: " +
                     "Cannot change parent. Current active local scope's parent is now a class scope."));
         }
     }
@@ -75,7 +75,7 @@ public class LocalScopeCreator implements ITextWriter {
     public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 
         if(localScope == null) {
-            txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
+            txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
             return null;
         }
 
@@ -103,7 +103,7 @@ public class LocalScopeCreator implements ITextWriter {
             }
         }
 
-        txtWriter.writeMessage(StringUtils.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
+        txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: " + identifier + " not found in any local scope!"));
         return null;
     }
 }

@@ -3,7 +3,7 @@ package myjava.execution.commands.controlled;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
 import myjava.execution.ICommand;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import static myjava.ITextWriter.txtWriter;
 //import myjava.generatedexp.JavaParser.ParExpressionContext;
@@ -46,7 +46,7 @@ public class DoWhileCommand extends WhileCommand {
 
         } catch(InterruptedException e) {
             //Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
-            txtWriter.writeMessage(StringUtils.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
+            txtWriter.writeMessage(StringHelper.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
         }
     }
 

@@ -3,8 +3,7 @@ package myjava.semantics.symboltable.scopes;
 import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.utils.RecognizedKeywords;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import java.util.HashMap;
 
@@ -43,7 +42,7 @@ public class ClassScope implements IScope, ITextWriter {
         MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
 
         this.variables.put(identifierString, myJAVAValue);
-        txtWriter.writeMessage(StringUtils.formatDebug("Created variable " +identifierString+ " of type: " +myJAVAValue.getPrimitiveType()));
+        txtWriter.writeMessage(StringHelper.formatDebug("Created variable " +identifierString+ " of type: " +myJAVAValue.getPrimitiveType()));
     }
 
     /*
@@ -55,7 +54,7 @@ public class ClassScope implements IScope, ITextWriter {
 
         MyJAVAValue myJAVAValue = this.variables.get(identifierString);
         myJAVAValue.setValue(valueString);
-        txtWriter.writeMessage(StringUtils.formatDebug("Updated variable " +identifierString+ " of type " +
+        txtWriter.writeMessage(StringHelper.formatDebug("Updated variable " +identifierString+ " of type " +
                 myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 
     }
@@ -65,14 +64,14 @@ public class ClassScope implements IScope, ITextWriter {
             return this.variables.get(identifier);
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError(identifier + " is not found."));
+            txtWriter.writeMessage(StringHelper.formatError(identifier + " is not found."));
             return null;
         }
     }
 
     public void addMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
         this.functions.put(identifier, myJAVAFunction);
-        txtWriter.writeMessage(StringUtils.formatDebug("Created function " +identifier
+        txtWriter.writeMessage(StringHelper.formatDebug("Created function " +identifier
                 + " with return type " +myJAVAFunction.getReturnType()));
     }
 
@@ -85,7 +84,7 @@ public class ClassScope implements IScope, ITextWriter {
             return this.functions.get(identifier);
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError(identifier+ " function is not found"));
+            txtWriter.writeMessage(StringHelper.formatError(identifier+ " function is not found"));
             return null;
         }
     }
@@ -95,7 +94,7 @@ public class ClassScope implements IScope, ITextWriter {
             return this.functions.get(identifier);
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError(identifier + " is not found in " +this.className));
+            txtWriter.writeMessage(StringHelper.formatError(identifier + " is not found in " +this.className));
             return null;
         }
     }

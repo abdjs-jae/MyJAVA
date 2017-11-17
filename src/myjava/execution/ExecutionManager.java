@@ -3,9 +3,12 @@ package myjava.execution;
 import java.util.ArrayList;
 
 import myjava.ITextWriter;
+import myjava.execution.adders.FunctionExecutionAdder;
+import myjava.execution.adders.IExecutionAdder;
+import myjava.execution.adders.MainExecutionAdder;
 import myjava.execution.commands.ICommand;
 import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 /**
  * Manages the sequence of execution of statements
@@ -98,7 +101,7 @@ public class ExecutionManager implements ITextWriter {
             return functionExecAdder.getAssignedFunction();
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError("Execution manager is not in a function!");
+            txtWriter.writeMessage(StringHelper.formatError("Execution manager is not in a function!"));
             return null;
         }
     }

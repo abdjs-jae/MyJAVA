@@ -1,6 +1,6 @@
 package myjava.execution.adders;
 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.semantics.representations.MyJAVAFunction;
 
 /**
@@ -13,16 +13,15 @@ public class FunctionExecutionAdder implements IExecutionAdder {
     private MyJAVAFunction assignedMyJAVAFunction;
 
     public FunctionExecutionAdder(MyJAVAFunction myJAVAFunction) {
-        this.assignedMyJAVAFunction = myJAVAFunction;
+        assignedMyJAVAFunction = myJAVAFunction;
     }
 
     @Override
     public void addCommand(ICommand command) {
-        this.assignedMyJAVAFunction.addCommand(command);
+        assignedMyJAVAFunction.addCommand(command);
     }
 
-    public MyJAVAFunction getAssignedFunction() {
-        return this.assignedMyJAVAFunction;
+    public MyJAVAFunction getAssignedMyJAVAFunction() {
+        return assignedMyJAVAFunction;
     }
-
 }

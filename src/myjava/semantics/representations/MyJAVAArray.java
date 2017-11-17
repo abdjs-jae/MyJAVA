@@ -3,7 +3,7 @@ package myjava.semantics.representations;
 import myjava.ITextWriter;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.utils.RecognizedKeywords;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 public class MyJAVAArray implements ITextWriter {
 
@@ -35,7 +35,7 @@ public class MyJAVAArray implements ITextWriter {
 
     public void initializeSize(int size) {
         this.myJAVAValueArray = new MyJAVAValue[size];
-        txtWriter.writeMessage(StringUtils.formatDebug("MyJAVAArray: "
+        txtWriter.writeMessage(StringHelper.formatDebug("MyJAVAArray: "
                 + "MyJAVA array initialized to size " + this.myJAVAValueArray.length));
     }
 
@@ -45,7 +45,7 @@ public class MyJAVAArray implements ITextWriter {
 
     public void updateValueAt(MyJAVAValue mobiValue, int index) {
         if(index >= this.myJAVAValueArray.length) {
-            txtWriter.writeMessage(StringUtils.formatError(
+            txtWriter.writeMessage(StringHelper.formatError(
                     "MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier));
             return;
         }
@@ -54,7 +54,7 @@ public class MyJAVAArray implements ITextWriter {
 
     public MyJAVAValue getValueAt(int index) {
         if(index >= this.myJAVAValueArray.length) {
-            txtWriter.writeMessage(StringUtils.formatError(
+            txtWriter.writeMessage(StringHelper.formatError(
                     "MyJAVAArray: Access out of bounds for array " + this.arrayIdentifier));
             return this.myJAVAValueArray[this.myJAVAValueArray.length - 1];
         }

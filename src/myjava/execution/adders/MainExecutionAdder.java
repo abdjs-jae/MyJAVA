@@ -1,7 +1,7 @@
 package myjava.execution.adders;
 
 import java.util.ArrayList;
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 
 /**
  * Handles adding of execution to the main control flow.

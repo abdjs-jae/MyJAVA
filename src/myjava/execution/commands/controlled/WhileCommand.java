@@ -13,7 +13,7 @@ import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import static myjava.ITextWriter.txtWriter;
 
@@ -60,7 +60,7 @@ public class WhileCommand implements IControlledCommand {
 
         } catch(InterruptedException e) {
             //Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
-            txtWriter.writeMessage(StringUtils.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
+            txtWriter.writeMessage(StringHelper.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
         }
     }
 
@@ -79,7 +79,7 @@ public class WhileCommand implements IControlledCommand {
     @Override
     public void addCommand(ICommand command) {
         //Console.log(LogType.DEBUG, "		Added command to WHILE");
-        txtWriter.writeMessage(StringUtils.formatDebug(" Added command to WHILE"));
+        txtWriter.writeMessage(StringHelper.formatDebug(" Added command to WHILE"));
         this.commandSequences.add(command);
     }
 

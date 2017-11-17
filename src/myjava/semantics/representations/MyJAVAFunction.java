@@ -11,7 +11,7 @@ import myjava.execution.commands.ICommand;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.RecognizedKeywords;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -143,13 +143,13 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
      * Maps parameters by reference, in this case, accept a class scope.
      */
     public void mapParameterByReference(ClassScope... classScopes) {
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " +
+        txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: " +
                 "Mapping of parameter by reference not yet supported."));
     }
 
     public void addParameter(String identifierString, MyJAVAValue myJAVAValue) {
         this.parameterValues.put(identifierString, myJAVAValue);
-        txtWriter.writeMessage(StringUtils.formatDebug(this.functionName +
+        txtWriter.writeMessage(StringHelper.formatDebug(this.functionName +
                 " added an empty parameter " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()));
     }
 
@@ -161,7 +161,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
             return this.parameterValues.get(identifierString);
         }
         else {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+            txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: "
                     + identifierString + " not found in parameter list"));
             return null;
         }
@@ -178,7 +178,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
             i++;
         }
 
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+        txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: "
                 + index + " has exceeded parameter list."));
         return null;
     }
@@ -194,14 +194,14 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
             i++;
         }
 
-        txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: "
+        txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: "
                 + index + " has exceeded parameter list."));
         return null;
     }
 
     public MyJAVAValue getReturnValue() {
         if(this.returnType == FunctionType.VOID_TYPE) {
-            txtWriter.writeMessage(StringUtils.formatDebug(this.functionName
+            txtWriter.writeMessage(StringHelper.formatDebug(this.functionName
                     + " is a void function. Null myJAVA value will be returned."));
             return null;
         }
@@ -226,7 +226,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
             }
 
         } catch(InterruptedException e) {
-            txtWriter.writeMessage(StringUtils.formatError("MyJAVAFunction: " +
+            txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: " +
                     "Monitor block interrupted! " + e.getMessage()));
         }
 

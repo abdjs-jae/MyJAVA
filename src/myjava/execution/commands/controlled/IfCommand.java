@@ -13,7 +13,7 @@ import myjava.ide.console.Console;
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 
 import static myjava.ITextWriter.txtWriter;
 
@@ -69,7 +69,7 @@ public class IfCommand implements IConditionalCommand {
             }
         } catch(InterruptedException e) {
             //Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
-            txtWriter.writeMessage(StringUtils.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
+            txtWriter.writeMessage(StringHelper.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
         }
 
     }

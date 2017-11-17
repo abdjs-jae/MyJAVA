@@ -7,7 +7,7 @@ import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.*;
 import myjava.semantics.representations.MyJAVAValueSearcher;
-import myjava.semantics.utils.StringUtils;
+import myjava.semantics.utils.StringHelper;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -35,8 +35,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
         ParseTreeWalker treeWalker = new ParseTreeWalker();
         treeWalker.walk(this, this.exprContext);
 
-        //Console.log(LogType.VERBOSE, this.statementToPrint);
-        txtWriter.writeMessage(StringUtils.formatProgram(printStatement));
+        txtWriter.writeMessage(StringHelper.formatProgram(printStatement));
         this.printStatement = "";
     }
 
@@ -58,7 +57,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
             if(literalContext.StringLiteral() != null) {
                 String quotedString = literalContext.StringLiteral().getText();
 
-                this.printStatement += StringUtils.removeQuotes(quotedString);
+                this.printStatement += StringHelper.removeQuotes(quotedString);
             }
         }
         else if(parserRuleContext instanceof PrimaryContext) {
@@ -68,15 +67,13 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
                 ExpressionContext exprContext = primaryContext.expression();
                 this.complexExpr = true;
 
-                // Console.log(LogType.DEBUG, "Complex expression detected: " +exprCtx.getText());
-                txtWriter.writeMessage(StringUtils.formatDebug("Complex expression detected: "
+                txtWriter.writeMessage(StringHelper.formatDebug("Complex expression found: "
                                                                         + exprContext.getText()));
 
                 EvaluationCommand evaluationCommand = new EvaluationCommand(exprContext);
                 evaluationCommand.execute();
 
-                // TODO
-                // this.printStatement += evaluationCommand.getResult().toEngineeringString();
+                this.printStatement += evaluationCommand.getResult().toEngineeringString();
             }
 
             else if(primaryContext.Identifier() != null && this.complexExpr == false) {
@@ -85,8 +82,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
                 MyJAVAValue value = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
                 if(value.getPrimitiveType() == PrimitiveType.ARRAY) {
                     this.arrayAccess = true;
-                    // TODO
-                    // this.evaluateArrayPrint(value, primaryContext);
+                    this.evaluateArrayPrint(value, primaryContext);
                 }
                 else if(!this.arrayAccess) {
                     this.printStatement += value.getValue();
