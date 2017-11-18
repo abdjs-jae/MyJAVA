@@ -1,8 +1,9 @@
 package myjava.execution.commands.controlled;
 
+import myjava.MyJAVAParser;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.semantics.utils.StringHelper;
 
 import static myjava.ITextWriter.txtWriter;
@@ -17,7 +18,7 @@ public class DoWhileCommand extends WhileCommand {
 
     private final static String TAG = "MyJAVA_DoWhileCommand";
 
-    public DoWhileCommand(ParExpressionContext parExprCtr) {
+    public DoWhileCommand(MyJAVAParser.ParExpressionContext parExprCtr) {
         super(parExprCtr);
     }
 
@@ -36,7 +37,7 @@ public class DoWhileCommand extends WhileCommand {
     private void executeFirstCommandSequence() {
         this.identifyVariables();
 
-        ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+        ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
 
         try {
             for(ICommand command : this.commandSequences) {
