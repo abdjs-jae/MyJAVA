@@ -1,4 +1,4 @@
-package myjava.execution.evaluate;
+package myjava.execution.commands.evaluate;
 
 import java.util.List;
 import org.antlr.v4.runtime.ParserRuleContext; 

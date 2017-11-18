@@ -5,17 +5,20 @@ import java.util.List;
 
 import myjava.execution.ExecutionManager; 
 import myjava.execution.ExecutionMonitor; 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
+import myjava.MyJAVAParser.LocalVariableDeclarationContext;
+import myjava.MyJAVAParser.ExpressionContext;
 import myjava.execution.commands.utils.ConditionEvaluator; 
-import myjava.generatedexp.JavaParser.ExpressionContext; 
-import myjava.generatedexp.JavaParser.LocalVariableDeclarationContext; 
-import myjava.ide.console.Console; 
-import myjava.ide.console.LogItemView.LogType; 
+//import myjava.generatedexp.JavaParser.ExpressionContext;
+//import myjava.generatedexp.JavaParser.LocalVariableDeclarationContext;
+//import myjava.ide.console.Console;
+//import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.analyzers.LocalVariableAnalyzer; 
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper;
 import myjava.semantics.utils.StringHelper;
+import sun.security.ssl.Debug;
 
 import static myjava.ITextWriter.txtWriter;
 
@@ -52,7 +55,7 @@ public class ForCommand implements IControlledCommand {
         this.evaluateLocalVariable();
         this.identifyVariables();
 
-        ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+        ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
 
         try {
             //evaluate the given condition
@@ -101,7 +104,9 @@ public class ForCommand implements IControlledCommand {
     @Override
     public void addCommand(ICommand command) {
 
-        Console.log(LogType.DEBUG, "		Added command to FOR");
+        //Console.log(LogType.DEBUG, "		Added command to FOR");
+        System.out.println("		Added command to FOR");
+
         this.commandSequences.add(command);
     }
 

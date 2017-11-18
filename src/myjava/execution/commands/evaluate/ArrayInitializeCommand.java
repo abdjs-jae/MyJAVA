@@ -1,8 +1,9 @@
-package myjava.execution.evaluate;
+package myjava.execution.commands.evaluate;
  
 import myjava.execution.commands.ICommand;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAArray;
+import myjava.execution.commands.evaluate.EvaluationCommand;
 
 /**
  * Represents an initialization of an array using new int[x] for example.
