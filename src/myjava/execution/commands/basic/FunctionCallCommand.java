@@ -4,7 +4,7 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import myjava.builder.ParserHandler; 
 import myjava.builder.errorcheckers.ParameterMismatchChecker; 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext; 
 import myjava.ide.console.Console; 

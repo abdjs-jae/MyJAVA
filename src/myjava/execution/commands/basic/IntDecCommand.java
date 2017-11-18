@@ -2,7 +2,7 @@ package myjava.execution.commands.basic;
 
 import myjava.MyJAVALexer;
 import myjava.builder.ParserHandler; 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.generatedexp.JavaParser.ExpressionContext; 
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 

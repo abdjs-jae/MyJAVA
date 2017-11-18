@@ -3,7 +3,7 @@ package myjava.execution.commands.basic;
 import myjava.builder.ParserHandler; 
 import myjava.builder.errorcheckers.UndeclaredChecker; 
 import myjava.execution.ExecutionManager; 
-import myjava.execution.ICommand; 
+import myjava.execution.commands.ICommand;
 import myjava.ide.console.Console; 
 import myjava.semantics.representations.MyJAVAValue; 
 import myjava.semantics.representations.MyJAVAValueSearcher; 

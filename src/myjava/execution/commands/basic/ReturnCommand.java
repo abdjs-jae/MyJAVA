@@ -2,7 +2,7 @@ package myjava.execution.commands.basic;
 
 import myjava.builder.errorcheckers.TypeChecker; 
 import myjava.builder.errorcheckers.UndeclaredChecker; 
-import myjava.execution.ICommand; 
+import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluate.EvaluationCommand; 
 import myjava.generatedexp.JavaParser.ExpressionContext; 
 import myjava.ide.console.Console; 
