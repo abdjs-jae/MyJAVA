@@ -1,6 +1,6 @@
 package myjava.execution.commands.controlled;
 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IControlledCommand.ControlTypeEnum;
 
 
