@@ -1,6 +1,6 @@
 package myjava.execution.commands.controlled;
 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 
 /*
  * An interface for controlled command
