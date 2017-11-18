@@ -8,8 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ExecutionMonitor {
 
-    private final static String TAG = "MyJAVA ExecutionMonitor";
-
     private boolean executionFlag = true;
 
     private final Lock lock = new ReentrantLock();

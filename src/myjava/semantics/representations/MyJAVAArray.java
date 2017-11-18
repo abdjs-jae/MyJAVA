@@ -43,13 +43,13 @@ public class MyJAVAArray implements ITextWriter {
         return this.myJAVAValueArray.length;
     }
 
-    public void updateValueAt(MyJAVAValue mobiValue, int index) {
+    public void updateValueAt(MyJAVAValue myJAVAValue, int index) {
         if(index >= this.myJAVAValueArray.length) {
             txtWriter.writeMessage(StringHelper.formatError(
                     "MyJAVAArray: Out of bounds exception for array " + this.arrayIdentifier + " Index: " + index));
             return;
         }
-        this.myJAVAValueArray[index] = mobiValue;
+        this.myJAVAValueArray[index] = myJAVAValue;
     }
 
     public MyJAVAValue getValueAt(int index) {

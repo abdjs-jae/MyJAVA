@@ -1,6 +1,7 @@
 package myjava.semantics.representations;
 
 import myjava.execution.FunctionTracker;
+import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 public class MyJAVAValueSearcher {
@@ -20,8 +21,10 @@ public class MyJAVAValueSearcher {
             }
         }
 
-        //if(myJAVAValue == null) {
-        //}
+        if(myJAVAValue == null) {
+            LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
+            myJAVAValue = localScope.searchVariableIncludingLocal(identifier);
+        }
 
         return myJAVAValue;
 

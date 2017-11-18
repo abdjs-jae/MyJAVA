@@ -65,7 +65,7 @@ public class ConstChecker implements IChecker, ParseTreeListener{
             myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprContext.primary().Identifier().getText());
         }
 
-        //if after function finding, myJAVA value is still null, search class
+        //if after function finding, myJAVA value is still null, search local
         if(myJAVAValue == null) {
             LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
             myJAVAValue = VariableSearcher.searchVariableLocal(localScope, varExprContext.primary().Identifier().getText());

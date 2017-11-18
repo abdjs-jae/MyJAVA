@@ -15,8 +15,6 @@ import static myjava.ITextWriter.txtWriter;
  */
 public class SymbolTableManager {
 
-    private final static String TAG = "MyJAVA_SymbolTableManager";
-
     private static SymbolTableManager sharedInstance = null;
 
     public static SymbolTableManager getInstance() {
@@ -46,8 +44,7 @@ public class SymbolTableManager {
             return this.classTable.get(className);
         }
         else {
-            //Log.e(TAG, className + " is not found!");
-            txtWriter.writeMessage(StringUtils.formatError(TAG + " " + className + " is not found!"));
+            System.err.println("SymbolTableManager: " + className + " cannot be detected...");
             return null;
         }
     }

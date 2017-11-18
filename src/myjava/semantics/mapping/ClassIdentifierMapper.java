@@ -1,12 +1,13 @@
 package myjava.semantics.mapping;
 
+import myjava.semantics.symboltable.scopes.LocalScope;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import org.antlr.v4.runtime.ParserRuleContext; 
 import org.antlr.v4.runtime.tree.ErrorNode; 
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import myjava.builder.ParserHandler; 
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager; 
@@ -32,18 +33,18 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
      * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.generatedexp.JavaParser.ExpressionContext)
      */
     @Override
-    public void analyze(ExpressionContext exprCtx) {
+    public void analyze(ExpressionContext exprContext) {
         ParseTreeWalker treeWalker = new ParseTreeWalker();
-        treeWalker.walk(this, exprCtx);
+        treeWalker.walk(this, exprContext);
     }
 
     /* (non-Javadoc)
      * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.generatedexp.JavaParser.ParExpressionContext)
      */
     @Override
-    public void analyze(ParExpressionContext exprCtx) {
+    public void analyze(ParExpressionContext exprContext) {
         ParseTreeWalker treeWalker = new ParseTreeWalker();
-        treeWalker.walk(this, exprCtx);
+        treeWalker.walk(this, exprContext);
     }
 
     @Override
@@ -59,45 +60,39 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
     }
 
     @Override
-    public void enterEveryRule(ParserRuleContext ctx) {
+    public void enterEveryRule(ParserRuleContext context) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void exitEveryRule(ParserRuleContext ctx) {
-        if(ctx instanceof PrimaryContext) {
-            PrimaryContext primaryCtx = (PrimaryContext) ctx;
+    public void exitEveryRule(ParserRuleContext context) {
+        if(context instanceof PrimaryContext) {
+            PrimaryContext primaryContext = (PrimaryContext) context;
 
-            if(primaryCtx.Identifier() != null) {
-                String variableKey = primaryCtx.getText();
-                ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
+            if(primaryContext.Identifier() != null) {
+                String variableKey = primaryContext.getText();
+                LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
 
-                this.myJAVAValue = classScope.searchVariableIncludingLocal(variableKey);
-                this.modifiedExp = this.modifiedExp.replace(variableKey, this.myJAVAValue.getValue().toString());
+                myJAVAValue = localScope.searchVariableIncludingLocal(variableKey);
+                modifiedExp = modifiedExp.replace(variableKey, myJAVAValue.getValue().toString());
             }
         }
     }
 
     @Override
-    public MyJAVAValue getMyJAVAValue() {
-        return this.myJAVAValue;
-    }
-
-    /* (non-Javadoc)
-     * @see myjava.semantics.mapping.IValueMapper#getOriginalExp()
-     */
-    @Override
     public String getOriginalExp() {
-        return this.originalExp;
+        return originalExp;
     }
 
-    /* (non-Javadoc)
-     * @see myjava.semantics.mapping.IValueMapper#getModifiedExp()
-     */
     @Override
     public String getModifiedExp() {
-        return this.modifiedExp;
+        return modifiedExp;
+    }
+
+    @Override
+    public MyJAVAValue getMyJAVAValue() {
+        return myJAVAValue;
     }
 
 }

@@ -55,8 +55,8 @@ public class LocalScopeCreator implements ITextWriter {
             activeLocalScope = (LocalScope) activeLocalScope.getParent();
         }
         else if(activeLocalScope.getParent() == null){
-            txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: Oops! " +
-                    "Cannot change parent scope. Current active local scope does not have a parent."));
+            System.err.println("LocalScopeCreator: Oops! " +
+                    "Cannot change parent scope. Current active local scope does not have a parent.");
         }
     }
 
@@ -66,8 +66,8 @@ public class LocalScopeCreator implements ITextWriter {
     public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 
         if(localScope == null) {
-            txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: Oops! " +
-                    identifier + " not found in any local scope!"));
+            System.err.println("LocalScopeCreator: Oops! " +
+                    identifier + " not found in any local scope!");
             return null;
         }
 
@@ -95,8 +95,8 @@ public class LocalScopeCreator implements ITextWriter {
             }
         }
 
-        txtWriter.writeMessage(StringHelper.formatError("LocalScopeCreator: Oops! " +
-                identifier + " not found in any local scope!"));
+        System.err.println("LocalScopeCreator: Oops! " +
+                identifier + " not found in any local scope!");
         return null;
     }
 }

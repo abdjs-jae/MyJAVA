@@ -10,37 +10,36 @@ import myjava.semantics.representations.MyJAVAValue;
  *
  */
 public class IdentifierMapper implements IValueMapper{
-    private final static String TAG = "MyJAVA_IdentifierMapper";
 
     private IValueMapper valueMapper;
 
     public IdentifierMapper(String originalExp) {
         if(FunctionTracker.getFunctionTracker().isInsideFunction()) {
-            this.valueMapper = new FunctionIdentifierMapper(originalExp, FunctionTracker.getFunctionTracker().getLatestFunction());
+            valueMapper = new FunctionIdentifierMapper(originalExp, FunctionTracker.getFunctionTracker().getLatestFunction());
         }
         else {
-            this.valueMapper = new ClassIdentifierMapper(originalExp);
+            valueMapper = new ClassIdentifierMapper(originalExp);
         }
     }
 
     @Override
-    public void analyze(ExpressionContext exprCtx) {
-        this.valueMapper.analyze(exprCtx);
+    public void analyze(ExpressionContext exprContext) {
+        valueMapper.analyze(exprContext);
     }
 
     @Override
-    public void analyze(ParExpressionContext exprCtx) {
-        this.valueMapper.analyze(exprCtx);
+    public void analyze(ParExpressionContext exprContext) {
+        valueMapper.analyze(exprContext);
     }
 
     @Override
     public String getOriginalExp() {
-        return this.valueMapper.getOriginalExp();
+        return valueMapper.getOriginalExp();
     }
 
     @Override
     public String getModifiedExp() {
-        return this.valueMapper.getModifiedExp();
+        return valueMapper.getModifiedExp();
     }
 
     @Override

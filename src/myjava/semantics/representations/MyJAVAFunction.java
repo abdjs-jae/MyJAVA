@@ -2,13 +2,13 @@ package myjava.semantics.representations;
 
 import myjava.ITextWriter;
 import myjava.MyJAVAParser.*;
+import myjava.errors.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
 import myjava.execution.FunctionTracker;
 import myjava.execution.commands.controlled.IControlledCommand;
 import myjava.semantics.representations.MyJAVAValue.*;
 import myjava.execution.commands.ICommand;
-import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.RecognizedKeywords;
 import myjava.semantics.utils.StringHelper;
@@ -36,15 +36,15 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
 
     private LocalScope parentLocalScope; //refers to the parent local scope of this function.
 
-    private LinkedHashMap<String, ClassScope> parameterReferences; //the list of parameters accepted that follows the 'call-by-reference' standard.
+    private LinkedHashMap<String, LocalScope> parameterReferences; //the list of parameters accepted that follows the 'call-by-reference' standard.
     private LinkedHashMap<String, MyJAVAValue> parameterValues;	//the list of parameters accepted that follows the 'call-by-value' standard.
     private MyJAVAValue returnValue; //the return value of the function. null if it's a void type
     private FunctionType returnType = FunctionType.VOID_TYPE; //the return type of the function
 
     public MyJAVAFunction() {
         this.commandSequences = new ArrayList<ICommand>();
-        this.parameterValues = new LinkedHashMap<String,MyJAVAValue>();
-        this.parameterReferences = new LinkedHashMap<String, ClassScope>();
+        this.parameterValues = new LinkedHashMap<>();
+        this.parameterReferences = new LinkedHashMap<>();
     }
 
     public void setParentLocalScope(LocalScope localScope) {
@@ -134,15 +134,15 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand {
         }
 
         MyJAVAValue myJAVAValue = this.getParameterAt(index);
-        // TODO
-        // TypeChecker typeChecker = new TypeChecker(myJAVAValue, exprContext);
-        // typeChecker.verify();
+
+        TypeChecker typeChecker = new TypeChecker(myJAVAValue, exprContext);
+        typeChecker.check();
     }
 
     /*
-     * Maps parameters by reference, in this case, accept a class scope.
+     * Maps parameters by reference, in this case, accept a local scope.
      */
-    public void mapParameterByReference(ClassScope... classScopes) {
+    public void mapParameterByReference(LocalScope... localScopes) {
         txtWriter.writeMessage(StringHelper.formatError("MyJAVAFunction: " +
                 "Mapping of parameter by reference not yet supported."));
     }
