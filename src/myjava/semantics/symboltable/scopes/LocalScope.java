@@ -113,7 +113,7 @@ public class LocalScope implements IScope, ITextWriter {
         myJAVAValue.setValue(valueString);
     }
 
-    public void addMobiValue(String identifier, MyJAVAValue myJAVAValue) {
+    public void addMyJAVAValue(String identifier, MyJAVAValue myJAVAValue) {
         this.initializeLocalVariableMap();
         this.localVariables.put(identifier, myJAVAValue);
     }

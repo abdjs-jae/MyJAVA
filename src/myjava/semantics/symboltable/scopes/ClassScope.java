@@ -94,7 +94,7 @@ public class ClassScope implements IScope, ITextWriter {
             return this.functions.get(identifier);
         }
         else {
-            txtWriter.writeMessage(StringHelper.formatError(identifier + " is not found in " +this.className));
+            txtWriter.writeMessage(StringHelper.formatError(identifier + " is not found in " + this.className));
             return null;
         }
     }
@@ -104,7 +104,7 @@ public class ClassScope implements IScope, ITextWriter {
     }
 
     @Override
-	/* Attempts to find a variable first in the private and public variable storage, then on the local scopes.
+	/* Attempts to find a variable first in the variable storage, then on the local scopes.
 	 */
     public MyJAVAValue searchVariableIncludingLocal(String identifier) {
         MyJAVAValue value;
