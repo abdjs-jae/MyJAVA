@@ -1,6 +1,7 @@
 package myjava.errors;
 
 import myjava.ITextWriter;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
 
 import javax.swing.*;
@@ -20,8 +21,7 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
                             RecognitionException e)
     {
 
-        txtWriter.writeMessage("[ERROR] Line " + line + ": " + msg);
-        // consoleListModel.addElement("[ERROR] Line " + line + ": " + msg);
+        txtWriter.writeMessage(StringUtils.formatError("Line " + line + ": " + msg));
         underlineError(recognizer, (Token)offendingSymbol, line, charPositionInLine);
 
     }
@@ -40,6 +40,7 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
 
     }
 
+    // Gets the generated errors at the log.txt
     public DefaultListModel getConsoleListModel() {
 
         // Read log.txt
@@ -49,6 +50,7 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
             consoleListModel.addElement(m);
         }
 
+        // Clear log.txt after getting the errors
         txtWriter.clear();
 
         return consoleListModel;

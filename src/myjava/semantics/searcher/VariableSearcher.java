@@ -5,9 +5,11 @@ import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 public class VariableSearcher {
+
     public static MyJAVAValue searchVariable(String identifierString) {
         MyJAVAValue myJAVAValue = null;
 
@@ -18,8 +20,8 @@ public class VariableSearcher {
 
         // Checks if variable is inside locally
         if(myJAVAValue == null) {
-            //ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-            //myJAVAValue = searchVariableInClassIncludingLocal(classScope, identifierString);
+            LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
+            myJAVAValue = searchVariableLocal(localScope, identifierString);
         }
 
         return myJAVAValue;
@@ -36,11 +38,7 @@ public class VariableSearcher {
 
     }
 
-    public static MyJAVAValue searchVariableInClassIncludingLocal(ClassScope classScope, String identifierString) {
-        return classScope.searchVariableIncludingLocal(identifierString);
-    }
-
-    public static MyJAVAValue searchVariableInClass(ClassScope classScope, String identifierString) {
-        return classScope.searchVariable(identifierString);
+    public static MyJAVAValue searchVariableLocal(LocalScope localScope, String identifierString) {
+        return localScope.searchVariableIncludingLocal(identifierString);
     }
 }

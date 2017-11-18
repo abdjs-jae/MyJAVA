@@ -127,8 +127,8 @@ public class UI {
                         System.out.println(consoleList.getSelectedIndex());
                         String selectedMessage = consoleList.getSelectedValue().toString();
 
-                        // Checks if message has an error keyword
-                        if (selectedMessage.charAt(1) == 'E') {
+                        // Checks if message has an error keyword and contains a line number
+                        if (selectedMessage.charAt(1) == 'E' && selectedMessage.contains("Line")) {
                             // Get the line number of the selected message!
                             lineNum = extractLineNumber(selectedMessage);
                             // Moves the highlight text to the line + 1
