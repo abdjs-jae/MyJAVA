@@ -5635,7 +5635,7 @@ public class MyJAVAParser extends Parser {
 	}
 
 	public static class ScanStatementContext extends ParserRuleContext {
-		public 3 expression() {
+		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
 		public VariableDeclaratorIdContext variableDeclaratorId() {
