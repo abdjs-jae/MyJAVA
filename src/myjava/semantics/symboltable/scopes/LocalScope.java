@@ -1,6 +1,7 @@
 package myjava.semantics.symboltable.scopes;
 
 import myjava.ITextWriter;
+import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.utils.StringHelper;
 
@@ -11,8 +12,8 @@ public class LocalScope implements IScope, ITextWriter {
 
     private IScope parentScope;
     private ArrayList<LocalScope> childScopeList = null;
-
     private HashMap<String, MyJAVAValue> localVariables = null;
+    private HashMap<String, MyJAVAFunction> localFunctions = null;
 
     public LocalScope() {
         this.parentScope = null;
@@ -26,8 +27,17 @@ public class LocalScope implements IScope, ITextWriter {
      * Initialize the moment a variable is about to be placed.
      */
     public void initializeLocalVariableMap() {
-        if(this.localVariables == null) {
-            this.localVariables = new HashMap<String, MyJAVAValue>();
+        if(localVariables == null) {
+            localVariables = new HashMap<>();
+        }
+    }
+
+    /*
+     * Initialize the moment a function is about to be placed.
+     */
+    public void initializeLocalFunctionMap() {
+        if(localFunctions == null) {
+            localFunctions = new HashMap<>();
         }
     }
 
@@ -35,8 +45,8 @@ public class LocalScope implements IScope, ITextWriter {
      * Initialize the child list the moment a child scope is about to be placed
      */
     public void initializeChildList() {
-        if(this.childScopeList == null) {
-            this.childScopeList = new ArrayList<LocalScope>();
+        if(childScopeList == null) {
+            childScopeList = new ArrayList<>();
         }
     }
 
@@ -45,9 +55,8 @@ public class LocalScope implements IScope, ITextWriter {
     }
 
     public void addChild(LocalScope localScope) {
-        this.initializeChildList();
-
-        this.childScopeList.add(localScope);
+        initializeChildList();
+        childScopeList.add(localScope);
     }
 
     public boolean isParent() {
@@ -59,36 +68,40 @@ public class LocalScope implements IScope, ITextWriter {
     }
 
     public int getChildCount() {
-        if(this.childScopeList != null)
-            return this.childScopeList.size();
+        if(childScopeList != null)
+            return childScopeList.size();
         else
             return 0;
     }
 
     public LocalScope getChildAt(int index) {
-        if(this.childScopeList != null)
-            return this.childScopeList.get(index);
+        if(childScopeList != null)
+            return childScopeList.get(index);
         else
             return null;
     }
 
     @Override
     public MyJAVAValue searchVariableIncludingLocal(String identifier) {
-        if(this.containsVariable(identifier)) {
-            return this.localVariables.get(identifier);
+        if(containsVariable(identifier)) {
+            return localVariables.get(identifier);
         }
         else {
-            txtWriter.writeMessage(StringHelper.formatError("LocalScope: " + identifier + " not found!"));
-            return null;
+            return LocalScopeCreator.searchVariableInLocalIterative(identifier, this);
         }
     }
 
     public boolean containsVariable(String identifier) {
-        if(this.localVariables!= null && this.localVariables.containsKey(identifier)) {
-            return true;
+        return localVariables != null && localVariables.containsKey(identifier);
+    }
+
+    public MyJAVAValue getVariable(String identifier) {
+        if(containsVariable(identifier)) {
+            return localVariables.get(identifier);
         }
         else {
-            return false;
+            txtWriter.writeMessage(StringHelper.formatError("Oops! " + identifier + " was not found."));
+            return null;
         }
     }
 
@@ -96,26 +109,62 @@ public class LocalScope implements IScope, ITextWriter {
      * Adds an empty variable based from keywords
      */
     public void addEmptyVariableFromKeywords(String primitiveTypeString, String identifierString) {
-        this.initializeLocalVariableMap();
+        initializeLocalVariableMap();
 
         MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
-        this.localVariables.put(identifierString, myJAVAValue);
+        localVariables.put(identifierString, myJAVAValue);
+        txtWriter.writeMessage(StringHelper.formatDebug("Created new variable " +
+                identifierString+ " of primitiveType: " +myJAVAValue.getPrimitiveType()));
     }
 
     /*
      * Adds an initialized variable based from keywords
      */
     public void addInitializedVariableFromKeywords(String primitiveTypeString, String identifierString, String valueString) {
-        this.initializeLocalVariableMap();
+        initializeLocalVariableMap();
+        addEmptyVariableFromKeywords(primitiveTypeString, identifierString);
 
-        this.addEmptyVariableFromKeywords(primitiveTypeString, identifierString);
-        MyJAVAValue myJAVAValue = this.localVariables.get(identifierString);
+        MyJAVAValue myJAVAValue = localVariables.get(identifierString);
         myJAVAValue.setValue(valueString);
+
+        txtWriter.writeMessage(StringHelper.formatDebug("Updated variable " +identifierString+ " of primitiveType " +
+                myJAVAValue.getPrimitiveType()+ " with value " +valueString));
     }
 
     public void addMyJAVAValue(String identifier, MyJAVAValue myJAVAValue) {
-        this.initializeLocalVariableMap();
-        this.localVariables.put(identifier, myJAVAValue);
+        initializeLocalVariableMap();
+        localVariables.put(identifier, myJAVAValue);
+    }
+
+    public void addMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
+        initializeLocalFunctionMap();
+        localFunctions.put(identifier, myJAVAFunction);
+        txtWriter.writeMessage(StringHelper.formatDebug("Created new function " +identifier
+                + " with return type " +myJAVAFunction.getReturnType()));
+    }
+
+    public boolean containsFunction(String identifier) {
+        return localFunctions != null && localFunctions.containsKey(identifier);
+    }
+
+    public MyJAVAFunction getFunction(String identifier) {
+        if(containsFunction(identifier)) {
+            return localFunctions.get(identifier);
+        }
+        else {
+            txtWriter.writeMessage(StringHelper.formatError("Oops! " + identifier+ " function was not found."));
+            return null;
+        }
+    }
+
+    public MyJAVAFunction searchFunction(String identifier) {
+        if(containsFunction(identifier)) {
+            return localFunctions.get(identifier);
+        }
+        else {
+            txtWriter.writeMessage(StringHelper.formatError("Oops! " + identifier + " is not found in local scope."));
+            return null;
+        }
     }
 
     /*
@@ -123,18 +172,25 @@ public class LocalScope implements IScope, ITextWriter {
      */
     public int getDepth() {
         int depthCount = -1;
-
-        LocalScope scope = (LocalScope) this;
+        LocalScope scope = this;
 
         while(scope != null) {
             depthCount++;
-
             IScope abstractScope = scope.getParent();
-
             scope = (LocalScope) abstractScope;
         }
 
-
         return depthCount;
+    }
+
+    /*
+     * Resets all stored variables. This is called after the execution manager finishes
+     */
+    public void resetValues() {
+        MyJAVAValue[] myJAVAValues = localVariables.values().toArray(new MyJAVAValue[localVariables.size()]);
+
+        for (MyJAVAValue myJAVAValue : myJAVAValues) {
+            myJAVAValue.reset();
+        }
     }
 }
