@@ -2,21 +2,18 @@ package myjava.execution.commands.basic;
 
 import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import myjava.builder.ParserHandler; 
-import myjava.builder.errorcheckers.ParameterMismatchChecker; 
+//import myjava.builder.ParserHandler;
+//import myjava.builder.errorcheckers.ParameterMismatchChecker;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.MyJAVAParser.ExpressionContext;
-import myjava.ide.console.Console; 
-import myjava.ide.console.LogItemView.LogType; 
-import myjava.semantics.analyzers.FunctionCallVerifier; 
-import myjava.semantics.mapping.IValueMapper; 
-import myjava.semantics.mapping.IdentifierMapper; 
-import myjava.semantics.representations.MyJAVAFunction; 
+//import myjava.ide.console.Console;
+//import myjava.ide.console.LogItemView.LogType;
+//import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue; 
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType; 
-import myjava.semantics.searching.VariableSearcher; 
-import myjava.semantics.symboltable.SymbolTableManager; 
+import myjava.semantics.searcher.VariableSearcher;
 import myjava.semantics.symboltable.scopes.ClassScope;
 
 /**
@@ -39,7 +36,7 @@ public class FunctionCallCommand implements ICommand {
         this.searchFunction();
 
         ParseTreeWalker functionWalker = new ParseTreeWalker();
-        functionWalker.walk(new FunctionCallVerifier(), this.exprCtx);
+        //functionWalker.walk(new FunctionCallVerifier(), this.exprCtx);
 
         this.verifyParameters();
     }
@@ -54,7 +51,7 @@ public class FunctionCallCommand implements ICommand {
     }
 
     private void searchFunction() {
-        ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
+        ClassScope classScope = null;// SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
         this.myJAVAFunction = classScope.searchFunction(this.functionName);
     }
 

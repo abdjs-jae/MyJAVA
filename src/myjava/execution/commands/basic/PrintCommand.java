@@ -2,8 +2,10 @@ package myjava.execution.commands.basic;
 
 import myjava.ITextWriter;
 import myjava.MyJAVAParser.*;
+import myjava.MyJAVAParser.ExpressionContext;
 import myjava.execution.commands.ICommand;
-import myjava.execution.commands.evaluation.EvaluationCommand;
+import myjava.execution.commands.evaluate.EvaluationCommand;
+import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.*;
 import myjava.semantics.representations.MyJAVAValueSearcher;
@@ -83,6 +85,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
                 if(value.getPrimitiveType() == PrimitiveType.ARRAY) {
                     this.arrayAccess = true;
                     this.evaluateArrayPrint(value, primaryContext);
+
                 }
                 else if(!this.arrayAccess) {
                     this.printStatement += value.getValue();
@@ -96,5 +99,20 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
     @Override
     public void exitEveryRule(ParserRuleContext parserRuleContext) {
 
+    }
+
+    public void evaluateArrayPrint(MyJAVAValue javaRiceValue, PrimaryContext primaryContext) {
+
+        // move up and determine expression contexts
+        ExpressionContext parentExpressionContext = (ExpressionContext) primaryContext.getParent().getParent();
+        ExpressionContext arrayIndexExpressionContext = parentExpressionContext.expression(1);
+
+        EvaluationCommand evaluationCommand = new EvaluationCommand(arrayIndexExpressionContext);
+        evaluationCommand.execute();
+
+        MyJAVAArray javaRiceArray = (MyJAVAArray) javaRiceValue.getValue();
+        MyJAVAValue arrayJavaRiceValue = javaRiceArray.getValueAt(evaluationCommand.getResult().intValue());
+
+        this.printStatement += arrayJavaRiceValue.getValue().toString();
     }
 }

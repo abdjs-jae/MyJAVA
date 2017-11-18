@@ -6,10 +6,9 @@ import java.util.List;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor; 
 import myjava.execution.commands.ICommand;
-import myjava.execution.utils.ConditionEvaluator;
+import myjava.execution.commands.utils.ConditionEvaluator;
 import myjava.MyJAVAParser.ParExpressionContext;
-import myjava.semantics.mapping.ClassIdentifierMapper; 
-import myjava.semantics.mapping.IValueMapper; 
+import myjava.semantics.mapping.IValueMapper;
 import myjava.semantics.mapping.IdentifierMapper;
 import myjava.semantics.utils.StringHelper;
 

@@ -1,12 +1,13 @@
 package myjava.execution.commands.basic;
 
-import myjava.builder.errorcheckers.TypeChecker; 
-import myjava.builder.errorcheckers.UndeclaredChecker; 
+import myjava.errors.checkers.TypeChecker;
+import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
-import myjava.execution.commands.evaluate.EvaluationCommand; 
-import myjava.generatedexp.JavaParser.ExpressionContext; 
-import myjava.ide.console.Console; 
-import myjava.ide.console.LogItemView.LogType; 
+import myjava.execution.commands.evaluate.EvaluationCommand;
+import myjava.MyJAVAParser.ExpressionContext;
+//import myjava.generatedexp.JavaParser.ExpressionContext;
+//import myjava.ide.console.Console;
+//import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.representations.MyJAVAFunction; 
 import myjava.semantics.representations.MyJAVAValue; 
 import myjava.semantics.utils.AssignmentUtils;
@@ -27,11 +28,11 @@ public class ReturnCommand implements ICommand {
         this.assignedMyJAVAFunction = myJAVAFunction;
 
         UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
-        undeclaredChecker.verify();
+        undeclaredChecker.check();
 
         MyJAVAValue myJAVAValue = this.assignedMyJAVAFunction.getReturnValue();
         TypeChecker typeChecker = new TypeChecker(myJAVAValue, this.expressionCtx);
-        typeChecker.verify();
+        typeChecker.check();
     }
 
     /* (non-Javadoc)
