@@ -10,11 +10,6 @@ import myjava.execution.commands.ICommand;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.utils.StringHelper;
 
-/**
- * Manages the sequence of execution of statements
- * @author Patrick
- *
- */
 public class ExecutionManager implements ITextWriter {
 
     private static ExecutionManager executionManager = null;
@@ -98,7 +93,7 @@ public class ExecutionManager implements ITextWriter {
         if(this.isInFunctionExecution()) {
             FunctionExecutionAdder functionExecAdder = (FunctionExecutionAdder) this.activeExecutionAdder;
 
-            return functionExecAdder.getAssignedFunction();
+            return functionExecAdder.getAssignedMyJAVAFunction();
         }
         else {
             txtWriter.writeMessage(StringHelper.formatError("Execution manager is not in a function!"));
