@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import myjava.errors.checkers.ThisKeywordChecker;
+//import myjava.errors.checkers.ThisKeywordChecker;
 import myjava.execution.ExecutionManager; 
 import myjava.execution.commands.ICommand; 
 import myjava.execution.commands.controlled.IConditionalCommand; 
@@ -177,8 +177,8 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 
         if(firstExprCtx != null) {
             if(exprCtx != this.readRightHandExprCtx) {
-                ThisKeywordChecker thisChecker = new ThisKeywordChecker(firstExprCtx);
-                thisChecker.verify();
+                //ThisKeywordChecker thisChecker = new ThisKeywordChecker(firstExprCtx);
+                //thisChecker.verify();
 
                 return (firstExprCtx.Identifier() != null);
             }
@@ -190,8 +190,8 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 
     private boolean isFunctionCallWithNoParams(ExpressionContext exprCtx) {
         if(exprCtx.depth() == FUNCTION_CALL_NO_PARAMS_DEPTH) {
-            ThisKeywordChecker thisChecker = new ThisKeywordChecker(exprCtx);
-            thisChecker.verify();
+            //ThisKeywordChecker thisChecker = new ThisKeywordChecker(exprCtx);
+            //thisChecker.verify();
             if(exprCtx.Identifier() != null)
                 return true;
         }
