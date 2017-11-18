@@ -1,8 +1,7 @@
-package myjava.execution.commands.evaluate;
+package myjava.execution.evaluate;
  
-import myjava.execution.ICommand;
-import myjava.generatedexp.JavaParser.ArrayCreatorRestContext; 
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.execution.commands.ICommand;
+import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAArray;
 
 /**

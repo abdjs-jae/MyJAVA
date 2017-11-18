@@ -1,4 +1,4 @@
-package myjava.execution.commands.evaluate;
+package myjava.execution.evaluate;
 
 import java.math.BigDecimal; 
 import java.util.List;
@@ -8,16 +8,13 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
  
-//import myjava.builder.ParserHandler;
-//import myjava.builder.errorcheckers.ParameterMismatchChecker;
-//import myjava.builder.errorcheckers.UndeclaredChecker;
+import myjava.builder.ParserHandler; 
+import myjava.errors.checkers.ParameterMismatchChecker;
+import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager; 
 import myjava.execution.commands.ICommand;
-import myjava.MyJAVAParser.ExpressionContext;
-//import myjava.generatedexp.JavaParser.ExpressionContext;
-//import myjava.ide.console.Console;
-//import myjava.ide.console.LogItemView.LogType;
-//import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.MyJAVAParser.*;
+import myjava.semantics.analyzers.FunctionCallVerifier; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper; 
 import myjava.semantics.representations.MyJAVAFunction; 
@@ -120,9 +117,8 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
     private void evaluateFunctionCall(ExpressionContext exprCtx) {
         String functionName = exprCtx.expression(0).Identifier().getText();
 
-        ClassScope classScope = null;
-                /*SymbolTableManager.getInstance().getClassScope(
-                ParserHandler.getInstance().getCurrentClassName());*/
+        ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
+                ParserHandler.getInstance().getCurrentClassName());
         MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
 
         if (exprCtx.arguments().expressionList() != null) {

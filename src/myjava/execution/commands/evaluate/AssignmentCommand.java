@@ -1,4 +1,4 @@
-package myjava.execution.commands.evaluate;
+package myjava.execution.evaluate;
 
 import java.util.List;
 import org.antlr.v4.runtime.ParserRuleContext; 
@@ -6,20 +6,18 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
- 
-import myjava.builder.ParserHandler;
-import myjava.builder.errorcheckers.ConstChecker;
-import myjava.builder.errorcheckers.TypeChecker;  
-import myjava.builder.errorcheckers.UndeclaredChecker; 
+
+import myjava.errors.checkers.ConstChecker;
+import myjava.errors.checkers.TypeChecker;
+import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager; 
 import myjava.execution.FunctionTracker; 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand; 
 import myjava.execution.commands.controlled.IControlledCommand; 
 import myjava.execution.commands.basic.IntDecCommand;
-import myjava.generatedexp.JavaLexer; 
-import myjava.generatedexp.JavaParser.ExpressionContext; 
-import myjava.ide.console.Console; 
+import myjava.MyJAVALexer;
+import myjava.MyJAVAParser.*;
 import myjava.semantics.analyzers.FunctionCallVerifier; 
 import myjava.semantics.analyzers.StatementExpressionAnalyzer; 
 import myjava.semantics.mapping.IValueMapper; 
@@ -27,10 +25,10 @@ import myjava.semantics.mapping.IdentifierMapper;
 import myjava.semantics.representations.MyJAVAArray; 
 import myjava.semantics.representations.MyJAVAFunction; 
 import myjava.semantics.representations.MyJAVAValue; 
-import myjava.semantics.searching.VariableSearcher; 
-import myjava.semantics.statements.StatementControlOverseer; 
+import myjava.semantics.searcher.VariableSearcher;
+import myjava.semantics.StatementControlOverseer;
 import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.ClassScope; 
+import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.AssignmentUtils; 
 import myjava.semantics.utils.Expression;
 
@@ -53,28 +51,28 @@ public class AssignmentCommand implements ICommand{
         this.rightHandExprCtx = rightHandExprCtx;
 
         UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.leftHandExprCtx);
-        undeclaredChecker.verify();
+        undeclaredChecker.check();
 
         ConstChecker constChecker = new ConstChecker(this.leftHandExprCtx);
-        constChecker.verify();
+        constChecker.check();
 
         undeclaredChecker = new UndeclaredChecker(this.rightHandExprCtx);
-        undeclaredChecker.verify();
+        undeclaredChecker.check();
 
         ParseTreeWalker functionWalker = new ParseTreeWalker();
         functionWalker.walk(new FunctionCallVerifier(), this.rightHandExprCtx);
 
         //type check the myJAVAvalue
         MyJAVAValue myJAVAValue;
-        if(ExecutionManager.getInstance().isInFunctionExecution()) {
-            myJAVAValue = VariableSearcher.searchVariableInFunction(ExecutionManager.getInstance().getCurrentFunction(), this.leftHandExprCtx.getText());
+        if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+            myJAVAValue = VariableSearcher.searchVariableInFunction(ExecutionManager.getExecutionManager().getCurrentFunction(), this.leftHandExprCtx.getText());
         }
         else {
             myJAVAValue = VariableSearcher.searchVariable(this.leftHandExprCtx.getText());
         }
 
         TypeChecker typeChecker = new TypeChecker(myJAVAValue, this.rightHandExprCtx);
-        typeChecker.verify();
+        typeChecker.check();
     }
 
     /*
@@ -97,8 +95,8 @@ public class AssignmentCommand implements ICommand{
     }
 
     private boolean isLeftHandArrayAccessor() {
-        List<TerminalNode> lBrackTokens = this.leftHandExprCtx.getTokens(JavaLexer.LBRACK);
-        List<TerminalNode> rBrackTokens = this.leftHandExprCtx.getTokens(JavaLexer.RBRACK);
+        List<TerminalNode> lBrackTokens = this.leftHandExprCtx.getTokens(MyJAVALexer.LBRACK);
+        List<TerminalNode> rBrackTokens = this.leftHandExprCtx.getTokens(MyJAVALexer.RBRACK);
 
         return(lBrackTokens.size() > 0 && rBrackTokens.size() > 0);
     }
