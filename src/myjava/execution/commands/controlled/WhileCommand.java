@@ -5,11 +5,9 @@ import java.util.List;
 
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor; 
-import myjava.execution.ICommand;
-import myjava.execution.commands.ConditionEvaluator;
-import myjava.generatedexp.JavaParser.ParExpressionContext; 
-import myjava.ide.console.Console; 
-import myjava.ide.console.LogItemView.LogType; 
+import myjava.execution.commands.ICommand;
+import myjava.execution.utils.ConditionEvaluator;
+import myjava.MyJAVAParser.ParExpressionContext;
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper;
@@ -45,7 +43,7 @@ public class WhileCommand implements IControlledCommand {
     public void execute() {
         this.identifyVariables();
 
-        ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+        ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
 
         try {
             //evaluate the given condition
