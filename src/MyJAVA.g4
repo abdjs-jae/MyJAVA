@@ -327,6 +327,7 @@ expression
     :   primary
     |   expression '.' Identifier
     |   expression '[' expression ']'
+    |   expression arguments
     |   expression '(' expressionList? ')'
     |   'new' creator
     |   'NEW' creator
