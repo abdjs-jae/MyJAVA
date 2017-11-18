@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import myjava.execution.ExecutionManager; 
 import myjava.execution.ExecutionMonitor; 
-import myjava.execution.ICommand;
+import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IControlledCommand.ControlTypeEnum;
-import myjava.execution.commands.utils.ConditionEvaluator; 
-import myjava.generatedexp.JavaParser.ExpressionContext; 
-import myjava.generatedexp.JavaParser.ParExpressionContext; 
-import myjava.ide.console.Console; 
+import myjava.execution.utils.ConditionEvaluator;
+import myjava.MyJAVAParser.*;
 import myjava.semantics.mapping.ClassIdentifierMapper; 
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper;
@@ -50,7 +48,7 @@ public class IfCommand implements IConditionalCommand {
     public void execute() {
         this.identifyVariables();
 
-        ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+        ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
 
         try {
             //execute the positive commands
