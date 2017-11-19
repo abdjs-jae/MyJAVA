@@ -1,8 +1,14 @@
 
+import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import myjava.errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
+import myjava.execution.ExecutionManager;
+import myjava.execution.FunctionTracker;
+import myjava.semantics.StatementControlOverseer;
+import myjava.semantics.symboltable.SymbolTableManager;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.PredictionMode;
@@ -67,6 +73,7 @@ public class UI {
         codePane.setRowHeaderView( tln );
         implementAutoComplete();
         addListeners();
+        initializeInterpreter();
 
     }
 
@@ -248,6 +255,20 @@ public class UI {
                 hilite.removeHighlight(hilite1);
             }
         }
+    }
+
+    
+    private void initializeInterpreter() {
+        // Initialize the interpreter stuff
+        SymbolTableManager.initialize();
+        ExecutionManager.initialize();
+        LocalScopeCreator.initialize();
+        StatementControlOverseer.initialize();
+        FunctionTracker.initialize();
+        
+        // Put analyzers and connect to executionthread
+        
+        // Execution manager takes charge of thread
     }
 
     private void implementAutoComplete(){
