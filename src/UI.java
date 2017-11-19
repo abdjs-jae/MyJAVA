@@ -1,4 +1,5 @@
 
+
 import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import myjava.errors.*;
 import myjava.MyJAVABaseListener;
@@ -6,9 +7,10 @@ import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
+import myjava.execution.commands.basic.PrintCommand;
 import myjava.semantics.StatementControlOverseer;
 import myjava.semantics.analyzers.MainAnalyzer;
-import myjava.semantics.symboltable.SymbolTableManager;
+import myjava.semantics.analyzers.MethodAnalyzer;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
@@ -105,17 +107,23 @@ public class UI {
                 parser.addErrorListener(errorListener);
                 parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
-                ParseTree parserRuleContext = parser.compilationUnit();
-                txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
-                ParseTreeWalker treeWalker = new ParseTreeWalker();
-                treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
+                //ParseTree parserRuleContext = parser.compilationUnit();
 
-                //tokens.fill();
-                //List<Token> allTokens = tokens.getTokens();
-                for (Token t : tokens.getTokens()){
-                    System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
-                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
-                }
+                // changed parse tree to method declaration context for the analyzers later on (context kinukuha ng analyzers)
+                MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
+                txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
+                // ParseTreeWalker treeWalker = new ParseTreeWalker();
+                // treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
+
+                // main analyzer checks yung current stuff
+                MainAnalyzer mainAnalyzer = new MainAnalyzer();
+                mainAnalyzer.analyze(parserRuleContext);
+
+                // brute-forced print command - initialize and place the print statement rule
+                // then executes the print command
+                PrintCommand printCommand = new PrintCommand(parserRuleContext.methodBody().block().blockStatement(0).statement().printStatement());
+                printCommand.execute();
+
                 /*
                 for(int ctr = 0; ctr < allTokens.size(); ctr++) {
 
@@ -282,7 +290,6 @@ public class UI {
 
     private void initializeInterpreter() {
         // Initialize the interpreter stuff
-        SymbolTableManager.initialize();
         ExecutionManager.initialize();
         LocalScopeCreator.initialize();
         StatementControlOverseer.initialize();
