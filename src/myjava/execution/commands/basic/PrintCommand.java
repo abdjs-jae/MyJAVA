@@ -18,13 +18,13 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener{
 
-    private ExpressionContext exprContext;
+    private PrintStatementContext exprContext;
 
     private String printStatement = "";
     private boolean complexExpr = false;
     private boolean arrayAccess = false;
 
-    public PrintCommand(ExpressionContext exprContext) {
+    public PrintCommand(PrintStatementContext exprContext) {
         this.exprContext = exprContext;
     }
 
