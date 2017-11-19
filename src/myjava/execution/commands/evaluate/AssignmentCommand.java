@@ -5,14 +5,14 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import myjava.errors.checkers.ConstChecker;
+import myjava.errors.checkers.ConstantChecker;
 import myjava.errors.checkers.TypeChecker;
 import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser.*;
-import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.analyzing.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searcher.VariableSearcher;
@@ -39,8 +39,8 @@ public class AssignmentCommand implements ICommand{
         UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.leftHandExprCtx);
         undeclaredChecker.check();
 
-        ConstChecker constChecker = new ConstChecker(this.leftHandExprCtx);
-        constChecker.check();
+        ConstantChecker constantChecker = new ConstantChecker(this.leftHandExprCtx);
+        constantChecker.check();
 
         undeclaredChecker = new UndeclaredChecker(this.rightHandExprCtx);
         undeclaredChecker.check();

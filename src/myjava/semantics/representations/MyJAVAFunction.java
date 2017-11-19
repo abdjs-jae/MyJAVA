@@ -9,7 +9,7 @@ import myjava.execution.FunctionTracker;
 import myjava.execution.commands.controlled.IControlledCommand;
 import myjava.semantics.representations.MyJAVAValue.*;
 import myjava.execution.commands.ICommand;
-import myjava.semantics.symboltable.scopes.LocalScope;
+import myjava.semantics.scoping.LocalScope;
 import myjava.semantics.utils.RecognizedKeywords;
 import myjava.semantics.utils.StringHelper;
 

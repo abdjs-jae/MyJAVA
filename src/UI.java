@@ -1,22 +1,17 @@
 
 
-import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import myjava.errors.*;
-import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
 import myjava.execution.commands.basic.PrintCommand;
 import myjava.semantics.StatementControlOverseer;
-import myjava.semantics.analyzers.MainAnalyzer;
-import myjava.semantics.analyzers.MethodAnalyzer;
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.analyzing.MainAnalyzer;
+import myjava.semantics.scoping.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.PredictionMode;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.fife.ui.autocomplete.*;
 import uicomp.LinePainter;
 import uicomp.SquigglePainter;
@@ -34,7 +29,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import static myjava.ITextWriter.txtWriter;
 
@@ -109,7 +103,7 @@ public class UI {
 
                 //ParseTree parserRuleContext = parser.compilationUnit();
 
-                // changed parse tree to method declaration context for the analyzers later on (context kinukuha ng analyzers)
+                // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
                 MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
                 txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
                 // ParseTreeWalker treeWalker = new ParseTreeWalker();
@@ -295,7 +289,7 @@ public class UI {
         StatementControlOverseer.initialize();
         FunctionTracker.initialize();
 
-        // Put analyzers and connect to executionthread
+        // Put analyzing and connect to executionthread
 
         // Execution manager takes charge of thread
     }

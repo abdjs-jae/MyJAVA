@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.symboltable.scopes.LocalScope; 
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.scoping.LocalScope;
+import myjava.semantics.scoping.LocalScopeCreator;
 
 /**
  * Maps an identifier to a given value found in the function level. First, we search the mapped parameters if a variable already exists.

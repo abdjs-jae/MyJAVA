@@ -2,7 +2,7 @@ package myjava.execution.commands.basic;
 
 import java.util.List;
 
-import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.analyzing.FunctionCallVerifier;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 //import myjava.builder.ParserHandler;
 //import myjava.builder.errorcheckers.ParameterMismatchChecker;
@@ -11,12 +11,12 @@ import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.MyJAVAParser.ExpressionContext;
 //import myjava.ide.console.Console;
 //import myjava.ide.console.LogItemView.LogType;
-//import myjava.semantics.analyzers.FunctionCallVerifier;
+//import myjava.semantics.analyzing.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue; 
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType; 
 import myjava.semantics.searcher.VariableSearcher;
-import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.scoping.ClassScope;
 
 /**
  * Represents a function call command

@@ -5,7 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
 import myjava.MyJAVAParser.*;
-import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.analyzing.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searcher.VariableSearcher;
 import myjava.semantics.utils.AssignmentUtils;

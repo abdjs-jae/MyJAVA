@@ -3,8 +3,8 @@ package myjava.errors.checkers;
 import myjava.MyJAVAParser.*;
 import myjava.errors.MyJAVAErrorStrategy;
 import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.symboltable.scopes.LocalScope;
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.scoping.LocalScope;
+import myjava.semantics.scoping.LocalScopeCreator;
 
 public class MultipleFunctionChecker implements IChecker {
     

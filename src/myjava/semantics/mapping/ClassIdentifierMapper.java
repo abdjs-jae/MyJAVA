@@ -1,7 +1,7 @@
 package myjava.semantics.mapping;
 
-import myjava.semantics.symboltable.scopes.LocalScope;
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.scoping.LocalScope;
+import myjava.semantics.scoping.LocalScopeCreator;
 import org.antlr.v4.runtime.ParserRuleContext; 
 import org.antlr.v4.runtime.tree.ErrorNode; 
 import org.antlr.v4.runtime.tree.ParseTreeListener; 

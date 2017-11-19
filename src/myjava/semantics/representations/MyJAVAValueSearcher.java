@@ -1,8 +1,8 @@
 package myjava.semantics.representations;
 
 import myjava.execution.FunctionTracker;
-import myjava.semantics.symboltable.scopes.LocalScope;
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.scoping.LocalScope;
+import myjava.semantics.scoping.LocalScopeCreator;
 
 public class MyJAVAValueSearcher {
 

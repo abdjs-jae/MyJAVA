@@ -13,12 +13,10 @@ import myjava.execution.commands.utils.ConditionEvaluator;
 //import myjava.generatedexp.JavaParser.LocalVariableDeclarationContext;
 //import myjava.ide.console.Console;
 //import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.analyzers.LocalVariableAnalyzer; 
-import myjava.semantics.mapping.ClassIdentifierMapper; 
-import myjava.semantics.mapping.IValueMapper; 
+import myjava.semantics.analyzing.LocalVariableAnalyzer;
+import myjava.semantics.mapping.IValueMapper;
 import myjava.semantics.mapping.IdentifierMapper;
 import myjava.semantics.utils.StringHelper;
-import sun.security.ssl.Debug;
 
 import static myjava.ITextWriter.txtWriter;
 
