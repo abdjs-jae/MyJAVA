@@ -1,6 +1,8 @@
 package myjava.execution.commands.basic;
 
 import java.util.List;
+
+import myjava.semantics.analyzers.FunctionCallVerifier;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 //import myjava.builder.ParserHandler;
 //import myjava.builder.errorcheckers.ParameterMismatchChecker;
@@ -36,7 +38,7 @@ public class FunctionCallCommand implements ICommand {
         this.searchFunction();
 
         ParseTreeWalker functionWalker = new ParseTreeWalker();
-        //functionWalker.walk(new FunctionCallVerifier(), this.exprCtx);
+        functionWalker.walk(new FunctionCallVerifier(), this.exprCtx);
 
         this.verifyParameters();
     }
