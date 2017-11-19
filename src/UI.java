@@ -1,4 +1,5 @@
 
+import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import myjava.errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
@@ -6,6 +7,8 @@ import myjava.MyJAVAParser;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
 import myjava.semantics.StatementControlOverseer;
+import myjava.semantics.analyzers.MainAnalyzer;
+import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
@@ -29,6 +32,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import static myjava.ITextWriter.txtWriter;
 
@@ -106,6 +110,26 @@ public class UI {
                 ParseTreeWalker treeWalker = new ParseTreeWalker();
                 treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
 
+                //tokens.fill();
+                //List<Token> allTokens = tokens.getTokens();
+                for (Token t : tokens.getTokens()){
+                    System.out.println("[TOKEN] Token #" + (t.getTokenIndex()+1) + " found: "
+                            + t.getText() + " | Type: "  + MyJAVALexer.VOCABULARY.getSymbolicName(t.getType()));
+                }
+                /*
+                for(int ctr = 0; ctr < allTokens.size(); ctr++) {
+
+                    Token t = allTokens.get(ctr);
+
+                    String line[] = t.toString().split(",<");
+                    String word[] = line[1].split(">");
+                    int index = Integer.parseInt(word[0]);
+
+                    String token = parser.getVocabulary().getDisplayName(index);
+                    System.out.println(token);
+
+                }
+                */
                 consoleListModel = new DefaultListModel();
                 consoleList.setSelectedIndex(0);
                 consoleListModel = errorListener.getConsoleListModel();
@@ -255,7 +279,7 @@ public class UI {
         }
     }
 
-    
+
     private void initializeInterpreter() {
         // Initialize the interpreter stuff
         SymbolTableManager.initialize();
@@ -263,9 +287,9 @@ public class UI {
         LocalScopeCreator.initialize();
         StatementControlOverseer.initialize();
         FunctionTracker.initialize();
-        
+
         // Put analyzers and connect to executionthread
-        
+
         // Execution manager takes charge of thread
     }
 
