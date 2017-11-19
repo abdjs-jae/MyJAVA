@@ -9,10 +9,8 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import myjava.builder.ParserHandler; 
 import myjava.execution.ExecutionManager; 
 import myjava.MyJAVAParser.*;
-import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScope; 
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
@@ -31,13 +29,12 @@ public class MainAnalyzer implements ParseTreeListener {
 
     public void analyze(MethodDeclarationContext ctx) {
         if(!ExecutionManager.getExecutionManager().hasFoundEntryPoint()) {
-            ExecutionManager.getExecutionManager().reportFoundEntryPoint(ParserHandler.getInstance().getCurrentClassName());
+            ExecutionManager.getExecutionManager().reportFoundEntryPoint("LocalScope");
 
-            //automatically create a local scope for main() whose parent is the class scope
-            LocalScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-            LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().openLocalScope();
-            localScope.setParent(classScope);
-            //classScope.setParentLocalScope(localScope);
+            //automatically create a local scope for main()
+            LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
+            LocalScope parentScope = LocalScopeCreator.getLocalScopeCreator().openLocalScope();
+            localScope.setParent(parentScope);
 
             ParseTreeWalker treeWalker = new ParseTreeWalker();
             treeWalker.walk(this, ctx);
@@ -45,7 +42,6 @@ public class MainAnalyzer implements ParseTreeListener {
 
         }
         else {
-            //Console.log(LogType.DEBUG, "Already found main in " +ExecutionManager.getInstance().getEntryClassName());
             txtWriter.writeMessage(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName()));
         }
     }

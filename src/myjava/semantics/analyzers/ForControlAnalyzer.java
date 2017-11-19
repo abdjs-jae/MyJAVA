@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import myjava.execution.commands.ICommand; 
-import myjava.execution.evaluate.AssignmentCommand;
+import myjava.execution.commands.evaluate.AssignmentCommand;
 import myjava.execution.commands.basic.IntDecCommand;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser.*;
@@ -54,7 +54,6 @@ public class ForControlAnalyzer implements ParseTreeListener{
             ExpressionContext exprCtx = forUpdateCtx.expressionList().expression(0);
 
             if(StatementExpressionAnalyzer.isAssignmentExpression(exprCtx)) {
-                //this.updateCommand = new AssignmentCommand(exprCtx.expression(0), exprCtx.expression(1));
                 this.updateCommand = new AssignmentCommand(exprCtx.expression(0), exprCtx.expression(1));
             }
             else if(StatementExpressionAnalyzer.isIncrementExpression(exprCtx)) {

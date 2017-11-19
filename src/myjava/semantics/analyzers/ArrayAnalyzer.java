@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import myjava.execution.ExecutionManager; 
-import myjava.execution.evaluate.ArrayInitializeCommand;
+import myjava.execution.commands.evaluate.ArrayInitializeCommand;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
@@ -24,20 +24,13 @@ import static myjava.ITextWriter.txtWriter;
  *
  */
 public class ArrayAnalyzer implements ParseTreeListener{
+
     private final static String ARRAY_PRIMITIVE_KEY = "ARRAY_PRIMITIVE_KEY";
     private final static String ARRAY_IDENTIFIER_KEY = "ARRAY_IDENTIFIER_KEY";
 
     private IdentifiedTokens identifiedTokens;
-    //private ClassScope declaredClassScope;
     private LocalScope localScope;
     private MyJAVAArray declaredArray;
-
-    /*
-    public ArrayAnalyzer( IdentifiedTokens identifiedTokens, ClassScope declaredClassScope) {
-        this.identifiedTokens = identifiedTokens;
-        this.declaredClassScope = declaredClassScope;
-    }
-    */
 
     public ArrayAnalyzer( IdentifiedTokens identifiedTokens, LocalScope localScope) {
         this.identifiedTokens = identifiedTokens;
@@ -91,26 +84,6 @@ public class ArrayAnalyzer implements ParseTreeListener{
     }
 
     private void analyzeArray() {
-
-        /*
-        if(this.declaredClassScope != null) {
-            if(this.identifiedTokens.containsTokens(ClassAnalyzer.ACCESS_CONTROL_KEY, ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
-                String accessControlString = this.identifiedTokens.getToken(ClassAnalyzer.ACCESS_CONTROL_KEY);
-                String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
-                String arrayIdentifierString = this.identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
-
-                //initialize an array mobivalue
-                this.declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
-                MyJAVAValue myJAVAValue = new MyJAVAValue(this.declaredArray, PrimitiveType.ARRAY);
-
-                this.declaredClassScope.addMyJAVAValue(arrayIdentifierString, myJAVAValue);
-                //this.declaredClassScope.addMyJAVAValue(accessControlString, arrayIdentifierString, myJAVAValue);
-                //Console.log(LogType.DEBUG, "Creating array with type " +arrayTypeString+ " variable " +arrayIdentifierString);
-
-                this.identifiedTokens.clearTokens();
-            }
-        }
-        */
         if(this.localScope != null) {
             if(this.identifiedTokens.containsTokens(ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
                 String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);

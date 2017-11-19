@@ -9,10 +9,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import myjava.errors.checkers.MultipleVariableChecker;
 import myjava.errors.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
-import myjava.execution.evaluate.MappingCommand;
+import myjava.execution.commands.evaluate.MappingCommand;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator; 
 import myjava.semantics.utils.IdentifiedTokens; 
@@ -24,8 +23,6 @@ import myjava.semantics.utils.RecognizedKeywords;
  *
  */
 public class LocalVariableAnalyzer implements ParseTreeListener {
-
-    //private final static String TAG = "MobiProg_LocalVariableAnalyzer";
 
     private final static String PRIMITIVE_TYPE_KEY = "PRIMITIVE_TYPE_KEY";
     private final static String IDENTIFIER_KEY = "IDENTIFIER_KEY";
@@ -74,7 +71,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
         if(ctx instanceof TypeTypeContext) {
             TypeTypeContext typeCtx = (TypeTypeContext) ctx;
             //clear tokens for reuse
-            this.identifiedTokens.clearTokens();
+            identifiedTokens.clearTokens();
             /* commented out for now since class analyzer == class
             if(ClassAnalyzer.isPrimitiveDeclaration(typeCtx)) {
                 PrimitiveTypeContext primitiveTypeCtx = typeCtx.primitiveType();
@@ -89,16 +86,17 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
                 arrayAnalyzer.analyze(typeCtx.getParent());
                 this.hasPassedArrayDeclaration = true;
             }
-
-            //this is for class type ctx
+            
             else {
-                //a string identified
-                if(typeCtx.classOrInterfaceType().getText().contains(RecognizedKeywords.PRIMITIVE_TYPE_STRING)) {
-                    ClassOrInterfaceTypeContext classInterfaceCtx = typeCtx.classOrInterfaceType();
-                    this.identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, classInterfaceCtx.getText());
-                }
+                // String was identified (moved below for testing)
             }
             */
+                // String was identified
+                if(typeCtx.classOrInterfaceType().getText().contains(RecognizedKeywords.PRIMITIVE_TYPE_STRING)) {
+                    ClassOrInterfaceTypeContext classInterfaceCtx = typeCtx.classOrInterfaceType();
+                    identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, classInterfaceCtx.getText());
+                }
+
 
         }
 
@@ -111,7 +109,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
             }
 
             //check for duplicate declarations
-            if(this.executeMappingImmediate == false) {
+            if(!this.executeMappingImmediate) {
                 MultipleVariableChecker multipleDeclaredChecker = new MultipleVariableChecker(varCtx.variableDeclaratorId());
                 multipleDeclaredChecker.check();
             }
@@ -134,7 +132,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
                 LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
                 MyJAVAValue declaredMyJAVAValue = localScope.searchVariableIncludingLocal(varCtx.variableDeclaratorId().getText());
 
-                //type check the mobivalue
+                //type check the myJAVAValue
                 TypeChecker typeChecker = new TypeChecker(declaredMyJAVAValue, varCtx.variableInitializer().expression());
                 typeChecker.check();
             }

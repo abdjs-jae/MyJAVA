@@ -18,29 +18,25 @@ import myjava.semantics.utils.AssignmentUtils;
  *
  */
 public class ReturnCommand implements ICommand {
-    private final static String TAG = "MyJAVAProg_ReturnCommand";
 
-    private ExpressionContext expressionCtx;
+    private ExpressionContext expressionContext;
     private MyJAVAFunction assignedMyJAVAFunction;
 
-    public ReturnCommand(ExpressionContext expressionCtx, MyJAVAFunction myJAVAFunction) {
-        this.expressionCtx = expressionCtx;
+    public ReturnCommand(ExpressionContext expressionContext, MyJAVAFunction myJAVAFunction) {
+        this.expressionContext = expressionContext;
         this.assignedMyJAVAFunction = myJAVAFunction;
 
-        UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
+        UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionContext);
         undeclaredChecker.check();
 
         MyJAVAValue myJAVAValue = this.assignedMyJAVAFunction.getReturnValue();
-        TypeChecker typeChecker = new TypeChecker(myJAVAValue, this.expressionCtx);
+        TypeChecker typeChecker = new TypeChecker(myJAVAValue, this.expressionContext);
         typeChecker.check();
     }
-
-    /* (non-Javadoc)
-     * @see myjava.execution.commands.ICommand#execute()
-     */
+    
     @Override
     public void execute() {
-        EvaluationCommand evaluationCommand = new EvaluationCommand(this.expressionCtx);
+        EvaluationCommand evaluationCommand = new EvaluationCommand(this.expressionContext);
         evaluationCommand.execute();
 
         MyJAVAValue myJAVAValue = this.assignedMyJAVAFunction.getReturnValue();

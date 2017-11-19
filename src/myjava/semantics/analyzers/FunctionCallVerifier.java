@@ -1,8 +1,9 @@
 package myjava.semantics.analyzers;
 
 import java.util.List;
- 
-import org.antlr.v4.runtime.ParserRuleContext; 
+
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode; 
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -10,7 +11,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import myjava.builder.ParserHandler; 
 import myjava.errors.checkers.ParameterMismatchChecker;
 import myjava.execution.ExecutionManager; 
-import myjava.execution.evaluate.EvaluationCommand;
+import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.symboltable.SymbolTableManager; 
@@ -40,9 +41,8 @@ public class FunctionCallVerifier implements ParseTreeListener {
 
                 String functionName = exprCtx.expression(0).Identifier().getText();
 
-                LocalScope classScope = SymbolTableManager.getInstance().getClassScope(
-                        ParserHandler.getInstance().getCurrentClassName());
-                MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
+                LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
+                MyJAVAFunction myJAVAFunction = localScope.searchFunction(functionName);
 
                 if (exprCtx.arguments() != null) {
                     ParameterMismatchChecker paramsMismatchChecker = new ParameterMismatchChecker(myJAVAFunction, exprCtx.arguments());

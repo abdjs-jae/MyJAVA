@@ -21,12 +21,10 @@ import myjava.semantics.utils.RecognizedKeywords;
  *
  */
 public class ParameterAnalyzer implements ParseTreeListener {
-    private final static String TAG = "MobiProg_ParameterAnalyzer";
 
     private final static String PARAMETER_TYPE_KEY = "PARAMETER_TYPE_KEY";
     private final static String PARAMETER_IDENTIFIER_KEY = "PARAMETER_IDENTIFIER_KEY";
     private final static String IS_ARRAY_KEY = "IS_ARRAY_KEY";
-
 
     private IdentifiedTokens identifiedTokens;
     private MyJAVAFunction declaredMyJAVAFunction;
@@ -42,27 +40,18 @@ public class ParameterAnalyzer implements ParseTreeListener {
         treeWalker.walk(this, ctx);
     }
 
-    /* (non-Javadoc)
-     * @see org.antlr.v4.runtime.tree.ParseTreeListener#visitTerminal(org.antlr.v4.runtime.tree.TerminalNode)
-     */
     @Override
     public void visitTerminal(TerminalNode node) {
         // TODO Auto-generated method stub
 
     }
 
-    /* (non-Javadoc)
-     * @see org.antlr.v4.runtime.tree.ParseTreeListener#visitErrorNode(org.antlr.v4.runtime.tree.ErrorNode)
-     */
     @Override
     public void visitErrorNode(ErrorNode node) {
         // TODO Auto-generated method stub
 
     }
 
-    /* (non-Javadoc)
-     * @see org.antlr.v4.runtime.tree.ParseTreeListener#enterEveryRule(org.antlr.v4.runtime.ParserRuleContext)
-     */
     @Override
     public void enterEveryRule(ParserRuleContext ctx) {
         if(ctx instanceof FormalParameterContext) {
@@ -71,9 +60,6 @@ public class ParameterAnalyzer implements ParseTreeListener {
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.antlr.v4.runtime.tree.ParseTreeListener#exitEveryRule(org.antlr.v4.runtime.ParserRuleContext)
-     */
     @Override
     public void exitEveryRule(ParserRuleContext ctx) {
         // TODO Auto-generated method stub
@@ -119,7 +105,7 @@ public class ParameterAnalyzer implements ParseTreeListener {
             String typeString = this.identifiedTokens.getToken(PARAMETER_TYPE_KEY);
             String identifierString = this.identifiedTokens.getToken(PARAMETER_IDENTIFIER_KEY);
 
-            //initialize an array mobivalue
+            //initialize an array myJAVAvalue
             MyJAVAArray declaredArray = MyJAVAArray.createArray(typeString, identifierString);
             MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
             this.declaredMyJAVAFunction.addParameter(identifierString, myJAVAValue);

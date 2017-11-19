@@ -3,6 +3,7 @@ import myjava.errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -24,6 +25,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import static myjava.ITextWriter.txtWriter;
 
 /**
  * Created by jasonsapdos on 06/10/2017.
@@ -94,6 +97,7 @@ public class UI {
                 parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
                 ParseTree parserRuleContext = parser.compilationUnit();
+                txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
                 ParseTreeWalker treeWalker = new ParseTreeWalker();
                 treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
 

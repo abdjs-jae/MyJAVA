@@ -2,18 +2,18 @@ package myjava.semantics.analyzers;
 
 import java.util.List;
 
-import org.antlr.v4.runtime.ParserRuleContext; 
+import myjava.semantics.SemanticUtils;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode; 
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-//import myjava.errors.checkers.ThisKeywordChecker;
 import myjava.execution.ExecutionManager; 
 import myjava.execution.commands.ICommand; 
 import myjava.execution.commands.controlled.IConditionalCommand; 
 import myjava.execution.commands.controlled.IControlledCommand; 
-import myjava.execution.evaluate.AssignmentCommand;
+import myjava.execution.commands.evaluate.AssignmentCommand;
 import myjava.execution.commands.basic.FunctionCallCommand;
 import myjava.execution.commands.basic.IntDecCommand;
 import myjava.MyJAVALexer;
@@ -111,29 +111,7 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
     }
 
     private void handleStatementExecution(ICommand command) {
-
-        StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
-
-        //add to conditional controlled command
-        if(statementControl.isInConditionalCommand()) {
-            IConditionalCommand conditionalCommand = (IConditionalCommand) statementControl.getActiveControlledCommand();
-
-            if(statementControl.isInPositiveRule()) {
-                conditionalCommand.addPositiveCommand(command);
-            }
-            else {
-                conditionalCommand.addNegativeCommand(command);
-            }
-        }
-
-        else if(statementControl.isInControlledCommand()) {
-            IControlledCommand controlledCommand = (IControlledCommand) statementControl.getActiveControlledCommand();
-            controlledCommand.addCommand(command);
-        }
-        else {
-            ExecutionManager.getExecutionManager().addCommand(command);
-        }
-
+        SemanticUtils.addToConditionalCommand(command);
     }
 
     private void handleFunctionCallWithParams(ExpressionContext funcExprCtx) {
@@ -177,9 +155,6 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 
         if(firstExprCtx != null) {
             if(exprCtx != this.readRightHandExprCtx) {
-                //ThisKeywordChecker thisChecker = new ThisKeywordChecker(firstExprCtx);
-                //thisChecker.verify();
-
                 return (firstExprCtx.Identifier() != null);
             }
         }
@@ -190,8 +165,6 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 
     private boolean isFunctionCallWithNoParams(ExpressionContext exprCtx) {
         if(exprCtx.depth() == FUNCTION_CALL_NO_PARAMS_DEPTH) {
-            //ThisKeywordChecker thisChecker = new ThisKeywordChecker(exprCtx);
-            //thisChecker.verify();
             if(exprCtx.Identifier() != null)
                 return true;
         }

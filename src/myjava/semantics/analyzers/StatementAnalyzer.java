@@ -3,6 +3,8 @@ package myjava.semantics.analyzers;
 import java.io.Console;
 import java.util.List;
 
+import myjava.execution.commands.ICommand;
+import myjava.semantics.SemanticUtils;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -135,7 +137,6 @@ public class StatementAnalyzer {
             StatementControlOverseer.getInstance().compileControlledCommand();
 
             LocalScopeCreator.getLocalScopeCreator().closeLocalScope();
-            //Console.log(LogType.DEBUG, "End of FOR loop");
             txtWriter.writeMessage(StringUtils.formatDebug("End of For loop"));
         }
 
@@ -148,61 +149,20 @@ public class StatementAnalyzer {
 
     private void handlePrintStatement(StatementContext ctx) {
         PrintCommand printCommand = new PrintCommand(ctx.expression());
-
-        StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
-        //add to conditional controlled command
-        if(statementControl.isInConditionalCommand()) {
-            IConditionalCommand conditionalCommand = (IConditionalCommand) statementControl.getActiveControlledCommand();
-
-            if(statementControl.isInPositiveRule()) {
-                conditionalCommand.addPositiveCommand(printCommand);
-            }
-            else {
-                conditionalCommand.addNegativeCommand(printCommand);
-            }
-        }
-
-        else if(statementControl.isInControlledCommand()) {
-            IControlledCommand controlledCommand = (IControlledCommand) statementControl.getActiveControlledCommand();
-            controlledCommand.addCommand(printCommand);
-        }
-        else {
-            ExecutionManager.getExecutionManager().addCommand(printCommand);
-        }
+        SemanticUtils.addToConditionalCommand(printCommand);
 
     }
 
     private void handleScanStatement(StatementContext ctx) {
         ScanCommand scanCommand = new ScanCommand(ctx.expression().getText(), ctx.Identifier().getText());
         UndeclaredChecker.verifyVarOrConstForScan(ctx.Identifier().getText(), ctx);
-
-        StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
-        //add to conditional controlled command
-        if(statementControl.isInConditionalCommand()) {
-            IConditionalCommand conditionalCommand = (IConditionalCommand) statementControl.getActiveControlledCommand();
-
-            if(statementControl.isInPositiveRule()) {
-                conditionalCommand.addPositiveCommand(scanCommand);
-            }
-            else {
-                conditionalCommand.addNegativeCommand(scanCommand);
-            }
-        }
-
-        else if(statementControl.isInControlledCommand()) {
-            IControlledCommand controlledCommand = (IControlledCommand) statementControl.getActiveControlledCommand();
-            controlledCommand.addCommand(scanCommand);
-        }
-        else {
-            ExecutionManager.getExecutionManager().addCommand(scanCommand);
-        }
-
+        SemanticUtils.addToConditionalCommand(scanCommand);
     }
 
     private void handleReturnStatement(ExpressionContext exprCtx) {
         ReturnCommand returnCommand = new ReturnCommand(exprCtx, ExecutionManager.getExecutionManager().getCurrentFunction());
 		/*
-		 * TODO: Return commands supposedly stops a controlled or conditional command and returns back the control to the caller.
+		 * Return commands supposedly stops a controlled or conditional command and returns back the control to the caller.
 		 * Find a way to halt such commands if they are inside a controlled command.
 		 */
         StatementControlOverseer statementControl = StatementControlOverseer.getInstance();

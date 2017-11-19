@@ -21,22 +21,18 @@ import static myjava.ITextWriter.txtWriter;
  */
 public class WhileCommand implements IControlledCommand {
 
-    private final static String TAG = "MyJAVA_WhileCommand";
-
     protected List<ICommand> commandSequences; //the list of commands inside the WHILE statement
 
     protected ParExpressionContext conditionalExpr;
     protected String modifiedConditionExpr;
 
     public WhileCommand(ParExpressionContext conditionalExpr) {
-        this.commandSequences = new ArrayList<ICommand>();
+        this.commandSequences = new ArrayList<>();
         this.conditionalExpr = conditionalExpr;
     }
 
     /*
      * Executes the command
-     * (non-Javadoc)
-     * @see myjava.execution.commands.ICommand#execute()
      */
     @Override
     public void execute() {
@@ -56,8 +52,7 @@ public class WhileCommand implements IControlledCommand {
             }
 
         } catch(InterruptedException e) {
-            //Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
-            txtWriter.writeMessage(StringHelper.formatError(TAG + ": Monitor block interrupted! " + e.getMessage()));
+            System.err.println("WhileCommand: Monitor block interrupted! " + e.getMessage());
         }
     }
 
@@ -75,8 +70,7 @@ public class WhileCommand implements IControlledCommand {
 
     @Override
     public void addCommand(ICommand command) {
-        //Console.log(LogType.DEBUG, "		Added command to WHILE");
-        txtWriter.writeMessage(StringHelper.formatDebug(" Added command to WHILE"));
+        txtWriter.writeMessage(StringHelper.formatDebug("New command was added to while loop."));
         this.commandSequences.add(command);
     }
 
