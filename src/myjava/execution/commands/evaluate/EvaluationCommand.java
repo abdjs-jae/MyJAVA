@@ -2,30 +2,22 @@ package myjava.execution.commands.evaluate;
 
 import java.math.BigDecimal; 
 import java.util.List;
+
+import myjava.semantics.symboltable.scopes.LocalScope;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.ParseTreeWalker; 
 import org.antlr.v4.runtime.tree.TerminalNode;
- 
-import myjava.builder.ParserHandler; 
-import myjava.errors.checkers.ParameterMismatchChecker;
-import myjava.errors.checkers.UndeclaredChecker;
-import myjava.execution.ExecutionManager; 
+
 import myjava.execution.commands.ICommand;
 import myjava.MyJAVAParser.*;
-import myjava.semantics.analyzers.FunctionCallVerifier; 
-import myjava.semantics.mapping.IValueMapper; 
-import myjava.semantics.mapping.IdentifierMapper; 
 import myjava.semantics.representations.MyJAVAFunction; 
 import myjava.semantics.representations.MyJAVAValue; 
 import myjava.semantics.searcher.VariableSearcher;
-import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.ClassScope; 
 import myjava.semantics.utils.Expression; 
 import myjava.semantics.utils.RecognizedKeywords;
-
-import static myjava.ITextWriter.txtWriter;
 
 /**
  * A command that evaluates a given expression at runtime.
@@ -33,37 +25,33 @@ import static myjava.ITextWriter.txtWriter;
  *
  */
 public class EvaluationCommand implements ICommand, ParseTreeListener {
-    private final static String TAG = "MyJAVAProg_EvaluationCommand";
 
-    private ExpressionContext parentExprCtx;
+    private ExpressionContext parentExprContext;
     private String modifiedExp;
     private BigDecimal resultValue;
 
-    public EvaluationCommand(ExpressionContext exprCtx) {
-        this.parentExprCtx = exprCtx;
+    public EvaluationCommand(ExpressionContext exprContext) {
+        this.parentExprContext = exprContext;
     }
 
-    /* (non-Javadoc)
-     * @see myjava.execution.commands.ICommand#execute()
-     */
     @Override
     public void execute() {
-        this.modifiedExp = this.parentExprCtx.getText();
+        modifiedExp = parentExprContext.getText();
 
         //catch rules if the value has direct boolean flags
-        if(this.modifiedExp.contains(RecognizedKeywords.BOOLEAN_TRUE)) {
-            this.resultValue = new BigDecimal(1);
+        if(modifiedExp.contains(RecognizedKeywords.BOOLEAN_TRUE)) {
+            resultValue = new BigDecimal(1);
         }
-        else if(this.modifiedExp.contains(RecognizedKeywords.BOOLEAN_FALSE)) {
-            this.resultValue = new BigDecimal(0);
+        else if(modifiedExp.contains(RecognizedKeywords.BOOLEAN_FALSE)) {
+            resultValue = new BigDecimal(0);
         }
         else {
             ParseTreeWalker treeWalker = new ParseTreeWalker();
-            treeWalker.walk(this, this.parentExprCtx);
+            treeWalker.walk(this, parentExprContext);
 
             Expression evalEx = new Expression(this.modifiedExp);
             //Log.i(TAG,"Modified exp to eval: " +this.modifiedExp);
-            this.resultValue = evalEx.eval();
+            resultValue = evalEx.eval();
         }
 
     }
@@ -80,55 +68,46 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
     }
 
     @Override
-    public void enterEveryRule(ParserRuleContext ctx) {
-        if (ctx instanceof ExpressionContext) {
-            ExpressionContext exprCtx = (ExpressionContext) ctx;
-            if (EvaluationCommand.isFunctionCall(exprCtx)) {
-                this.evaluateFunctionCall(exprCtx);
+    public void enterEveryRule(ParserRuleContext context) {
+        if (context instanceof ExpressionContext) {
+            ExpressionContext exprContext = (ExpressionContext) context;
+            if (EvaluationCommand.isFunctionCall(exprContext)) {
+                this.evaluateFunctionCall(exprContext);
             }
 
-            else if (EvaluationCommand.isVariableOrConst(exprCtx)) {
-                this.evaluateVariable(exprCtx);
+            else if (EvaluationCommand.isVariableOrConst(exprContext)) {
+                this.evaluateVariable(exprContext);
             }
         }
     }
 
     @Override
-    public void exitEveryRule(ParserRuleContext ctx) {
+    public void exitEveryRule(ParserRuleContext context) {
 
     }
 
-    public static boolean isFunctionCall(ExpressionContext exprCtx) {
-        if (exprCtx.arguments() != null) {
-            return true;
-        } else {
-            return false;
-        }
+    public static boolean isFunctionCall(ExpressionContext exprContext) {
+        return exprContext.arguments() != null;
     }
 
-    public static boolean isVariableOrConst(ExpressionContext exprCtx) {
-        if (exprCtx.primary() != null && exprCtx.primary().Identifier() != null) {
-            return true;
-        } else {
-            return false;
-        }
+    public static boolean isVariableOrConst(ExpressionContext exprContext) {
+        return exprContext.primary() != null && exprContext.primary().Identifier() != null;
     }
 
-    private void evaluateFunctionCall(ExpressionContext exprCtx) {
-        String functionName = exprCtx.expression(0).Identifier().getText();
+    private void evaluateFunctionCall(ExpressionContext exprContext) {
+        String functionName = exprContext.expression(0).Identifier().getText();
+        
+        LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
+        MyJAVAFunction myJAVAFunction = localScope.searchFunction(functionName);
 
-        ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
-                ParserHandler.getInstance().getCurrentClassName());
-        MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
-
-        if (exprCtx.arguments().expressionList() != null) {
-            List<ExpressionContext> exprCtxList = exprCtx.arguments()
+        if (exprContext.arguments().expressionList() != null) {
+            List<ExpressionContext> exprContextList = exprContext.arguments()
                     .expressionList().expression();
 
-            for (int i = 0; i < exprCtxList.size(); i++) {
-                ExpressionContext parameterExprCtx = exprCtxList.get(i);
+            for (int i = 0; i < exprContextList.size(); i++) {
+                ExpressionContext parameterExprContext = exprContextList.get(i);
 
-                EvaluationCommand evaluationCommand = new EvaluationCommand(parameterExprCtx);
+                EvaluationCommand evaluationCommand = new EvaluationCommand(parameterExprContext);
                 evaluationCommand.execute();
 
                 myJAVAFunction.mapParameterByValueAt(evaluationCommand.getResult().toEngineeringString(), i);
@@ -137,18 +116,18 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 
         myJAVAFunction.execute();
 
-        //Log.i(TAG, "Before modified EXP function call: " +this.modifiedExp);
-        this.modifiedExp = this.modifiedExp.replace(exprCtx.getText(),
+        //Log.i(TAG, "Before modified EXP function call: " + modifiedExp);
+        this.modifiedExp = modifiedExp.replace(exprContext.getText(),
                 myJAVAFunction.getReturnValue().getValue().toString());
-        //Log.i(TAG, "After modified EXP function call: " +this.modifiedExp);
+        //Log.i(TAG, "After modified EXP function call: " + modifiedExp);
 
     }
 
-    private void evaluateVariable(ExpressionContext exprCtx) {
+    private void evaluateVariable(ExpressionContext exprContext) {
         MyJAVAValue myJAVAValue = VariableSearcher
-                .searchVariable(exprCtx.getText());
+                .searchVariable(exprContext.getText());
 
-        this.modifiedExp = this.modifiedExp.replaceFirst(exprCtx.getText(),
+        this.modifiedExp = modifiedExp.replaceFirst(exprContext.getText(),
                 myJAVAValue.getValue().toString());
     }
 
@@ -156,6 +135,6 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
      * Returns the result
      */
     public BigDecimal getResult() {
-        return this.resultValue;
+        return resultValue;
     }
 }
