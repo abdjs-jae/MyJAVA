@@ -148,7 +148,7 @@ public class StatementAnalyzer {
     }
 
     private void handlePrintStatement(StatementContext ctx) {
-        PrintCommand printCommand = new PrintCommand(ctx.expression());
+        PrintCommand printCommand = new PrintCommand(ctx.printStatement());
         SemanticUtils.addToConditionalCommand(printCommand);
 
     }
