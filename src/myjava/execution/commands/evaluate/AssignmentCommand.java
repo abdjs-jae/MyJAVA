@@ -1,36 +1,22 @@
 package myjava.execution.commands.evaluate;
 
 import java.util.List;
-import org.antlr.v4.runtime.ParserRuleContext; 
-import org.antlr.v4.runtime.tree.ErrorNode; 
-import org.antlr.v4.runtime.tree.ParseTreeListener; 
-import org.antlr.v4.runtime.tree.ParseTreeWalker; 
+
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import myjava.errors.checkers.ConstChecker;
 import myjava.errors.checkers.TypeChecker;
 import myjava.errors.checkers.UndeclaredChecker;
-import myjava.execution.ExecutionManager; 
-import myjava.execution.FunctionTracker; 
+import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
-import myjava.execution.commands.controlled.IConditionalCommand; 
-import myjava.execution.commands.controlled.IControlledCommand; 
-import myjava.execution.commands.basic.IntDecCommand;
 import myjava.MyJAVALexer;
 import myjava.MyJAVAParser.*;
-import myjava.semantics.analyzers.FunctionCallVerifier; 
-import myjava.semantics.analyzers.StatementExpressionAnalyzer; 
-import myjava.semantics.mapping.IValueMapper; 
-import myjava.semantics.mapping.IdentifierMapper; 
-import myjava.semantics.representations.MyJAVAArray; 
-import myjava.semantics.representations.MyJAVAFunction; 
-import myjava.semantics.representations.MyJAVAValue; 
+import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.representations.MyJAVAArray;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searcher.VariableSearcher;
-import myjava.semantics.StatementControlOverseer;
-import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.LocalScope;
-import myjava.semantics.utils.AssignmentUtils; 
-import myjava.semantics.utils.Expression;
+import myjava.semantics.utils.AssignmentUtils;
 
 /**
  * A new assignment command that walks a given expression and replaces values to it

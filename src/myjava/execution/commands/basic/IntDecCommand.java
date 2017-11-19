@@ -4,15 +4,11 @@ import myjava.MyJAVALexer;
 //import myjava.builder.ParserHandler;
 import myjava.execution.commands.ICommand;
 //import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.mapping.ClassIdentifierMapper;
 import myjava.MyJAVAParser.ExpressionContext;
 import myjava.semantics.mapping.IValueMapper; 
 import myjava.semantics.mapping.IdentifierMapper; 
-import myjava.semantics.representations.MyJAVAValue; 
-import myjava.semantics.representations.MyJAVAValueSearcher;
-import myjava.semantics.representations.MyJAVAValue.PrimitiveType; 
-import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 
 /**
  * An increment or decrement command

@@ -1,27 +1,14 @@
 package myjava.execution.commands.evaluate;
 
-import java.util.List;
-import org.antlr.v4.runtime.ParserRuleContext; 
-import org.antlr.v4.runtime.tree.ErrorNode; 
-import org.antlr.v4.runtime.tree.ParseTreeListener; 
-import org.antlr.v4.runtime.tree.ParseTreeWalker; 
-import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import myjava.errors.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
-import myjava.MyJAVALexer;
 import myjava.MyJAVAParser.*;
-import myjava.semantics.analyzers.FunctionCallVerifier; 
-import myjava.semantics.mapping.IValueMapper; 
-import myjava.semantics.mapping.IdentifierMapper; 
-import myjava.semantics.representations.MyJAVAFunction; 
-import myjava.semantics.representations.MyJAVAValue; 
+import myjava.semantics.analyzers.FunctionCallVerifier;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searcher.VariableSearcher;
-import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.ClassScope; 
-import myjava.semantics.utils.AssignmentUtils; 
-import myjava.semantics.utils.Expression; 
-import myjava.semantics.utils.RecognizedKeywords;
+import myjava.semantics.utils.AssignmentUtils;
 
 /**
  * A mapping command that evaluates a given expression context then maps

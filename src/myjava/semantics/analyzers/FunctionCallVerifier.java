@@ -1,20 +1,15 @@
 package myjava.semantics.analyzers;
 
-import java.util.List;
-
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode; 
 import org.antlr.v4.runtime.tree.ParseTreeListener; 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import myjava.builder.ParserHandler; 
 import myjava.errors.checkers.ParameterMismatchChecker;
-import myjava.execution.ExecutionManager; 
 import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.symboltable.SymbolTableManager; 
 import myjava.semantics.symboltable.scopes.LocalScope;
 
 public class FunctionCallVerifier implements ParseTreeListener {

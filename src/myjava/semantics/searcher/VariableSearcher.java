@@ -3,8 +3,6 @@ package myjava.semantics.searcher;
 import myjava.execution.FunctionTracker;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.symboltable.SymbolTableManager;
-import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 

@@ -10,8 +10,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import myjava.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.symboltable.SymbolTableManager; 
-import myjava.semantics.symboltable.scopes.ClassScope;
 
 /**
  * Maps an identifier to a given value found in the symbol table manager in the class level.

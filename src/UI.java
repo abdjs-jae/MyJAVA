@@ -1,5 +1,4 @@
 
-import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import myjava.errors.*;
 import myjava.MyJAVABaseListener;
 import myjava.MyJAVALexer;
@@ -7,7 +6,6 @@ import myjava.MyJAVAParser;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
 import myjava.semantics.StatementControlOverseer;
-import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
