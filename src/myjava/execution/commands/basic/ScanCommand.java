@@ -29,12 +29,36 @@ public class ScanCommand implements ICommand{
     @Override
     public void execute() {
         /*
+        // ANDROID STUFF, NO NEED
         NotificationCenter.getInstance().addObserver(Notifications.ON_SCAN_DIALOG_DISMISSED, this); //add an observer to listen to when the dialog has been dismissed
+
+        // Note that I think we don't need to have the Parameters class...
 
         Parameters params = new Parameters();
         params.putExtra(MESSAGE_DISPLAY_KEY, this.messageToDisplay);
 
+        // Launch the function
+        acquireInputFromUser(params);
+
+        // Maybe stopping the execution from running??
         ExecutionManager.getInstance().blockExecution();
+
+        // Content ni acquireInputFromUser
+
+        // Launches UI dialog to get the inputted value
+        String valueEntered = params.getStringExtra(ScanUIHandler.VALUE_ENTERED_KEY, "");
+
+        // Saves the value to identifier
+        MyJAVAValue myJAVAValue = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
+        myJAVAValue.setValue(valueEntered);
+
+        // ANDROID STUFF
+        NotificationCenter.getInstance().removeObserver(Notifications.ON_SCAN_DIALOG_DISMISSED, this); //remove observer after using
+
+        // Continue executing the whole program
+        ExecutionManager.getInstance().resumeExecution(); //resume execution of thread.
+
+        // ANDROID STUFF, NO NEED
         NotificationCenter.getInstance().postNotification(Notifications.ON_FOUND_SCAN_STATEMENT, params);
         */
     }

@@ -86,7 +86,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
                 arrayAnalyzer.analyze(typeCtx.getParent());
                 this.hasPassedArrayDeclaration = true;
             }
-            
+
             else {
                 // String was identified (moved below for testing)
             }
