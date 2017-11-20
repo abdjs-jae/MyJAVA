@@ -49,6 +49,27 @@ variableModifier
     :   'final'
     ;
 
+
+classOrInterfaceModifier
+    :  (   'public'     // class or interface
+        |   'protected'  // class or interface
+        |   'private'    // class or interface
+        |   'static'     // class or interface
+        |   'abstract'   // class or interface
+        |   'final'      // class only -- does not apply to interfaces
+        )
+    ;
+
+typeParameters
+    :   '<' Identifier (',' Identifier)* '>'
+    ;
+
+classDeclaration
+    :   (classOrInterfaceModifier)? 'class' Identifier typeParameters?
+        ('extends' typeType)?
+        classBody
+    ;
+
 typeList
     :   typeType (',' typeType)*
     ;
