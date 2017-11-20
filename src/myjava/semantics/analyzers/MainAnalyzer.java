@@ -1,6 +1,7 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.antlrgen.MyJAVAParser.MethodDeclarationContext;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.antlrgen.MyJAVAParser.BlockContext;
@@ -26,7 +27,7 @@ public class MainAnalyzer implements ITextWriter, ParseTreeListener {
 		
 	}
 	
-	public void analyze(MainFunctionContext ctx) {
+	public void analyze(MethodDeclarationContext ctx) {
 		if(!ExecutionManager.getExecutionManager().hasFoundEntryPoint()) {
 			ExecutionManager.getExecutionManager().reportFoundEntryPoint(ParserHandler.getInstance().getCurrentClassName());
 			
@@ -42,7 +43,7 @@ public class MainAnalyzer implements ITextWriter, ParseTreeListener {
 			
 		}
 		else {
-			txtWriter.writeMessage(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName());
+			txtWriter.writeMessage(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName()));
 		}
 	}
 

@@ -5,7 +5,6 @@ import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.MappingCommand;
-import myjava.antlrgen.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
@@ -67,8 +66,8 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 	}
 	
 	private void analyzeVariables(ParserRuleContext ctx) {
-		if(ctx instanceof TypeContext) {
-			TypeContext typeCtx = (TypeContext) ctx;
+		if(ctx instanceof TypeTypeContext) {
+			TypeTypeContext typeCtx = (TypeTypeContext) ctx;
 			//clear tokens for reuse
 			identifiedTokens.clearTokens();
 			

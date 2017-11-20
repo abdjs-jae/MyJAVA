@@ -74,7 +74,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 	
 	private void analyzeClassMembers(ParserRuleContext ctx) {
 		if(ctx instanceof ClassOrInterfaceModifierContext) {
-			ClassOrInterfaceModifierContext classModifierCtx = (ClassOrInterfaceModifierContext) ctx;
+			ClassOrInterfaceTypeContext classModifierCtx = (ClassOrInterfaceTypeContext) ctx;
 			
 			analyzeModifier(classModifierCtx);
 		}
@@ -82,8 +82,8 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 		else if(ctx instanceof FieldDeclarationContext) {
 			FieldDeclarationContext fieldCtx = (FieldDeclarationContext) ctx;
 			
-			if(fieldCtx.type() != null) {
-				TypeContext typeCtx = fieldCtx.type();
+			if(fieldCtx.typeType() != null) {
+				TypeTypeContext typeCtx = fieldCtx.typeType();
 				
 				//check if its a primitive type
 				if(ClassAnalyzer.isPrimitiveDeclaration(typeCtx)) {
@@ -134,7 +134,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 		}
 	}
 	
-	public static boolean isPrimitiveDeclaration(TypeContext typeCtx) {
+	public static boolean isPrimitiveDeclaration(TypeTypeContext typeCtx) {
 		if(typeCtx.primitiveType() != null) {
 			List<TerminalNode> lBrackToken = typeCtx.getTokens(MyJAVALexer.LBRACK);
 			List<TerminalNode> rBrackToken = typeCtx.getTokens(MyJAVALexer.RBRACK);
@@ -145,7 +145,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 		return false;
 	}
 	
-	public static boolean isPrimitiveArrayDeclaration(TypeContext typeCtx) {
+	public static boolean isPrimitiveArrayDeclaration(TypeTypeContext typeCtx) {
 		if(typeCtx.primitiveType() != null) {
 			List<TerminalNode> lBrackToken = typeCtx.getTokens(MyJAVALexer.LBRACK);
 			List<TerminalNode> rBrackToken = typeCtx.getTokens(MyJAVALexer.RBRACK);
@@ -156,7 +156,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 		return false;
 	}
 	
-	private void analyzeModifier(ClassOrInterfaceModifierContext ctx) {
+	private void analyzeModifier(ClassOrInterfaceTypeContext ctx) {
 		if(ctx.getTokens(MyJAVALexer.PUBLIC).size() > 0 || ctx.getTokens(MyJAVALexer.PRIVATE).size() > 0
 				|| ctx.getTokens(MyJAVALexer.PROTECTED).size() > 0) {
 			txtWriter.writeMessage(StringUtils.formatDebug("Detected accessor: " +ctx.getText()));

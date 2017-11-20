@@ -31,8 +31,8 @@ public class StatementAnalyzer implements ITextWriter{
 	public void analyze(StatementContext ctx) {
 
 		//print statement
-		if(ctx.PRINT() != null) handlePrintStatement(ctx);
-		else if(ctx.SCAN() != null) handleScanStatement(ctx);
+		if(ctx.printStatement() != null) handlePrintStatement(ctx);
+		else if(ctx.scanStatement() != null) handleScanStatement(ctx);
 		//an expression
 		else if(ctx.statementExpression() != null) {
 			StatementExpressionAnalyzer expressionAnalyzer = new StatementExpressionAnalyzer();
@@ -154,7 +154,7 @@ public class StatementAnalyzer implements ITextWriter{
 	}
 	
 	private void handleScanStatement(StatementContext ctx) {
-		ScanCommand scanCommand = new ScanCommand(ctx.StringLiteral().getText(), ctx.Identifier().getText());
+		ScanCommand scanCommand = new ScanCommand(ctx.expression().getText(), ctx.Identifier().getText()); // not sure if edited right
 		UndeclaredChecker.verifyVarOrConstForScan(ctx.Identifier().getText(), ctx);
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();

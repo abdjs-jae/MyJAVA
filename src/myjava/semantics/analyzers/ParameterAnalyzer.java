@@ -3,6 +3,7 @@ package myjava.semantics.analyzers;
 import myjava.antlrgen.MyJAVAParser.FormalParameterContext;
 import myjava.antlrgen.MyJAVAParser.FormalParameterListContext;
 import myjava.antlrgen.MyJAVAParser.PrimitiveTypeContext;
+import myjava.antlrgen.MyJAVAParser.TypeTypeContext;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
@@ -70,8 +71,8 @@ public class ParameterAnalyzer implements ParseTreeListener {
 	}
 	
 	private void analyzeParameter(FormalParameterContext formalParamCtx) {
-		if(formalParamCtx.type() != null) {
-			TypeContext typeCtx = formalParamCtx.type();
+		if(formalParamCtx.typeType() != null) {
+			TypeTypeContext typeCtx = formalParamCtx.typeType();
 			
 			//return type is a primitive type
 			if(ClassAnalyzer.isPrimitiveDeclaration(typeCtx)) {
@@ -113,7 +114,7 @@ public class ParameterAnalyzer implements ParseTreeListener {
 			MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
 			this.declaredMyJAVAFunction.addParameter(identifierString, myJAVAValue);
 			
-			Console.log(LogType.DEBUG, "Created array parameter for " +this.declaredMyJAVAFunction.getFunctionName());
+			//Console.log(LogType.DEBUG, "Created array parameter for " +this.declaredMyJAVAFunction.getFunctionName());
 		}
 		else if(this.identifiedTokens.containsTokens(PARAMETER_TYPE_KEY, PARAMETER_IDENTIFIER_KEY)) {
 			String typeString = this.identifiedTokens.getToken(PARAMETER_TYPE_KEY);

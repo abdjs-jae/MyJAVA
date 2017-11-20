@@ -1,9 +1,9 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.checkers.MultipleFuncDecChecker;
 import myjava.execution.ExecutionManager;
-import myjava.antlrgen.MyJAVAParser.*;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAFunction.FunctionType;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -76,8 +76,8 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 	
 	private void analyzeMethod(ParserRuleContext ctx) {
 		
-		if(ctx instanceof TypeContext) {
-			TypeContext typeCtx = (TypeContext) ctx;
+		if(ctx instanceof TypeTypeContext) {
+			TypeTypeContext typeCtx = (TypeTypeContext) ctx;
 			
 			//return type is a primitive type
 			if(typeCtx.primitiveType() != null) {
@@ -115,7 +115,7 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 		}
 		//a class identified
 		else {
-			txtWriter.writeMessage(StringUtils.formatDebug("Class identified: " + classOrInterfaceCtx.getText());
+			txtWriter.writeMessage(StringUtils.formatDebug("Class identified: " + classOrInterfaceCtx.getText()));
 		}
 	}
 	
