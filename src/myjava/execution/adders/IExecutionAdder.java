@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package myjava.execution.adders;
 
 import myjava.execution.commands.ICommand;
@@ -9,5 +12,5 @@ import myjava.execution.commands.ICommand;
  *
  */
 public interface IExecutionAdder {
-    public abstract void addCommand(ICommand command);
+	public abstract void addCommand(ICommand command);
 }

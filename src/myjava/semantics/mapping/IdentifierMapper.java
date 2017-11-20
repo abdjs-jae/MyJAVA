@@ -1,8 +1,12 @@
+/**
+ * 
+ */
 package myjava.semantics.mapping;
 
-import myjava.execution.FunctionTracker; 
-import myjava.MyJAVAParser.*;
-import myjava.semantics.representations.MyJAVAValue;
+import myjava.execution.FunctionTracker;
+import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.generatedexp.JavaParser.ParExpressionContext;
+import myjava.semantics.representations.MobiValue;
 
 /**
  * An identifier mapper that delegates the behavior to a class or function mapper depending on the control flow of execution.
@@ -10,41 +14,41 @@ import myjava.semantics.representations.MyJAVAValue;
  *
  */
 public class IdentifierMapper implements IValueMapper{
+	private final static String TAG = "MobiProg_IdentifierMapper";
+	
+	private IValueMapper valueMapper;
+	
+	public IdentifierMapper(String originalExp) {
+		if(FunctionTracker.getInstance().isInsideFunction()) {
+			this.valueMapper = new FunctionIdentifierMapper(originalExp, FunctionTracker.getInstance().getLatestFunction());
+		}
+		else {
+			this.valueMapper = new ClassIdentifierMapper(originalExp);
+		}
+	}
 
-    private IValueMapper valueMapper;
+	@Override
+	public void analyze(ExpressionContext exprCtx) {
+		this.valueMapper.analyze(exprCtx);
+	}
 
-    public IdentifierMapper(String originalExp) {
-        if(FunctionTracker.getFunctionTracker().isInsideFunction()) {
-            valueMapper = new FunctionIdentifierMapper(originalExp, FunctionTracker.getFunctionTracker().getLatestFunction());
-        }
-        else {
-            valueMapper = new ClassIdentifierMapper(originalExp);
-        }
-    }
+	@Override
+	public void analyze(ParExpressionContext exprCtx) {
+		this.valueMapper.analyze(exprCtx);
+	}
 
-    @Override
-    public void analyze(ExpressionContext exprContext) {
-        valueMapper.analyze(exprContext);
-    }
+	@Override
+	public String getOriginalExp() {
+		return this.valueMapper.getOriginalExp();
+	}
 
-    @Override
-    public void analyze(ParExpressionContext exprContext) {
-        valueMapper.analyze(exprContext);
-    }
+	@Override
+	public String getModifiedExp() {
+		return this.valueMapper.getModifiedExp();
+	}
 
-    @Override
-    public String getOriginalExp() {
-        return valueMapper.getOriginalExp();
-    }
-
-    @Override
-    public String getModifiedExp() {
-        return valueMapper.getModifiedExp();
-    }
-
-    @Override
-    public MyJAVAValue getMyJAVAValue() {
-        return null;
-    }
-
+	@Override
+	public MobiValue getMobiValue() {
+		return this.valueMapper.getMobiValue();
+	}
 }

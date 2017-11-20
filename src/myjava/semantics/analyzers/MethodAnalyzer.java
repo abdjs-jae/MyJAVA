@@ -1,24 +1,24 @@
+/**
+ * 
+ */
 package myjava.semantics.analyzers;
 
-import myjava.semantics.symboltable.scopes.LocalScope;
-import myjava.semantics.utils.StringUtils;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ErrorNode; 
-import org.antlr.v4.runtime.tree.ParseTreeListener; 
-import org.antlr.v4.runtime.tree.ParseTreeWalker; 
-import org.antlr.v4.runtime.tree.TerminalNode;
-
-import myjava.errors.checkers.MultipleFunctionChecker;
-import myjava.execution.ExecutionManager; 
-import myjava.MyJAVAParser.*;
-import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.representations.MyJAVAFunction.FunctionType;
-import myjava.semantics.symboltable.scopes.ClassScope; 
-import myjava.semantics.symboltable.scopes.LocalScopeCreator; 
-import myjava.semantics.utils.IdentifiedTokens; 
+import myjava.error.checkers.MultipleFuncDecChecker;
+import myjava.execution.ExecutionManager;
+import myjava.generatedexp.JavaParser.*;
+import myjava.ide.console.Console;
+import myjava.ide.console.LogItemView.LogType;
+import myjava.semantics.representations.MobiFunction;
+import myjava.semantics.representations.MobiFunction.FunctionType;
+import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.utils.IdentifiedTokens;
 import myjava.semantics.utils.RecognizedKeywords;
-
-import static myjava.ITextWriter.txtWriter;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes method declarations and properly stores them in the symbol table
@@ -26,112 +26,131 @@ import static myjava.ITextWriter.txtWriter;
  *
  */
 public class MethodAnalyzer implements ParseTreeListener {
+	private final static String TAG = "MobiProg_MethodAnalyzer";
+	
+	private ClassScope declaredClassScope;
+	private IdentifiedTokens identifiedTokens;
+	private MobiFunction declaredMobiFunction;
+	
+	public MethodAnalyzer(IdentifiedTokens identifiedTokens, ClassScope declaredClassScope) {
+		this.identifiedTokens = identifiedTokens;
+		this.declaredClassScope = declaredClassScope;
+		this.declaredMobiFunction = new MobiFunction();
+	}
+	
+	public void analyze(MethodDeclarationContext ctx) {
+		ExecutionManager.getInstance().openFunctionExecution(this.declaredMobiFunction);
+		
+		ParseTreeWalker treeWalker = new ParseTreeWalker();
+		treeWalker.walk(this, ctx);
+	}
+	
+	@Override
+	public void visitTerminal(TerminalNode node) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    private LocalScope declaredLocalScope;
-    private IdentifiedTokens identifiedTokens;
-    private MyJAVAFunction declaredMyJAVAFunction;
+	@Override
+	public void visitErrorNode(ErrorNode node) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public MethodAnalyzer(IdentifiedTokens identifiedTokens, LocalScope declaredLocalScope) {
-        this.identifiedTokens = identifiedTokens;
-        this.declaredLocalScope = declaredLocalScope;
-        this.declaredMyJAVAFunction = new MyJAVAFunction();
-    }
+	@Override
+	public void enterEveryRule(ParserRuleContext ctx) {
+		if(ctx instanceof MethodDeclarationContext) {
+			MethodDeclarationContext methodDecCtx = (MethodDeclarationContext) ctx;
+			MultipleFuncDecChecker funcDecChecker = new MultipleFuncDecChecker(methodDecCtx);
+			funcDecChecker.verify();
+			
+			this.analyzeIdentifier(methodDecCtx.Identifier()); //get the function identifier
+		}
+		else {
+			this.analyzeMethod(ctx);
+		}
+		
+	}
 
-    public void analyze(MethodDeclarationContext context) {
-        ExecutionManager.getExecutionManager().openFunctionExecution(this.declaredMyJAVAFunction);
-
-        ParseTreeWalker treeWalker = new ParseTreeWalker();
-        treeWalker.walk(this, context);
-    }
-
-    @Override
-    public void visitTerminal(TerminalNode node) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode node) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void enterEveryRule(ParserRuleContext context) {
-        if(context instanceof MethodDeclarationContext) {
-            MethodDeclarationContext methodDecContext = (MethodDeclarationContext) context;
-            MultipleFunctionChecker funcDecChecker = new MultipleFunctionChecker(methodDecContext);
-            funcDecChecker.check();
-
-            this.analyzeIdentifier(methodDecContext.Identifier()); //get the function identifier
-        }
-        else {
-            this.analyzeMethod(context);
-        }
-
-    }
-
-    @Override
-    public void exitEveryRule(ParserRuleContext context) {
-        if(context instanceof MethodDeclarationContext) {
-            ExecutionManager.getExecutionManager().closeFunctionExecution();
-        }
-    }
-
-    private void analyzeMethod(ParserRuleContext context) {
-
-        if(context instanceof TypeTypeContext) {
-            TypeTypeContext typeContext = (TypeTypeContext) context;
-
-            //return type is a primitive type
-            if(typeContext.primitiveType() != null) {
-                PrimitiveTypeContext primitiveTypeContext = typeContext.primitiveType();
-                this.declaredMyJAVAFunction.setReturnType(MyJAVAFunction.identifyFunctionType(primitiveTypeContext.getText()));
-            }
-            //return type is a string type
-            else {
-                ClassOrInterfaceTypeContext classOrInterfaceTypeContext = typeContext.classOrInterfaceType();
-                if(classOrInterfaceTypeContext.getText().contains(RecognizedKeywords.PRIMITIVE_TYPE_STRING)) {
-                    this.declaredMyJAVAFunction.setReturnType(FunctionType.STRING_TYPE);
-                }
-            }
-        }
-
-        else if(context instanceof FormalParametersContext) {
-            FormalParametersContext formalParamsContext = (FormalParametersContext) context;
-            this.analyzeParameters(formalParamsContext);
-            this.storeMyJAVAFunction();
-        }
-
-        else if(context instanceof MethodBodyContext) {
-
-            BlockContext blockContext = ((MethodBodyContext) context).block();
-
-            BlockAnalyzer blockAnalyzer = new BlockAnalyzer();
-            this.declaredMyJAVAFunction.setParentLocalScope(LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope());
-            blockAnalyzer.analyze(blockContext);
-
-        }
-
-    }
-
-    private void analyzeIdentifier(TerminalNode identifier) {
-        this.declaredMyJAVAFunction.setFunctionName(identifier.getText());
-    }
-
-    private void analyzeParameters(FormalParametersContext formalParamsContext) {
-        if(formalParamsContext.formalParameterList() != null) {
-            ParameterAnalyzer parameterAnalyzer = new ParameterAnalyzer(this.declaredMyJAVAFunction);
-            parameterAnalyzer.analyze(formalParamsContext.formalParameterList());
-        }
-    }
-
-    /*
-     * Stores the created function in its corresponding class scope
-     */
-    private void storeMyJAVAFunction() {
-        declaredLocalScope.addMyJAVAFunction(declaredMyJAVAFunction.getFunctionName(), declaredMyJAVAFunction);
-        this.identifiedTokens.clearTokens(); //clear tokens for reuse
-    }
+	@Override
+	public void exitEveryRule(ParserRuleContext ctx) {
+		if(ctx instanceof MethodDeclarationContext) {
+			ExecutionManager.getInstance().closeFunctionExecution();
+		}
+	}
+	
+	private void analyzeMethod(ParserRuleContext ctx) {
+		
+		if(ctx instanceof TypeContext) {
+			TypeContext typeCtx = (TypeContext) ctx;
+			
+			//return type is a primitive type
+			if(typeCtx.primitiveType() != null) {
+				PrimitiveTypeContext primitiveTypeCtx = typeCtx.primitiveType();
+				this.declaredMobiFunction.setReturnType(MobiFunction.identifyFunctionType(primitiveTypeCtx.getText()));
+			}
+			//return type is a string or a class type
+			else {
+				this.analyzeClassOrInterfaceType(typeCtx.classOrInterfaceType());
+			}
+		}
+		
+		else if(ctx instanceof FormalParametersContext) {
+			FormalParametersContext formalParamsCtx = (FormalParametersContext) ctx;
+			this.analyzeParameters(formalParamsCtx);
+			this.storeMobiFunction();
+		}
+		
+		else if(ctx instanceof MethodBodyContext) {
+			
+			BlockContext blockCtx = ((MethodBodyContext) ctx).block();
+			
+			BlockAnalyzer blockAnalyzer = new BlockAnalyzer();
+			this.declaredMobiFunction.setParentLocalScope(LocalScopeCreator.getInstance().getActiveLocalScope());
+			blockAnalyzer.analyze(blockCtx);
+			
+		}
+		
+	}
+	
+	private void analyzeClassOrInterfaceType(ClassOrInterfaceTypeContext classOrInterfaceCtx) {
+		//a string identified
+		if(classOrInterfaceCtx.getText().contains(RecognizedKeywords.PRIMITIVE_TYPE_STRING)) {
+			this.declaredMobiFunction.setReturnType(FunctionType.STRING_TYPE);
+		}
+		//a class identified
+		else {
+			Console.log(LogType.DEBUG, "Class identified: " + classOrInterfaceCtx.getText());
+		}
+	}
+	
+	private void analyzeIdentifier(TerminalNode identifier) {
+		this.declaredMobiFunction.setFunctionName(identifier.getText());
+	}
+	
+	private void analyzeParameters(FormalParametersContext formalParamsCtx) {
+		if(formalParamsCtx.formalParameterList() != null) {
+			ParameterAnalyzer parameterAnalyzer = new ParameterAnalyzer(this.declaredMobiFunction);
+			parameterAnalyzer.analyze(formalParamsCtx.formalParameterList());
+		}
+	}
+	
+	/*
+	 * Stores the created function in its corresponding class scope
+	 */
+	private void storeMobiFunction() {
+		if(this.identifiedTokens.containsTokens(ClassAnalyzer.ACCESS_CONTROL_KEY)) {
+			String accessToken = this.identifiedTokens.getToken(ClassAnalyzer.ACCESS_CONTROL_KEY);
+			
+			if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, accessToken)) {
+				this.declaredClassScope.addPrivateMobiFunction(this.declaredMobiFunction.getFunctionName(), this.declaredMobiFunction);
+			}
+			else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PUBLIC, accessToken)) {
+				this.declaredClassScope.addPublicMobiFunction(this.declaredMobiFunction.getFunctionName(), this.declaredMobiFunction);
+			}
+			
+			this.identifiedTokens.clearTokens(); //clear tokens for reuse
+		}
+	}
 
 }

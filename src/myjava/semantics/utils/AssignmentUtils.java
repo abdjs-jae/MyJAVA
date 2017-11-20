@@ -1,8 +1,14 @@
+/**
+ * 
+ */
 package myjava.semantics.utils;
 
+import myjava.ide.console.Console;
+import myjava.ide.console.LogItemView.LogType;
+import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MobiValue.PrimitiveType;
+
 import java.math.BigDecimal;
-import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 
 /**
  * Assignment utilities are put here.
@@ -11,42 +17,42 @@ import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
  */
 public class AssignmentUtils {
 
-    /*
-     * Assigns an appropriate value depending on the primitive type. Since expression class returns a double value, we attempt
-     * to properly cast it. All expression commands accept INT, LONG, BYTE, SHORT, FLOAT and DOUBLE.
-     */
-    public static void assignAppropriateValue(MyJAVAValue myJAVAValue, BigDecimal evaluationValue) {
-        if(myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
-            myJAVAValue.setValue(Integer.toString(evaluationValue.intValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.LONG) {
-            myJAVAValue.setValue(Long.toString(evaluationValue.longValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BYTE) {
-            myJAVAValue.setValue(Byte.toString(evaluationValue.byteValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.SHORT) {
-            myJAVAValue.setValue(Short.toString(evaluationValue.shortValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT) {
-            myJAVAValue.setValue(Float.toString(evaluationValue.floatValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
-            myJAVAValue.setValue(Double.toString(evaluationValue.doubleValue()));
-        }
-        else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
-            int result = evaluationValue.intValue();
-
-            if(result == 1) {
-                myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_TRUE);
-            }
-            else {
-                myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_FALSE);
-            }
-        }
-        else {
-           //Console.log(LogType.DEBUG, "MyJAVAValue: DID NOT FIND APPROPRIATE TYPE!!");
-        }
-    }
-
+	/*
+	 * Assigns an appropriate value depending on the primitive type. Since expression class returns a double value, we attempt
+	 * to properly cast it. All expression commands accept INT, LONG, BYTE, SHORT, FLOAT and DOUBLE.
+	 */
+	public static void assignAppropriateValue(MobiValue mobiValue, BigDecimal evaluationValue) {
+		if(mobiValue.getPrimitiveType() == PrimitiveType.INT) {
+			mobiValue.setValue(Integer.toString(evaluationValue.intValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.LONG) {
+			mobiValue.setValue(Long.toString(evaluationValue.longValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.BYTE) {
+			mobiValue.setValue(Byte.toString(evaluationValue.byteValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.SHORT) {
+			mobiValue.setValue(Short.toString(evaluationValue.shortValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.FLOAT) {
+			mobiValue.setValue(Float.toString(evaluationValue.floatValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
+			mobiValue.setValue(Double.toString(evaluationValue.doubleValue()));
+		}
+		else if(mobiValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
+			int result = evaluationValue.intValue();
+			
+			if(result == 1) {
+				mobiValue.setValue(RecognizedKeywords.BOOLEAN_TRUE);
+			}
+			else {
+				mobiValue.setValue(RecognizedKeywords.BOOLEAN_FALSE);
+			}
+		}
+		else {
+			Console.log(LogType.DEBUG, "MobiValue: DID NOT FIND APPROPRIATE TYPE!!");
+		}
+	}
+	
 }

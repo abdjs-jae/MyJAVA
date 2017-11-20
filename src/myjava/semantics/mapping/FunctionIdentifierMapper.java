@@ -1,16 +1,23 @@
+/**
+ * 
+ */
 package myjava.semantics.mapping;
 
-import org.antlr.v4.runtime.ParserRuleContext; 
-import org.antlr.v4.runtime.tree.ErrorNode; 
-import org.antlr.v4.runtime.tree.ParseTreeListener; 
-import org.antlr.v4.runtime.tree.ParseTreeWalker; 
+import myjava.error.ParserHandler;
+import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.generatedexp.JavaParser.ParExpressionContext;
+import myjava.generatedexp.JavaParser.PrimaryContext;
+import myjava.semantics.representations.MobiFunction;
+import myjava.semantics.representations.MobiValue;
+import myjava.semantics.symboltable.SymbolTableManager;
+import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.symboltable.scopes.LocalScope;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
-
-import myjava.MyJAVAParser.*;
-import myjava.semantics.representations.MyJAVAFunction;
-import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.scoping.LocalScope;
-import myjava.semantics.scoping.LocalScopeCreator;
 
 /**
  * Maps an identifier to a given value found in the function level. First, we search the mapped parameters if a variable already exists.
@@ -19,92 +26,94 @@ import myjava.semantics.scoping.LocalScopeCreator;
  *
  */
 public class FunctionIdentifierMapper implements ParseTreeListener, IValueMapper {
+	private final static String TAG = "MobiProg_FunctionIdentifierMapper";
+	
+	private String originalExp = null;
+	private String modifiedExp = null;
+	
+	private MobiFunction assignedFunction;
+	private MobiValue mobiValue;
+	private LocalScope functionLocalScope;
+	
+	public FunctionIdentifierMapper(String originalExp, MobiFunction assignedFunction) {
+		this.originalExp = originalExp;
+		this.modifiedExp = originalExp;
+		this.assignedFunction = assignedFunction;
+		this.functionLocalScope = assignedFunction.getParentLocalScope();
+	}
+	
+	public void analyze(ExpressionContext exprCtx) {
+		ParseTreeWalker treeWalker = new ParseTreeWalker();
+		treeWalker.walk(this, exprCtx);
+	}
+	
+	public void analyze(ParExpressionContext exprCtx) {
+		ParseTreeWalker treeWalker = new ParseTreeWalker();
+		treeWalker.walk(this, exprCtx);
+	}
 
-    private String originalExp = null;
-    private String modifiedExp = null;
+	@Override
+	public void visitTerminal(TerminalNode node) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    private MyJAVAFunction assignedFunction;
-    private MyJAVAValue myJAVAValue;
-    private LocalScope functionLocalScope;
+	@Override
+	public void visitErrorNode(ErrorNode node) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public FunctionIdentifierMapper(String originalExp, MyJAVAFunction assignedFunction) {
-        this.originalExp = originalExp;
-        this.modifiedExp = originalExp;
-        this.assignedFunction = assignedFunction;
-        this.functionLocalScope = assignedFunction.getParentLocalScope();
-    }
+	@Override
+	public void enterEveryRule(ParserRuleContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public void analyze(ExpressionContext exprContext) {
-        ParseTreeWalker treeWalker = new ParseTreeWalker();
-        treeWalker.walk(this, exprContext);
-    }
-
-    public void analyze(ParExpressionContext exprContext) {
-        ParseTreeWalker treeWalker = new ParseTreeWalker();
-        treeWalker.walk(this, exprContext);
-    }
-
-    @Override
-    public void visitTerminal(TerminalNode node) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode node) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void enterEveryRule(ParserRuleContext context) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void exitEveryRule(ParserRuleContext context) {
-        if(context instanceof PrimaryContext) {
-            PrimaryContext primaryContext = (PrimaryContext) context;
-
-            if(primaryContext.Identifier() != null) {
-                String variableKey = primaryContext.getText();
-                searchVariable(variableKey);
-            }
-        }
-    }
-
-    private void searchVariable(String identifierString) {
-        if(assignedFunction.hasParameter(identifierString)) {
-            modifiedExp = modifiedExp.replace(identifierString, assignedFunction.getParameter(identifierString).getValue().toString());
-        }
-        else {
-            myJAVAValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, functionLocalScope);
-
-            if(myJAVAValue != null) {
-                modifiedExp = modifiedExp.replace(identifierString, myJAVAValue.getValue().toString());
-            }
-            else {
-                LocalScope localScope = LocalScopeCreator.getLocalScopeCreator().getActiveLocalScope();
-                myJAVAValue = localScope.searchVariableIncludingLocal(identifierString);
-                
-                modifiedExp = modifiedExp.replace(identifierString, myJAVAValue.getValue().toString());
-            }
-        }
-    }
-
-    @Override
-    public String getOriginalExp() {
-        return originalExp;
-    }
-
-    @Override
-    public String getModifiedExp() {
-        return modifiedExp;
-    }
-
-    @Override
-    public MyJAVAValue getMyJAVAValue() {
-        return myJAVAValue;
-    }
+	@Override
+	public void exitEveryRule(ParserRuleContext ctx) {
+		if(ctx instanceof PrimaryContext) {
+			PrimaryContext primaryCtx = (PrimaryContext) ctx;
+			
+			if(primaryCtx.Identifier() != null) {
+				String variableKey = primaryCtx.getText();
+				this.searchVariable(variableKey);
+			}
+		}
+	}
+	
+	private void searchVariable(String identifierString) {
+		if(this.assignedFunction.hasParameter(identifierString)) {
+			this.modifiedExp = this.modifiedExp.replace(identifierString, this.assignedFunction.getParameter(identifierString).getValue().toString());
+		}
+		else {
+			this.mobiValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, this.functionLocalScope);
+			
+			if(this.mobiValue != null) {
+				this.modifiedExp = this.modifiedExp.replace(identifierString, this.mobiValue.getValue().toString());
+			}
+			else {
+				ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
+				this.mobiValue = classScope.searchVariableIncludingLocal(identifierString);
+				
+				//Console.log("Variable in global scope: " +this.mobiValue.getValue());
+				this.modifiedExp = this.modifiedExp.replace(identifierString, this.mobiValue.getValue().toString());
+			}
+		}
+	}
+	
+	@Override
+	public MobiValue getMobiValue() {
+		return this.mobiValue;
+	}
+	
+	@Override
+	public String getOriginalExp() {
+		return this.originalExp;
+	}
+	
+	@Override
+	public String getModifiedExp() {
+		return this.modifiedExp;
+	}
 }

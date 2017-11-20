@@ -1,7 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4382db5-65e8-4516-8257-c2ca7476564c" name="Default" comment="" />
+    <list default="true" id="b4382db5-65e8-4516-8257-c2ca7476564c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/ITextWriter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVA.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVABaseVisitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVALexer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVALexer.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MyJAVAVisitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/ErrorListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/MyJAVAErrorStrategy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/TXTReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/TXTWriter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/ConstChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/ConstantChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/IChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/MultipleFunctionChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/MultipleVariableChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/ParameterMismatchChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/TypeChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/errors/checkers/UndeclaredChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/basic/IntDecCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/basic/PrintCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/basic/ReturnCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/ArrayInitializeCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/AssignmentCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/EvaluationCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/MappingCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/ICommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ide/console/Console.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ide/console/LogItemView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/io/ClassFileLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/io/ClassFileSaver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/io/ClassListUpdater.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/symboltable/scopes/IScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/adapters/ExpandableListAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/fragments/ConsoleFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/fragments/IDEToolsFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/fragments/NewFileDialogFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/fragments/ScanDialogFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/fragments/TextEditorFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/handlers/DrawerUIHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/ui/handlers/ScanUIHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/ApplicationCore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/SpaceTokenizer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/notifications/NotificationCenter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/notifications/NotificationListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/notifications/Notifications.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/utils/notifications/Parameters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/SemanticUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/StatementControlOverseer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/ArrayAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/BlockAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/ForControlAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/FunctionCallVerifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/LocalVariableAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/MainAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/MethodAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/ParameterAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/StatementAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzing/StatementExpressionAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAArray.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValueSearcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/scoping/ClassScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/scoping/IScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScopeCreator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/searcher/VariableSearcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/StringHelper.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/MainActivity.java" afterPath="$PROJECT_DIR$/src/myjava/MainActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/BuildChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/BuildChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/ErrorRepository.java" afterPath="$PROJECT_DIR$/src/myjava/error/ErrorRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/ParserHandler.java" afterPath="$PROJECT_DIR$/src/myjava/error/ParserHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/ClassNameChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/ClassNameChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/ConstChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/ConstChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/IErrorChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/IErrorChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/MultipleFuncDecChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/MultipleFuncDecChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/MultipleVarDecChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/MultipleVarDecChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/ParameterMismatchChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/ParameterMismatchChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/ThisKeywordChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/ThisKeywordChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/TypeChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/TypeChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/builder/errorcheckers/UndeclaredChecker.java" afterPath="$PROJECT_DIR$/src/myjava/error/checkers/UndeclaredChecker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/ExecutionManager.java" afterPath="$PROJECT_DIR$/src/myjava/execution/ExecutionManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/ExecutionMonitor.java" afterPath="$PROJECT_DIR$/src/myjava/execution/ExecutionMonitor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/ExecutionThread.java" afterPath="$PROJECT_DIR$/src/myjava/execution/ExecutionThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/FunctionTracker.java" afterPath="$PROJECT_DIR$/src/myjava/execution/FunctionTracker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/adders/FunctionExecutionAdder.java" afterPath="$PROJECT_DIR$/src/myjava/execution/adders/FunctionExecutionAdder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/adders/IExecutionAdder.java" afterPath="$PROJECT_DIR$/src/myjava/execution/adders/IExecutionAdder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/adders/MainExecutionAdder.java" afterPath="$PROJECT_DIR$/src/myjava/execution/adders/MainExecutionAdder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/DoWhileCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/DoWhileCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/ForCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/IConditionalCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IConditionalCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/IControlledCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/IfCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IfCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/controlled/WhileCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/WhileCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/evaluation/ArrayInitializeCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/ArrayInitializeCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/evaluation/AssignmentCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/AssignmentCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/evaluation/EvaluationCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/EvaluationCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/evaluation/MappingCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/MappingCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/simple/FunctionCallCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/simple/FunctionCallCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/simple/IncDecCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/simple/IncDecCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/simple/PrintCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/simple/PrintCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/simple/ReturnCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/simple/ReturnCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/simple/ScanCommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/simple/ScanCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/execution/commands/utils/ConditionEvaluator.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/utils/ConditionEvaluator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/generatedexp/JavaBaseListener.java" afterPath="$PROJECT_DIR$/src/myjava/generatedexp/JavaBaseListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/generatedexp/JavaLexer.java" afterPath="$PROJECT_DIR$/src/myjava/generatedexp/JavaLexer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/generatedexp/JavaListener.java" afterPath="$PROJECT_DIR$/src/myjava/generatedexp/JavaListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/generatedexp/JavaParser.java" afterPath="$PROJECT_DIR$/src/myjava/generatedexp/JavaParser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/generatedexp/JavaReservedWords.java" afterPath="$PROJECT_DIR$/src/myjava/generatedexp/JavaReservedWords.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/ArrayAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ArrayAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/BlockAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/BlockAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/ClassAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ClassAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/FieldAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/FieldAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/ForControlAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ForControlAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/FunctionCallVerifier.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/FunctionCallVerifier.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/LocalVariableAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalVariableAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/MainAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/MethodAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/MethodAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/ParameterAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ParameterAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/StatementAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/analyzers/StatementExpressionAnalyzer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementExpressionAnalyzer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/implementors/JavaBaseImplementor.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/mapping/ClassIdentifierMapper.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/mapping/ClassIdentifierMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/mapping/FunctionIdentifierMapper.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/mapping/FunctionIdentifierMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/mapping/IValueMapper.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/mapping/IValueMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/mapping/IdentifierMapper.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/mapping/IdentifierMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/representations/MobiArray.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/representations/MobiArray.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/representations/MobiFunction.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/representations/MobiFunction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/representations/MobiValue.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/representations/MobiValue.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/representations/MobiValueSearcher.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/representations/MobiValueSearcher.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/searching/VariableSearcher.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/searching/VariableSearcher.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/statements/StatementControlOverseer.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/statements/StatementControlOverseer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/symboltable/SymbolTableManager.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/symboltable/SymbolTableManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/symboltable/scopes/ClassScope.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/ClassScope.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/symboltable/scopes/LocalScope.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScope.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/symboltable/scopes/LocalScopeCreator.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScopeCreator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/utils/AssignmentUtils.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/utils/AssignmentUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/utils/Expression.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/utils/Expression.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/utils/IdentifiedTokens.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/utils/IdentifiedTokens.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/utils/RecognizedKeywords.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/utils/RecognizedKeywords.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/semantics/utils/StringUtils.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/utils/StringUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/myjava/mobiprog/templates/CodeTemplates.java" afterPath="$PROJECT_DIR$/src/myjava/templates/CodeTemplates.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI.java" afterPath="$PROJECT_DIR$/src/UI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/ICommand.java" afterPath="$PROJECT_DIR$/src/myjava/execution/commands/ICommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/IScope.java" afterPath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/IScope.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -10,42 +163,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ScanCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java">
+    <leaf>
+      <file leaf-file-name="JavaBaseImplementor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FunctionCallCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-              <folding>
-                <marker date="1511176295183" expanded="true" signature="843:910" ph="/**...*/" />
-                <marker date="1511176295183" expanded="true" signature="1234:1518" ph="{...}" />
-                <marker date="1511176295183" expanded="true" signature="1646:1722" ph="{...}" />
-                <marker date="1511176295183" expanded="true" signature="1758:1980" ph="{...}" />
-                <marker date="1511176295183" expanded="true" signature="2018:2587" ph="{...}" />
-                <marker date="1511176295183" expanded="true" signature="2672:3760" ph="{...}" />
-                <marker date="1511176295183" expanded="false" signature="3801:3812" ph=" { " />
-                <marker date="1511176295183" expanded="false" signature="3856:3862" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntDecCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/IntDecCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1425">
-              <caret line="65" column="60" lean-forward="false" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
+            <state relative-caret-position="45">
+              <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,75 +178,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ErrorListener.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/myjava/error/ErrorListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/myjava/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3237">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="218">
+              <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/ConstChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <marker date="1511176295188" expanded="true" signature="855:913" ph="/**...*/" />
-                <marker date="1511176295188" expanded="true" signature="1533:1738" ph="{...}" />
-                <marker date="1511176295188" expanded="true" signature="1866:2809" ph="{...}" />
-                <marker date="1511176295188" expanded="true" signature="2852:3107" ph="{...}" />
-                <marker date="1511176295188" expanded="true" signature="3146:3376" ph="{...}" />
-                <marker date="1511176295188" expanded="false" signature="3549:3560" ph=" { " />
-                <marker date="1511176295188" expanded="false" signature="3595:3601" ph=" }" />
-                <marker date="1511176295188" expanded="true" signature="3806:3977" ph="{...}" />
-                <marker date="1511176295188" expanded="false" signature="4011:4022" ph=" { " />
-                <marker date="1511176295188" expanded="false" signature="4058:4064" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyJAVABaseListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2200">
-              <caret line="90" column="37" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyJAVA.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MyJAVA.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainAnalyzer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,18 +226,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>block</find>
-      <find>print</find>
-      <find>parExpress</find>
-      <find>parEXpres</find>
-      <find>primit</find>
-      <find>parExpression</find>
-      <find>enum</find>
-      <find>interface</find>
-      <find>constDe</find>
-      <find>String</find>
-      <find>forControl</find>
-      <find>recognition error</find>
       <find>token recognition error</find>
       <find>parEx</find>
       <find>mobi</find>
@@ -166,8 +242,20 @@
       <find>Expressioncontext</find>
       <find>array</find>
       <find>ExecutionManager</find>
-      <find>enter</find>
-      <find>method</find>
+      <find>typeType</find>
+      <find>final</find>
+      <find>ClassScope</find>
+      <find>ClassAnalyzer</find>
+      <find>variableModifier</find>
+      <find>o</find>
+      <find>obi</find>
+      <find>c</find>
+      <find>com</find>
+      <find>com.</find>
+      <find>com.n</find>
+      <find>com.neildg</find>
+      <find>com.neildg.mo</find>
+      <find>com.neildg.mobiprog</find>
     </findStrings>
     <replaceStrings>
       <replace>myJAVA</replace>
@@ -176,7 +264,14 @@
       <replace>txtWriter.writeMessage(StringUtils.formatError(&quot;MyJAVAValue: &quot; +</replace>
       <replace>txtWriter.writeMessage(StringUtils.formatError(</replace>
       <replace>executionManager</replace>
+      <replace>LocalScope</replace>
+      <replace>yJAVA</replace>
+      <replace>LocalAnalyzer</replace>
+      <replace>myjava</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/mobiprog</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -189,29 +284,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/errors/MyJAVAErrorStrategy.java" />
-        <option value="$PROJECT_DIR$/src/errors/ErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/utils/StringUtils.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/IScope.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/ICommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/ITextWriter.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/ClassScope.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScopeCreator.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScope.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValue.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAArray.java" />
-        <option value="$PROJECT_DIR$/src/myjava/errors/TXTReader.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/ExecutionThread.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/PrintCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/ICommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/FunctionTracker.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValueSearcher.java" />
-        <option value="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java" />
-        <option value="$PROJECT_DIR$/src/myjava/errors/TXTWriter.java" />
-        <option value="$PROJECT_DIR$/src/myjava/errors/ErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/adders/IExecutionAdder.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/adders/MainExecutionAdder.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/adders/FunctionExecutionAdder.java" />
         <option value="$PROJECT_DIR$/src/myjava/errors/TypeChecker.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/EvaluationCommand.java" />
@@ -224,22 +296,45 @@
         <option value="$PROJECT_DIR$/src/myjava/execution/evaluate/ArrayInitializeCommand.java" />
         <option value="$PROJECT_DIR$/.idea/misc.xml" />
         <option value="$PROJECT_DIR$/src/myjava/semantics/mapping/ClassIdentifierMapper.java" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java" />
         <option value="$PROJECT_DIR$/src/MyJAVA.g4" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/IntDecCommand.java" />
         <option value="$PROJECT_DIR$/src/myjava/errors/checkers/TypeChecker.java" />
+        <option value="$PROJECT_DIR$/src/myjava/errors/checkers/UndeclaredChecker.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/ReturnCommand.java" />
+        <option value="$PROJECT_DIR$/src/myjava/MyJAVAParser.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/PrintCommand.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/ArrayInitializeCommand.java" />
         <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/EvaluationCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/AssignmentCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/MappingCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/MyJAVAParser.java" />
-        <option value="$PROJECT_DIR$/src/myjava/errors/checkers/UndeclaredChecker.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/IntDecCommand.java" />
-        <option value="$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java" />
         <option value="$PROJECT_DIR$/src/myjava/errors/checkers/ConstChecker.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzing/MainAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzing/LocalVariableAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/MappingCommand.java" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java" />
+        <option value="$PROJECT_DIR$/src/myjava/execution/commands/evaluate/AssignmentCommand.java" />
+        <option value="$PROJECT_DIR$/src/myjava/errors/ErrorListener.java" />
+        <option value="$PROJECT_DIR$/log.txt" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/ArrayAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/BlockAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/FunctionCallVerifier.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/ParameterAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalVariableAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/SemanticUtils.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/MethodAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScopeCreator.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScope.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/FieldAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/mobiprog/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/mobiprog/builder/BuildChecker.java" />
+        <option value="$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java" />
         <option value="$PROJECT_DIR$/src/UI.java" />
+        <option value="$PROJECT_DIR$/src/myjava/builder/ErrorListener.java" />
+        <option value="$PROJECT_DIR$/src/myjava/error/ErrorListener.java" />
+        <option value="$PROJECT_DIR$/src/myjava/antlrgen/ITextWriter.java" />
       </list>
     </option>
   </component>
@@ -249,10 +344,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="798" />
+    <option name="height" value="804" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -272,24 +367,94 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myjava" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myJAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myjava" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlrgen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,15 +471,18 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JavaRice" />
     <property name="SearchEverywhereHistoryKey" value="complexExpr&#9;PSI&#9;JAVA://myjava.execution.commands.basic.PrintCommand#complexExpr" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/uicomp/autocomplete" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/myjava/antlrgen" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/uicomp" />
       <recent name="$PROJECT_DIR$/src/myjava" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/myjava/builder" />
+      <recent name="$PROJECT_DIR$/src/uicomp/autocomplete" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -330,7 +498,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.UI">
-    <configuration name="UI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="UI" />
       <option name="VM_PARAMETERS" />
@@ -343,150 +511,14 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="MyJAVA" />
       <envs />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
+      <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
+      <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -541,6 +573,29 @@
         <option name="SUPPORT_LIB_ENABLED" value="true" />
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -624,6 +679,55 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -638,6 +742,36 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -702,9 +836,54 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
       <envs />
       <method />
     </configuration>
@@ -721,6 +900,9 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.UI" />
+    </list>
     <recent_temporary>
       <list size="1">
         <item index="0" class="java.lang.String" itemvalue="Application.UI" />
@@ -743,57 +925,65 @@
       <workItem from="1507280592646" duration="1702000" />
       <workItem from="1508850629778" duration="17475000" />
       <workItem from="1510654380056" duration="71564000" />
-      <workItem from="1511027499749" duration="5671000" />
-      <workItem from="1511077025085" duration="1954000" />
-      <workItem from="1511097397471" duration="5540000" />
-      <workItem from="1511175449532" duration="2214000" />
+      <workItem from="1511027499749" duration="3612000" />
+      <workItem from="1511157002418" duration="10391000" />
+      <workItem from="1511180463648" duration="953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132919000" />
+    <option name="totallyTimeSpent" value="132496000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="804" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32344633" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994253" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16972478" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2453125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32205883" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="24" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994253" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1686217" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25250357" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32507288" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3233945" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761088" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32205883" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -807,379 +997,415 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/TypeChecker.java" />
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uicomp/autocomplete/CompletionProvider.java" />
-    <entry file="file://$PROJECT_DIR$/src/uicomp/autocomplete/AutoCompletion.java" />
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="77" column="145" lean-forward="false" selection-start-line="77" selection-start-column="145" selection-end-line="77" selection-end-column="145" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/MyJAVABaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScopeCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/ICommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/utils/ConditionEvaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/TXTReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/TXTWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/mapping/ClassIdentifierMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-550">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/ErrorListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <marker date="1511022462040" expanded="true" signature="1724:1791" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/MyJAVAErrorStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="33" lean-forward="false" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/IChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/PrintCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="95" column="9" lean-forward="false" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/ExecutionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/DoWhileCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IConditionalCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
+        <state relative-caret-position="75">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/EvaluationCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1106#1107#0" expanded="false" />
+            <element signature="e#1158#1159#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="120">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/ArrayInitializeCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IfCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/WhileCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/ConstChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-894">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/ArrayInitializeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/AssignmentCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/MappingCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/EvaluationCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/MyJAVAParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131700">
-          <caret line="5637" column="14" lean-forward="false" selection-start-line="5637" selection-start-column="14" selection-end-line="5637" selection-end-column="14" />
+        <state relative-caret-position="137">
+          <caret line="47" column="15" lean-forward="false" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/ReturnCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzing/MainAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/adders/FunctionExecutionAdder.java">
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzing/LocalVariableAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/adders/MainExecutionAdder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/UndeclaredChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="59" lean-forward="false" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/TypeChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/ParameterMismatchChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <marker date="1511176295183" expanded="true" signature="843:910" ph="/**...*/" />
-            <marker date="1511176295183" expanded="true" signature="1234:1518" ph="{...}" />
-            <marker date="1511176295183" expanded="true" signature="1646:1722" ph="{...}" />
-            <marker date="1511176295183" expanded="true" signature="1758:1980" ph="{...}" />
-            <marker date="1511176295183" expanded="true" signature="2018:2587" ph="{...}" />
-            <marker date="1511176295183" expanded="true" signature="2672:3760" ph="{...}" />
-            <marker date="1511176295183" expanded="false" signature="3801:3812" ph=" { " />
-            <marker date="1511176295183" expanded="false" signature="3856:3862" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/IntDecCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="65" column="60" lean-forward="false" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
-          <caret line="90" column="37" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyJAVA.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+        <state relative-caret-position="-330">
+          <caret line="82" column="44" lean-forward="true" selection-start-line="82" selection-start-column="44" selection-end-line="82" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="145">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/FunctionCallCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/AssignmentCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScopeCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1022">
+          <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/FunctionCallVerifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/BlockAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/ParameterAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/evaluate/MappingCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
-            <marker date="1511176295188" expanded="true" signature="855:913" ph="/**...*/" />
-            <marker date="1511176295188" expanded="true" signature="1533:1738" ph="{...}" />
-            <marker date="1511176295188" expanded="true" signature="1866:2809" ph="{...}" />
-            <marker date="1511176295188" expanded="true" signature="2852:3107" ph="{...}" />
-            <marker date="1511176295188" expanded="true" signature="3146:3376" ph="{...}" />
-            <marker date="1511176295188" expanded="false" signature="3549:3560" ph=" { " />
-            <marker date="1511176295188" expanded="false" signature="3595:3601" ph=" }" />
-            <marker date="1511176295188" expanded="true" signature="3806:3977" ph="{...}" />
-            <marker date="1511176295188" expanded="false" signature="4011:4022" ph=" { " />
-            <marker date="1511176295188" expanded="false" signature="4058:4064" ph=" }" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/ConstChecker.java">
+    <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/SemanticUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="44" column="12" lean-forward="false" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/scoping/ClassScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/mapping/FunctionIdentifierMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1099">
+          <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/CMPILER_MobiProg/app/src/main/java/com/neildg/mobiprog/builder/BuildChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/ArrayAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        <state relative-caret-position="-350">
+          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScopeCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/scoping/LocalScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="116" column="90" lean-forward="false" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyJAVA.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="168" column="24" lean-forward="false" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/FieldAnalyzer.java" />
+    <entry file="file://$PROJECT_DIR$/src/myjava/MyJAVABaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/MethodAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/MultipleFunctionChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/antlr-4.7-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalAnalyzer.java" />
+    <entry file="jar://$PROJECT_DIR$/src/antlr-4.7-complete.jar!/org/antlr/v4/runtime/InterpreterRuleContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/CMPILER_MobiProg/app/src/main/java/org/antlr/v4/runtime/InterpreterRuleContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalVariableAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1262">
+          <caret line="146" column="39" lean-forward="false" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/errors/ErrorListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3237">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="218">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/error/BuildChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/antlrgen/ITextWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/ide/console/Console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-541">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/io/ClassFileLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/io/ClassFileSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/io/ClassListUpdater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/templates/CodeTemplates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/ui/fragments/ScanDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/utils/ApplicationCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/error/ErrorListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

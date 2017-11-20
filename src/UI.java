@@ -1,14 +1,7 @@
 
-
-import myjava.errors.*;
-import myjava.MyJAVALexer;
-import myjava.MyJAVAParser;
+import myjava.antlrgen.*;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
-import myjava.execution.commands.basic.PrintCommand;
-import myjava.semantics.StatementControlOverseer;
-import myjava.semantics.analyzing.MainAnalyzer;
-import myjava.semantics.scoping.LocalScopeCreator;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.PredictionMode;
@@ -29,8 +22,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import static myjava.ITextWriter.txtWriter;
 
 /**
  * Created by jasonsapdos on 06/10/2017.
@@ -102,7 +93,7 @@ public class UI {
                 parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
                 //ParseTree parserRuleContext = parser.compilationUnit();
-
+                /*
                 // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
                 MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
                 txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
@@ -117,7 +108,7 @@ public class UI {
                 // then executes the print command
                 PrintCommand printCommand = new PrintCommand(parserRuleContext.methodBody().block().blockStatement(0).statement().printStatement());
                 printCommand.execute();
-
+                */
                 /*
                 for(int ctr = 0; ctr < allTokens.size(); ctr++) {
 

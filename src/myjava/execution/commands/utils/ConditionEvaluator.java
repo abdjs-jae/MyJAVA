@@ -1,8 +1,11 @@
+/**
+ * 
+ */
 package myjava.execution.commands.utils;
 
-import myjava.MyJAVAParser.ExpressionContext;
-import myjava.MyJAVAParser.ParExpressionContext;
-import myjava.execution.commands.evaluate.*;
+import myjava.execution.commands.evaluation.EvaluationCommand;
+import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.generatedexp.JavaParser.ParExpressionContext;
 
 /**
  * Utility class for execution that evaluates a condition.
@@ -12,7 +15,7 @@ import myjava.execution.commands.evaluate.*;
  */
 public class ConditionEvaluator {
 
-    private final static String TAG = "MyJAVAProg_ConditionEvaluator";
+	private final static String TAG = "MobiProg_ConditionEvaluator";
 	
 	/*
 	 * Evaluates the modified conditional expression via Eval-Ex
@@ -39,44 +42,44 @@ public class ConditionEvaluator {
 			return false;
 		}
 	}*/
-
-    public static boolean evaluateCondition(ParExpressionContext parExprCtx) {
-
-        ExpressionContext conditionExprCtx = parExprCtx.expression();
-
-        //catch rules if the if value has direct boolean flags
-        if(conditionExprCtx.getText().contains("(true)")) {
-            return true;
-        }
-        else if(conditionExprCtx.getText().contains("(false)")) {
-            return false;
-        }
-
-        EvaluationCommand evaluationCommand = new EvaluationCommand(conditionExprCtx);
-        evaluationCommand.execute();
-
-        int result = evaluationCommand.getResult().intValue();
-
-        //Console.log("Evaluating: " +conditionExprCtx.getText() + " Result: " +result);
-
-        return (result == 1);
-    }
-
-    public static boolean evaluateCondition(ExpressionContext conditionExprCtx) {
-
-        //catch rules if the if value has direct boolean flags
-        if(conditionExprCtx.getText().contains("(true)")) {
-            return true;
-        }
-        else if(conditionExprCtx.getText().contains("(false)")) {
-            return false;
-        }
-
-        EvaluationCommand evaluationCommand = new EvaluationCommand(conditionExprCtx);
-        evaluationCommand.execute();
-
-        int result = evaluationCommand.getResult().intValue();
-
-        return (result == 1);
-    }
+	
+	public static boolean evaluateCondition(ParExpressionContext parExprCtx) {
+		
+		ExpressionContext conditionExprCtx = parExprCtx.expression();
+		
+		//catch rules if the if value has direct boolean flags
+		if(conditionExprCtx.getText().contains("(true)")) {
+			return true;
+		}
+		else if(conditionExprCtx.getText().contains("(false)")) {
+			return false;
+		}
+		
+		EvaluationCommand evaluationCommand = new EvaluationCommand(conditionExprCtx);
+		evaluationCommand.execute();
+		
+		int result = evaluationCommand.getResult().intValue();
+		
+		//Console.log("Evaluating: " +conditionExprCtx.getText() + " Result: " +result);
+		
+		return (result == 1);
+	}
+	
+	public static boolean evaluateCondition(ExpressionContext conditionExprCtx) {
+		
+		//catch rules if the if value has direct boolean flags
+		if(conditionExprCtx.getText().contains("(true)")) {
+			return true;
+		}
+		else if(conditionExprCtx.getText().contains("(false)")) {
+			return false;
+		}
+		
+		EvaluationCommand evaluationCommand = new EvaluationCommand(conditionExprCtx);
+		evaluationCommand.execute();
+		
+		int result = evaluationCommand.getResult().intValue();
+		
+		return (result == 1);
+	}
 }
