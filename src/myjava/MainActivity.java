@@ -1,43 +1,9 @@
 package myjava;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import myjava.error.BuildChecker;
-import myjava.execution.ExecutionManager;
-import myjava.execution.FunctionTracker;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
-import myjava.io.ClassFileSaver;
-import myjava.semantics.statements.StatementControlOverseer;
-import myjava.semantics.symboltable.SymbolTableManager;
-import myjava.semantics.symboltable.scopes.LocalScopeCreator;
-import myjava.templates.CodeTemplates;
-import myjava.ui.fragments.ConsoleFragment;
-import myjava.ui.fragments.IDEToolsFragment;
-import myjava.ui.fragments.NewFileDialogFragment;
-import myjava.ui.fragments.TextEditorFragment;
-import myjava.ui.handlers.DrawerUIHandler;
-import myjava.ui.handlers.ScanUIHandler;
-import myjava.utils.ApplicationCore;
-import myjava.utils.notifications.NotificationCenter;
-import myjava.utils.notifications.Notifications;
-import myjava.utils.notifications.Parameters;
+public class MainActivity  {
 
-import java.util.Locale;
-
-public class MainActivity extends FragmentActivity implements
-		ActionBar.TabListener, NewFileDialogFragment.NewFileDialogListener {
-
+	/*extends FragmentActivity implements
+		ActionBar.TabListener, NewFileDialogFragment.NewFileDialogListener
 	public static String CLASS_FILE_NAME_KEY = "CLASS_FILE_NAME_KEY";
 
 	private static final String TAG = "MobiProg_MainActivity";
@@ -102,10 +68,7 @@ public class MainActivity extends FragmentActivity implements
 		
         
 	}
-	
-	/*
-	 * Initialize all required components here
-	 */
+
 	private void initializeComponents() {
 		ApplicationCore.initialize(this);
 		SymbolTableManager.initialize();
@@ -115,7 +78,7 @@ public class MainActivity extends FragmentActivity implements
 		StatementControlOverseer.initialize();
 		FunctionTracker.initialize();
 	}
-	
+	/*
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -127,7 +90,6 @@ public class MainActivity extends FragmentActivity implements
 		ExecutionManager.reset();
 		LocalScopeCreator.reset();
 		SymbolTableManager.reset();
-		BuildChecker.reset();
 		StatementControlOverseer.reset();
 		FunctionTracker.reset();
 	}
@@ -138,7 +100,7 @@ public class MainActivity extends FragmentActivity implements
 		//create a new file with the specified name
 		EditText fileNameText = (EditText) dialogFragment.getDialog().findViewById(R.id.input_value_text);
 		String newFileName = fileNameText.getText().toString();
-		
+
 		ClassFileSaver classFileSaver = new ClassFileSaver();
 		classFileSaver.saveFile(newFileName, CodeTemplates.createNewClassTemplate(newFileName));
 		
@@ -156,7 +118,7 @@ public class MainActivity extends FragmentActivity implements
 	public void onDialogNegativeClick(NewFileDialogFragment dialogFragment) {
 		dialogFragment.getDialog().cancel();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -182,10 +144,6 @@ public class MainActivity extends FragmentActivity implements
 			FragmentTransaction fragmentTransaction) {
 	}
 
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 		public SectionsPagerAdapter(FragmentManager fm) {
@@ -282,6 +240,6 @@ public class MainActivity extends FragmentActivity implements
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }

@@ -95,19 +95,11 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 	}
 
 	public static boolean isFunctionCall(ExpressionContext exprCtx) {
-		if (exprCtx.arguments() != null) {
-			return true;
-		} else {
-			return false;
-		}
+        return exprCtx.arguments() != null;
 	}
 
 	public static boolean isVariableOrConst(ExpressionContext exprCtx) {
-		if (exprCtx.primary() != null && exprCtx.primary().Identifier() != null) {
-			return true;
-		} else {
-			return false;
-		}
+        return exprCtx.primary() != null && exprCtx.primary().Identifier() != null;
 	}
 
 	private void evaluateFunctionCall(ExpressionContext exprCtx) {

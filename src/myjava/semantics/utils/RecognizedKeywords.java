@@ -32,11 +32,6 @@ public class RecognizedKeywords {
 	 * Returns true if the keywords match. This is case-sensitive
 	 */
 	public static boolean matchesKeyword(String keyword, String textToMatch) {
-		if(textToMatch.contains(keyword)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+        return textToMatch.contains(keyword);
 	}
 }

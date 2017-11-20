@@ -3,24 +3,13 @@
  */
 package myjava.error;
 
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
-import org.antlr.v4.runtime.ANTLRErrorListener;
-import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.RecognitionException;
-import org.antlr.v4.runtime.Recognizer;
-import org.antlr.v4.runtime.atn.ATNConfigSet;
-import org.antlr.v4.runtime.dfa.DFA;
-
-import java.util.BitSet;
-
-
 /**
  * Class that verifies if the parsing stage and the semantics phase has completed successfully.
  * @author Patrick
  *
  */
-public class BuildChecker implements ANTLRErrorListener {
+public class BuildChecker  {
+	/*implements ANTLRErrorListener
 	private final static String TAG = "MobiProg_BuildChecker";
 	
 	private static BuildChecker sharedInstance = null;
@@ -93,4 +82,5 @@ public class BuildChecker implements ANTLRErrorListener {
 		
 		sharedInstance.successful = false;
 	}
+	*/
 }

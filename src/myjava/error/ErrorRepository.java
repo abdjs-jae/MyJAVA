@@ -3,8 +3,6 @@
  */
 package myjava.error;
 
-import android.util.SparseArray;
-
 /**
  * List of error codes that cannot be found in syntax errors.
  * This includes most semantical errors in code.
@@ -12,6 +10,7 @@ import android.util.SparseArray;
  *
  */
 public class ErrorRepository {
+	/*
 	private final static String TAG = "MobiProg_ErrorRepository";
 	
 	public final static int INCONSISTENT_CLASS_NAME = 1000;
@@ -58,5 +57,6 @@ public class ErrorRepository {
 	
 	public static String getErrorMessage(int errorCode) {
 		return sharedInstance.errorMessageDictionary.get(errorCode, "Error code "+errorCode+ " not found.");
-	} 
+	}
+	*/
 }

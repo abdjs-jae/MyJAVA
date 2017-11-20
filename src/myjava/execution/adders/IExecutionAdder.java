@@ -12,5 +12,5 @@ import myjava.execution.commands.ICommand;
  *
  */
 public interface IExecutionAdder {
-	public abstract void addCommand(ICommand command);
+	void addCommand(ICommand command);
 }

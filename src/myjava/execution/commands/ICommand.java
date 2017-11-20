@@ -10,5 +10,5 @@ package myjava.execution.commands;
  */
 public interface ICommand {
 
-	public abstract void execute();
+	void execute();
 }

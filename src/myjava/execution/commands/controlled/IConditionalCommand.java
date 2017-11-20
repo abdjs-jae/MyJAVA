@@ -13,7 +13,7 @@ import myjava.execution.commands.controlled.IControlledCommand.ControlTypeEnum;
  */
 public interface IConditionalCommand extends ICommand {
 	
-	public abstract ControlTypeEnum getControlType();
-	public abstract void addPositiveCommand(ICommand command);
-	public abstract void addNegativeCommand(ICommand command);
+	ControlTypeEnum getControlType();
+	void addPositiveCommand(ICommand command);
+	void addNegativeCommand(ICommand command);
 }

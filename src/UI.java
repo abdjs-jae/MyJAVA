@@ -1,11 +1,22 @@
-
-import myjava.antlrgen.*;
+import myjava.antlrgen.MyJAVABaseListener;
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser;
+import myjava.error.ErrorListener;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
-import myjava.semantics.utils.StringUtils;
-import org.antlr.v4.runtime.*;
+import myjava.semantics.statements.StatementControlOverseer;
+import myjava.semantics.symboltable.SymbolTableManager;
+import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.atn.PredictionMode;
-import org.fife.ui.autocomplete.*;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.fife.ui.autocomplete.AutoCompletion;
+import org.fife.ui.autocomplete.BasicCompletion;
+import org.fife.ui.autocomplete.CompletionProvider;
+import org.fife.ui.autocomplete.DefaultCompletionProvider;
 import uicomp.LinePainter;
 import uicomp.SquigglePainter;
 import uicomp.TextLineNumber;
@@ -92,14 +103,18 @@ public class UI {
                 parser.addErrorListener(errorListener);
                 parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
-                //ParseTree parserRuleContext = parser.compilationUnit();
-                /*
-                // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
-                MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
-                txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
-                // ParseTreeWalker treeWalker = new ParseTreeWalker();
-                // treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
+                ParserRuleContext parserRuleContext = parser.compilationUnit();
+                ParseTreeWalker treeWalker = new ParseTreeWalker();
+                treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
 
+                // After semantic checking
+                // ExecutionManager.getInstance().executeAllActions();
+
+                // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
+                // MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
+                //txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
+
+                /*
                 // main analyzer checks yung current stuff
                 MainAnalyzer mainAnalyzer = new MainAnalyzer();
                 mainAnalyzer.analyze(parserRuleContext);
@@ -275,14 +290,21 @@ public class UI {
 
     private void initializeInterpreter() {
         // Initialize the interpreter stuff
+        SymbolTableManager.initialize();
         ExecutionManager.initialize();
         LocalScopeCreator.initialize();
         StatementControlOverseer.initialize();
         FunctionTracker.initialize();
 
-        // Put analyzing and connect to executionthread
-
         // Execution manager takes charge of thread
+    }
+
+    public static void resetComponents() {
+        ExecutionManager.reset();
+        LocalScopeCreator.reset();
+        SymbolTableManager.reset();
+        StatementControlOverseer.reset();
+        FunctionTracker.reset();
     }
 
     private void implementAutoComplete(){

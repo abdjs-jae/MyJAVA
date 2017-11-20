@@ -7,7 +7,7 @@ import myjava.execution.commands.ICommand;
  * @author NeilDG
  */
 public interface IControlledCommand extends ICommand {
-	public enum ControlTypeEnum {
+	enum ControlTypeEnum {
 		CONDITIONAL_IF,
 		DO_WHILE_CONTROL,
 		WHILE_CONTROL,
@@ -15,8 +15,8 @@ public interface IControlledCommand extends ICommand {
 		FUNCTION_TYPE
 	}
 	
-	public abstract ControlTypeEnum getControlType();
-	public abstract void addCommand(ICommand command);
+	ControlTypeEnum getControlType();
+	void addCommand(ICommand command);
 	/*public void setParent(IControlledCommand command);
 	public IControlledCommand getParent();
 	public boolean hasParent();*/

@@ -8,5 +8,5 @@ package myjava.error.checkers;
  *
  */
 public interface IErrorChecker {
-	public abstract void verify();
+	void verify();
 }

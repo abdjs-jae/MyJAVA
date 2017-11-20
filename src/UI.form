@@ -93,9 +93,9 @@
               <tabbedpane title="All"/>
             </constraints>
             <properties>
-              <maximumSize width="-1" height="-1"/>
-              <minimumSize width="-1" height="-1"/>
-              <preferredSize width="-1" height="-1"/>
+              <maximumSize width="2147483647" height="2147483647"/>
+              <minimumSize width="0" height="0"/>
+              <preferredSize width="0" height="0"/>
             </properties>
             <border type="none"/>
             <children>

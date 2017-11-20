@@ -3,23 +3,13 @@
  */
 package myjava.error;
 
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.implementors.JavaBaseImplementor;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
 /**
  * Manages all parsing from different saved files
  * @author Patrick
  *
  */
 public class ParserHandler {
-
+/*
 	private final static String TAG = "MobiProg_ParserHandler";
 	private static ParserHandler sharedInstance = null;
 	
@@ -59,8 +49,9 @@ public class ParserHandler {
 	
 	/*
 	 * Returns the class name being parsed
-	 */
+
 	public String getCurrentClassName() {
 		return this.currentClassName;
-	}
+	}*/
+
 }

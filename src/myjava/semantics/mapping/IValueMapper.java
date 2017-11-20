@@ -6,10 +6,10 @@ import myjava.semantics.representations.MobiValue;
 
 public interface IValueMapper {
 
-	public abstract void analyze(ExpressionContext exprCtx);
-	public abstract void analyze(ParExpressionContext exprCtx);
-	public abstract String getOriginalExp();
-	public abstract String getModifiedExp();
-	public abstract MobiValue getMobiValue();
+	void analyze(ExpressionContext exprCtx);
+	void analyze(ParExpressionContext exprCtx);
+	String getOriginalExp();
+	String getModifiedExp();
+	MobiValue getMobiValue();
 
 }

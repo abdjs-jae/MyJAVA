@@ -96,12 +96,7 @@ public class LocalScope implements IScope {
 	}
 	
 	public boolean containsVariable(String identifier) {
-		if(this.localVariables!= null && this.localVariables.containsKey(identifier)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+        return this.localVariables != null && this.localVariables.containsKey(identifier);
 	}
 	
 	/*
@@ -136,7 +131,7 @@ public class LocalScope implements IScope {
 	public int getDepth() {
 		int depthCount = -1;
 		
-		LocalScope scope = (LocalScope) this;
+		LocalScope scope = this;
 		
 		while(scope != null) {
 			depthCount++;
