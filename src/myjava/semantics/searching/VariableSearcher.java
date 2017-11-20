@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.semantics.searching;
 
 import myjava.error.ParserHandler;
@@ -13,11 +10,9 @@ import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 /**
  * A utility class to search for a certain variable depending on where the control flow is.
-
  *
  */
 public class VariableSearcher {
-	private final static String TAG = "VariableSearcher";
 	
 	public static MyJAVAValue searchVariable(String identifierString) {
 		MyJAVAValue myJAVAValue = null;

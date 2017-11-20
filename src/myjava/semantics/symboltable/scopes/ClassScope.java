@@ -1,25 +1,17 @@
-/**
- * 
- */
 package myjava.semantics.symboltable.scopes;
 
-import android.util.Log;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.ITextWriter;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.utils.RecognizedKeywords;
+import myjava.semantics.utils.StringUtils;
 
 import java.util.HashMap;
 
 /**
  * Represents a class scope with mappings of variables and functions
-
- *
  */
-public class ClassScope implements IScope {
-
-	private final static String TAG = "MyJAVAProg_ClassScope";
+public class ClassScope implements IScope, ITextWriter {
 	
 	private String className;
 	
@@ -34,15 +26,15 @@ public class ClassScope implements IScope {
 	public ClassScope(String className) {
 		this.className = className;
 		
-		this.publicVariables = new HashMap<String, MyJAVAValue>();
-		this.privateVariables = new HashMap<String, MyJAVAValue>();
+		publicVariables = new HashMap<>();
+		privateVariables = new HashMap<>();
 		
-		this.publicFunctions = new HashMap<String, MyJAVAFunction>();
-		this.privateFunctions = new HashMap<String, MyJAVAFunction>();
+		publicFunctions = new HashMap<>();
+		privateFunctions = new HashMap<>();
 	}
 	
 	public String getClassName() {
-		return this.className;
+		return className;
 	}
 	
 	
@@ -50,14 +42,12 @@ public class ClassScope implements IScope {
 	 * Sets the parent local scope which is instantiated if this class contains a main function.
 	 */
 	public void setParentLocalScope(LocalScope localScope) {
-		this.parentLocalScope = localScope;
+		parentLocalScope = localScope;
 	}
 	
 	@Override
 	/* 
 	 * A class scope is automatically the parent of local scopes.
-	 * (non-Javadoc)
-	 * @see myjava.semantics.symboltable.scopes.IScope#isParent()
 	 */
 	public boolean isParent(){
 		return true;
@@ -77,12 +67,14 @@ public class ClassScope implements IScope {
 		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
 		
 		if(isPublic) {
-			this.publicVariables.put(identifierString, myJAVAValue);
-			Console.log(LogType.DEBUG, "Created public variable " +identifierString+ " type: " +myJAVAValue.getPrimitiveType());
+			publicVariables.put(identifierString, myJAVAValue);
+			txtWriter.writeMessage(StringUtils.formatDebug("Created public variable " +
+					identifierString+ " type: " +myJAVAValue.getPrimitiveType()));
 		}
 		else {
-			this.privateVariables.put(identifierString, myJAVAValue);
-			Console.log(LogType.DEBUG, "Created private variable " +identifierString+ " type: " +myJAVAValue.getPrimitiveType());
+			privateVariables.put(identifierString, myJAVAValue);
+			txtWriter.writeMessage(StringUtils.formatDebug("Created private variable " +
+					identifierString+ " type: " +myJAVAValue.getPrimitiveType()));
 		}
 	}
 	
@@ -96,48 +88,52 @@ public class ClassScope implements IScope {
 			isPublic = false;
 		}
 		
-		this.addEmptyVariableFromKeywords(classModifierString, primitiveTypeString, identifierString);
+		addEmptyVariableFromKeywords(classModifierString, primitiveTypeString, identifierString);
 		
 		if(isPublic) {
 			MyJAVAValue myJAVAValue = this.publicVariables.get(identifierString);
 			myJAVAValue.setValue(valueString);
-			Console.log(LogType.DEBUG, "Updated public variable " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString);
+			txtWriter.writeMessage(StringUtils.formatDebug("Updated public variable " +
+					identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 		}
 		else {
 			MyJAVAValue myJAVAValue = this.privateVariables.get(identifierString);
 			myJAVAValue.setValue(valueString);
-			Console.log(LogType.DEBUG, "Updated private variable " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString);
+			txtWriter.writeMessage(StringUtils.formatDebug("Updated private variable " +
+					identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 		}
 	}
 	
 	public MyJAVAValue getPublicVariable(String identifier) {
-		if(this.containsPublicVariable(identifier)) {
-			return this.publicVariables.get(identifier);
+		if(containsPublicVariable(identifier)) {
+			return publicVariables.get(identifier);
 		}
 		else {
-			Log.e(TAG, "Public " +identifier + " is not found.");
+			System.err.println("ClassScope: Public " + identifier + " is not found.");
 			return null;
 		}
 	}
 	
 	public MyJAVAValue getPrivateVariable(String identifier) {
-		if(this.containsPrivateVariable(identifier)) {
-			return this.privateVariables.get(identifier);
+		if(containsPrivateVariable(identifier)) {
+			return privateVariables.get(identifier);
 		}
 		else {
-			Log.e(TAG, "Private " +identifier + " is not found.");
+			System.err.println("ClassScope: Private " + identifier + " is not found.");
 			return null;
 		}
 	}
 	
 	public void addPrivateMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
-		this.privateFunctions.put(identifier, myJAVAFunction);
-		Console.log(LogType.DEBUG, "Created private function " +identifier+ " with return type " +myJAVAFunction.getReturnType());
+		privateFunctions.put(identifier, myJAVAFunction);
+		txtWriter.writeMessage(StringUtils.formatDebug("Created private function " +
+				identifier+ " with return type " +myJAVAFunction.getReturnType()));
 	}
 	
 	public void addPublicMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
-		this.publicFunctions.put(identifier, myJAVAFunction);
-		Console.log(LogType.DEBUG, "Created public function " +identifier+ " with return type " +myJAVAFunction.getReturnType());
+		publicFunctions.put(identifier, myJAVAFunction);
+		txtWriter.writeMessage(StringUtils.formatDebug("Created public function " +
+				identifier+ " with return type " +myJAVAFunction.getReturnType()));
 	}
 	
 	public void addMyJAVAValue(String accessControlModifier, String identifier, MyJAVAValue myJAVAValue) {
@@ -148,52 +144,52 @@ public class ClassScope implements IScope {
 		}
 		
 		if(isPublic){
-			this.publicVariables.put(identifier, myJAVAValue);
+			publicVariables.put(identifier, myJAVAValue);
 		}
 		else {
-			this.privateVariables.put(identifier, myJAVAValue);
+			privateVariables.put(identifier, myJAVAValue);
 		}	
 	}
 	
 	public MyJAVAFunction getPublicFunction(String identifier) {
-		if(this.containsPublicFunction(identifier)) {
-			return this.publicFunctions.get(identifier);
+		if(containsPublicFunction(identifier)) {
+			return publicFunctions.get(identifier);
 		}
 		else {
-			Log.e(TAG, "Private " +identifier+ " function is not found.");
+			System.err.println("ClassScope: Private " +identifier+ " function is not found.");
 			return null;
 		}
 	}
 	
 	public MyJAVAFunction getPrivateFunction(String identifier) {
-		if(this.containsPublicFunction(identifier)) {
-			return this.privateFunctions.get(identifier);
+		if(containsPublicFunction(identifier)) {
+			return privateFunctions.get(identifier);
 		}
 		else {
-			Log.e(TAG, "Public " +identifier+ " function is not found");
+			System.err.println("ClassScope: Public " +identifier+ " function is not found");
 			return null;
 		}
 	}
 	
 	public MyJAVAFunction searchFunction(String identifier) {
-		if(this.containsPublicFunction(identifier)) {
-			return this.publicFunctions.get(identifier);
+		if(containsPublicFunction(identifier)) {
+			return publicFunctions.get(identifier);
 		}
 		else if(this.containsPrivateFunction(identifier)) {
-			return this.privateFunctions.get(identifier);
+			return privateFunctions.get(identifier);
 		}
 		else {
-			Log.e(TAG, identifier + " is not found in " +this.className);
+			System.err.println("ClassScope: " + identifier + " is not found in " + className);
 			return null;
 		}
 	}
 	
 	public boolean containsPublicFunction(String identifier) {
-		return this.publicFunctions.containsKey(identifier);
+		return publicFunctions.containsKey(identifier);
 	}
 	
 	public boolean containsPrivateFunction(String identifier) {
-		return this.privateFunctions.containsKey(identifier);
+		return privateFunctions.containsKey(identifier);
 	}
 	
 	@Override
@@ -204,13 +200,13 @@ public class ClassScope implements IScope {
 	public MyJAVAValue searchVariableIncludingLocal(String identifier) {
 		MyJAVAValue value;
 		if(this.containsPrivateVariable(identifier)) {
-			value = this.getPrivateVariable(identifier);
+			value = getPrivateVariable(identifier);
 		}
 		else if(this.containsPublicVariable(identifier)) {
-			value = this.getPublicVariable(identifier);
+			value = getPublicVariable(identifier);
 		}
 		else {
-			value = LocalScopeCreator.searchVariableInLocalIterative(identifier, this.parentLocalScope);
+			value = LocalScopeCreator.searchVariableInLocalIterative(identifier, parentLocalScope);
 		}
 		
 		return value;
@@ -218,37 +214,37 @@ public class ClassScope implements IScope {
 	
 	public MyJAVAValue searchVariable(String identifier) {
 		MyJAVAValue value = null;
-		if(this.containsPrivateVariable(identifier)) {
-			value = this.getPrivateVariable(identifier);
+		if(containsPrivateVariable(identifier)) {
+			value = getPrivateVariable(identifier);
 		}
 		else if(this.containsPublicVariable(identifier)) {
-			value = this.getPublicVariable(identifier);
+			value = getPublicVariable(identifier);
 		}
 		
 		return value;
 	}
 	
 	public boolean containsPublicVariable(String identifier) {
-		return this.publicVariables.containsKey(identifier);
+		return publicVariables.containsKey(identifier);
 	}
 	
 	public boolean containsPrivateVariable(String identifier) {
-		return this.privateVariables.containsKey(identifier);
+		return privateVariables.containsKey(identifier);
 	}
 	
 	/*
 	 * Resets all stored variables. This is called after the execution manager finishes
 	 */
 	public void resetValues() {
-		MyJAVAValue[] publicMyJAVAValues = this.publicVariables.values().toArray(new MyJAVAValue[this.publicVariables.size()]);
-		MyJAVAValue[] privateMyJAVAValues = this.privateVariables.values().toArray(new MyJAVAValue[this.privateVariables.size()]);
-		
-		for(int i = 0; i < publicMyJAVAValues.length; i++) {
-			publicMyJAVAValues[i].reset();
+		MyJAVAValue[] publicMyJAVAValues = publicVariables.values().toArray(new MyJAVAValue[publicVariables.size()]);
+		MyJAVAValue[] privateMyJAVAValues = privateVariables.values().toArray(new MyJAVAValue[privateVariables.size()]);
+
+		for (MyJAVAValue publicMyJAVAValue : publicMyJAVAValues) {
+			publicMyJAVAValue.reset();
 		}
-		
-		for(int i = 0; i < privateMyJAVAValues.length; i++) {
-			privateMyJAVAValues[i].reset();
+
+		for (MyJAVAValue privateMyJAVAValue : privateMyJAVAValues) {
+			privateMyJAVAValue.reset();
 		}
 	}
 }

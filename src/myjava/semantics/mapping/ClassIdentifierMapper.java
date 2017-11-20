@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.semantics.mapping;
 
 import myjava.error.ParserHandler;
@@ -31,19 +28,13 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 		this.originalExp = originalExp;
 		this.modifiedExp = originalExp;
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.antlrgen.MyJAVAParser.ExpressionContext)
-	 */
+
 	@Override
 	public void analyze(ExpressionContext exprCtx) {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, exprCtx);
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.antlrgen.MyJAVAParser.ParExpressionContext)
-	 */
+
 	@Override
 	public void analyze(ParExpressionContext exprCtx) {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
@@ -77,31 +68,25 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 				String variableKey = primaryCtx.getText();
 				ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 				
-				this.myJAVAValue = classScope.searchVariableIncludingLocal(variableKey);
-				this.modifiedExp = this.modifiedExp.replace(variableKey, this.myJAVAValue.getValue().toString());
+				myJAVAValue = classScope.searchVariableIncludingLocal(variableKey);
+				modifiedExp = modifiedExp.replace(variableKey, myJAVAValue.getValue().toString());
 			}
 		}
 	}
 	
 	@Override
 	public MyJAVAValue getMyJAVAValue() {
-		return this.myJAVAValue;
+		return myJAVAValue;
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#getOriginalExp()
-	 */
+
 	@Override
 	public String getOriginalExp() {
-		return this.originalExp;
+		return originalExp;
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#getModifiedExp()
-	 */
+
 	@Override
 	public String getModifiedExp() {
-		return this.modifiedExp;
+		return modifiedExp;
 	}
 
 }

@@ -1,15 +1,11 @@
-/**
- * 
- */
 package myjava.semantics.statements;
 
-import android.util.Log;
+import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand;
 import myjava.execution.commands.controlled.IControlledCommand;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.semantics.utils.StringUtils;
 
 import java.util.Stack;
 
@@ -17,51 +13,46 @@ import java.util.Stack;
  * A singleton class that detects if a certain statement is inside a controlled statement
  * Contains utility functions to add certain commands into the active controlled command.
  * This class makes nested statements possible.
-
  *
  */
-public class StatementControlOverseer {
-
-	private final static String TAG = "MyJAVAProg_StatementControlOverseer";
+public class StatementControlOverseer implements ITextWriter{
 	
-	private static StatementControlOverseer sharedInstance = null;
+	private static StatementControlOverseer scOverseer = null;
 	
 	public static StatementControlOverseer getInstance() {
-		return sharedInstance;
+		return scOverseer;
 	}
 	
 	private Stack<ICommand> procedureCallStack;
-	//private ICommand rootControlledCommand = null;
 	private ICommand activeControlledCommand = null;
 	
 	private boolean isInPositive = true; //used for conditional statements to indicate if the series of commands should go to the positive command list.
 	
 	private StatementControlOverseer() {
-		this.procedureCallStack = new Stack<ICommand>();
+		procedureCallStack = new Stack<>();
 		
-		Log.e(TAG, "Stack initialized!");
+		System.err.println("StatementControlOverseer: Stack initialized!");
 	}
 	
 	public static void initialize() {
-		sharedInstance = new StatementControlOverseer();
+		scOverseer = new StatementControlOverseer();
 	}
 	
 	public static void reset() {
-		sharedInstance.procedureCallStack.clear();
-		//sharedInstance.rootControlledCommand = null;
-		sharedInstance.activeControlledCommand = null;
+		scOverseer.procedureCallStack.clear();
+		scOverseer.activeControlledCommand = null;
 	}
 	
 	public void openConditionalCommand(IConditionalCommand command) {
-		if(this.procedureCallStack.isEmpty()) {
-			this.procedureCallStack.push(command);
-			this.activeControlledCommand = command;
+		if(procedureCallStack.isEmpty()) {
+			procedureCallStack.push(command);
+			activeControlledCommand = command;
 		}
 		else {
-			this.processAdditionOfCommand(command);
+			processAdditionOfCommand(command);
 		}
 		
-		this.isInPositive = true;
+		isInPositive = true;
 		
 	}
 	
@@ -69,16 +60,16 @@ public class StatementControlOverseer {
 	 * Opens a new controlled command
 	 */
 	public void openControlledCommand(IControlledCommand command) {
-		this.procedureCallStack.push(command);
-		this.activeControlledCommand = command;
+		procedureCallStack.push(command);
+		activeControlledCommand = command;
 	}
 	
 	public boolean isInPositiveRule() {
-		return this.isInPositive;
+		return isInPositive;
 	}
 	
 	public void reportExitPositiveRule() {
-		this.isInPositive = false;
+		isInPositive = false;
 	}
 	
 	/*
@@ -88,29 +79,29 @@ public class StatementControlOverseer {
 		
 		//if the current active controlled command is that of a conditional command,
 		//we either add the newly opened command as either positive or a negative command
-		if(this.isInConditionalCommand()) {
-			IConditionalCommand conditionalCommand = (IConditionalCommand) this.activeControlledCommand;
+		if(isInConditionalCommand()) {
+			IConditionalCommand conditionalCommand = (IConditionalCommand) activeControlledCommand;
 			
-			if(this.isInPositiveRule()) {
+			if(isInPositiveRule()) {
 				conditionalCommand.addPositiveCommand(command);
 			}
 			else {
 				conditionalCommand.addNegativeCommand(command);
 			}
 			
-			this.procedureCallStack.push(command);
-			this.activeControlledCommand = command;
+			procedureCallStack.push(command);
+			activeControlledCommand = command;
 		}
 		//just add the newly opened command as a command under the last active controlled command.
 		else {
 			
-			IControlledCommand controlledCommand = (IControlledCommand) this.activeControlledCommand;
+			IControlledCommand controlledCommand = (IControlledCommand) activeControlledCommand;
 			controlledCommand.addCommand(command);
+
+			txtWriter.writeMessage(StringUtils.formatDebug("Adding command to " + controlledCommand.getControlType()));
 			
-			Console.log(LogType.DEBUG, "Adding to " +controlledCommand.getControlType());
-			
-			this.procedureCallStack.push(command);
-			this.activeControlledCommand = command;
+			procedureCallStack.push(command);
+			activeControlledCommand = command;
 		}
 	}
 	
@@ -122,17 +113,17 @@ public class StatementControlOverseer {
 	public void compileControlledCommand() {
 		
 		//we arrived at the root node, therefore we add this now to the execution manager
-		if(this.procedureCallStack.size() == 1) {
-			ICommand rootCommand = this.procedureCallStack.pop();
-			ExecutionManager.getInstance().addCommand(rootCommand);
+		if(procedureCallStack.size() == 1) {
+			ICommand rootCommand = procedureCallStack.pop();
+			ExecutionManager.getExecutionManager().addCommand(rootCommand);
 			
-			this.activeControlledCommand = null;
+			activeControlledCommand = null;
 		}
 		//we pop then add it to the next root node
-		else if(this.procedureCallStack.size() > 1) {
-			ICommand childCommand = this.procedureCallStack.pop();
-			ICommand parentCommand = this.procedureCallStack.peek();
-			this.activeControlledCommand = parentCommand;
+		else if(procedureCallStack.size() > 1) {
+			ICommand childCommand = procedureCallStack.pop();
+			ICommand parentCommand = procedureCallStack.peek();
+			activeControlledCommand = parentCommand;
 			
 			if(parentCommand instanceof IControlledCommand) {
 				IControlledCommand controlledCommand = (IControlledCommand) parentCommand;
@@ -141,19 +132,19 @@ public class StatementControlOverseer {
 			}
 		}
 		else {
-			Log.i(TAG, "Procedure call stack is now empty.");
+			System.out.println("StatementControlOverseer: Procedure call stack is now empty.");
 		}
 	}
 	
 	public boolean isInConditionalCommand() {
-		return (this.activeControlledCommand != null && activeControlledCommand instanceof IConditionalCommand);
+		return (activeControlledCommand != null && activeControlledCommand instanceof IConditionalCommand);
 	}
 	
 	public boolean isInControlledCommand() {
-		return (this.activeControlledCommand!= null && this.activeControlledCommand instanceof IControlledCommand);
+		return (activeControlledCommand!= null && activeControlledCommand instanceof IControlledCommand);
 	}
 	
 	public ICommand getActiveControlledCommand() {
-		return this.activeControlledCommand;
+		return activeControlledCommand;
 	}
 }

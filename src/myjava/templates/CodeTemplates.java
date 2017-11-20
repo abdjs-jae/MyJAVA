@@ -1,11 +1,7 @@
-/**
- * 
- */
 package myjava.templates;
 
 /**
  * Contains possible code templates for ease of use
-
  *
  */
 public class CodeTemplates {

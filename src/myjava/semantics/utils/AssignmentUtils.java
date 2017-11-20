@@ -1,10 +1,5 @@
-/**
- * 
- */
 package myjava.semantics.utils;
 
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 
@@ -51,8 +46,30 @@ public class AssignmentUtils {
 			}
 		}
 		else {
-			Console.log(LogType.DEBUG, "MyJAVAValue: DID NOT FIND APPROPRIATE TYPE!!");
+			System.out.println("MyJAVAValue: No appropriate type :(");
 		}
+	}
+
+	public static PrimitiveType assignPrimitiveType(String primitiveTypeString){
+		if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_BOOLEAN, primitiveTypeString))
+			return PrimitiveType.BOOLEAN;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_BYTE, primitiveTypeString))
+			return PrimitiveType.BYTE;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_CHAR, primitiveTypeString))
+			return PrimitiveType.CHAR;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_DOUBLE, primitiveTypeString))
+			return PrimitiveType.DOUBLE;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_FLOAT, primitiveTypeString))
+			return PrimitiveType.FLOAT;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_INT, primitiveTypeString))
+			return PrimitiveType.INT;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_LONG, primitiveTypeString))
+			return PrimitiveType.LONG;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_SHORT, primitiveTypeString))
+			return PrimitiveType.SHORT;
+		else if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.PRIMITIVE_TYPE_STRING, primitiveTypeString))
+			return PrimitiveType.STRING;
+		return PrimitiveType.NOT_YET_IDENTIFIED;
 	}
 	
 }

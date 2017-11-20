@@ -1,65 +1,58 @@
-/**
- * 
- */
 package myjava.semantics.symboltable;
 
-import android.util.Log;
 import myjava.semantics.symboltable.scopes.ClassScope;
 
 import java.util.HashMap;
 
 /**
  * Holds all of the found variables in code and stores them here in the symbol table manager.
-
  *
  */
 public class SymbolTableManager {
-
-	private final static String TAG = "MyJAVAProg_SymbolTableManager";
 	
-	private static SymbolTableManager sharedInstance = null;
+	private static SymbolTableManager symbolTableManager = null;
 	
 	public static SymbolTableManager getInstance() {
-		return sharedInstance;
+		return symbolTableManager;
 	}
 	
 	private HashMap<String, ClassScope> classTable;
 	
 	private SymbolTableManager() {
-		this.classTable = new HashMap<String, ClassScope>();
+		this.classTable = new HashMap<>();
 	}
 	
 	public static void initialize() {
-		sharedInstance = new SymbolTableManager();
+		symbolTableManager = new SymbolTableManager();
 	}
 	
 	public static void reset() {
-		sharedInstance.classTable.clear();
+		symbolTableManager.classTable.clear();
 	}
 	
 	public void addClassScope(String className, ClassScope classScope) {
-		this.classTable.put(className, classScope);
+		classTable.put(className, classScope);
 	}
 	
 	public ClassScope getClassScope(String className) {
-		if(this.containsClassScope(className)) {
-			return this.classTable.get(className);
+		if(containsClassScope(className)) {
+			return classTable.get(className);
 		}
 		else {
-			Log.e(TAG, className + " is not found!");
+			System.err.println("SymbolTableManager: " + className + " is not found!");
 			return null;
 		}
 	}
 	
 	public boolean containsClassScope(String className) {
-		return this.classTable.containsKey(className);
+		return classTable.containsKey(className);
 	}
 	
 	public void resetClassTables() {
-		ClassScope[] classScopes = this.classTable.values().toArray(new ClassScope[this.classTable.size()]);
-		
-		for(int i = 0; i < classScopes.length; i++) {
-			classScopes[i].resetValues();
+		ClassScope[] classScopes = classTable.values().toArray(new ClassScope[classTable.size()]);
+
+		for (ClassScope classScope : classScopes) {
+			classScope.resetValues();
 		}
 	}
 }

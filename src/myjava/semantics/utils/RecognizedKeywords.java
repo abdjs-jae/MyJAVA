@@ -1,12 +1,8 @@
-/**
- * 
- */
 package myjava.semantics.utils;
 
 /**
  * A holder for recognized keywords to be used for various conditional statements for 
  * creating intermediate representations
-
  *
  */
 public class RecognizedKeywords {
@@ -26,7 +22,6 @@ public class RecognizedKeywords {
 	
 	public static String BOOLEAN_TRUE = "true";
 	public static String BOOLEAN_FALSE = "false";
-	
 	
 	/*
 	 * Returns true if the keywords match. This is case-sensitive

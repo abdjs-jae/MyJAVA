@@ -1,9 +1,5 @@
-/**
- * 
- */
 package myjava.semantics.symboltable.scopes;
 
-import android.util.Log;
 import myjava.semantics.representations.MyJAVAValue;
 
 import java.util.ArrayList;
@@ -18,12 +14,11 @@ import java.util.Stack;
  *
  */
 public class LocalScopeCreator {
-	private final static String TAG = "MyJAVAProg_ScopeCreator";
 	
-	private static LocalScopeCreator sharedInstance = null;
+	private static LocalScopeCreator localScopeCreator = null;
 	
 	public static LocalScopeCreator getInstance() {
-		return sharedInstance;
+		return localScopeCreator;
 	}
 	
 	private LocalScope activeLocalScope = null;
@@ -33,11 +28,11 @@ public class LocalScopeCreator {
 	}
 	
 	public static void initialize() {
-		sharedInstance = new LocalScopeCreator();
+		localScopeCreator = new LocalScopeCreator();
 	}
 	
 	public static void reset() {
-		sharedInstance.activeLocalScope = null;
+		localScopeCreator.activeLocalScope = null;
 	}
 	
 	/*
@@ -46,35 +41,35 @@ public class LocalScopeCreator {
 	 * a parent of the new instance, then the new instance becomes the active local scope.
 	 */
 	public LocalScope openLocalScope() {
-		if(this.activeLocalScope == null) {
-			this.activeLocalScope = new LocalScope();
+		if(activeLocalScope == null) {
+			activeLocalScope = new LocalScope();
 		}
 		else {
 			LocalScope childLocalScope = new LocalScope(); 
-			childLocalScope.setParent(this.activeLocalScope);//point this current local scope as parent
-			this.activeLocalScope.addChild(childLocalScope); //add the new scope as child for this current local scope
-			this.activeLocalScope = childLocalScope; //change pointer to the child scope
+			childLocalScope.setParent(activeLocalScope);//point this current local scope as parent
+			activeLocalScope.addChild(childLocalScope); //add the new scope as child for this current local scope
+			activeLocalScope = childLocalScope; //change pointer to the child scope
 		}
 		
-		return this.activeLocalScope;
+		return activeLocalScope;
 	}
 	
 	public LocalScope getActiveLocalScope() {
-		return this.activeLocalScope;
+		return activeLocalScope;
 	}
 	
 	/*
 	 * Closes the active local scope which changes the pointer to the parent of the active local scope.
 	 */
 	public void closeLocalScope() {
-		if(this.activeLocalScope.getParent() != null && this.activeLocalScope.getParent() instanceof LocalScope) {
-			this.activeLocalScope = (LocalScope) this.activeLocalScope.getParent();
+		if(activeLocalScope.getParent() != null && activeLocalScope.getParent() instanceof LocalScope) {
+			activeLocalScope = (LocalScope) activeLocalScope.getParent();
 		}
-		else if(this.activeLocalScope.getParent() == null) {
-			Log.e(TAG, "Cannot change parent. Current active local scope no longer has a parent.");
+		else if(activeLocalScope.getParent() == null) {
+			System.err.println("LocalScopeCreator: Cannot change parent. Current active local scope no longer has a parent.");
 		}
 		else {
-			Log.e(TAG, "Cannot change parent. Current active local scope's parent is now a class scope.");
+			System.err.println("LocalScopeCreator: Cannot change parent. Current active local scope's parent is now a class scope.");
 		}
 	}
 	
@@ -84,7 +79,7 @@ public class LocalScopeCreator {
 	public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 		
 		if(localScope == null) {
-			Log.e(TAG, identifier + " not found in any local scope!");
+			System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
 			return null;
 		}
 		
@@ -111,8 +106,8 @@ public class LocalScopeCreator {
 				}
 			}
 		}
-		
-		Log.e(TAG, identifier + " not found in any local scope!");
+
+		System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
 		return null;
 	}
 }

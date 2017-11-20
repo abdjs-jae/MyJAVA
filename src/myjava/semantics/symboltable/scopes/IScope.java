@@ -1,13 +1,9 @@
-/**
- * 
- */
 package myjava.semantics.symboltable.scopes;
 
 import myjava.semantics.representations.MyJAVAValue;
 
 /**
  * A generic scope interface
-
  *
  */
 public interface IScope {
