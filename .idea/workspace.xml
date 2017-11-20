@@ -249,7 +249,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="798" />
@@ -746,15 +746,15 @@
       <workItem from="1511027499749" duration="5671000" />
       <workItem from="1511077025085" duration="1954000" />
       <workItem from="1511097397471" duration="5540000" />
-      <workItem from="1511175449532" duration="1656000" />
+      <workItem from="1511175449532" duration="2214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132361000" />
+    <option name="totallyTimeSpent" value="132919000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32344633" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
