@@ -4,9 +4,9 @@
 package myjava.semantics.mapping;
 
 import myjava.error.ParserHandler;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.ParExpressionContext;
-import myjava.generatedexp.JavaParser.PrimaryContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ParExpressionContext;
+import myjava.antlrgen.MyJAVAParser.PrimaryContext;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -33,7 +33,7 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 	}
 	
 	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.generatedexp.JavaParser.ExpressionContext)
+	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.antlrgen.MyJAVAParser.ExpressionContext)
 	 */
 	@Override
 	public void analyze(ExpressionContext exprCtx) {
@@ -42,7 +42,7 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 	}
 	
 	/* (non-Javadoc)
-	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.generatedexp.JavaParser.ParExpressionContext)
+	 * @see myjava.semantics.mapping.IValueMapper#analyze(myjava.antlrgen.MyJAVAParser.ParExpressionContext)
 	 */
 	@Override
 	public void analyze(ParExpressionContext exprCtx) {

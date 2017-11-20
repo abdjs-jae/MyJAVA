@@ -1,8 +1,8 @@
 package myjava.execution.commands.utils;
 
 import myjava.execution.commands.evaluation.EvaluationCommand;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.ParExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ParExpressionContext;
 
 /**
  * Utility class for execution that evaluates a condition.

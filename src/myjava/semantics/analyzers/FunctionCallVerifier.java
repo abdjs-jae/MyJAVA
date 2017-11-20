@@ -3,7 +3,7 @@ package myjava.semantics.analyzers;
 import myjava.error.ParserHandler;
 import myjava.error.checkers.ParameterMismatchChecker;
 import myjava.execution.commands.evaluation.EvaluationCommand;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;

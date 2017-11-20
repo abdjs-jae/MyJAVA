@@ -1,7 +1,7 @@
 package myjava.error.checkers;
 
 import myjava.error.*;
-import myjava.generatedexp.JavaParser.MethodDeclarationContext;
+import myjava.antlrgen.MyJAVAParser.MethodDeclarationContext;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;

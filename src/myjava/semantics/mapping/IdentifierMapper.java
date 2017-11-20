@@ -4,8 +4,8 @@
 package myjava.semantics.mapping;
 
 import myjava.execution.FunctionTracker;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.ParExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ParExpressionContext;
 import myjava.semantics.representations.MyJAVAValue;
 
 /**

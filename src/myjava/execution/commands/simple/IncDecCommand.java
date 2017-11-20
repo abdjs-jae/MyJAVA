@@ -1,8 +1,8 @@
 package myjava.execution.commands.simple;
 
 import myjava.execution.commands.ICommand;
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.mapping.IValueMapper;
 import myjava.semantics.mapping.IdentifierMapper;
 import myjava.semantics.representations.MyJAVAValue;
@@ -43,10 +43,10 @@ public class IncDecCommand implements ICommand {
 			case INT: {
 				int value = Integer.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}
@@ -55,10 +55,10 @@ public class IncDecCommand implements ICommand {
 			case LONG: {
 				long value = Long.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}
@@ -67,10 +67,10 @@ public class IncDecCommand implements ICommand {
 			case BYTE: {
 				byte value = Byte.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}
@@ -79,10 +79,10 @@ public class IncDecCommand implements ICommand {
 			case SHORT: {
 				short value = Short.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}
@@ -91,10 +91,10 @@ public class IncDecCommand implements ICommand {
 			case FLOAT: {
 				float value = Float.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}
@@ -103,10 +103,10 @@ public class IncDecCommand implements ICommand {
 			case DOUBLE: {
 				double value = Double.valueOf(myJAVAValue.getValue().toString());
 
-				if (this.tokenSign == JavaLexer.INC) {
+				if (this.tokenSign == MyJAVALexer.INC) {
 					value++;
 					myJAVAValue.setValue(String.valueOf(value));
-				} else if (this.tokenSign == JavaLexer.DEC) {
+				} else if (this.tokenSign == MyJAVALexer.DEC) {
 					value--;
 					myJAVAValue.setValue(String.valueOf(value));
 				}

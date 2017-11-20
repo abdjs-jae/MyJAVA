@@ -1,14 +1,8 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
-import myjava.generatedexp.JavaParser.FormalParameterContext;
-import myjava.generatedexp.JavaParser.FormalParameterListContext;
-import myjava.generatedexp.JavaParser.PrimitiveTypeContext;
-import myjava.generatedexp.JavaParser.TypeContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.MyJAVAParser.FormalParameterContext;
+import myjava.antlrgen.MyJAVAParser.FormalParameterListContext;
+import myjava.antlrgen.MyJAVAParser.PrimitiveTypeContext;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
@@ -23,12 +17,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * An analyzer for method parameters
-
  *
  */
 public class ParameterAnalyzer implements ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_ParameterAnalyzer";
-	
+
 	private final static String PARAMETER_TYPE_KEY = "PARAMETER_TYPE_KEY";
 	private final static String PARAMETER_IDENTIFIER_KEY = "PARAMETER_IDENTIFIER_KEY";
 	private final static String IS_ARRAY_KEY = "IS_ARRAY_KEY";
@@ -42,33 +34,24 @@ public class ParameterAnalyzer implements ParseTreeListener {
 	}
 	
 	public void analyze(FormalParameterListContext ctx) {
-		this.identifiedTokens = new IdentifiedTokens();
+		identifiedTokens = new IdentifiedTokens();
 		
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, ctx);
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.antlr.v4.runtime.tree.ParseTreeListener#visitTerminal(org.antlr.v4.runtime.tree.TerminalNode)
-	 */
+
 	@Override
 	public void visitTerminal(TerminalNode node) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.antlr.v4.runtime.tree.ParseTreeListener#visitErrorNode(org.antlr.v4.runtime.tree.ErrorNode)
-	 */
 	@Override
 	public void visitErrorNode(ErrorNode node) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.antlr.v4.runtime.tree.ParseTreeListener#enterEveryRule(org.antlr.v4.runtime.ParserRuleContext)
-	 */
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
 		if(ctx instanceof FormalParameterContext) {

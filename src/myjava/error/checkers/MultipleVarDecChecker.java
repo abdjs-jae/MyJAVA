@@ -5,7 +5,7 @@ import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
-import myjava.generatedexp.JavaParser.VariableDeclaratorIdContext;
+import myjava.antlrgen.MyJAVAParser.VariableDeclaratorIdContext;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;

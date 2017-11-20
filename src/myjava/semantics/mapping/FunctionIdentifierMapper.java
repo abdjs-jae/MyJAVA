@@ -4,9 +4,9 @@
 package myjava.semantics.mapping;
 
 import myjava.error.ParserHandler;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.ParExpressionContext;
-import myjava.generatedexp.JavaParser.PrimaryContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ParExpressionContext;
+import myjava.antlrgen.MyJAVAParser.PrimaryContext;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager;

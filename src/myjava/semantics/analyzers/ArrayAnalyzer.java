@@ -1,22 +1,19 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.ArrayInitializeCommand;
-import myjava.generatedexp.JavaParser.ArrayCreatorRestContext;
-import myjava.generatedexp.JavaParser.CreatedNameContext;
-import myjava.generatedexp.JavaParser.PrimitiveTypeContext;
-import myjava.generatedexp.JavaParser.VariableDeclaratorIdContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.MyJAVAParser.ArrayCreatorRestContext;
+import myjava.antlrgen.MyJAVAParser.CreatedNameContext;
+import myjava.antlrgen.MyJAVAParser.PrimitiveTypeContext;
+import myjava.antlrgen.MyJAVAParser.VariableDeclaratorIdContext;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.IdentifiedTokens;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -25,11 +22,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes a given array declaration. Only accepts primitive declaration
-
  *
  */
-public class ArrayAnalyzer implements ParseTreeListener{
-	private final static String TAG = "MyJAVAProg_ArrayAnalyzer";
+public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
 	
 	private final static String ARRAY_PRIMITIVE_KEY = "ARRAY_PRIMITIVE_KEY";
 	private final static String ARRAY_IDENTIFIER_KEY = "ARRAY_IDENTIFIER_KEY";
@@ -70,22 +65,22 @@ public class ArrayAnalyzer implements ParseTreeListener{
 	public void enterEveryRule(ParserRuleContext ctx) {
 		if(ctx instanceof PrimitiveTypeContext) {
 			PrimitiveTypeContext primitiveCtx = (PrimitiveTypeContext) ctx;
-			this.identifiedTokens.addToken(ARRAY_PRIMITIVE_KEY, primitiveCtx.getText());
+			identifiedTokens.addToken(ARRAY_PRIMITIVE_KEY, primitiveCtx.getText());
 		}
 		else if(ctx instanceof VariableDeclaratorIdContext) {
 			VariableDeclaratorIdContext varDecIdCtx = (VariableDeclaratorIdContext) ctx;
-			this.identifiedTokens.addToken(ARRAY_IDENTIFIER_KEY, varDecIdCtx.getText());
+			identifiedTokens.addToken(ARRAY_IDENTIFIER_KEY, varDecIdCtx.getText());
 			
-			this.analyzeArray();
+			analyzeArray();
 		}
 		else if(ctx instanceof CreatedNameContext) {
 			CreatedNameContext createdNameCtx = (CreatedNameContext) ctx;
-			Console.log(LogType.DEBUG, "Array created name: " +createdNameCtx.getText());
+			txtWriter.writeMessage(StringUtils.formatDebug("Array created name: " +createdNameCtx.getText()));
 		}
 		
 		else if(ctx instanceof ArrayCreatorRestContext) {
 			ArrayCreatorRestContext arrayCreatorCtx = (ArrayCreatorRestContext) ctx;
-			this.createInitializeCommand(arrayCreatorCtx);
+			createInitializeCommand(arrayCreatorCtx);
 		}
 	}
 
@@ -96,42 +91,44 @@ public class ArrayAnalyzer implements ParseTreeListener{
 	
 	private void analyzeArray() {
 		
-		if(this.declaredClassScope != null) {
-			if(this.identifiedTokens.containsTokens(ClassAnalyzer.ACCESS_CONTROL_KEY, ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
-				String accessControlString = this.identifiedTokens.getToken(ClassAnalyzer.ACCESS_CONTROL_KEY);
-				String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
-				String arrayIdentifierString = this.identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
+		if(declaredClassScope != null) {
+			if(identifiedTokens.containsTokens(ClassAnalyzer.ACCESS_CONTROL_KEY, ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
+				String accessControlString = identifiedTokens.getToken(ClassAnalyzer.ACCESS_CONTROL_KEY);
+				String arrayTypeString = identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
+				String arrayIdentifierString = identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
 				
 				//initialize an array myJAVAvalue
-				this.declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
-				MyJAVAValue myJAVAValue = new MyJAVAValue(this.declaredArray, PrimitiveType.ARRAY);
+				declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
+				MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
 				
-				this.declaredClassScope.addMyJAVAValue(accessControlString, arrayIdentifierString, myJAVAValue);
-				Console.log(LogType.DEBUG, "Creating array with type " +arrayTypeString+ " variable " +arrayIdentifierString);
+				declaredClassScope.addMyJAVAValue(accessControlString, arrayIdentifierString, myJAVAValue);
+				txtWriter.writeMessage(StringUtils.formatDebug("Creating array with type " +
+						arrayTypeString+ " variable " +arrayIdentifierString));
 				
-				this.identifiedTokens.clearTokens();
+				identifiedTokens.clearTokens();
 			}
 		}
-		else if(this.localScope != null) {
-			if(this.identifiedTokens.containsTokens(ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
-				String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
-				String arrayIdentifierString = this.identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
+		else if(localScope != null) {
+			if(identifiedTokens.containsTokens(ARRAY_PRIMITIVE_KEY, ARRAY_IDENTIFIER_KEY)) {
+				String arrayTypeString = identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
+				String arrayIdentifierString = identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
 				
 				//initialize an array myJAVAvalue
-				this.declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
-				MyJAVAValue myJAVAValue = new MyJAVAValue(this.declaredArray, PrimitiveType.ARRAY);
+				declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
+				MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
 				
-				this.localScope.addMyJAVAValue(arrayIdentifierString, myJAVAValue);
-				Console.log(LogType.DEBUG, "Creating array with type " +arrayTypeString+ " variable " +arrayIdentifierString);
+				localScope.addMyJAVAValue(arrayIdentifierString, myJAVAValue);
+				txtWriter.writeMessage(StringUtils.formatDebug("Creating array with type " +
+						arrayTypeString+ " variable " +arrayIdentifierString));
 				
-				this.identifiedTokens.clearTokens();
+				identifiedTokens.clearTokens();
 			}
 		}
 		
 	}
 	
 	private void createInitializeCommand(ArrayCreatorRestContext arrayCreatorCtx) {
-		ArrayInitializeCommand arrayInitializeCommand = new ArrayInitializeCommand(this.declaredArray, arrayCreatorCtx);
-		ExecutionManager.getInstance().addCommand(arrayInitializeCommand);
+		ArrayInitializeCommand arrayInitializeCommand = new ArrayInitializeCommand(declaredArray, arrayCreatorCtx);
+		ExecutionManager.getExecutionManager().addCommand(arrayInitializeCommand);
 	}
 }

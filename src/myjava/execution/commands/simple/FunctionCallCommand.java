@@ -3,7 +3,7 @@ package myjava.execution.commands.simple;
 import myjava.error.ParserHandler;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.analyzers.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;

@@ -1,8 +1,6 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand;
@@ -10,12 +8,11 @@ import myjava.execution.commands.controlled.IControlledCommand;
 import myjava.execution.commands.evaluation.AssignmentCommand;
 import myjava.execution.commands.simple.FunctionCallCommand;
 import myjava.execution.commands.simple.IncDecCommand;
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.StatementExpressionContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.StatementExpressionContext;
 import myjava.semantics.statements.StatementControlOverseer;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -27,10 +24,9 @@ import java.util.List;
 /**
  * Analyzes a given expression on the statement level.
  * This does not include field declaration analysis.
-
  *
  */
-public class StatementExpressionAnalyzer implements ParseTreeListener {
+public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListener {
 
 	private ExpressionContext readRightHandExprCtx; //used to avoid mistakenly reading right hand expressions as direct function calls as well.
 	
@@ -70,40 +66,40 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 			ExpressionContext exprCtx = (ExpressionContext) ctx;
 			
 			if(isAssignmentExpression(exprCtx)) {
-				Console.log(LogType.DEBUG, "Assignment expr detected: " +exprCtx.getText());
+				txtWriter.writeMessage(StringUtils.formatDebug("Assignment expr detected: " +exprCtx.getText()));
 				
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				AssignmentCommand assignmentCommand = new AssignmentCommand(exprListCtx.get(0), exprListCtx.get(1));
 				
-				this.readRightHandExprCtx = exprListCtx.get(1);
-				this.handleStatementExecution(assignmentCommand);
+				readRightHandExprCtx = exprListCtx.get(1);
+				handleStatementExecution(assignmentCommand);
 				
 			}
 			else if(isIncrementExpression(exprCtx)) {
-				Console.log(LogType.DEBUG, "Increment expr detected: " +exprCtx.getText());
+				txtWriter.writeMessage(StringUtils.formatDebug("Increment expr detected: " +exprCtx.getText()));
 				
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				
-				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,JavaLexer.INC);
-				this.handleStatementExecution(incDecCommand);
+				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,MyJAVALexer.INC);
+				handleStatementExecution(incDecCommand);
 			}
 			
 			else if(isDecrementExpression(exprCtx)) {
-				Console.log(LogType.DEBUG, "Decrement expr detected: " +exprCtx.getText());
+				txtWriter.writeMessage(StringUtils.formatDebug("Decrement expr detected: " +exprCtx.getText()));
 				
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				
-				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,JavaLexer.DEC);
-				this.handleStatementExecution(incDecCommand);
+				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,MyJAVALexer.DEC);
+				handleStatementExecution(incDecCommand);
 				
 			}
 			
-			else if(this.isFunctionCallWithParams(exprCtx)) {
-				this.handleFunctionCallWithParams(exprCtx);
+			else if(isFunctionCallWithParams(exprCtx)) {
+				handleFunctionCallWithParams(exprCtx);
 			}
 			
-			else if(this.isFunctionCallWithNoParams(exprCtx)) {
-				this.handleFunctionCallWithNoParams(exprCtx);
+			else if(isFunctionCallWithNoParams(exprCtx)) {
+				handleFunctionCallWithNoParams(exprCtx);
 			}
 		}
 	}
@@ -135,7 +131,7 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 			controlledCommand.addCommand(command);
 		}
 		else {
-			ExecutionManager.getInstance().addCommand(command);
+			ExecutionManager.getExecutionManager().addCommand(command);
 		}
 		
 	}
@@ -146,8 +142,8 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 		
 		FunctionCallCommand functionCallCommand = new FunctionCallCommand(functionName, funcExprCtx);
 		this.handleStatementExecution(functionCallCommand);
-		
-		Console.log(LogType.DEBUG, "Function call with params detected: " +functionName);
+
+		txtWriter.writeMessage(StringUtils.formatDebug("Function call with params detected: " +functionName));
 	}
 	
 	private void handleFunctionCallWithNoParams(ExpressionContext funcExprCtx) {
@@ -155,23 +151,23 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 		
 		FunctionCallCommand functionCallCommand = new FunctionCallCommand(functionName, funcExprCtx);
 		this.handleStatementExecution(functionCallCommand);
-		
-		Console.log(LogType.DEBUG, "Function call with no params detected: " +functionName);
+
+		txtWriter.writeMessage(StringUtils.formatDebug("Function call with no params detected: " +functionName));
 	}
 	
 	public static boolean isAssignmentExpression(ExpressionContext exprCtx) {
-		List<TerminalNode> tokenList = exprCtx.getTokens(JavaLexer.ASSIGN);
+		List<TerminalNode> tokenList = exprCtx.getTokens(MyJAVALexer.ASSIGN);
 		return (tokenList.size() > 0);
 	}
 	
 	public static boolean isIncrementExpression(ExpressionContext exprCtx) {
-		List<TerminalNode> incrementList = exprCtx.getTokens(JavaLexer.INC);
+		List<TerminalNode> incrementList = exprCtx.getTokens(MyJAVALexer.INC);
 		
 		return (incrementList.size() > 0);
 	}
 	
 	public static boolean isDecrementExpression(ExpressionContext exprCtx) {
-		List<TerminalNode> decrementList = exprCtx.getTokens(JavaLexer.DEC);
+		List<TerminalNode> decrementList = exprCtx.getTokens(MyJAVALexer.DEC);
 		
 		return (decrementList.size() > 0);
 	}
@@ -181,8 +177,6 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 		
 		if(firstExprCtx != null) {
 			if(exprCtx != this.readRightHandExprCtx) {
-				ThisKeywordChecker thisChecker = new ThisKeywordChecker(firstExprCtx);
-				thisChecker.verify();
 				
 				return (firstExprCtx.Identifier() != null);
 			}
@@ -194,8 +188,6 @@ public class StatementExpressionAnalyzer implements ParseTreeListener {
 	
 	private boolean isFunctionCallWithNoParams(ExpressionContext exprCtx) {
 		if(exprCtx.depth() == FUNCTION_CALL_NO_PARAMS_DEPTH) {
-			ThisKeywordChecker thisChecker = new ThisKeywordChecker(exprCtx);
-			thisChecker.verify();
 			if(exprCtx.Identifier() != null)
 				return true;
 		}

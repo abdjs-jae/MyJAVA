@@ -4,7 +4,7 @@ import myjava.error.checkers.TypeChecker;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.utils.AssignmentUtils;

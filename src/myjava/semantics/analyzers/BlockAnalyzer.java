@@ -1,19 +1,15 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
-import myjava.generatedexp.JavaParser.BlockContext;
-import myjava.generatedexp.JavaParser.BlockStatementContext;
-import myjava.generatedexp.JavaParser.LocalVariableDeclarationStatementContext;
-import myjava.generatedexp.JavaParser.StatementContext;
+import myjava.antlrgen.MyJAVAParser.BlockContext;
+import myjava.antlrgen.MyJAVAParser.BlockStatementContext;
+import myjava.antlrgen.MyJAVAParser.LocalVariableDeclarationStatementContext;
+import myjava.antlrgen.MyJAVAParser.StatementContext;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 import java.util.List;
 
 /**
  * Analyzes a statement block
-
  *
  */
 public class BlockAnalyzer {

@@ -1,143 +1,134 @@
-
 package myjava.semantics.analyzers;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.controlled.*;
 import myjava.execution.commands.simple.PrintCommand;
 import myjava.execution.commands.simple.ReturnCommand;
 import myjava.execution.commands.simple.ScanCommand;
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.BlockContext;
-import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.generatedexp.JavaParser.StatementContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.BlockContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.StatementContext;
 import myjava.semantics.statements.StatementControlOverseer;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.List;
 
 /**
  * A bridge for statement listener
-
  *
  */
-public class StatementAnalyzer {
+public class StatementAnalyzer implements ITextWriter{
 
 	public StatementAnalyzer() {
 		
 	}
 	
 	public void analyze(StatementContext ctx) {
+
 		//print statement
-		if(ctx.PRINT() != null) {
-			this.handlePrintStatement(ctx);
-		}
-		else if(ctx.SCAN() != null) {
-			this.handleScanStatement(ctx);
-		}
+		if(ctx.PRINT() != null) handlePrintStatement(ctx);
+		else if(ctx.SCAN() != null) handleScanStatement(ctx);
 		//an expression
 		else if(ctx.statementExpression() != null) {
 			StatementExpressionAnalyzer expressionAnalyzer = new StatementExpressionAnalyzer();
 			expressionAnalyzer.analyze(ctx.statementExpression());
 		}
-		
+
 		//a block statement
 		else if(ctx.block() != null) {
 			BlockContext blockCtx = ctx.block();
-			
+
 			BlockAnalyzer blockAnalyzer = new BlockAnalyzer();
 			blockAnalyzer.analyze(blockCtx);
 		}
-		
+
 		//an IF statement
 		else if(isIFStatement(ctx)) {
-			//Console.log("Par expression: " +ctx.parExpression().getText());
-			
+
 			StatementContext statementCtx = ctx.statement(0);
-			
-			//Console.log(LogType.DEBUG, "IF statement: " +statementCtx.getText());
-			
+
 			IfCommand ifCommand = new IfCommand(ctx.parExpression());
 			StatementControlOverseer.getInstance().openConditionalCommand(ifCommand);
-			
+
 			StatementAnalyzer statementAnalyzer = new StatementAnalyzer();
 			statementAnalyzer.analyze(statementCtx);
-			
+
 			StatementControlOverseer.getInstance().reportExitPositiveRule();
-			
+
 			//check if there is an ELSE statement
 			if(isELSEStatement(ctx)) {
 				statementCtx = ctx.statement(1);
-				
-				//Console.log(LogType.DEBUG, "ELSE statement: " +statementCtx.getText());
+
 				statementAnalyzer.analyze(statementCtx);
 			}
-			
+
 			StatementControlOverseer.getInstance().compileControlledCommand();
 		}
-		
+
 		else if(isWHILEStatement(ctx)) {
-			Console.log(LogType.DEBUG, "While par expression: " +ctx.parExpression().getText());
-			
+			txtWriter.writeMessage(StringUtils.formatDebug("While par expression: " +ctx.parExpression().getText()));
+
 			StatementContext statementCtx = ctx.statement(0);
-			
+
 			WhileCommand whileCommand = new WhileCommand(ctx.parExpression());
 			StatementControlOverseer.getInstance().openControlledCommand(whileCommand);
-			
+
 			StatementAnalyzer statementAnalyzer = new StatementAnalyzer();
 			statementAnalyzer.analyze(statementCtx);
-			
+
 			StatementControlOverseer.getInstance().compileControlledCommand();
-			Console.log(LogType.DEBUG, "End of WHILE expression: " +ctx.parExpression().getText());
+			txtWriter.writeMessage(StringUtils.formatDebug("End of WHILE expression: " +ctx.parExpression().getText()));
 		}
-		
+
 		else if(isDOWHILEStatement(ctx)) {
-			Console.log(LogType.DEBUG, "Do while expression: " +ctx.parExpression().getText());
-			
+			txtWriter.writeMessage(StringUtils.formatDebug("Do while expression: " +ctx.parExpression().getText()));
+
 			StatementContext statementCtx = ctx.statement(0);
-			
+
 			DoWhileCommand doWhileCommand = new DoWhileCommand(ctx.parExpression());
 			StatementControlOverseer.getInstance().openControlledCommand(doWhileCommand);
-			
+
 			StatementAnalyzer statementAnalyzer = new StatementAnalyzer();
 			statementAnalyzer.analyze(statementCtx);
-			
+
 			StatementControlOverseer.getInstance().compileControlledCommand();
-			Console.log(LogType.DEBUG, "End of DO-WHILE expression: " +ctx.parExpression().getText());
+			txtWriter.writeMessage(StringUtils.formatDebug("End of DO-WHILE expression: " +ctx.parExpression().getText()));
 		}
-		
+
 		else if(isFORStatement(ctx)) {
-			Console.log(LogType.DEBUG, "FOR expression: " +ctx.forControl().getText());
-			
+			txtWriter.writeMessage(StringUtils.formatDebug("FOR expression: " +ctx.forControl().getText()));
+
 			LocalScopeCreator.getInstance().openLocalScope();
-			
+
 			ForControlAnalyzer forControlAnalyzer = new ForControlAnalyzer();
 			forControlAnalyzer.analyze(ctx.forControl());
-			
+
 			ForCommand forCommand = new ForCommand(forControlAnalyzer.getLocalVarDecContext(), forControlAnalyzer.getExprContext(), forControlAnalyzer.getUpdateCommand());
 			StatementControlOverseer.getInstance().openControlledCommand(forCommand);
-			
+
 			StatementContext statementCtx = ctx.statement(0);
 			StatementAnalyzer statementAnalyzer = new StatementAnalyzer();
 			statementAnalyzer.analyze(statementCtx);
-			
+
 			StatementControlOverseer.getInstance().compileControlledCommand();
-			
+
 			LocalScopeCreator.getInstance().closeLocalScope();
-			Console.log(LogType.DEBUG, "End of FOR loop");
+			txtWriter.writeMessage(StringUtils.formatDebug("End of FOR loop"));
 		}
-		
-		else if(isRETURNStatement(ctx) && ExecutionManager.getInstance().isInFunctionExecution()) {
-			Console.log(LogType.DEBUG, "Detected return expression: " +ctx.expression(0).getText());
-			this.handleReturnStatement(ctx.expression(0));
+
+		else if(isRETURNStatement(ctx) && ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+			txtWriter.writeMessage(StringUtils.formatDebug("Detected return expression: " +ctx.expression().getText()));
+			handleReturnStatement(ctx.expression());
 		}
 	}
 	
 	private void handlePrintStatement(StatementContext ctx) {
-		PrintCommand printCommand = new PrintCommand(ctx.expression(0));
+		PrintCommand printCommand = new PrintCommand(ctx.expression());
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
 		//add to conditional controlled command
@@ -157,7 +148,7 @@ public class StatementAnalyzer {
 			controlledCommand.addCommand(printCommand);
 		}
 		else {
-			ExecutionManager.getInstance().addCommand(printCommand);
+			ExecutionManager.getExecutionManager().addCommand(printCommand);
 		}
 		
 	}
@@ -184,13 +175,13 @@ public class StatementAnalyzer {
 			controlledCommand.addCommand(scanCommand);
 		}
 		else {
-			ExecutionManager.getInstance().addCommand(scanCommand);
+			ExecutionManager.getExecutionManager().addCommand(scanCommand);
 		}
 		
 	}
 	
 	private void handleReturnStatement(ExpressionContext exprCtx) {
-		ReturnCommand returnCommand = new ReturnCommand(exprCtx, ExecutionManager.getInstance().getCurrentFunction());
+		ReturnCommand returnCommand = new ReturnCommand(exprCtx, ExecutionManager.getExecutionManager().getCurrentFunction());
 		/*
 		 * TODO: Return commands supposedly stops a controlled or conditional command and returns back the control to the caller.
 		 * Find a way to halt such commands if they are inside a controlled command.
@@ -204,7 +195,7 @@ public class StatementAnalyzer {
 				conditionalCommand.addPositiveCommand(returnCommand);
 			}
 			else {
-				String functionName = ExecutionManager.getInstance().getCurrentFunction().getFunctionName();
+				String functionName = ExecutionManager.getExecutionManager().getCurrentFunction().getFunctionName();
 				conditionalCommand.addNegativeCommand(returnCommand);
 			}
 		}
@@ -214,45 +205,45 @@ public class StatementAnalyzer {
 			controlledCommand.addCommand(returnCommand);
 		}
 		else {
-			ExecutionManager.getInstance().addCommand(returnCommand);
+			ExecutionManager.getExecutionManager().addCommand(returnCommand);
 		}
 		
 	}
 	
 	public static boolean isIFStatement(StatementContext ctx) {
-		List<TerminalNode> tokenList = ctx.getTokens(JavaLexer.IF);
+		List<TerminalNode> tokenList = ctx.getTokens(MyJAVALexer.IF);
 		
 		return (tokenList.size() != 0);
 	}
 	
 	public static boolean isELSEStatement(StatementContext ctx) {
-		List<TerminalNode> tokenList = ctx.getTokens(JavaLexer.ELSE);
+		List<TerminalNode> tokenList = ctx.getTokens(MyJAVALexer.ELSE);
 		
 		return (tokenList.size() != 0);
 	}
 	
 	public static boolean isWHILEStatement(StatementContext ctx) {
-		List<TerminalNode> whileTokenList = ctx.getTokens(JavaLexer.WHILE);
-		List<TerminalNode> doTokenList = ctx.getTokens(JavaLexer.DO);
+		List<TerminalNode> whileTokenList = ctx.getTokens(MyJAVALexer.WHILE);
+		List<TerminalNode> doTokenList = ctx.getTokens(MyJAVALexer.DO);
 		
 		return (whileTokenList.size() != 0 && doTokenList.size() == 0);
 	}
 	
 	public static boolean isDOWHILEStatement(StatementContext ctx) {
-		List<TerminalNode> whileTokenList = ctx.getTokens(JavaLexer.WHILE);
-		List<TerminalNode> doTokenList = ctx.getTokens(JavaLexer.DO);
+		List<TerminalNode> whileTokenList = ctx.getTokens(MyJAVALexer.WHILE);
+		List<TerminalNode> doTokenList = ctx.getTokens(MyJAVALexer.DO);
 		
 		return (whileTokenList.size() != 0 && doTokenList.size() != 0);
 	}
 	
 	public static boolean isFORStatement(StatementContext ctx) {
-		List<TerminalNode> forTokenList = ctx.getTokens(JavaLexer.FOR);
+		List<TerminalNode> forTokenList = ctx.getTokens(MyJAVALexer.FOR);
 		
 		return (forTokenList.size() != 0);
 	}
 	
 	public static boolean isRETURNStatement(StatementContext ctx) {
-		List<TerminalNode> returnTokenList = ctx.getTokens(JavaLexer.RETURN);
+		List<TerminalNode> returnTokenList = ctx.getTokens(MyJAVALexer.RETURN);
 		
 		return (returnTokenList.size() != 0);
 	}

@@ -4,7 +4,7 @@
 package myjava.semantics.implementors;
 
 import myjava.generatedexp.JavaListener;
-import myjava.generatedexp.JavaParser.*;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.semantics.analyzers.ClassAnalyzer;
 import myjava.semantics.analyzers.MainAnalyzer;
 import org.antlr.v4.runtime.ParserRuleContext;

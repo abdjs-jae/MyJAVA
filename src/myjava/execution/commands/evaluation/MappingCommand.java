@@ -2,7 +2,7 @@ package myjava.execution.commands.evaluation;
 
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.analyzers.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;

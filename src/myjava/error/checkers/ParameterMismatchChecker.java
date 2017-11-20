@@ -6,8 +6,8 @@ package myjava.error.checkers;
 import myjava.error.BuildChecker;
 import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
-import myjava.generatedexp.JavaParser.ArgumentsContext;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ArgumentsContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.representations.MyJAVAFunction;
 
 import java.util.List;

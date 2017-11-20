@@ -1,16 +1,13 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.*;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
+import myjava.antlrgen.ITextWriter;
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.utils.IdentifiedTokens;
 import myjava.semantics.utils.RecognizedKeywords;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -21,11 +18,9 @@ import java.util.List;
 
 /**
  * A bridge for analyzing creation of a class
-
  *
  */
-public class ClassAnalyzer implements ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_ClassAnalyzer";
+public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;
@@ -44,11 +39,7 @@ public class ClassAnalyzer implements ParseTreeListener {
 	public void analyze(ClassDeclarationContext ctx) {
 		String className = ctx.Identifier().getText();
 		
-		Console.log(LogType.DEBUG, "Class name is " +className);
-		ClassNameChecker classNameChecker = new ClassNameChecker(className);
-		classNameChecker.verify();
-		
-		this.declaredClassScope = new ClassScope(classNameChecker.correctClassName());
+		this.declaredClassScope = new ClassScope(className);
 		this.identifiedTokens = new IdentifiedTokens();
 		
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
@@ -70,7 +61,7 @@ public class ClassAnalyzer implements ParseTreeListener {
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
 		if(ctx instanceof ClassDeclarationContext) {
-			SymbolTableManager.getInstance().addClassScope(this.declaredClassScope.getClassName(), this.declaredClassScope);
+			SymbolTableManager.getInstance().addClassScope(declaredClassScope.getClassName(), declaredClassScope);
 		}
 		
 		this.analyzeClassMembers(ctx);
@@ -85,7 +76,7 @@ public class ClassAnalyzer implements ParseTreeListener {
 		if(ctx instanceof ClassOrInterfaceModifierContext) {
 			ClassOrInterfaceModifierContext classModifierCtx = (ClassOrInterfaceModifierContext) ctx;
 			
-			this.analyzeModifier(classModifierCtx);
+			analyzeModifier(classModifierCtx);
 		}
 		
 		else if(ctx instanceof FieldDeclarationContext) {
@@ -97,20 +88,20 @@ public class ClassAnalyzer implements ParseTreeListener {
 				//check if its a primitive type
 				if(ClassAnalyzer.isPrimitiveDeclaration(typeCtx)) {
 					PrimitiveTypeContext primitiveTypeCtx = typeCtx.primitiveType();
-					this.identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, primitiveTypeCtx.getText());
+					identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, primitiveTypeCtx.getText());
 					
 					//create a field analyzer to walk through declarations
-					FieldAnalyzer fieldAnalyzer = new FieldAnalyzer(this.identifiedTokens, this.declaredClassScope);
+					FieldAnalyzer fieldAnalyzer = new FieldAnalyzer(identifiedTokens, declaredClassScope);
 					fieldAnalyzer.analyze(fieldCtx.variableDeclarators());
 					
 					//clear tokens for reause
-					this.identifiedTokens.clearTokens();	
+					identifiedTokens.clearTokens();
 				}
 				
 				//check if its array declaration
 				else if(ClassAnalyzer.isPrimitiveArrayDeclaration(typeCtx)) {
-					Console.log(LogType.DEBUG, "Primitive array declaration: " +fieldCtx.getText());
-					ArrayAnalyzer arrayAnalyzer = new ArrayAnalyzer(this.identifiedTokens, this.declaredClassScope);
+					txtWriter.writeMessage(StringUtils.formatDebug("Primitive array declaration: " +fieldCtx.getText()));
+					ArrayAnalyzer arrayAnalyzer = new ArrayAnalyzer(identifiedTokens, declaredClassScope);
 					arrayAnalyzer.analyze(fieldCtx);
 				}
 				
@@ -120,33 +111,33 @@ public class ClassAnalyzer implements ParseTreeListener {
 					//a string identified
 					if(typeCtx.classOrInterfaceType().getText().contains(RecognizedKeywords.PRIMITIVE_TYPE_STRING)) {
 						ClassOrInterfaceTypeContext classInterfaceCtx = typeCtx.classOrInterfaceType();
-						this.identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, classInterfaceCtx.getText());
+						identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, classInterfaceCtx.getText());
 					}
 					
 					//create a field analyzer to walk through declarations
-					FieldAnalyzer fieldAnalyzer = new FieldAnalyzer(this.identifiedTokens, this.declaredClassScope);
+					FieldAnalyzer fieldAnalyzer = new FieldAnalyzer(identifiedTokens, declaredClassScope);
 					fieldAnalyzer.analyze(fieldCtx.variableDeclarators());
 					
 					//clear tokens for reause
-					this.identifiedTokens.clearTokens();
+					identifiedTokens.clearTokens();
 				}
 			}
 		}
 		
 		else if(ctx instanceof MethodDeclarationContext) {
 			MethodDeclarationContext methodDecCtx = (MethodDeclarationContext) ctx;
-			MethodAnalyzer methodAnalyzer = new MethodAnalyzer(this.identifiedTokens, this.declaredClassScope);
+			MethodAnalyzer methodAnalyzer = new MethodAnalyzer(identifiedTokens, declaredClassScope);
 			methodAnalyzer.analyze(methodDecCtx);
 			
 			//reuse tokens
-			this.identifiedTokens.clearTokens();
+			identifiedTokens.clearTokens();
 		}
 	}
 	
 	public static boolean isPrimitiveDeclaration(TypeContext typeCtx) {
 		if(typeCtx.primitiveType() != null) {
-			List<TerminalNode> lBrackToken = typeCtx.getTokens(JavaLexer.LBRACK);
-			List<TerminalNode> rBrackToken = typeCtx.getTokens(JavaLexer.RBRACK);
+			List<TerminalNode> lBrackToken = typeCtx.getTokens(MyJAVALexer.LBRACK);
+			List<TerminalNode> rBrackToken = typeCtx.getTokens(MyJAVALexer.RBRACK);
 			
 			return (lBrackToken.size() == 0 && rBrackToken.size() == 0);
 		}
@@ -156,8 +147,8 @@ public class ClassAnalyzer implements ParseTreeListener {
 	
 	public static boolean isPrimitiveArrayDeclaration(TypeContext typeCtx) {
 		if(typeCtx.primitiveType() != null) {
-			List<TerminalNode> lBrackToken = typeCtx.getTokens(JavaLexer.LBRACK);
-			List<TerminalNode> rBrackToken = typeCtx.getTokens(JavaLexer.RBRACK);
+			List<TerminalNode> lBrackToken = typeCtx.getTokens(MyJAVALexer.LBRACK);
+			List<TerminalNode> rBrackToken = typeCtx.getTokens(MyJAVALexer.RBRACK);
 			
 			return (lBrackToken.size() > 0 && rBrackToken.size() > 0);
 		}
@@ -166,17 +157,17 @@ public class ClassAnalyzer implements ParseTreeListener {
 	}
 	
 	private void analyzeModifier(ClassOrInterfaceModifierContext ctx) {
-		if(ctx.getTokens(JavaLexer.PUBLIC).size() > 0 || ctx.getTokens(JavaLexer.PRIVATE).size() > 0
-				|| ctx.getTokens(JavaLexer.PROTECTED).size() > 0) {
-			Console.log(LogType.DEBUG, "Detected accessor: " +ctx.getText());
+		if(ctx.getTokens(MyJAVALexer.PUBLIC).size() > 0 || ctx.getTokens(MyJAVALexer.PRIVATE).size() > 0
+				|| ctx.getTokens(MyJAVALexer.PROTECTED).size() > 0) {
+			txtWriter.writeMessage(StringUtils.formatDebug("Detected accessor: " +ctx.getText()));
 			this.identifiedTokens.addToken(ACCESS_CONTROL_KEY, ctx.getText());
 		}
-		else if(ctx.getTokens(JavaLexer.FINAL).size() > 0) {
-			Console.log(LogType.DEBUG, "Detected const: " +ctx.getText());
+		else if(ctx.getTokens(MyJAVALexer.FINAL).size() > 0) {
+			txtWriter.writeMessage(StringUtils.formatDebug("Detected const: " +ctx.getText()));
 			this.identifiedTokens.addToken(CONST_CONTROL_KEY, ctx.getText());
 		}
-		else if(ctx.getTokens(JavaLexer.STATIC).size() > 0) {
-			Console.log(LogType.DEBUG, "Detected static: " +ctx.getText());
+		else if(ctx.getTokens(MyJAVALexer.STATIC).size() > 0) {
+			txtWriter.writeMessage(StringUtils.formatDebug("Detected static: " +ctx.getText()));
 			this.identifiedTokens.addToken(STATIC_CONTROL_KEY, ctx.getText());
 		}
 	}

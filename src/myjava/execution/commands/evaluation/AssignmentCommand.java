@@ -1,12 +1,12 @@
 package myjava.execution.commands.evaluation;
 
+import myjava.antlrgen.MyJAVALexer;
 import myjava.error.checkers.ConstChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.ExpressionContext;
+import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.semantics.analyzers.FunctionCallVerifier;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
@@ -72,8 +72,8 @@ public class AssignmentCommand implements ICommand{
 	}
 	
 	private boolean isLeftHandArrayAccessor() {
-		List<TerminalNode> lBrackTokens = leftHandExprCtx.getTokens(JavaLexer.LBRACK);
-		List<TerminalNode> rBrackTokens = leftHandExprCtx.getTokens(JavaLexer.RBRACK);
+		List<TerminalNode> lBrackTokens = leftHandExprCtx.getTokens(MyJAVALexer.LBRACK);
+		List<TerminalNode> rBrackTokens = leftHandExprCtx.getTokens(MyJAVALexer.RBRACK);
 		
 		return(lBrackTokens.size() > 0 && rBrackTokens.size() > 0);
 	}

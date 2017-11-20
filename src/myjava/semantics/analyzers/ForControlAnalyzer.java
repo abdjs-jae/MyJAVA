@@ -1,13 +1,10 @@
-/**
- * 
- */
 package myjava.semantics.analyzers;
 
+import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.AssignmentCommand;
 import myjava.execution.commands.simple.IncDecCommand;
-import myjava.generatedexp.JavaLexer;
-import myjava.generatedexp.JavaParser.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -16,7 +13,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes the for loop
-
  *
  */
 public class ForControlAnalyzer implements ParseTreeListener{
@@ -50,21 +46,17 @@ public class ForControlAnalyzer implements ParseTreeListener{
 			LocalVariableAnalyzer localVariableAnalyzer = new LocalVariableAnalyzer();
 			localVariableAnalyzer.analyze(this.localVarDecCtx);
 		}
-		
+
 		else if(ctx instanceof ForUpdateContext) {
 			ForUpdateContext forUpdateCtx = (ForUpdateContext) ctx;
 			ExpressionContext exprCtx = forUpdateCtx.expressionList().expression(0);
 			
-			if(StatementExpressionAnalyzer.isAssignmentExpression(exprCtx)) {
-				//this.updateCommand = new AssignmentCommand(exprCtx.expression(0), exprCtx.expression(1));
+			if(StatementExpressionAnalyzer.isAssignmentExpression(exprCtx))
 				this.updateCommand = new AssignmentCommand(exprCtx.expression(0), exprCtx.expression(1));
-			}
-			else if(StatementExpressionAnalyzer.isIncrementExpression(exprCtx)) {
-				this.updateCommand = new IncDecCommand(exprCtx.expression(0), JavaLexer.INC);
-			}
-			else if(StatementExpressionAnalyzer.isDecrementExpression(exprCtx)) {
-				this.updateCommand = new IncDecCommand(exprCtx.expression(0), JavaLexer.DEC);
-			}
+			else if(StatementExpressionAnalyzer.isIncrementExpression(exprCtx))
+				this.updateCommand = new IncDecCommand(exprCtx.expression(0), MyJAVALexer.INC);
+			else if(StatementExpressionAnalyzer.isDecrementExpression(exprCtx))
+				this.updateCommand = new IncDecCommand(exprCtx.expression(0), MyJAVALexer.DEC);
 		}
 	}
 	
