@@ -15,7 +15,7 @@
       <file leaf-file-name="ScanCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
+            <state relative-caret-position="0">
               <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
               <folding />
             </state>
@@ -27,7 +27,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="575">
               <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-              <folding />
+              <folding>
+                <marker date="1511176295183" expanded="true" signature="843:910" ph="/**...*/" />
+                <marker date="1511176295183" expanded="true" signature="1234:1518" ph="{...}" />
+                <marker date="1511176295183" expanded="true" signature="1646:1722" ph="{...}" />
+                <marker date="1511176295183" expanded="true" signature="1758:1980" ph="{...}" />
+                <marker date="1511176295183" expanded="true" signature="2018:2587" ph="{...}" />
+                <marker date="1511176295183" expanded="true" signature="2672:3760" ph="{...}" />
+                <marker date="1511176295183" expanded="false" signature="3801:3812" ph=" { " />
+                <marker date="1511176295183" expanded="false" signature="3856:3862" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,9 +78,20 @@
       <file leaf-file-name="ForCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-              <folding />
+            <state relative-caret-position="475">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <marker date="1511176295188" expanded="true" signature="855:913" ph="/**...*/" />
+                <marker date="1511176295188" expanded="true" signature="1533:1738" ph="{...}" />
+                <marker date="1511176295188" expanded="true" signature="1866:2809" ph="{...}" />
+                <marker date="1511176295188" expanded="true" signature="2852:3107" ph="{...}" />
+                <marker date="1511176295188" expanded="true" signature="3146:3376" ph="{...}" />
+                <marker date="1511176295188" expanded="false" signature="3549:3560" ph=" { " />
+                <marker date="1511176295188" expanded="false" signature="3595:3601" ph=" }" />
+                <marker date="1511176295188" expanded="true" signature="3806:3977" ph="{...}" />
+                <marker date="1511176295188" expanded="false" signature="4011:4022" ph=" { " />
+                <marker date="1511176295188" expanded="false" signature="4058:4064" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,16 +121,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="550">
               <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParameterMismatchChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/errors/checkers/ParameterMismatchChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -239,7 +249,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="798" />
@@ -274,33 +284,6 @@
               <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="semantics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="semantics" type="462c0819:PsiDirectoryNode" />
-              <item name="analyzers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="uicomp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -763,15 +746,15 @@
       <workItem from="1511027499749" duration="5671000" />
       <workItem from="1511077025085" duration="1954000" />
       <workItem from="1511097397471" duration="5540000" />
-      <workItem from="1511175449532" duration="599000" />
+      <workItem from="1511175449532" duration="1656000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131304000" />
+    <option name="totallyTimeSpent" value="132361000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32344633" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -824,11 +807,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/errors/TypeChecker.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -984,6 +962,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,6 +1033,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131700">
           <caret line="5637" column="14" lean-forward="false" selection-start-line="5637" selection-start-column="14" selection-end-line="5637" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,7 +1084,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/basic/ScanCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
+        <state relative-caret-position="0">
           <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
           <folding />
         </state>
@@ -1112,7 +1094,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
           <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1511176295183" expanded="true" signature="843:910" ph="/**...*/" />
+            <marker date="1511176295183" expanded="true" signature="1234:1518" ph="{...}" />
+            <marker date="1511176295183" expanded="true" signature="1646:1722" ph="{...}" />
+            <marker date="1511176295183" expanded="true" signature="1758:1980" ph="{...}" />
+            <marker date="1511176295183" expanded="true" signature="2018:2587" ph="{...}" />
+            <marker date="1511176295183" expanded="true" signature="2672:3760" ph="{...}" />
+            <marker date="1511176295183" expanded="false" signature="3801:3812" ph=" { " />
+            <marker date="1511176295183" expanded="false" signature="3856:3862" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,9 +1143,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-          <folding />
+        <state relative-caret-position="475">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1511176295188" expanded="true" signature="855:913" ph="/**...*/" />
+            <marker date="1511176295188" expanded="true" signature="1533:1738" ph="{...}" />
+            <marker date="1511176295188" expanded="true" signature="1866:2809" ph="{...}" />
+            <marker date="1511176295188" expanded="true" signature="2852:3107" ph="{...}" />
+            <marker date="1511176295188" expanded="true" signature="3146:3376" ph="{...}" />
+            <marker date="1511176295188" expanded="false" signature="3549:3560" ph=" { " />
+            <marker date="1511176295188" expanded="false" signature="3595:3601" ph=" }" />
+            <marker date="1511176295188" expanded="true" signature="3806:3977" ph="{...}" />
+            <marker date="1511176295188" expanded="false" signature="4011:4022" ph=" { " />
+            <marker date="1511176295188" expanded="false" signature="4058:4064" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1162,6 +1164,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="875">
           <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/CMPILER_MobiProg/app/src/main/java/com/neildg/mobiprog/builder/BuildChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
           <folding />
         </state>
       </provider>

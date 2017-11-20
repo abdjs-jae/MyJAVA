@@ -1,0 +1,47 @@
+[
+    {
+        "outputFile": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 53,
+                    "endOffset": 104
+                },
+                "from": {
+                    "file": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\values-v11\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 675,
+                        "endColumn": 53,
+                        "endOffset": 724
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 109,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 241
+                },
+                "from": {
+                    "file": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\values-v11\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 183,
+                        "endLine": 8,
+                        "endColumn": 12,
+                        "endOffset": 317
+                    }
+                }
+            }
+        ]
+    }
+]

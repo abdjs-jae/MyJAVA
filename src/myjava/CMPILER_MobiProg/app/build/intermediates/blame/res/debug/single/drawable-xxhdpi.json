@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_chooser.png",
+        "source": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\drawable-xxhdpi\\ic_chooser.png"
+    },
+    {
+        "merged": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_provider.png",
+        "source": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\drawable-xxhdpi\\ic_provider.png"
+    },
+    {
+        "merged": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_file.png",
+        "source": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\drawable-xxhdpi\\ic_file.png"
+    },
+    {
+        "merged": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_folder.png",
+        "source": "C:\\Users\\JJ\\Documents\\CMPILER_MobiProg\\app\\src\\main\\res\\drawable-xxhdpi\\ic_folder.png"
+    }
+]
