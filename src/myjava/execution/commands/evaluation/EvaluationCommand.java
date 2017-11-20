@@ -25,7 +25,7 @@ import java.util.List;
 
 /**
  * A command that evaluates a given expression at runtime.
- * @author Patrick
+ *
  *
  */
 public class EvaluationCommand implements ICommand, ParseTreeListener {

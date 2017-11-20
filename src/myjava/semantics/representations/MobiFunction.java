@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * Represents the intermediate representation of a function
- * @author NeilDG
+ *
  *
  */
 public class MobiFunction implements IControlledCommand{

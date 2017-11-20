@@ -10,7 +10,7 @@ import java.util.Stack;
 
 /**
  * Holds the current function that the control flow is in.
- * @author NeilDG
+ *
  *
  */
 public class FunctionTracker {

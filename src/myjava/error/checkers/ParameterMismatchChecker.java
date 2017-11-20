@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Just checks if the number of parameters to be passed is equal to the required number
- * @author NeilDG
+ *
  *
  */
 public class ParameterMismatchChecker implements IErrorChecker {

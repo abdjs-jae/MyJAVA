@@ -13,7 +13,7 @@ import myjava.semantics.utils.RecognizedKeywords;
 /**
  * A representation of an array. For now, we only accept 1D array.
  * 
- * @author NeilDG
+ *
  *
  */
 public class MobiArray {

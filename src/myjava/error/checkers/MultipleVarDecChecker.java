@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Checks for multiple declarations of variables.
- * @author NeilDG
+ *
  *
  */
 public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {

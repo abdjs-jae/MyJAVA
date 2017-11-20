@@ -10,7 +10,7 @@ import myjava.semantics.representations.MobiValue;
 
 /**
  * An identifier mapper that delegates the behavior to a class or function mapper depending on the control flow of execution.
- * @author NeilDG
+ *
  *
  */
 public class IdentifierMapper implements IValueMapper{

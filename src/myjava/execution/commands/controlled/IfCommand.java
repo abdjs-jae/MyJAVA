@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * A representation of a conditional statement
- * @author NeilDG
+ *
  *
  */
 public class IfCommand implements IConditionalCommand {

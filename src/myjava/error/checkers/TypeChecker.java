@@ -18,7 +18,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Handles all the type checking
- * @author NeilDG
+ *
  *
  */
 public class TypeChecker implements IErrorChecker, ParseTreeListener {

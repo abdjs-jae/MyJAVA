@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Handles adding of execution to the main control flow.
- * @author NeilDG
+ *
  *
  */
 public class MainExecutionAdder implements IExecutionAdder {

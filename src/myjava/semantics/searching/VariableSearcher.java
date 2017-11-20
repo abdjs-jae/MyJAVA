@@ -13,7 +13,7 @@ import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 
 /**
  * A utility class to search for a certain variable depending on where the control flow is.
- * @author Patrick
+ *
  *
  */
 public class VariableSearcher {

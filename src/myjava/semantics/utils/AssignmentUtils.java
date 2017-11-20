@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 /**
  * Assignment utilities are put here.
- * @author NeilDG
+ *
  *
  */
 public class AssignmentUtils {

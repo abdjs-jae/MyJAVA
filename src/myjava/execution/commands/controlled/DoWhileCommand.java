@@ -11,7 +11,7 @@ import myjava.generatedexp.JavaParser.ParExpressionContext;
 
 /**
  * Represents a do while command which is essentially a modified while command
- * @author NeilDG
+ *
  *
  */
 public class DoWhileCommand extends WhileCommand {

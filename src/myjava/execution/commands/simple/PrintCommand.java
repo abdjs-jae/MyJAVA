@@ -21,7 +21,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Populates and handles the print command execution
- * @author Patrick
+ *
  *
  */
 public class PrintCommand implements ICommand, ParseTreeListener {

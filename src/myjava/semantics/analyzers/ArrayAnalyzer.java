@@ -25,7 +25,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes a given array declaration. Only accepts primitive declaration
- * @author NeilDG
+ *
  *
  */
 public class ArrayAnalyzer implements ParseTreeListener{

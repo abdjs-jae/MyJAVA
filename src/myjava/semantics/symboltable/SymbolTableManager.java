@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /**
  * Holds all of the found variables in code and stores them here in the symbol table manager.
- * @author NeilDG
+ *
  *
  */
 public class SymbolTableManager {

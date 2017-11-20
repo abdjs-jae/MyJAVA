@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * A bridge for analyzing creation of a class
- * @author NeilDG
+ *
  *
  */
 public class ClassAnalyzer implements ParseTreeListener {

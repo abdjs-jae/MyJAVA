@@ -5,7 +5,7 @@ package myjava.error;
 
 /**
  * Manages all parsing from different saved files
- * @author Patrick
+ *
  *
  */
 public class ParserHandler {

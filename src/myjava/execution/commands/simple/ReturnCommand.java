@@ -14,7 +14,7 @@ import myjava.semantics.utils.AssignmentUtils;
 
 /**
  * Represents a return command which is specially used by a function.
- * @author NeilDG
+ *
  *
  */
 public class ReturnCommand implements ICommand {

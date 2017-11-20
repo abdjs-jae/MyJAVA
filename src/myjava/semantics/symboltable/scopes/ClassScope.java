@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 /**
  * Represents a class scope with mappings of variables and functions
- * @author NeilDG
+ *
  *
  */
 public class ClassScope implements IScope {

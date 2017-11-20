@@ -14,7 +14,7 @@ import java.util.HashMap;
  * This local scope starts as an empty representation of a class.
  * 
  * LocalScope can be viewed as a tree structure wherein it has a parent and children.
- * @author NeilDG
+ *
  *
  */
 public class LocalScope implements IScope {

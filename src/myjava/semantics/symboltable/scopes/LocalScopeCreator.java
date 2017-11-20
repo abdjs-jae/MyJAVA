@@ -14,7 +14,7 @@ import java.util.Stack;
  * A singleton instance that creates a corresponding local scope and properly links them together
  * with other local scope
  * 
- * @author NeilDG
+ *
  *
  */
 public class LocalScopeCreator {

@@ -22,7 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes method declarations and properly stores them in the symbol table
- * @author NeilDG
+ *
  *
  */
 public class MethodAnalyzer implements ParseTreeListener {

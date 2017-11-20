@@ -18,7 +18,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Maps an identifier to a given value found in the symbol table manager in the class level.
- * @author NeilDG
+ *
  *
  */
 public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {

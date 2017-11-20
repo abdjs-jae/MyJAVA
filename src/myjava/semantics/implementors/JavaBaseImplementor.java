@@ -14,7 +14,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * Contains all the required methods from the Java listeners that passes its parameters
  * to corresponding child implementor delegates.
- * @author Patrick
+ *
  *
  */
 public class JavaBaseImplementor implements JavaListener {

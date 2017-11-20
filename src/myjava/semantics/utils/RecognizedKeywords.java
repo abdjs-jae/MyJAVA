@@ -6,7 +6,7 @@ package myjava.semantics.utils;
 /**
  * A holder for recognized keywords to be used for various conditional statements for 
  * creating intermediate representations
- * @author NeilDG
+ *
  *
  */
 public class RecognizedKeywords {

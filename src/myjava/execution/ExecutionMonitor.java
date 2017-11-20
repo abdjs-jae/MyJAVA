@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A monitor class for handling thread execution.
- * @author NeilDG
+ *
  *
  */
 public class ExecutionMonitor {

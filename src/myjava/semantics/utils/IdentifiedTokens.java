@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 /**
  * Holder for identified tokens found while parsing. Contains a key for easy retrieval of the actual text
- * @author NeilDG
+ *
  *
  */
 public class IdentifiedTokens {

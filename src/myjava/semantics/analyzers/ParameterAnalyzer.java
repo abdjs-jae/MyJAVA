@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * An analyzer for method parameters
- * @author NeilDG
+ *
  *
  */
 public class ParameterAnalyzer implements ParseTreeListener {

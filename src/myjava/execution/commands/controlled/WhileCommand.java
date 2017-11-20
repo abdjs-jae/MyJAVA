@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * Representation of a while command
- * @author NeilDG
+ *
  *
  */
 public class WhileCommand implements IControlledCommand {

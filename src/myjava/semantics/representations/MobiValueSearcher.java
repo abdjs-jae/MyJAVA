@@ -13,7 +13,7 @@ import myjava.semantics.symboltable.scopes.LocalScopeCreator;
  * A component that searches for the corresponding mobi value.
  * If it is in a function, it looks in the function parameters and local scope first before the global scope.
  * TODO: Can be expanded to properly search for a value if OOP is implemented.
- * @author Patrick
+ *
  *
  */
 public class MobiValueSearcher {

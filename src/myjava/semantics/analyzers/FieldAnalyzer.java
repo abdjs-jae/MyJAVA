@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes the fields in the member declaration part
- * @author NeilDG
+ *
  *
  */
 public class FieldAnalyzer implements ParseTreeListener {

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Analyzes a statement block
- * @author NeilDG
+ *
  *
  */
 public class BlockAnalyzer {

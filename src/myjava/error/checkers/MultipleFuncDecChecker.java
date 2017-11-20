@@ -14,7 +14,7 @@ import org.antlr.v4.runtime.Token;
 
 /**
  * Checks for duplicate function declarations
- * @author NeilDG
+ *
  *
  */
 public class MultipleFuncDecChecker implements IErrorChecker {

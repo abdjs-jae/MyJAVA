@@ -5,7 +5,7 @@ package myjava.error;
 
 /**
  * Class that verifies if the parsing stage and the semantics phase has completed successfully.
- * @author Patrick
+ *
  *
  */
 public class BuildChecker  {

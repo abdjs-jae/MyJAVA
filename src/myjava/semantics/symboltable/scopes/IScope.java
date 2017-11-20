@@ -7,7 +7,7 @@ import myjava.semantics.representations.MobiValue;
 
 /**
  * A generic scope interface
- * @author NeilDG
+ *
  *
  */
 public interface IScope {

@@ -22,7 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * Maps an identifier to a given value found in the function level. First, we search the mapped parameters if a variable already exists.
  * Then we search its parent local scope using depth-first search.
- * @author NeilDG
+ *
  *
  */
 public class FunctionIdentifierMapper implements ParseTreeListener, IValueMapper {

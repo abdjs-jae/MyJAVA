@@ -10,7 +10,7 @@ import myjava.semantics.representations.MobiArray;
 
 /**
  * Represents an initialization of an array using new int[x] for example.
- * @author NeilDG
+ *
  *
  */
 public class ArrayInitializeCommand implements ICommand {

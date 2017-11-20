@@ -26,7 +26,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Checker for undeclared variables and function
- * @author NeilDG
+ *
  *
  */
 public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {

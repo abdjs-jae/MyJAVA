@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Represents a function call command
- * @author Patrick
+ *
  *
  */
 public class FunctionCallCommand implements ICommand {

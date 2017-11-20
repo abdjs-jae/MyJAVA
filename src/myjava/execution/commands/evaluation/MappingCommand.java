@@ -17,7 +17,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  * its corresponding value. Has an identifier string that assigns the value to it.
  * This is different from assignment command. This one is used for any variable initialization.
  * 
- * @author Patrick
+ *
  *
  */
 public class MappingCommand implements ICommand {

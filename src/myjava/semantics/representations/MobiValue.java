@@ -10,7 +10,7 @@ import myjava.semantics.utils.StringUtils;
 /**
  * Represents a value for type checking mechanisms.
  * This class can check if the value assigned is appropriate for the given primitive type.
- * @author NeilDG
+ *
  *
  */
 public class MobiValue {

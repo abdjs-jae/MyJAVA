@@ -6,7 +6,7 @@ package myjava.error;
 /**
  * List of error codes that cannot be found in syntax errors.
  * This includes most semantical errors in code.
- * @author Patrick
+ * 
  *
  */
 public class ErrorRepository {

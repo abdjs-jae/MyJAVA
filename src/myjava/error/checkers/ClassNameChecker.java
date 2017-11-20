@@ -9,7 +9,7 @@ import myjava.error.ParserHandler;
 
 /**
  * Checks if the class name is consistent with the file name
- * @author Patrick
+ *
  *
  */
 public class ClassNameChecker implements IErrorChecker {

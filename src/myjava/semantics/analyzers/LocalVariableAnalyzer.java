@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes a local variable declaration
- * @author NeilDG
+ *
  *
  */
 public class LocalVariableAnalyzer implements ParseTreeListener {

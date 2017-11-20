@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * A worker thread that handles the execution of actions from ExecutionManager
- * @author NeilDG
+ *
  *
  */
 public class ExecutionThread extends Thread {

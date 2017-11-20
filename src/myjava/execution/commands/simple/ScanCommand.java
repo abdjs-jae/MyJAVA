@@ -16,7 +16,7 @@ import myjava.utils.notifications.Parameters;
 
 /**
  * Represents a scan command that requires an input for the user.
- * @author NeilDG
+ *
  *
  */
 public class ScanCommand implements ICommand, NotificationListener{

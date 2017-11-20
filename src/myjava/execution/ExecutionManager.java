@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  * Manages the sequence of execution of statements
- * @author Patrick
+ *
  *
  */
 public class ExecutionManager implements NotificationListener {

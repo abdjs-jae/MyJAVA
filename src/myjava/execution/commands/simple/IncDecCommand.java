@@ -13,7 +13,7 @@ import myjava.semantics.representations.MobiValue.PrimitiveType;
 
 /**
  * An increment or decrement command
- * @author NeilDG
+ *
  *
  */
 public class IncDecCommand implements ICommand {

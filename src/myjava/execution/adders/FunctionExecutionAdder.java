@@ -8,7 +8,7 @@ import myjava.semantics.representations.MobiFunction;
 
 /**
  * Handles adding of commands to a certain function
- * @author NeilDG
+ *
  *
  */
 public class FunctionExecutionAdder implements IExecutionAdder {

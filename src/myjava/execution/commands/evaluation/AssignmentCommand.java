@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * A new assignment command that walks a given expression and replaces values to it
  * before being passed to Eval-Ex library.
- * @author Patrick
+ *
  * 
  */
 public class AssignmentCommand implements ICommand{
