@@ -18,12 +18,12 @@ import java.util.List;
 
 /**
  * A representation of a conditional statement
- * @author NeilDG
+
  *
  */
 public class IfCommand implements IConditionalCommand {
 
-	private final static String TAG = "MobiProf_IfCommand";
+	private final static String TAG = "MyJAVAProf_IfCommand";
 	
 	private List<ICommand> positiveCommands; //list of commands to execute if the condition holds true
 	private List<ICommand> negativeCommands; //list of commands to execute if the condition holds false

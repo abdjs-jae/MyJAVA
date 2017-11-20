@@ -9,12 +9,12 @@ import java.util.HashMap;
 
 /**
  * Holder for identified tokens found while parsing. Contains a key for easy retrieval of the actual text
- * @author NeilDG
+
  *
  */
 public class IdentifiedTokens {
 
-	private final static String TAG = "MobiProg_IdentifiedTokens";
+	private final static String TAG = "MyJAVAProg_IdentifiedTokens";
 	
 	private HashMap<String, String> tokenMapping;
 	

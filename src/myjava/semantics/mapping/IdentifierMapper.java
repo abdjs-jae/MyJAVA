@@ -6,15 +6,15 @@ package myjava.semantics.mapping;
 import myjava.execution.FunctionTracker;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.ParExpressionContext;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 
 /**
  * An identifier mapper that delegates the behavior to a class or function mapper depending on the control flow of execution.
- * @author NeilDG
+
  *
  */
 public class IdentifierMapper implements IValueMapper{
-	private final static String TAG = "MobiProg_IdentifierMapper";
+	private final static String TAG = "MyJAVAProg_IdentifierMapper";
 	
 	private IValueMapper valueMapper;
 	
@@ -48,7 +48,7 @@ public class IdentifierMapper implements IValueMapper{
 	}
 
 	@Override
-	public MobiValue getMobiValue() {
-		return this.valueMapper.getMobiValue();
+	public MyJAVAValue getMyJAVAValue() {
+		return this.valueMapper.getMyJAVAValue();
 	}
 }

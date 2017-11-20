@@ -10,12 +10,12 @@ import myjava.generatedexp.JavaParser.ParExpressionContext;
 /**
  * Utility class for execution that evaluates a condition.
  * This is used for IF, WHILE, DO-WHILE and FOR control statements.
- * @author NeilDG
+
  *
  */
 public class ConditionEvaluator {
 
-	private final static String TAG = "MobiProg_ConditionEvaluator";
+	private final static String TAG = "MyJAVAProg_ConditionEvaluator";
 	
 	/*
 	 * Evaluates the modified conditional expression via Eval-Ex

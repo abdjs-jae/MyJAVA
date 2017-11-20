@@ -8,30 +8,30 @@ import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.utils.AssignmentUtils;
 
 /**
  * Represents a return command which is specially used by a function.
- * @author NeilDG
+
  *
  */
 public class ReturnCommand implements ICommand {
-	private final static String TAG = "MobiProg_ReturnCommand";
+	private final static String TAG = "MyJAVAProg_ReturnCommand";
 	
 	private ExpressionContext expressionCtx;
-	private MobiFunction assignedMobiFunction;
+	private MyJAVAFunction assignedMyJAVAFunction;
 	
-	public ReturnCommand(ExpressionContext expressionCtx, MobiFunction mobiFunction) {
+	public ReturnCommand(ExpressionContext expressionCtx, MyJAVAFunction myJAVAFunction) {
 		this.expressionCtx = expressionCtx;
-		this.assignedMobiFunction = mobiFunction;
+		this.assignedMyJAVAFunction = myJAVAFunction;
 		
 		UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
 		undeclaredChecker.verify();
 		
-		MobiValue mobiValue = this.assignedMobiFunction.getReturnValue();
-		TypeChecker typeChecker = new TypeChecker(mobiValue, this.expressionCtx);
+		MyJAVAValue myJAVAValue = this.assignedMyJAVAFunction.getReturnValue();
+		TypeChecker typeChecker = new TypeChecker(myJAVAValue, this.expressionCtx);
 		typeChecker.verify();
 	}
 	
@@ -43,9 +43,9 @@ public class ReturnCommand implements ICommand {
 		EvaluationCommand evaluationCommand = new EvaluationCommand(this.expressionCtx);
 		evaluationCommand.execute();
 		
-		MobiValue mobiValue = this.assignedMobiFunction.getReturnValue();
+		MyJAVAValue myJAVAValue = this.assignedMyJAVAFunction.getReturnValue();
 		
-		AssignmentUtils.assignAppropriateValue(mobiValue, evaluationCommand.getResult());
+		AssignmentUtils.assignAppropriateValue(myJAVAValue, evaluationCommand.getResult());
 		//Console.log(LogType.DEBUG,"Return value is: " +evaluationCommand.getResult().toEngineeringString());
 	}
 

@@ -7,7 +7,7 @@ import myjava.error.ParserHandler;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.ParExpressionContext;
 import myjava.generatedexp.JavaParser.PrimaryContext;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -18,12 +18,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Maps an identifier to a given value found in the symbol table manager in the class level.
- * @author NeilDG
+
  *
  */
 public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 	
-	private MobiValue mobiValue;
+	private MyJAVAValue myJAVAValue;
 	private String originalExp = null;
 	private String modifiedExp = null;
 	
@@ -77,15 +77,15 @@ public class ClassIdentifierMapper implements ParseTreeListener, IValueMapper {
 				String variableKey = primaryCtx.getText();
 				ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 				
-				this.mobiValue = classScope.searchVariableIncludingLocal(variableKey);
-				this.modifiedExp = this.modifiedExp.replace(variableKey, this.mobiValue.getValue().toString());
+				this.myJAVAValue = classScope.searchVariableIncludingLocal(variableKey);
+				this.modifiedExp = this.modifiedExp.replace(variableKey, this.myJAVAValue.getValue().toString());
 			}
 		}
 	}
 	
 	@Override
-	public MobiValue getMobiValue() {
-		return this.mobiValue;
+	public MyJAVAValue getMyJAVAValue() {
+		return this.myJAVAValue;
 	}
 	
 	/* (non-Javadoc)

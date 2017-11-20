@@ -7,8 +7,8 @@ import myjava.error.BuildChecker;
 import myjava.error.ErrorRepository;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.LiteralContext;
-import myjava.semantics.representations.MobiValue;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -18,18 +18,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Handles all the type checking
- * @author NeilDG
+
  *
  */
 public class TypeChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MobiProg_TypeChecker";
+	private final static String TAG = "MyJAVAProg_TypeChecker";
 
-	private MobiValue mobiValue;
+	private MyJAVAValue myJAVAValue;
 	private ExpressionContext exprCtx;
 	private int lineNumber;
 	
-	public TypeChecker(MobiValue assignmentMobiValue, ExpressionContext exprCtx) {
-		this.mobiValue = assignmentMobiValue;
+	public TypeChecker(MyJAVAValue assignmentMyJAVAValue, ExpressionContext exprCtx) {
+		this.myJAVAValue = assignmentMyJAVAValue;
 		this.exprCtx = exprCtx;
 		
 		Token firstToken = exprCtx.getStart();
@@ -60,35 +60,35 @@ public class TypeChecker implements IErrorChecker, ParseTreeListener {
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
 		if(ctx instanceof LiteralContext) {
-			if(this.mobiValue == null) {
+			if(this.myJAVAValue == null) {
 				return;
 			}
 			LiteralContext literalCtx = (LiteralContext) ctx;
 			String expressionString = literalCtx.getText();
 			
-			if(this.mobiValue.getPrimitiveType() == PrimitiveType.ARRAY) {
+			if(this.myJAVAValue.getPrimitiveType() == PrimitiveType.ARRAY) {
 				
 			}
-			else if(this.mobiValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
+			else if(this.myJAVAValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
 				if(literalCtx.BooleanLiteral() == null) {
 					String additionalMessage = "Expected boolean.";
 					BuildChecker.reportCustomError(ErrorRepository.TYPE_MISMATCH,  additionalMessage, this.lineNumber);
 				}
 			}
-			else if(this.mobiValue.getPrimitiveType() == PrimitiveType.INT) {
+			else if(this.myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
 				if(literalCtx.IntegerLiteral() == null) {
 					String additionalMessage = "Expected int.";
 					BuildChecker.reportCustomError(ErrorRepository.TYPE_MISMATCH,  additionalMessage, this.lineNumber);
 				}
 			}
-			else if(this.mobiValue.getPrimitiveType() == PrimitiveType.FLOAT || this.mobiValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
+			else if(this.myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT || this.myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
 				if(literalCtx.FloatingPointLiteral() == null) {
 					String additionalMessage = "Expected floating point or double.";
 					BuildChecker.reportCustomError(ErrorRepository.TYPE_MISMATCH,  additionalMessage, this.lineNumber);
 				}
 			}
 			
-			else if(this.mobiValue.getPrimitiveType() == PrimitiveType.STRING) {
+			else if(this.myJAVAValue.getPrimitiveType() == PrimitiveType.STRING) {
 				if(expressionString.charAt(0) != '\"' && expressionString.charAt(expressionString.length() - 1) != '\"') {
 					String additionalMessage = "Expected string.";
 					BuildChecker.reportCustomError(ErrorRepository.TYPE_MISMATCH,  additionalMessage, this.lineNumber);

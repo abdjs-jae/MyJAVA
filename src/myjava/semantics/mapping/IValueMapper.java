@@ -2,7 +2,7 @@ package myjava.semantics.mapping;
 
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.ParExpressionContext;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 
 public interface IValueMapper {
 
@@ -10,6 +10,6 @@ public interface IValueMapper {
 	void analyze(ParExpressionContext exprCtx);
 	String getOriginalExp();
 	String getModifiedExp();
-	MobiValue getMobiValue();
+	MyJAVAValue getMyJAVAValue();
 
 }

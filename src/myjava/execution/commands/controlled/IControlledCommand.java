@@ -4,7 +4,7 @@ import myjava.execution.commands.ICommand;
 
 /*
  * An interface for controlled command
- * @author NeilDG
+
  */
 public interface IControlledCommand extends ICommand {
 	enum ControlTypeEnum {

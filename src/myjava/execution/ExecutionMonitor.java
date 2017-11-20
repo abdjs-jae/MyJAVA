@@ -11,12 +11,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A monitor class for handling thread execution.
- * @author NeilDG
+
  *
  */
 public class ExecutionMonitor {
 
-	private final static String TAG = "MobiProg_ExecutionMonitor";
+	private final static String TAG = "MyJAVAProg_ExecutionMonitor";
 	
 	private boolean executionFlag = true;
 	

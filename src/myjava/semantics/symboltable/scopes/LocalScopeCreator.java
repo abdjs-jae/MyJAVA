@@ -4,7 +4,7 @@
 package myjava.semantics.symboltable.scopes;
 
 import android.util.Log;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ import java.util.Stack;
  * A singleton instance that creates a corresponding local scope and properly links them together
  * with other local scope
  * 
- * @author NeilDG
+
  *
  */
 public class LocalScopeCreator {
-	private final static String TAG = "MobiProg_ScopeCreator";
+	private final static String TAG = "MyJAVAProg_ScopeCreator";
 	
 	private static LocalScopeCreator sharedInstance = null;
 	
@@ -81,7 +81,7 @@ public class LocalScopeCreator {
 	/*
 	 * Searches for a local variable using an iterative depth-first search.
 	 */
-	public static MobiValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
+	public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 		
 		if(localScope == null) {
 			Log.e(TAG, identifier + " not found in any local scope!");

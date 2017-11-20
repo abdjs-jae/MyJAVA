@@ -3,15 +3,15 @@
  */
 package myjava.semantics.symboltable.scopes;
 
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 
 /**
  * A generic scope interface
- * @author NeilDG
+
  *
  */
 public interface IScope {
 
-	MobiValue searchVariableIncludingLocal(String identifier);
+	MyJAVAValue searchVariableIncludingLocal(String identifier);
 	boolean isParent();
 }

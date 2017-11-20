@@ -3,32 +3,25 @@
  */
 package myjava.execution;
 
-import android.util.Log;
 import myjava.execution.adders.FunctionExecutionAdder;
 import myjava.execution.adders.IExecutionAdder;
 import myjava.execution.adders.MainExecutionAdder;
 import myjava.execution.commands.ICommand;
-import myjava.semantics.representations.MobiFunction;
-import myjava.utils.notifications.NotificationCenter;
-import myjava.utils.notifications.NotificationListener;
-import myjava.utils.notifications.Notifications;
-import myjava.utils.notifications.Parameters;
+import myjava.semantics.representations.MyJAVAFunction;
 
 import java.util.ArrayList;
 
 /**
  * Manages the sequence of execution of statements
- * @author Patrick
+ 
  *
  */
-public class ExecutionManager implements NotificationListener {
-
-	private final static String TAG = "ExecutionManager";
+public class ExecutionManager{
 	
-	private static ExecutionManager sharedInstance = null;
+	private static ExecutionManager executionManager = null;
 	
-	public static ExecutionManager getInstance() {
-		return sharedInstance;
+	public static ExecutionManager getExecutionManager() {
+		return executionManager;
 	}
 	
 	private ArrayList<ICommand> executionList = new ArrayList<ICommand>();
@@ -47,16 +40,13 @@ public class ExecutionManager implements NotificationListener {
 	}
 	
 	public static void initialize() {
-		sharedInstance = new ExecutionManager();
-		NotificationCenter.getInstance().addObserver(Notifications.ON_EXECUTION_FINISHED, sharedInstance);
+		executionManager = new ExecutionManager();
 	}
 	
 	public static void reset() {
-		sharedInstance.foundEntryPoint = false;
-		sharedInstance.entryClassName = null;
-		sharedInstance.clearAllActions();
-		
-		NotificationCenter.getInstance().removeObserver(Notifications.ON_EXECUTION_FINISHED, sharedInstance);
+		executionManager.foundEntryPoint = false;
+		executionManager.entryClassName = null;
+		executionManager.clearAllActions();
 	}
 	
 	/*
@@ -90,8 +80,8 @@ public class ExecutionManager implements NotificationListener {
 	/*
 	 * Opens a function. Any succeeding commands to be added will be put to the function control flow.
 	 */
-	public void openFunctionExecution(MobiFunction mobiFunction) {
-		FunctionExecutionAdder functionExecutionAdder = new FunctionExecutionAdder(mobiFunction);
+	public void openFunctionExecution(MyJAVAFunction myJAVAFunction) {
+		FunctionExecutionAdder functionExecutionAdder = new FunctionExecutionAdder(myJAVAFunction);
 		this.activeExecutionAdder = functionExecutionAdder;
 	}
 	
@@ -105,14 +95,14 @@ public class ExecutionManager implements NotificationListener {
 	/*
 	 * Returns the current function that the execution manager is populating.
 	 */
-	public MobiFunction getCurrentFunction() {
+	public MyJAVAFunction getCurrentFunction() {
 		if(this.isInFunctionExecution()) {
 			FunctionExecutionAdder functionExecAdder = (FunctionExecutionAdder) this.activeExecutionAdder;
 			
 			return functionExecAdder.getAssignedFunction();
 		}
 		else {
-			Log.e(TAG, "Execution manager is not in a function!");
+			System.err.println("Execution manager is not in a function!");
 			return null;
 		}
 	}
@@ -159,10 +149,4 @@ public class ExecutionManager implements NotificationListener {
 		return this.executionMonitor;
 	}
 
-	@Override
-	public void onNotify(String notificationString, Parameters params) {
-		if(notificationString == Notifications.ON_EXECUTION_FINISHED) {
-			//SymbolTableManager.getInstance().resetClassTables(); //TODO: does not work as intended
-		}
-	}
 }

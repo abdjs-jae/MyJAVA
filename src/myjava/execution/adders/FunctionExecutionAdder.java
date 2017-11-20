@@ -4,19 +4,19 @@
 package myjava.execution.adders;
 
 import myjava.execution.commands.ICommand;
-import myjava.semantics.representations.MobiFunction;
+import myjava.semantics.representations.MyJAVAFunction;
 
 /**
  * Handles adding of commands to a certain function
- * @author NeilDG
+
  *
  */
 public class FunctionExecutionAdder implements IExecutionAdder {
 
-	private MobiFunction assignedMobiFunction;
+	private MyJAVAFunction assignedMyJAVAFunction;
 	
-	public FunctionExecutionAdder(MobiFunction mobiFunction) {
-		this.assignedMobiFunction = mobiFunction;
+	public FunctionExecutionAdder(MyJAVAFunction myJAVAFunction) {
+		this.assignedMyJAVAFunction = myJAVAFunction;
 	}
 	
 	/* (non-Javadoc)
@@ -24,11 +24,11 @@ public class FunctionExecutionAdder implements IExecutionAdder {
 	 */
 	@Override
 	public void addCommand(ICommand command) {
-		this.assignedMobiFunction.addCommand(command);
+		this.assignedMyJAVAFunction.addCommand(command);
 	}
 	
-	public MobiFunction getAssignedFunction() {
-		return this.assignedMobiFunction;
+	public MyJAVAFunction getAssignedFunction() {
+		return this.assignedMyJAVAFunction;
 	}
 
 }

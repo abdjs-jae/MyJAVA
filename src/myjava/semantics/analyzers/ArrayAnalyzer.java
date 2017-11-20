@@ -11,9 +11,9 @@ import myjava.generatedexp.JavaParser.PrimitiveTypeContext;
 import myjava.generatedexp.JavaParser.VariableDeclaratorIdContext;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiArray;
-import myjava.semantics.representations.MobiValue;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAArray;
+import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.IdentifiedTokens;
@@ -25,11 +25,11 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes a given array declaration. Only accepts primitive declaration
- * @author NeilDG
+
  *
  */
 public class ArrayAnalyzer implements ParseTreeListener{
-	private final static String TAG = "MobiProg_ArrayAnalyzer";
+	private final static String TAG = "MyJAVAProg_ArrayAnalyzer";
 	
 	private final static String ARRAY_PRIMITIVE_KEY = "ARRAY_PRIMITIVE_KEY";
 	private final static String ARRAY_IDENTIFIER_KEY = "ARRAY_IDENTIFIER_KEY";
@@ -37,7 +37,7 @@ public class ArrayAnalyzer implements ParseTreeListener{
 	private IdentifiedTokens identifiedTokens;
 	private ClassScope declaredClassScope;
 	private LocalScope localScope;
-	private MobiArray declaredArray;
+	private MyJAVAArray declaredArray;
 	
 	public ArrayAnalyzer( IdentifiedTokens identifiedTokens, ClassScope declaredClassScope) {
 		this.identifiedTokens = identifiedTokens;
@@ -102,11 +102,11 @@ public class ArrayAnalyzer implements ParseTreeListener{
 				String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
 				String arrayIdentifierString = this.identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
 				
-				//initialize an array mobivalue
-				this.declaredArray = MobiArray.createArray(arrayTypeString, arrayIdentifierString);
-				MobiValue mobiValue = new MobiValue(this.declaredArray, PrimitiveType.ARRAY);
+				//initialize an array myJAVAvalue
+				this.declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
+				MyJAVAValue myJAVAValue = new MyJAVAValue(this.declaredArray, PrimitiveType.ARRAY);
 				
-				this.declaredClassScope.addMobiValue(accessControlString, arrayIdentifierString, mobiValue);
+				this.declaredClassScope.addMyJAVAValue(accessControlString, arrayIdentifierString, myJAVAValue);
 				Console.log(LogType.DEBUG, "Creating array with type " +arrayTypeString+ " variable " +arrayIdentifierString);
 				
 				this.identifiedTokens.clearTokens();
@@ -117,11 +117,11 @@ public class ArrayAnalyzer implements ParseTreeListener{
 				String arrayTypeString = this.identifiedTokens.getToken(ARRAY_PRIMITIVE_KEY);
 				String arrayIdentifierString = this.identifiedTokens.getToken(ARRAY_IDENTIFIER_KEY);
 				
-				//initialize an array mobivalue
-				this.declaredArray = MobiArray.createArray(arrayTypeString, arrayIdentifierString);
-				MobiValue mobiValue = new MobiValue(this.declaredArray, PrimitiveType.ARRAY);
+				//initialize an array myJAVAvalue
+				this.declaredArray = MyJAVAArray.createArray(arrayTypeString, arrayIdentifierString);
+				MyJAVAValue myJAVAValue = new MyJAVAValue(this.declaredArray, PrimitiveType.ARRAY);
 				
-				this.localScope.addMobiValue(arrayIdentifierString, mobiValue);
+				this.localScope.addMyJAVAValue(arrayIdentifierString, myJAVAValue);
 				Console.log(LogType.DEBUG, "Creating array with type " +arrayTypeString+ " variable " +arrayIdentifierString);
 				
 				this.identifiedTokens.clearTokens();

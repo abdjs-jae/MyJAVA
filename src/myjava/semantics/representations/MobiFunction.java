@@ -13,7 +13,7 @@ import myjava.execution.commands.controlled.IControlledCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.utils.RecognizedKeywords;
@@ -24,11 +24,11 @@ import java.util.List;
 
 /**
  * Represents the intermediate representation of a function
- * @author NeilDG
+
  *
  */
-public class MobiFunction implements IControlledCommand{
-	private final static String TAG = "MobiProg_MobiFunction";
+public class MyJAVAFunction implements IControlledCommand{
+	private final static String TAG = "MyJAVAProg_MyJAVAFunction";
 	
 	public enum FunctionType {
 		INT_TYPE,
@@ -49,13 +49,13 @@ public class MobiFunction implements IControlledCommand{
 	private LocalScope parentLocalScope; //refers to the parent local scope of this function.
 	
 	private LinkedHashMap<String, ClassScope> parameterReferences; //the list of parameters accepted that follows the 'call-by-reference' standard.
-	private LinkedHashMap<String, MobiValue> parameterValues;	//the list of parameters accepted that follows the 'call-by-value' standard.
-	private MobiValue returnValue; //the return value of the function. null if it's a void type
+	private LinkedHashMap<String, MyJAVAValue> parameterValues;	//the list of parameters accepted that follows the 'call-by-value' standard.
+	private MyJAVAValue returnValue; //the return value of the function. null if it's a void type
 	private FunctionType returnType = FunctionType.VOID_TYPE; //the return type of the function
 	
-	public MobiFunction() {
+	public MyJAVAFunction() {
 		this.commandSequences = new ArrayList<ICommand>();
-		this.parameterValues = new LinkedHashMap<String,MobiValue>();
+		this.parameterValues = new LinkedHashMap<String,MyJAVAValue>();
 		this.parameterReferences = new LinkedHashMap<String, ClassScope>();
 	}
 	
@@ -70,17 +70,17 @@ public class MobiFunction implements IControlledCommand{
 	public void setReturnType(FunctionType functionType) {
 		this.returnType = functionType;
 		
-		//create an empty mobi value as a return value
+		//create an empty myJAVA value as a return value
 		switch(this.returnType) {
-			case BOOLEAN_TYPE: this.returnValue = new MobiValue(true, PrimitiveType.BOOLEAN); break;
-			case BYTE_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.BYTE); break;
-			case CHAR_TYPE: this.returnValue = new MobiValue(' ', PrimitiveType.CHAR); break;
-			case INT_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.INT); break;
-			case DOUBLE_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.DOUBLE); break;
-			case FLOAT_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.FLOAT); break;
-			case LONG_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.LONG); break;
-			case SHORT_TYPE: this.returnValue = new MobiValue(0, PrimitiveType.SHORT); break;
-			case STRING_TYPE: this.returnValue = new MobiValue("", PrimitiveType.STRING); break;
+			case BOOLEAN_TYPE: this.returnValue = new MyJAVAValue(true, PrimitiveType.BOOLEAN); break;
+			case BYTE_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.BYTE); break;
+			case CHAR_TYPE: this.returnValue = new MyJAVAValue(' ', PrimitiveType.CHAR); break;
+			case INT_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.INT); break;
+			case DOUBLE_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.DOUBLE); break;
+			case FLOAT_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.FLOAT); break;
+			case LONG_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.LONG); break;
+			case SHORT_TYPE: this.returnValue = new MyJAVAValue(0, PrimitiveType.SHORT); break;
+			case STRING_TYPE: this.returnValue = new MyJAVAValue("", PrimitiveType.STRING); break;
 			default:break;	
 		}
 	}
@@ -102,8 +102,8 @@ public class MobiFunction implements IControlledCommand{
 	 */
 	public void mapParameterByValue(String... values) {
 		for(int i = 0; i < values.length; i++) {
-			MobiValue mobiValue = this.getParameterAt(i);
-			mobiValue.setValue(values[i]);
+			MyJAVAValue myJAVAValue = this.getParameterAt(i);
+			myJAVAValue.setValue(values[i]);
 		}
 	}
 	
@@ -112,24 +112,24 @@ public class MobiFunction implements IControlledCommand{
 			return;
 		}
 		
-		MobiValue mobiValue = this.getParameterAt(index);
-		mobiValue.setValue(value);
+		MyJAVAValue myJAVAValue = this.getParameterAt(index);
+		myJAVAValue.setValue(value);
 	}
 	
-	public void mapArrayAt(MobiValue mobiValue, int index, String identifier) {
+	public void mapArrayAt(MyJAVAValue myJAVAValue, int index, String identifier) {
 		if(index >= this.parameterValues.size()) {
 			return;
 		}
 		
-		MobiArray mobiArray = (MobiArray) mobiValue.getValue();
+		MyJAVAArray myJAVAArray = (MyJAVAArray) myJAVAValue.getValue();
 		
-		MobiArray newArray = new MobiArray(mobiArray.getPrimitiveType(), identifier);
-		MobiValue newValue = new MobiValue(newArray, PrimitiveType.ARRAY);
+		MyJAVAArray newArray = new MyJAVAArray(myJAVAArray.getPrimitiveType(), identifier);
+		MyJAVAValue newValue = new MyJAVAValue(newArray, PrimitiveType.ARRAY);
 		
-		newArray.initializeSize(mobiArray.getSize());
+		newArray.initializeSize(myJAVAArray.getSize());
 		
 		for(int i = 0; i < newArray.getSize(); i++) {
-			newArray.updateValueAt(mobiArray.getValueAt(i), i);
+			newArray.updateValueAt(myJAVAArray.getValueAt(i), i);
 		}
 		
 		this.parameterValues.put(this.getParameterKeyAt(index), newValue);
@@ -145,8 +145,8 @@ public class MobiFunction implements IControlledCommand{
 			return;
 		}
 		
-		MobiValue mobiValue = this.getParameterAt(index);
-		TypeChecker typeChecker = new TypeChecker(mobiValue, exprCtx);
+		MyJAVAValue myJAVAValue = this.getParameterAt(index);
+		TypeChecker typeChecker = new TypeChecker(myJAVAValue, exprCtx);
 		typeChecker.verify();
 	}
 	
@@ -157,15 +157,15 @@ public class MobiFunction implements IControlledCommand{
 		Log.e(TAG, "Mapping of parameter by reference not yet supported.");
 	}
 	
-	public void addParameter(String identifierString, MobiValue mobiValue) {
-		this.parameterValues.put(identifierString, mobiValue);
-		Console.log(LogType.DEBUG, this.functionName + " added an empty parameter " +identifierString+ " type " +mobiValue.getPrimitiveType());
+	public void addParameter(String identifierString, MyJAVAValue myJAVAValue) {
+		this.parameterValues.put(identifierString, myJAVAValue);
+		Console.log(LogType.DEBUG, this.functionName + " added an empty parameter " +identifierString+ " type " +myJAVAValue.getPrimitiveType());
 	}
 	
 	public boolean hasParameter(String identifierString) {
 		return this.parameterValues.containsKey(identifierString);
 	}
-	public MobiValue getParameter(String identifierString) {
+	public MyJAVAValue getParameter(String identifierString) {
 		if(this.hasParameter(identifierString)) {
 			return this.parameterValues.get(identifierString);
 		}
@@ -175,12 +175,12 @@ public class MobiFunction implements IControlledCommand{
 		}
 	}
 	
-	public MobiValue getParameterAt(int index) {
+	public MyJAVAValue getParameterAt(int index) {
 		int i = 0;
 
-		for(MobiValue mobiValue : this.parameterValues.values()) {
+		for(MyJAVAValue myJAVAValue : this.parameterValues.values()) {
 			if(i == index) {
-				return mobiValue;
+				return myJAVAValue;
 			}
 			
 			i++;
@@ -205,9 +205,9 @@ public class MobiFunction implements IControlledCommand{
 		return null;
 	}
 	
-	public MobiValue getReturnValue() {
+	public MyJAVAValue getReturnValue() {
 		if(this.returnType == FunctionType.VOID_TYPE) {
-			Console.log(LogType.DEBUG, this.functionName + " is a void function. Null mobi value is returned");
+			Console.log(LogType.DEBUG, this.functionName + " is a void function. Null myJAVA value is returned");
 			return null;
 		}
 		else {

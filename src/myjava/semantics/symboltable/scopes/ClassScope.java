@@ -6,39 +6,39 @@ package myjava.semantics.symboltable.scopes;
 import android.util.Log;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.utils.RecognizedKeywords;
 
 import java.util.HashMap;
 
 /**
  * Represents a class scope with mappings of variables and functions
- * @author NeilDG
+
  *
  */
 public class ClassScope implements IScope {
 
-	private final static String TAG = "MobiProg_ClassScope";
+	private final static String TAG = "MyJAVAProg_ClassScope";
 	
 	private String className;
 	
-	private HashMap<String, MobiValue> publicVariables;
-	private HashMap<String, MobiValue> privateVariables;
+	private HashMap<String, MyJAVAValue> publicVariables;
+	private HashMap<String, MyJAVAValue> privateVariables;
 	
-	private HashMap<String, MobiFunction> publicFunctions;
-	private HashMap<String, MobiFunction> privateFunctions;
+	private HashMap<String, MyJAVAFunction> publicFunctions;
+	private HashMap<String, MyJAVAFunction> privateFunctions;
 	
 	private LocalScope parentLocalScope; //represents the parent local scope which is the local scope covered by the main() function. Other classes may not contain this.
 	
 	public ClassScope(String className) {
 		this.className = className;
 		
-		this.publicVariables = new HashMap<String, MobiValue>();
-		this.privateVariables = new HashMap<String, MobiValue>();
+		this.publicVariables = new HashMap<String, MyJAVAValue>();
+		this.privateVariables = new HashMap<String, MyJAVAValue>();
 		
-		this.publicFunctions = new HashMap<String, MobiFunction>();
-		this.privateFunctions = new HashMap<String, MobiFunction>();
+		this.publicFunctions = new HashMap<String, MyJAVAFunction>();
+		this.privateFunctions = new HashMap<String, MyJAVAFunction>();
 	}
 	
 	public String getClassName() {
@@ -73,21 +73,21 @@ public class ClassScope implements IScope {
 			isPublic = false;
 		}
 		
-		//create empty mobi value
-		MobiValue mobiValue = MobiValue.createEmptyVariableFromKeywords(primitiveTypeString);
+		//create empty myJAVA value
+		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
 		
 		if(isPublic) {
-			this.publicVariables.put(identifierString, mobiValue);
-			Console.log(LogType.DEBUG, "Created public variable " +identifierString+ " type: " +mobiValue.getPrimitiveType());
+			this.publicVariables.put(identifierString, myJAVAValue);
+			Console.log(LogType.DEBUG, "Created public variable " +identifierString+ " type: " +myJAVAValue.getPrimitiveType());
 		}
 		else {
-			this.privateVariables.put(identifierString, mobiValue);
-			Console.log(LogType.DEBUG, "Created private variable " +identifierString+ " type: " +mobiValue.getPrimitiveType());
+			this.privateVariables.put(identifierString, myJAVAValue);
+			Console.log(LogType.DEBUG, "Created private variable " +identifierString+ " type: " +myJAVAValue.getPrimitiveType());
 		}
 	}
 	
 	/*
-	 * Attempts to add an initialized variable mobi value
+	 * Attempts to add an initialized variable myJAVA value
 	 */
 	public void addInitializedVariableFromKeywords(String classModifierString, String primitiveTypeString, String identifierString, String valueString) {
 		boolean isPublic = true;
@@ -99,18 +99,18 @@ public class ClassScope implements IScope {
 		this.addEmptyVariableFromKeywords(classModifierString, primitiveTypeString, identifierString);
 		
 		if(isPublic) {
-			MobiValue mobiValue = this.publicVariables.get(identifierString);
-			mobiValue.setValue(valueString);
-			Console.log(LogType.DEBUG, "Updated public variable " +identifierString+ " of type " +mobiValue.getPrimitiveType()+ " with value " +valueString);
+			MyJAVAValue myJAVAValue = this.publicVariables.get(identifierString);
+			myJAVAValue.setValue(valueString);
+			Console.log(LogType.DEBUG, "Updated public variable " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString);
 		}
 		else {
-			MobiValue mobiValue = this.privateVariables.get(identifierString);
-			mobiValue.setValue(valueString);
-			Console.log(LogType.DEBUG, "Updated private variable " +identifierString+ " of type " +mobiValue.getPrimitiveType()+ " with value " +valueString);
+			MyJAVAValue myJAVAValue = this.privateVariables.get(identifierString);
+			myJAVAValue.setValue(valueString);
+			Console.log(LogType.DEBUG, "Updated private variable " +identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString);
 		}
 	}
 	
-	public MobiValue getPublicVariable(String identifier) {
+	public MyJAVAValue getPublicVariable(String identifier) {
 		if(this.containsPublicVariable(identifier)) {
 			return this.publicVariables.get(identifier);
 		}
@@ -120,7 +120,7 @@ public class ClassScope implements IScope {
 		}
 	}
 	
-	public MobiValue getPrivateVariable(String identifier) {
+	public MyJAVAValue getPrivateVariable(String identifier) {
 		if(this.containsPrivateVariable(identifier)) {
 			return this.privateVariables.get(identifier);
 		}
@@ -130,17 +130,17 @@ public class ClassScope implements IScope {
 		}
 	}
 	
-	public void addPrivateMobiFunction(String identifier, MobiFunction mobiFunction) {
-		this.privateFunctions.put(identifier, mobiFunction);
-		Console.log(LogType.DEBUG, "Created private function " +identifier+ " with return type " +mobiFunction.getReturnType());
+	public void addPrivateMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
+		this.privateFunctions.put(identifier, myJAVAFunction);
+		Console.log(LogType.DEBUG, "Created private function " +identifier+ " with return type " +myJAVAFunction.getReturnType());
 	}
 	
-	public void addPublicMobiFunction(String identifier, MobiFunction mobiFunction) {
-		this.publicFunctions.put(identifier, mobiFunction);
-		Console.log(LogType.DEBUG, "Created public function " +identifier+ " with return type " +mobiFunction.getReturnType());
+	public void addPublicMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
+		this.publicFunctions.put(identifier, myJAVAFunction);
+		Console.log(LogType.DEBUG, "Created public function " +identifier+ " with return type " +myJAVAFunction.getReturnType());
 	}
 	
-	public void addMobiValue(String accessControlModifier, String identifier, MobiValue mobiValue) {
+	public void addMyJAVAValue(String accessControlModifier, String identifier, MyJAVAValue myJAVAValue) {
 		boolean isPublic = true;
 		
 		if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, accessControlModifier)) {
@@ -148,14 +148,14 @@ public class ClassScope implements IScope {
 		}
 		
 		if(isPublic){
-			this.publicVariables.put(identifier, mobiValue);
+			this.publicVariables.put(identifier, myJAVAValue);
 		}
 		else {
-			this.privateVariables.put(identifier, mobiValue);
+			this.privateVariables.put(identifier, myJAVAValue);
 		}	
 	}
 	
-	public MobiFunction getPublicFunction(String identifier) {
+	public MyJAVAFunction getPublicFunction(String identifier) {
 		if(this.containsPublicFunction(identifier)) {
 			return this.publicFunctions.get(identifier);
 		}
@@ -165,7 +165,7 @@ public class ClassScope implements IScope {
 		}
 	}
 	
-	public MobiFunction getPrivateFunction(String identifier) {
+	public MyJAVAFunction getPrivateFunction(String identifier) {
 		if(this.containsPublicFunction(identifier)) {
 			return this.privateFunctions.get(identifier);
 		}
@@ -175,7 +175,7 @@ public class ClassScope implements IScope {
 		}
 	}
 	
-	public MobiFunction searchFunction(String identifier) {
+	public MyJAVAFunction searchFunction(String identifier) {
 		if(this.containsPublicFunction(identifier)) {
 			return this.publicFunctions.get(identifier);
 		}
@@ -201,8 +201,8 @@ public class ClassScope implements IScope {
 	 * (non-Javadoc)
 	 * @see myjava.semantics.symboltable.scopes.IScope#getVariable(java.lang.String)
 	 */
-	public MobiValue searchVariableIncludingLocal(String identifier) {
-		MobiValue value;
+	public MyJAVAValue searchVariableIncludingLocal(String identifier) {
+		MyJAVAValue value;
 		if(this.containsPrivateVariable(identifier)) {
 			value = this.getPrivateVariable(identifier);
 		}
@@ -216,8 +216,8 @@ public class ClassScope implements IScope {
 		return value;
 	}
 	
-	public MobiValue searchVariable(String identifier) {
-		MobiValue value = null;
+	public MyJAVAValue searchVariable(String identifier) {
+		MyJAVAValue value = null;
 		if(this.containsPrivateVariable(identifier)) {
 			value = this.getPrivateVariable(identifier);
 		}
@@ -240,15 +240,15 @@ public class ClassScope implements IScope {
 	 * Resets all stored variables. This is called after the execution manager finishes
 	 */
 	public void resetValues() {
-		MobiValue[] publicMobiValues = this.publicVariables.values().toArray(new MobiValue[this.publicVariables.size()]);
-		MobiValue[] privateMobiValues = this.privateVariables.values().toArray(new MobiValue[this.privateVariables.size()]);
+		MyJAVAValue[] publicMyJAVAValues = this.publicVariables.values().toArray(new MyJAVAValue[this.publicVariables.size()]);
+		MyJAVAValue[] privateMyJAVAValues = this.privateVariables.values().toArray(new MyJAVAValue[this.privateVariables.size()]);
 		
-		for(int i = 0; i < publicMobiValues.length; i++) {
-			publicMobiValues[i].reset();
+		for(int i = 0; i < publicMyJAVAValues.length; i++) {
+			publicMyJAVAValues[i].reset();
 		}
 		
-		for(int i = 0; i < privateMobiValues.length; i++) {
-			privateMobiValues[i].reset();
+		for(int i = 0; i < privateMyJAVAValues.length; i++) {
+			privateMyJAVAValues[i].reset();
 		}
 	}
 }

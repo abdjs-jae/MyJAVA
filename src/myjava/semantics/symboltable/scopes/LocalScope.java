@@ -4,7 +4,7 @@
 package myjava.semantics.symboltable.scopes;
 
 import android.util.Log;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,17 +14,17 @@ import java.util.HashMap;
  * This local scope starts as an empty representation of a class.
  * 
  * LocalScope can be viewed as a tree structure wherein it has a parent and children.
- * @author NeilDG
+
  *
  */
 public class LocalScope implements IScope {
 	
-	private final static String TAG = "MobiProg_LocalScope";
+	private final static String TAG = "MyJAVAProg_LocalScope";
 	
 	private IScope parentScope;
 	private ArrayList<LocalScope> childScopeList = null;
 	
-	private HashMap<String, MobiValue> localVariables = null;
+	private HashMap<String, MyJAVAValue> localVariables = null;
 	
 	public LocalScope() {
 		this.parentScope = null;
@@ -39,7 +39,7 @@ public class LocalScope implements IScope {
 	 */
 	public void initializeLocalVariableMap() {
 		if(this.localVariables == null) {
-			this.localVariables = new HashMap<String, MobiValue>();
+			this.localVariables = new HashMap<String, MyJAVAValue>();
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class LocalScope implements IScope {
 	}
 	
 	@Override
-	public MobiValue searchVariableIncludingLocal(String identifier) {
+	public MyJAVAValue searchVariableIncludingLocal(String identifier) {
 		if(this.containsVariable(identifier)) {
 			return this.localVariables.get(identifier);
 		}
@@ -105,8 +105,8 @@ public class LocalScope implements IScope {
 	public void addEmptyVariableFromKeywords(String primitiveTypeString, String identifierString) {
 		this.initializeLocalVariableMap();
 		
-		MobiValue mobiValue = MobiValue.createEmptyVariableFromKeywords(primitiveTypeString);
-		this.localVariables.put(identifierString, mobiValue);
+		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
+		this.localVariables.put(identifierString, myJAVAValue);
 	}
 	
 	/*
@@ -116,13 +116,13 @@ public class LocalScope implements IScope {
 		this.initializeLocalVariableMap();
 		
 		this.addEmptyVariableFromKeywords(primitiveTypeString, identifierString);
-		MobiValue mobiValue = this.localVariables.get(identifierString);
-		mobiValue.setValue(valueString);
+		MyJAVAValue myJAVAValue = this.localVariables.get(identifierString);
+		myJAVAValue.setValue(valueString);
 	}
 	
-	public void addMobiValue(String identifier, MobiValue mobiValue) {
+	public void addMyJAVAValue(String identifier, MyJAVAValue myJAVAValue) {
 		this.initializeLocalVariableMap();
-		this.localVariables.put(identifier, mobiValue);
+		this.localVariables.put(identifier, myJAVAValue);
 	}
 	
 	/*

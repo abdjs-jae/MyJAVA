@@ -21,12 +21,12 @@ import java.util.List;
 
 /**
  * Represents the for command
- * @author NeilDG
+
  *
  */
 public class ForCommand implements IControlledCommand {
 
-	private final static String TAG = "MobiProg_ForCommand";
+	private final static String TAG = "MyJAVAProg_ForCommand";
 	
 	private List<ICommand> commandSequences;
 	

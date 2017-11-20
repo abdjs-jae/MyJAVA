@@ -3,29 +3,29 @@
  */
 package myjava.execution;
 
-import myjava.semantics.representations.MobiFunction;
+import myjava.semantics.representations.MyJAVAFunction;
 
 import java.util.Stack;
 
 
 /**
  * Holds the current function that the control flow is in.
- * @author NeilDG
+
  *
  */
 public class FunctionTracker {
-	private final static String TAG = "MobiProg_CallGraphManager";
+	private final static String TAG = "MyJAVAProg_CallGraphManager";
 	
 	private static FunctionTracker sharedInstance = null;
 	
-	private Stack<MobiFunction> callStack;
+	private Stack<MyJAVAFunction> callStack;
 	
 	public static FunctionTracker getInstance() {
 		return sharedInstance;
 	}
 	
 	private FunctionTracker() {
-		this.callStack = new Stack<MobiFunction>();
+		this.callStack = new Stack<MyJAVAFunction>();
 	}
 	
 	public static void initialize() {
@@ -36,15 +36,15 @@ public class FunctionTracker {
 
 	}
 	
-	public void reportEnterFunction(MobiFunction mobiFunction) {
-		this.callStack.push(mobiFunction);
+	public void reportEnterFunction(MyJAVAFunction myJAVAFunction) {
+		this.callStack.push(myJAVAFunction);
 	}
 	
 	public void reportExitFunction() {
 		this.callStack.pop();
 	}
 	
-	public MobiFunction getLatestFunction() {
+	public MyJAVAFunction getLatestFunction() {
 		return this.callStack.peek();
 	}
 	

@@ -11,12 +11,12 @@ import myjava.generatedexp.JavaParser.ParExpressionContext;
 
 /**
  * Represents a do while command which is essentially a modified while command
- * @author NeilDG
+
  *
  */
 public class DoWhileCommand extends WhileCommand {
 
-	private final static String TAG = "MobiProg_DoWhileCommand";
+	private final static String TAG = "MyJAVAProg_DoWhileCommand";
 	
 	public DoWhileCommand(ParExpressionContext parExprCtr) {
 		super(parExprCtr);

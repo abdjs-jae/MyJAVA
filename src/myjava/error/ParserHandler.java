@@ -5,12 +5,12 @@ package myjava.error;
 
 /**
  * Manages all parsing from different saved files
- * @author Patrick
+
  *
  */
 public class ParserHandler {
 /*
-	private final static String TAG = "MobiProg_ParserHandler";
+	private final static String TAG = "MyJAVAProg_ParserHandler";
 	private static ParserHandler sharedInstance = null;
 	
 	public static ParserHandler getInstance() {
@@ -31,7 +31,7 @@ public class ParserHandler {
 	}
 	
 	public void parseText(String className, String textToParse) {
-		this.currentClassName = className.replace(".mobi", "");
+		this.currentClassName = className.replace(".myJAVA", "");
 		this.sharedLexer = new JavaLexer(new ANTLRInputStream(textToParse));
 		CommonTokenStream tokens = new CommonTokenStream(this.sharedLexer);
 		this.sharedParser = new JavaParser(tokens);

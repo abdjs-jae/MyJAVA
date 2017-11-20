@@ -10,12 +10,12 @@ import myjava.semantics.utils.StringUtils;
 /**
  * Represents a value for type checking mechanisms.
  * This class can check if the value assigned is appropriate for the given primitive type.
- * @author NeilDG
+
  *
  */
-public class MobiValue {
+public class MyJAVAValue {
 
-	private final static String TAG = "MobiProg_MobiValue";
+	private final static String TAG = "MyJAVAProg_MyJAVAValue";
 	
 	//these are the accepted primitive types
 	public enum PrimitiveType {
@@ -38,7 +38,7 @@ public class MobiValue {
 	private boolean finalFlag = false;
 	
 	
-	public MobiValue(Object value, PrimitiveType primitiveType) {
+	public MyJAVAValue(Object value, PrimitiveType primitiveType) {
 		if(value == null || checkValueType(value, primitiveType)) {
 			this.value = value;
 			this.primitiveType = primitiveType;
@@ -141,7 +141,7 @@ public class MobiValue {
 	 * Utility function.
 	 * Attempts to add an empty variable based from keywords
 	 */
-	public static MobiValue createEmptyVariableFromKeywords(String primitiveTypeString) {
+	public static MyJAVAValue createEmptyVariableFromKeywords(String primitiveTypeString) {
 		
 		//identify primitive type
 		PrimitiveType primitiveType = PrimitiveType.NOT_YET_IDENTIFIED;
@@ -174,10 +174,10 @@ public class MobiValue {
 			primitiveType = PrimitiveType.STRING;
 		}
 		
-		//create empty mobi value
-		MobiValue mobiValue = new MobiValue(null, primitiveType);
+		//create empty myJAVA value
+		MyJAVAValue myJAVAValue = new MyJAVAValue(null, primitiveType);
 	
-		return mobiValue;
+		return myJAVAValue;
 	}
 	
 }

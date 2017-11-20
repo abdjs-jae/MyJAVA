@@ -8,12 +8,12 @@ import myjava.generatedexp.JavaLexer;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.semantics.mapping.IValueMapper;
 import myjava.semantics.mapping.IdentifierMapper;
-import myjava.semantics.representations.MobiValue;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 
 /**
  * An increment or decrement command
- * @author NeilDG
+
  *
  */
 public class IncDecCommand implements ICommand {
@@ -32,91 +32,91 @@ public class IncDecCommand implements ICommand {
 	@Override
 	public void execute() {
 		//String identifier = this.exprCtx.primary().Identifier().getText();
-		//MobiValue mobiValue = MobiValueSearcher.searchMobiValue(identifier);
+		//MyJAVAValue myJAVAValue = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
 		
 		IValueMapper leftHandMapper = new IdentifierMapper(
 				this.exprCtx.getText());
 		leftHandMapper.analyze(this.exprCtx);
 
-		MobiValue mobiValue = leftHandMapper.getMobiValue();
+		MyJAVAValue myJAVAValue = leftHandMapper.getMyJAVAValue();
 		
-		this.performOperation(mobiValue);
+		this.performOperation(myJAVAValue);
 	}
 	
 	/*
 	 * Attempts to perform an increment/decrement operation
 	 */
-	private void performOperation(MobiValue mobiValue) {
-		if(mobiValue.getPrimitiveType() == PrimitiveType.INT) {
-			int value = Integer.valueOf(mobiValue.getValue().toString());
+	private void performOperation(MyJAVAValue myJAVAValue) {
+		if(myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
+			int value = Integer.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
-		else if(mobiValue.getPrimitiveType() == PrimitiveType.LONG) {
-			long value = Long.valueOf(mobiValue.getValue().toString());
+		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.LONG) {
+			long value = Long.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
-		else if(mobiValue.getPrimitiveType() == PrimitiveType.BYTE) {
-			byte value = Byte.valueOf(mobiValue.getValue().toString());
+		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BYTE) {
+			byte value = Byte.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
-		else if(mobiValue.getPrimitiveType() == PrimitiveType.SHORT) {
-			short value = Short.valueOf(mobiValue.getValue().toString());
+		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.SHORT) {
+			short value = Short.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
-		else if(mobiValue.getPrimitiveType() == PrimitiveType.FLOAT) {
-			float value = Float.valueOf(mobiValue.getValue().toString());
+		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT) {
+			float value = Float.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
-		else if(mobiValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
-			double value = Double.valueOf(mobiValue.getValue().toString());
+		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
+			double value = Double.valueOf(myJAVAValue.getValue().toString());
 			
 			if(this.tokenSign == JavaLexer.INC) {
 				value++;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 			else if(this.tokenSign == JavaLexer.DEC) {
 				value--;
-				mobiValue.setValue(String.valueOf(value));
+				myJAVAValue.setValue(String.valueOf(value));
 			}
 		}
 	}

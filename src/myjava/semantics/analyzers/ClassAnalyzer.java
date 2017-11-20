@@ -22,11 +22,11 @@ import java.util.List;
 
 /**
  * A bridge for analyzing creation of a class
- * @author NeilDG
+
  *
  */
 public class ClassAnalyzer implements ParseTreeListener {
-	private final static String TAG = "MobiProg_ClassAnalyzer";
+	private final static String TAG = "MyJAVAProg_ClassAnalyzer";
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;

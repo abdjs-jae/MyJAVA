@@ -7,7 +7,7 @@ import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.semantics.analyzers.FunctionCallVerifier;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.utils.AssignmentUtils;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -17,11 +17,11 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  * its corresponding value. Has an identifier string that assigns the value to it.
  * This is different from assignment command. This one is used for any variable initialization.
  * 
- * @author Patrick
+
  *
  */
 public class MappingCommand implements ICommand {
-	private final static String TAG = "MobiProg_MappingCommand";
+	private final static String TAG = "MyJAVAProg_MappingCommand";
 	
 	private String identifierString;
 	private ExpressionContext parentExprCtx;
@@ -51,8 +51,8 @@ public class MappingCommand implements ICommand {
 		EvaluationCommand evaluationCommand = new EvaluationCommand(this.parentExprCtx);
 		evaluationCommand.execute();
 		
-		MobiValue mobiValue = VariableSearcher.searchVariable(this.identifierString);
-		AssignmentUtils.assignAppropriateValue(mobiValue, evaluationCommand.getResult());
+		MyJAVAValue myJAVAValue = VariableSearcher.searchVariable(this.identifierString);
+		AssignmentUtils.assignAppropriateValue(myJAVAValue, evaluationCommand.getResult());
 	}
 	
 	/*

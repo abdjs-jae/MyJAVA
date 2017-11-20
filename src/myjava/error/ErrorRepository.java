@@ -6,12 +6,12 @@ package myjava.error;
 /**
  * List of error codes that cannot be found in syntax errors.
  * This includes most semantical errors in code.
- * @author Patrick
+
  *
  */
 public class ErrorRepository {
 	/*
-	private final static String TAG = "MobiProg_ErrorRepository";
+	private final static String TAG = "MyJAVAProg_ErrorRepository";
 	
 	public final static int INCONSISTENT_CLASS_NAME = 1000;
 	public final static int TYPE_MISMATCH = 2000;

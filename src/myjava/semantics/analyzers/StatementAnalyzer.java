@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * A bridge for statement listener
- * @author Patrick
+
  *
  */
 public class StatementAnalyzer {

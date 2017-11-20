@@ -6,21 +6,21 @@ package myjava.execution.commands.evaluation;
 import myjava.execution.commands.ICommand;
 import myjava.generatedexp.JavaParser.ArrayCreatorRestContext;
 import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.representations.MobiArray;
+import myjava.semantics.representations.MyJAVAArray;
 
 /**
  * Represents an initialization of an array using new int[x] for example.
- * @author NeilDG
+
  *
  */
 public class ArrayInitializeCommand implements ICommand {
 	private final static String TAG = "ArrayInitializeCommand";
 	
-	private MobiArray assignedMobiArray;
+	private MyJAVAArray assignedMyJAVAArray;
 	private ArrayCreatorRestContext arrayCreatorCtx;
 	
-	public ArrayInitializeCommand(MobiArray mobiArray, ArrayCreatorRestContext arrayCreatorCtx) {
-		this.assignedMobiArray = mobiArray;
+	public ArrayInitializeCommand(MyJAVAArray myJAVAArray, ArrayCreatorRestContext arrayCreatorCtx) {
+		this.assignedMyJAVAArray = myJAVAArray;
 		this.arrayCreatorCtx = arrayCreatorCtx;
 	}
 	
@@ -35,7 +35,7 @@ public class ArrayInitializeCommand implements ICommand {
 			EvaluationCommand evaluationCommand = new EvaluationCommand(exprCtx);
 			evaluationCommand.execute();
 			
-			this.assignedMobiArray.initializeSize(evaluationCommand.getResult().intValue());
+			this.assignedMyJAVAArray.initializeSize(evaluationCommand.getResult().intValue());
 		}
 		
 	}

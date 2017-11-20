@@ -7,8 +7,8 @@ import android.util.Log;
 import myjava.error.ParserHandler;
 import myjava.execution.commands.ICommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -25,11 +25,11 @@ import java.util.List;
 
 /**
  * A command that evaluates a given expression at runtime.
- * @author Patrick
+
  *
  */
 public class EvaluationCommand implements ICommand, ParseTreeListener {
-	private final static String TAG = "MobiProg_EvaluationCommand";
+	private final static String TAG = "MyJAVAProg_EvaluationCommand";
 	
 	private ExpressionContext parentExprCtx;
 	private String modifiedExp;
@@ -107,7 +107,7 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
 				ParserHandler.getInstance().getCurrentClassName());
-		MobiFunction mobiFunction = classScope.searchFunction(functionName);
+		MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
 
 		if (exprCtx.arguments().expressionList() != null) {
 			List<ExpressionContext> exprCtxList = exprCtx.arguments()
@@ -119,25 +119,25 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 				EvaluationCommand evaluationCommand = new EvaluationCommand(parameterExprCtx);
 				evaluationCommand.execute();
 
-				mobiFunction.mapParameterByValueAt(evaluationCommand.getResult().toEngineeringString(), i);
+				myJAVAFunction.mapParameterByValueAt(evaluationCommand.getResult().toEngineeringString(), i);
 			}
 		}
 
-		mobiFunction.execute();
+		myJAVAFunction.execute();
 
 		Log.i(TAG, "Before modified EXP function call: " +this.modifiedExp);
 		this.modifiedExp = this.modifiedExp.replace(exprCtx.getText(),
-				mobiFunction.getReturnValue().getValue().toString());
+				myJAVAFunction.getReturnValue().getValue().toString());
 		Log.i(TAG, "After modified EXP function call: " +this.modifiedExp);
 
 	}
 
 	private void evaluateVariable(ExpressionContext exprCtx) {
-		MobiValue mobiValue = VariableSearcher
+		MyJAVAValue myJAVAValue = VariableSearcher
 				.searchVariable(exprCtx.getText());
 
 		this.modifiedExp = this.modifiedExp.replaceFirst(exprCtx.getText(),
-				mobiValue.getValue().toString());
+				myJAVAValue.getValue().toString());
 	}
 
 	/*

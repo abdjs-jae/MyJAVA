@@ -9,11 +9,11 @@ import myjava.error.ParserHandler;
 
 /**
  * Checks if the class name is consistent with the file name
- * @author Patrick
+
  *
  */
 public class ClassNameChecker implements IErrorChecker {
-	private final static String TAG = "MobiProg_ClassNameChecker";
+	private final static String TAG = "MyJAVAProg_ClassNameChecker";
 	
 	private String className;
 	private boolean successful = true;

@@ -5,12 +5,12 @@ package myjava.error;
 
 /**
  * Class that verifies if the parsing stage and the semantics phase has completed successfully.
- * @author Patrick
+
  *
  */
 public class BuildChecker  {
 	/*implements ANTLRErrorListener
-	private final static String TAG = "MobiProg_BuildChecker";
+	private final static String TAG = "MyJAVAProg_BuildChecker";
 	
 	private static BuildChecker sharedInstance = null;
 	

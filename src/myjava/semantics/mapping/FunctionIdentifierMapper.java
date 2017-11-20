@@ -7,8 +7,8 @@ import myjava.error.ParserHandler;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.ParExpressionContext;
 import myjava.generatedexp.JavaParser.PrimaryContext;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.symboltable.scopes.LocalScope;
@@ -22,20 +22,20 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * Maps an identifier to a given value found in the function level. First, we search the mapped parameters if a variable already exists.
  * Then we search its parent local scope using depth-first search.
- * @author NeilDG
+
  *
  */
 public class FunctionIdentifierMapper implements ParseTreeListener, IValueMapper {
-	private final static String TAG = "MobiProg_FunctionIdentifierMapper";
+	private final static String TAG = "MyJAVAProg_FunctionIdentifierMapper";
 	
 	private String originalExp = null;
 	private String modifiedExp = null;
 	
-	private MobiFunction assignedFunction;
-	private MobiValue mobiValue;
+	private MyJAVAFunction assignedFunction;
+	private MyJAVAValue myJAVAValue;
 	private LocalScope functionLocalScope;
 	
-	public FunctionIdentifierMapper(String originalExp, MobiFunction assignedFunction) {
+	public FunctionIdentifierMapper(String originalExp, MyJAVAFunction assignedFunction) {
 		this.originalExp = originalExp;
 		this.modifiedExp = originalExp;
 		this.assignedFunction = assignedFunction;
@@ -87,24 +87,24 @@ public class FunctionIdentifierMapper implements ParseTreeListener, IValueMapper
 			this.modifiedExp = this.modifiedExp.replace(identifierString, this.assignedFunction.getParameter(identifierString).getValue().toString());
 		}
 		else {
-			this.mobiValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, this.functionLocalScope);
+			this.myJAVAValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, this.functionLocalScope);
 			
-			if(this.mobiValue != null) {
-				this.modifiedExp = this.modifiedExp.replace(identifierString, this.mobiValue.getValue().toString());
+			if(this.myJAVAValue != null) {
+				this.modifiedExp = this.modifiedExp.replace(identifierString, this.myJAVAValue.getValue().toString());
 			}
 			else {
 				ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-				this.mobiValue = classScope.searchVariableIncludingLocal(identifierString);
+				this.myJAVAValue = classScope.searchVariableIncludingLocal(identifierString);
 				
-				//Console.log("Variable in global scope: " +this.mobiValue.getValue());
-				this.modifiedExp = this.modifiedExp.replace(identifierString, this.mobiValue.getValue().toString());
+				//Console.log("Variable in global scope: " +this.myJAVAValue.getValue());
+				this.modifiedExp = this.modifiedExp.replace(identifierString, this.myJAVAValue.getValue().toString());
 			}
 		}
 	}
 	
 	@Override
-	public MobiValue getMobiValue() {
-		return this.mobiValue;
+	public MyJAVAValue getMyJAVAValue() {
+		return this.myJAVAValue;
 	}
 	
 	@Override

@@ -10,12 +10,12 @@ import java.util.HashMap;
 
 /**
  * Holds all of the found variables in code and stores them here in the symbol table manager.
- * @author NeilDG
+
  *
  */
 public class SymbolTableManager {
 
-	private final static String TAG = "MobiProg_SymbolTableManager";
+	private final static String TAG = "MyJAVAProg_SymbolTableManager";
 	
 	private static SymbolTableManager sharedInstance = null;
 	

@@ -149,7 +149,7 @@ import java.util.*;
 * e.addOperator(e.new Operator(">>", 30, true) {
 *     {@literal @}Override
 *     public BigDecimal eval(BigDecimal v1, BigDecimal v2) {
-*         return v1.movePointRight(v2.toBigInteger().intValue());
+*         return v1.movePointRight(v2.tyJAVAgInteger().intValue());
 *     }
 * });
 * 
@@ -752,7 +752,7 @@ public class Expression {
 							"Argument to SQRT() function must not be negative");
 				}
 				BigInteger n = x.movePointRight(mc.getPrecision() << 1)
-						.toBigInteger();
+						.tyJAVAgInteger();
 
 				int bits = (n.bitLength() + 1) >> 1;
 				BigInteger ix = n.shiftRight(bits);

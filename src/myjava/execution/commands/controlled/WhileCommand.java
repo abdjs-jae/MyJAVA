@@ -19,12 +19,12 @@ import java.util.List;
 
 /**
  * Representation of a while command
- * @author NeilDG
+
  *
  */
 public class WhileCommand implements IControlledCommand {
 
-	private final static String TAG = "MobiProg_WhileCommand";
+	private final static String TAG = "MyJAVAProg_WhileCommand";
 	
 	protected List<ICommand> commandSequences; //the list of commands inside the WHILE statement
 	

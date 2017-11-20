@@ -22,7 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * The entry point for the program. Only one main is allowed.
- * @author NeilDG
+
  *
  */
 public class MainAnalyzer implements ParseTreeListener {

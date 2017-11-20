@@ -17,12 +17,12 @@ import java.util.Stack;
  * A singleton class that detects if a certain statement is inside a controlled statement
  * Contains utility functions to add certain commands into the active controlled command.
  * This class makes nested statements possible.
- * @author NeilDG
+
  *
  */
 public class StatementControlOverseer {
 
-	private final static String TAG = "MobiProg_StatementControlOverseer";
+	private final static String TAG = "MyJAVAProg_StatementControlOverseer";
 	
 	private static StatementControlOverseer sharedInstance = null;
 	

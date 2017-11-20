@@ -7,24 +7,24 @@ import android.util.Log;
 import myjava.error.ErrorRepository;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.utils.RecognizedKeywords;
 
 /**
  * A representation of an array. For now, we only accept 1D array.
  * 
- * @author NeilDG
+
  *
  */
-public class MobiArray {
-	private final static String TAG = "MobiProg_MobiArray";
+public class MyJAVAArray {
+	private final static String TAG = "MyJAVAProg_MyJAVAArray";
 	
-	private MobiValue[] mobiValueArray;
+	private MyJAVAValue[] myJAVAValueArray;
 	private PrimitiveType arrayPrimitiveType;
 	private String arrayIdentifier;
 	private boolean finalFlag = false;
 	
-	public MobiArray(PrimitiveType primitiveType, String identifier) {
+	public MyJAVAArray(PrimitiveType primitiveType, String identifier) {
 		this.arrayPrimitiveType = primitiveType;
 		this.arrayIdentifier = identifier;
 	}
@@ -46,36 +46,36 @@ public class MobiArray {
 	}
 	
 	public void initializeSize(int size) {
-		this.mobiValueArray = new MobiValue[size];
-		Log.i(TAG, "Mobi array initialized to size " +this.mobiValueArray.length);
+		this.myJAVAValueArray = new MyJAVAValue[size];
+		Log.i(TAG, "MyJAVA array initialized to size " +this.myJAVAValueArray.length);
 	}
 	
 	public int getSize() {
-		return this.mobiValueArray.length;
+		return this.myJAVAValueArray.length;
 	}
 	
-	public void updateValueAt(MobiValue mobiValue, int index) {
-		if(index >= this.mobiValueArray.length) {
+	public void updateValueAt(MyJAVAValue myJAVAValue, int index) {
+		if(index >= this.myJAVAValueArray.length) {
 			Console.log(LogType.ERROR, String.format(ErrorRepository.getErrorMessage(ErrorRepository.RUNTIME_ARRAY_OUT_OF_BOUNDS), this.arrayIdentifier));
 			return;
 		}
-		this.mobiValueArray[index] = mobiValue;
+		this.myJAVAValueArray[index] = myJAVAValue;
 	}
 	
-	public MobiValue getValueAt(int index) {
-		if(index >= this.mobiValueArray.length) {
+	public MyJAVAValue getValueAt(int index) {
+		if(index >= this.myJAVAValueArray.length) {
 			Console.log(LogType.ERROR, String.format(ErrorRepository.getErrorMessage(ErrorRepository.RUNTIME_ARRAY_OUT_OF_BOUNDS), this.arrayIdentifier));
-			return this.mobiValueArray[this.mobiValueArray.length - 1];
+			return this.myJAVAValueArray[this.myJAVAValueArray.length - 1];
 		}
 		else {
-			return this.mobiValueArray[index];
+			return this.myJAVAValueArray[index];
 		}
 	}
 	
 	/*
 	 * Utility function that returns an arary of specified primitive type.
 	 */
-	public static MobiArray createArray(String primitiveTypeString, String arrayIdentifier) {
+	public static MyJAVAArray createArray(String primitiveTypeString, String arrayIdentifier) {
 		//identify primitive type
 		PrimitiveType primitiveType = PrimitiveType.NOT_YET_IDENTIFIED;
 		
@@ -107,8 +107,8 @@ public class MobiArray {
 			primitiveType = PrimitiveType.STRING;
 		}
 		
-		MobiArray mobiArray = new MobiArray(primitiveType, arrayIdentifier);
+		MyJAVAArray myJAVAArray = new MyJAVAArray(primitiveType, arrayIdentifier);
 		
-		return mobiArray;
+		return myJAVAArray;
 	}
 }

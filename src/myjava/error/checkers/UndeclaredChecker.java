@@ -12,8 +12,8 @@ import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.StatementContext;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -26,11 +26,11 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Checker for undeclared variables and function
- * @author NeilDG
+
  *
  */
 public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MobiProg_UndeclaredChecker";
+	private final static String TAG = "MyJAVAProg_UndeclaredChecker";
 	
 	private ExpressionContext exprCtx;
 	private int lineNumber;
@@ -94,9 +94,9 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
 				ParserHandler.getInstance().getCurrentClassName());
-		MobiFunction mobiFunction = classScope.searchFunction(functionName);
+		MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
 		
-		if(mobiFunction == null) {
+		if(myJAVAFunction == null) {
 			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_FUNCTION, "", functionName, this.lineNumber);
 		}
 		else {
@@ -105,21 +105,21 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 	}
 	
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
-		MobiValue mobiValue = null;
+		MyJAVAValue myJAVAValue = null;
 		
 		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MobiFunction mobiFunction = ExecutionManager.getInstance().getCurrentFunction();
-			mobiValue = VariableSearcher.searchVariableInFunction(mobiFunction, varExprCtx.primary().Identifier().getText());
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
 		}
 		
-		//if after function finding, mobi value is still null, search class
-		if(mobiValue == null) {
+		//if after function finding, myJAVA value is still null, search class
+		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-			mobiValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
 		}
 		
 		//after second pass, we conclude if it cannot be found already
-		if(mobiValue == null) {
+		if(myJAVAValue == null) {
 			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_VARIABLE, "", varExprCtx.getText(), this.lineNumber);
 		}
 	}
@@ -129,11 +129,11 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 	 */
 	public static void verifyVarOrConstForScan(String identifier, StatementContext statementCtx) {
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-		MobiValue mobiValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, identifier);
+		MyJAVAValue myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, identifier);
 		
 		Token firstToken = statementCtx.getStart();
 		
-		if(mobiValue == null) {
+		if(myJAVAValue == null) {
 			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_VARIABLE, "", identifier, firstToken.getLine());
 		}
 	}

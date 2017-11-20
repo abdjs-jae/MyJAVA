@@ -91,7 +91,7 @@ public class UI {
             public void actionPerformed(ActionEvent e) {
 
                 System.out.println("Run button clicked!");
-                code = txtArCode.getText();
+                code = "public class Main { " + txtArCode.getText() + " }";
                 removeHighlights(txtArCode);
 
                 MyJAVALexer lex = new MyJAVALexer(new ANTLRInputStream(code));
@@ -108,7 +108,7 @@ public class UI {
                 treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
 
                 // After semantic checking
-                // ExecutionManager.getInstance().executeAllActions();
+                ExecutionManager.getExecutionManager().executeAllActions();
 
                 // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
                 // MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();

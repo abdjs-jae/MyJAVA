@@ -8,7 +8,7 @@ import myjava.error.ErrorRepository;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 
 /**
- * @author NeilDG
+
  *
  */
 public class ThisKeywordChecker implements IErrorChecker {

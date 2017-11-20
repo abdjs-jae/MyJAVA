@@ -8,10 +8,10 @@ import myjava.generatedexp.JavaParser.LiteralContext;
 import myjava.generatedexp.JavaParser.PrimaryContext;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiArray;
-import myjava.semantics.representations.MobiValue;
-import myjava.semantics.representations.MobiValue.PrimitiveType;
-import myjava.semantics.representations.MobiValueSearcher;
+import myjava.semantics.representations.MyJAVAArray;
+import myjava.semantics.representations.MyJAVAValue;
+import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
+import myjava.semantics.representations.MyJAVAValueSearcher;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -21,12 +21,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Populates and handles the print command execution
- * @author Patrick
+
  *
  */
 public class PrintCommand implements ICommand, ParseTreeListener {
 
-	private final static String TAG = "Mobi_PrintCommand";
+	private final static String TAG = "MyJAVA_PrintCommand";
 	
 	private ExpressionContext expressionCtx;
 	
@@ -107,7 +107,7 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 			else if(primaryCtx.Identifier() != null && this.complexExpr == false) {
 				String identifier = primaryCtx.getText();
 				
-				MobiValue value = MobiValueSearcher.searchMobiValue(identifier);
+				MyJAVAValue value = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
 				if(value.getPrimitiveType() == PrimitiveType.ARRAY) {
 					this.arrayAccess = true;
 					this.evaluateArrayPrint(value, primaryCtx);
@@ -130,7 +130,7 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 		return this.statementToPrint;
 	}
 	
-	private void evaluateArrayPrint(MobiValue mobiValue, PrimaryContext primaryCtx) {
+	private void evaluateArrayPrint(MyJAVAValue myJAVAValue, PrimaryContext primaryCtx) {
 		
 		//move up and determine expression contexts
 		ExpressionContext parentExprCtx = (ExpressionContext) primaryCtx.getParent().getParent();
@@ -139,10 +139,10 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 		EvaluationCommand evaluationCommand = new EvaluationCommand(arrayIndexExprCtx);
 		evaluationCommand.execute();
 		
-		MobiArray mobiArray = (MobiArray) mobiValue.getValue();
-		MobiValue arrayMobiValue = mobiArray.getValueAt(evaluationCommand.getResult().intValue());
+		MyJAVAArray myJAVAArray = (MyJAVAArray) myJAVAValue.getValue();
+		MyJAVAValue arrayMyJAVAValue = myJAVAArray.getValueAt(evaluationCommand.getResult().intValue());
 		
-		this.statementToPrint += arrayMobiValue.getValue().toString();
+		this.statementToPrint += arrayMyJAVAValue.getValue().toString();
 	}
 	
 	

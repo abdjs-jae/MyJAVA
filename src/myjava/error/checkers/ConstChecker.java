@@ -6,8 +6,8 @@ import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -19,7 +19,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class ConstChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MobiProg_ConstChecker";
+	private final static String TAG = "MyJAVAProg_ConstChecker";
 	
 	private ExpressionContext exprCtx;
 	private int lineNumber;
@@ -66,20 +66,20 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 	}
 	
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
-		MobiValue mobiValue = null;
+		MyJAVAValue myJAVAValue = null;
 		
 		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MobiFunction mobiFunction = ExecutionManager.getInstance().getCurrentFunction();
-			mobiValue = VariableSearcher.searchVariableInFunction(mobiFunction, varExprCtx.primary().Identifier().getText());
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
 		}
 		
-		//if after function finding, mobi value is still null, search class
-		if(mobiValue == null) {
+		//if after function finding, myJAVA value is still null, search class
+		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-			mobiValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
 		}
 		
-		if(mobiValue != null && mobiValue.isFinal()) {
+		if(myJAVAValue != null && myJAVAValue.isFinal()) {
 			BuildChecker.reportCustomError(ErrorRepository.CONST_REASSIGNMENT, "", varExprCtx.getText(), this.lineNumber);
 		}
 	}

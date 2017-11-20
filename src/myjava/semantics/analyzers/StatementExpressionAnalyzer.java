@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Analyzes a given expression on the statement level.
  * This does not include field declaration analysis.
- * @author NeilDG
+
  *
  */
 public class StatementExpressionAnalyzer implements ParseTreeListener {

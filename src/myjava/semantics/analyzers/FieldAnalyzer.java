@@ -11,7 +11,7 @@ import myjava.generatedexp.JavaParser.VariableDeclaratorContext;
 import myjava.generatedexp.JavaParser.VariableDeclaratorsContext;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.utils.IdentifiedTokens;
 import myjava.semantics.utils.RecognizedKeywords;
@@ -23,12 +23,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes the fields in the member declaration part
- * @author NeilDG
+
  *
  */
 public class FieldAnalyzer implements ParseTreeListener {
 
-	private final static String TAG = "MobiProg_FieldAnalyzer";
+	private final static String TAG = "MyJAVAProg_FieldAnalyzer";
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;
@@ -65,7 +65,7 @@ public class FieldAnalyzer implements ParseTreeListener {
 			multipleDeclaredChecker.verify();
 			
 			this.identifiedTokens.addToken(ClassAnalyzer.IDENTIFIER_KEY, varCtx.variableDeclaratorId().getText());
-			this.createMobiValue();
+			this.createMyJAVAValue();
 			
 			if(varCtx.variableInitializer() != null) {
 				
@@ -81,10 +81,10 @@ public class FieldAnalyzer implements ParseTreeListener {
 				MappingCommand mappingCommand = new MappingCommand(varCtx.variableDeclaratorId().getText(), varCtx.variableInitializer().expression());
 				ExecutionManager.getInstance().addCommand(mappingCommand);
 				
-				MobiValue declaredMobiValue = this.declaredClassScope.searchVariableIncludingLocal(varCtx.variableDeclaratorId().getText());
+				MyJAVAValue declaredMyJAVAValue = this.declaredClassScope.searchVariableIncludingLocal(varCtx.variableDeclaratorId().getText());
 				
-				//type check the mobivalue
-				TypeChecker typeChecker = new TypeChecker(declaredMobiValue, varCtx.variableInitializer().expression());
+				//type check the myJAVAvalue
+				TypeChecker typeChecker = new TypeChecker(declaredMyJAVAValue, varCtx.variableInitializer().expression());
 				typeChecker.verify();
 			}
 			
@@ -100,7 +100,7 @@ public class FieldAnalyzer implements ParseTreeListener {
 	/*
 	 * Attempts to create an intermediate representation of the variable once a sufficient amount of info has been retrieved.
 	 */
-	private void createMobiValue() {
+	private void createMyJAVAValue() {
 		
 		if(this.identifiedTokens.containsTokens(ClassAnalyzer.ACCESS_CONTROL_KEY, ClassAnalyzer.PRIMITIVE_TYPE_KEY, ClassAnalyzer.IDENTIFIER_KEY)) {
 			
@@ -119,7 +119,7 @@ public class FieldAnalyzer implements ParseTreeListener {
 				this.declaredClassScope.addEmptyVariableFromKeywords(classModifierString, primitiveTypeString, identifierString);
 			}
 			
-			MobiValue declaredValue = this.declaredClassScope.searchVariableIncludingLocal(identifierString);
+			MyJAVAValue declaredValue = this.declaredClassScope.searchVariableIncludingLocal(identifierString);
 			//verify if the declared variable is a constant
 			if(this.identifiedTokens.containsTokens(ClassAnalyzer.CONST_CONTROL_KEY)) {
 				declaredValue.markFinal();

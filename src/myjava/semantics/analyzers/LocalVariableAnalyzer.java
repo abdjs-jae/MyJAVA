@@ -10,7 +10,7 @@ import myjava.execution.commands.evaluation.MappingCommand;
 import myjava.generatedexp.JavaParser.*;
 import myjava.ide.console.Console;
 import myjava.ide.console.LogItemView.LogType;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.scopes.LocalScope;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
 import myjava.semantics.utils.IdentifiedTokens;
@@ -23,12 +23,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Analyzes a local variable declaration
- * @author NeilDG
+
  *
  */
 public class LocalVariableAnalyzer implements ParseTreeListener {
 
-	private final static String TAG = "MobiProg_LocalVariableAnalyzer";
+	private final static String TAG = "MyJAVAProg_LocalVariableAnalyzer";
 	
 	private final static String PRIMITIVE_TYPE_KEY = "PRIMITIVE_TYPE_KEY";
 	private final static String IDENTIFIER_KEY = "IDENTIFIER_KEY";
@@ -119,7 +119,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
 			}
 			
 			this.identifiedTokens.addToken(IDENTIFIER_KEY, varCtx.variableDeclaratorId().getText());
-			this.createMobiValue();
+			this.createMyJAVAValue();
 			
 			if(varCtx.variableInitializer() != null) {
 				
@@ -134,10 +134,10 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
 				this.processMapping(varCtx);
 				
 				LocalScope localScope = LocalScopeCreator.getInstance().getActiveLocalScope();
-				MobiValue declaredMobiValue = localScope.searchVariableIncludingLocal(varCtx.variableDeclaratorId().getText());
+				MyJAVAValue declaredMyJAVAValue = localScope.searchVariableIncludingLocal(varCtx.variableDeclaratorId().getText());
 				
-				//type check the mobivalue
-				TypeChecker typeChecker = new TypeChecker(declaredMobiValue, varCtx.variableInitializer().expression());
+				//type check the myJAVAvalue
+				TypeChecker typeChecker = new TypeChecker(declaredMyJAVAValue, varCtx.variableInitializer().expression());
 				typeChecker.verify();
 			}
 			
@@ -168,7 +168,7 @@ public class LocalVariableAnalyzer implements ParseTreeListener {
 	/*
 	 * Attempts to create an intermediate representation of the variable once a sufficient amount of info has been retrieved.
 	 */
-	private void createMobiValue() {
+	private void createMyJAVAValue() {
 		
 		if(this.identifiedTokens.containsTokens(PRIMITIVE_TYPE_KEY, IDENTIFIER_KEY)) {
 			

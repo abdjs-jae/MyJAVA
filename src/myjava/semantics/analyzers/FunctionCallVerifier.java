@@ -4,7 +4,7 @@ import myjava.error.ParserHandler;
 import myjava.error.checkers.ParameterMismatchChecker;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
-import myjava.semantics.representations.MobiFunction;
+import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -38,10 +38,10 @@ public class FunctionCallVerifier implements ParseTreeListener {
 
 					ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
 							ParserHandler.getInstance().getCurrentClassName());
-					MobiFunction mobiFunction = classScope.searchFunction(functionName);
+					MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
 					
 					if (exprCtx.arguments() != null) {
-						ParameterMismatchChecker paramsMismatchChecker = new ParameterMismatchChecker(mobiFunction, exprCtx.arguments());
+						ParameterMismatchChecker paramsMismatchChecker = new ParameterMismatchChecker(myJAVAFunction, exprCtx.arguments());
 						paramsMismatchChecker.verify();
 					}
 				}

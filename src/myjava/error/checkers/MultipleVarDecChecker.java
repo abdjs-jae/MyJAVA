@@ -8,8 +8,8 @@ import myjava.error.ErrorRepository;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.generatedexp.JavaParser.VariableDeclaratorIdContext;
-import myjava.semantics.representations.MobiFunction;
-import myjava.semantics.representations.MobiValue;
+import myjava.semantics.representations.MyJAVAFunction;
+import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
@@ -23,11 +23,11 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Checks for multiple declarations of variables.
- * @author NeilDG
+
  *
  */
 public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MobiProg_MultipleVarDecChecker";
+	private final static String TAG = "MyJAVAProg_MultipleVarDecChecker";
 	
 	private VariableDeclaratorIdContext varDecIdCtx;
 	private int lineNumber;
@@ -75,26 +75,26 @@ public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
 	}
 	
 	private void verifyVariableOrConst(String identifierString) {
-		MobiValue mobiValue = null;
+		MyJAVAValue myJAVAValue = null;
 		
 		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MobiFunction mobiFunction = ExecutionManager.getInstance().getCurrentFunction();
-			mobiValue = VariableSearcher.searchVariableInFunction(mobiFunction, identifierString);
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, identifierString);
 		}
 		
-		//if after function finding, mobi value is still null, search local scope
-		if(mobiValue == null) {
-			mobiValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, LocalScopeCreator.getInstance().getActiveLocalScope());
+		//if after function finding, myJAVA value is still null, search local scope
+		if(myJAVAValue == null) {
+			myJAVAValue = LocalScopeCreator.searchVariableInLocalIterative(identifierString, LocalScopeCreator.getInstance().getActiveLocalScope());
 		}
 		
-		//if mobi value is still null, search class
-		if(mobiValue == null) {
+		//if myJAVA value is still null, search class
+		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-			mobiValue = VariableSearcher.searchVariableInClass(classScope, identifierString);
+			myJAVAValue = VariableSearcher.searchVariableInClass(classScope, identifierString);
 		}
 		
 		
-		if(mobiValue != null) {
+		if(myJAVAValue != null) {
 			BuildChecker.reportCustomError(ErrorRepository.MULTIPLE_VARIABLE, "", identifierString, this.lineNumber);
 		}
 	}

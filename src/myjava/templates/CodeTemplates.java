@@ -5,7 +5,7 @@ package myjava.templates;
 
 /**
  * Contains possible code templates for ease of use
- * @author NeilDG
+
  *
  */
 public class CodeTemplates {

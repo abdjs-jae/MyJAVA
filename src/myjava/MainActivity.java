@@ -6,7 +6,7 @@ public class MainActivity  {
 		ActionBar.TabListener, NewFileDialogFragment.NewFileDialogListener
 	public static String CLASS_FILE_NAME_KEY = "CLASS_FILE_NAME_KEY";
 
-	private static final String TAG = "MobiProg_MainActivity";
+	private static final String TAG = "MyJAVAProg_MainActivity";
 
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 	private ViewPager mViewPager;

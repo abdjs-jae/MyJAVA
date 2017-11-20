@@ -8,7 +8,7 @@ import myjava.execution.commands.controlled.IControlledCommand.ControlTypeEnum;
 
 /**
  * An interface conditional command to represent IF-ELSE statements
- * @author NeilDG
+
  *
  */
 public interface IConditionalCommand extends ICommand {
