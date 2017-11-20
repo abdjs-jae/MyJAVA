@@ -87,6 +87,7 @@ classBodyDeclaration
 memberDeclaration
     :   methodDeclaration
     |   fieldDeclaration
+    |   classDeclaration
     ;
 
 /* We use rule this even for void methods which cannot have [] after parameters.

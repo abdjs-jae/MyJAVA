@@ -2,6 +2,7 @@ package myjava.semantics.analyzers;
 
 import myjava.antlrgen.MyJAVALexer;
 import myjava.execution.commands.ICommand;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.execution.commands.evaluation.AssignmentCommand;
 import myjava.execution.commands.simple.IncDecCommand;
 import org.antlr.v4.runtime.ParserRuleContext;

@@ -23,6 +23,24 @@ public interface MyJAVAVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableModifier(MyJAVAParser.VariableModifierContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MyJAVAParser#classOrInterfaceModifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassOrInterfaceModifier(MyJAVAParser.ClassOrInterfaceModifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyJAVAParser#typeParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeParameters(MyJAVAParser.TypeParametersContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyJAVAParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassDeclaration(MyJAVAParser.ClassDeclarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MyJAVAParser#typeList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

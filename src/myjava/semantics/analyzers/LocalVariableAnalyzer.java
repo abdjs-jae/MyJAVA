@@ -4,6 +4,7 @@ import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.execution.commands.evaluation.MappingCommand;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.symboltable.scopes.LocalScope;

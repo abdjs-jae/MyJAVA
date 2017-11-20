@@ -28,6 +28,36 @@ public interface MyJAVAListener extends ParseTreeListener {
 	 */
 	void exitVariableModifier(MyJAVAParser.VariableModifierContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MyJAVAParser#classOrInterfaceModifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassOrInterfaceModifier(MyJAVAParser.ClassOrInterfaceModifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyJAVAParser#classOrInterfaceModifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassOrInterfaceModifier(MyJAVAParser.ClassOrInterfaceModifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyJAVAParser#typeParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeParameters(MyJAVAParser.TypeParametersContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyJAVAParser#typeParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeParameters(MyJAVAParser.TypeParametersContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyJAVAParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassDeclaration(MyJAVAParser.ClassDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyJAVAParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassDeclaration(MyJAVAParser.ClassDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MyJAVAParser#typeList}.
 	 * @param ctx the parse tree
 	 */
