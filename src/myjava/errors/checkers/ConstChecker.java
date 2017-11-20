@@ -3,6 +3,7 @@ package myjava.errors.checkers;
 import myjava.MyJAVAParser.*;
 import myjava.errors.MyJAVAErrorStrategy;
 import myjava.execution.ExecutionManager;
+import myjava.execution.commands.evaluate.EvaluationCommand;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searcher.VariableSearcher;
