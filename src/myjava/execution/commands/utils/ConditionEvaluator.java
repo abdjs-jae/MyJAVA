@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.execution.commands.utils;
 
 import myjava.execution.commands.evaluation.EvaluationCommand;
@@ -10,12 +7,9 @@ import myjava.generatedexp.JavaParser.ParExpressionContext;
 /**
  * Utility class for execution that evaluates a condition.
  * This is used for IF, WHILE, DO-WHILE and FOR control statements.
-
  *
  */
 public class ConditionEvaluator {
-
-	private final static String TAG = "MyJAVAProg_ConditionEvaluator";
 	
 	/*
 	 * Evaluates the modified conditional expression via Eval-Ex

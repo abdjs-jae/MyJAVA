@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.execution.commands.controlled;
 
 import myjava.execution.commands.ICommand;
@@ -8,7 +5,6 @@ import myjava.execution.commands.controlled.IControlledCommand.ControlTypeEnum;
 
 /**
  * An interface conditional command to represent IF-ELSE statements
-
  *
  */
 public interface IConditionalCommand extends ICommand {

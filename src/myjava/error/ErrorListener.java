@@ -43,6 +43,11 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
 
     }
 
+    public static void clearLog(){
+        // Clear log.txt after getting the errors
+        txtWriter.clear();
+    }
+
     // Gets the generated errors at the log.txt
     public DefaultListModel getConsoleListModel() {
 
@@ -52,9 +57,6 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
         for(String m : messages){
             consoleListModel.addElement(m);
         }
-
-        // Clear log.txt after getting the errors
-        txtWriter.clear();
 
         return consoleListModel;
     }

@@ -3,7 +3,6 @@
  */
 package myjava.semantics.analyzers;
 
-import myjava.error.checkers.ThisKeywordChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand;

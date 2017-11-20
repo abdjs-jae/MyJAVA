@@ -1,24 +1,16 @@
-/**
- * 
- */
 package myjava.execution;
 
-import android.util.Log;
 import myjava.execution.commands.ICommand;
-import myjava.utils.notifications.NotificationCenter;
-import myjava.utils.notifications.Notifications;
 
 import java.util.ArrayList;
 
 /**
  * A worker thread that handles the execution of actions from ExecutionManager
-
  *
  */
 public class ExecutionThread extends Thread {
-	private final static String TAG = "ExecutionThread";
 	
-	private ArrayList<ICommand> executionList = new ArrayList<ICommand>();
+	private ArrayList<ICommand> executionList = new ArrayList<>();
 	private ExecutionMonitor executionMonitor;
 	
 	public ExecutionThread(ArrayList<ICommand> executionList, ExecutionMonitor executionMonitor) {
@@ -30,21 +22,17 @@ public class ExecutionThread extends Thread {
 	 * Runs the thread by executing all actions provided that the execution flag isn't acquired by any other commands.
 	 * If a command attempts to acquire the flag, this thread will block until its flag is released(presumably by the command 
 	 * who acquired it or another command).
-	 * (non-Javadoc)
-	 * @see java.lang.Thread#run()
 	 */
 	@Override
 	public void run() {
 		try {
-			for(ICommand command : this.executionList) {
-				this.executionMonitor.tryExecution();
+			for(ICommand command : executionList) {
+				executionMonitor.tryExecution();
 				command.execute();
 			}
 		}
 		catch(InterruptedException e) {
-			Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
+			System.err.println("ExecutionThread: Monitor block interrupted! " + e.getMessage());
 		}
-		
-		NotificationCenter.getInstance().postNotification(Notifications.ON_EXECUTION_FINISHED);
 	}
 }

@@ -1,9 +1,5 @@
-/**
- * 
- */
 package myjava.execution.commands.controlled;
 
-import android.util.Log;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
 import myjava.execution.commands.ICommand;
@@ -18,12 +14,9 @@ import java.util.List;
 
 /**
  * A representation of a conditional statement
-
  *
  */
 public class IfCommand implements IConditionalCommand {
-
-	private final static String TAG = "MyJAVAProf_IfCommand";
 	
 	private List<ICommand> positiveCommands; //list of commands to execute if the condition holds true
 	private List<ICommand> negativeCommands; //list of commands to execute if the condition holds false
@@ -32,51 +25,44 @@ public class IfCommand implements IConditionalCommand {
 	private String modifiedConditionExpr;
 	
 	public IfCommand(ParExpressionContext conditionalExpr) {
-		this.positiveCommands = new ArrayList<ICommand>();
-		this.negativeCommands = new ArrayList<ICommand>();
+		positiveCommands = new ArrayList<>();
+		negativeCommands = new ArrayList<>();
 		
 		this.conditionalExpr = conditionalExpr;
 	}
-	
-	
-	
-	/* 
-	 * Executes the command
-	 * (non-Javadoc)
-	 * @see myjava.execution.commands.ICommand#execute()
-	 */
+
 	@Override
 	public void execute() {
 		this.identifyVariables();
 		
-		ExecutionMonitor executionMonitor = ExecutionManager.getInstance().getExecutionMonitor();
+		ExecutionMonitor executionMonitor = ExecutionManager.getExecutionManager().getExecutionMonitor();
 		
 		try {
 			//execute the positive commands
-			if(ConditionEvaluator.evaluateCondition(this.conditionalExpr)) {
-				for(ICommand command : this.positiveCommands) {
+			if(ConditionEvaluator.evaluateCondition(conditionalExpr)) {
+				for(ICommand command : positiveCommands) {
 					executionMonitor.tryExecution();
 					command.execute();
 				}
 			}
 			//execute the negative commands
 			else {
-				for(ICommand command : this.negativeCommands) {
+				for(ICommand command : negativeCommands) {
 					executionMonitor.tryExecution();
 					command.execute();
 				}
 			}
 		} catch(InterruptedException e) {
-			Log.e(TAG, "Monitor block interrupted! " +e.getMessage());
+			System.err.println("IfCommand: Monitor block interrupted! " +e.getMessage());
 		}
 		
 	}
 	
 	private void identifyVariables() {
-		IValueMapper identifierMapper = new IdentifierMapper(this.conditionalExpr.getText());
-		identifierMapper.analyze(this.conditionalExpr);
+		IValueMapper identifierMapper = new IdentifierMapper(conditionalExpr.getText());
+		identifierMapper.analyze(conditionalExpr);
 		
-		this.modifiedConditionExpr = identifierMapper.getModifiedExp();
+		modifiedConditionExpr = identifierMapper.getModifiedExp();
 	}
 
 	@Override
@@ -86,25 +72,25 @@ public class IfCommand implements IConditionalCommand {
 	
 	@Override
 	public void addPositiveCommand(ICommand command) {
-		this.positiveCommands.add(command);
+		positiveCommands.add(command);
 	}
 	
 	@Override
 	public void addNegativeCommand(ICommand command) {
-		this.negativeCommands.add(command);
+		negativeCommands.add(command);
 	}
 	
 	public void clearAllCommands() {
-		this.positiveCommands.clear();
-		this.negativeCommands.clear();
+		positiveCommands.clear();
+		negativeCommands.clear();
 	}
 	
 	public int getPositiveCommandsCount() {
-		return this.positiveCommands.size();
+		return positiveCommands.size();
 	}
 	
 	public int getNegativeCommandsCount() {
-		return this.negativeCommands.size();
+		return negativeCommands.size();
 	}
 
 }

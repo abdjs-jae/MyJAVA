@@ -94,6 +94,8 @@ public class UI {
                 code = "public class Main { " + txtArCode.getText() + " }";
                 removeHighlights(txtArCode);
 
+                ErrorListener.clearLog();
+
                 MyJAVALexer lex = new MyJAVALexer(new ANTLRInputStream(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 MyJAVAParser parser = new MyJAVAParser(tokens);

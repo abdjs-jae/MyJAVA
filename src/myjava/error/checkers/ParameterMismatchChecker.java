@@ -5,6 +5,7 @@ package myjava.error.checkers;
 
 import myjava.error.BuildChecker;
 import myjava.error.ErrorRepository;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.generatedexp.JavaParser.ArgumentsContext;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.semantics.representations.MyJAVAFunction;
@@ -17,7 +18,6 @@ import java.util.List;
  *
  */
 public class ParameterMismatchChecker implements IErrorChecker {
-	private final static String TAG = "MyJAVAProg_ParameterMismatchChecker";
 	
 	private MyJAVAFunction myJAVAFunction;
 	private List<ExpressionContext> exprCtxList;
@@ -27,26 +27,23 @@ public class ParameterMismatchChecker implements IErrorChecker {
 		this.myJAVAFunction = myJAVAFunction;
 
 		if(argumentsCtx.expressionList() != null) {
-			this.exprCtxList = argumentsCtx.expressionList().expression();
+			exprCtxList = argumentsCtx.expressionList().expression();
 		}
 		
-		this.lineNumber = argumentsCtx.getStart().getLine();
+		lineNumber = argumentsCtx.getStart().getLine();
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.error.checkers.IErrorChecker#verify()
-	 */
+
 	@Override
 	public void verify() {
-		if(this.myJAVAFunction == null) {
+		if(myJAVAFunction == null) {
 			return;
 		}
 		
-		if(this.exprCtxList == null && this.myJAVAFunction.getParameterValueSize() != 0) {
-			BuildChecker.reportCustomError(ErrorRepository.PARAMETER_COUNT_MISMATCH, "", this.myJAVAFunction.getFunctionName(), this.lineNumber);
+		if(exprCtxList == null && myJAVAFunction.getParameterValueSize() != 0) {
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.PARAMETER_COUNT_MISMATCH, myJAVAFunction.getFunctionName(), lineNumber);
 		}
-		else if(this.exprCtxList != null && this.exprCtxList.size() != this.myJAVAFunction.getParameterValueSize()) {
-			BuildChecker.reportCustomError(ErrorRepository.PARAMETER_COUNT_MISMATCH, "", this.myJAVAFunction.getFunctionName(), this.lineNumber);
+		else if(exprCtxList != null && exprCtxList.size() != myJAVAFunction.getParameterValueSize()) {
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.PARAMETER_COUNT_MISMATCH, myJAVAFunction.getFunctionName(), lineNumber);
 		}
 	}
 

@@ -4,7 +4,6 @@ import myjava.execution.commands.ICommand;
 
 /*
  * An interface for controlled command
-
  */
 public interface IControlledCommand extends ICommand {
 	enum ControlTypeEnum {
@@ -17,7 +16,4 @@ public interface IControlledCommand extends ICommand {
 	
 	ControlTypeEnum getControlType();
 	void addCommand(ICommand command);
-	/*public void setParent(IControlledCommand command);
-	public IControlledCommand getParent();
-	public boolean hasParent();*/
 }

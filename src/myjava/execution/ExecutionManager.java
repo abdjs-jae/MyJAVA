@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.execution;
 
 import myjava.execution.adders.FunctionExecutionAdder;
@@ -13,7 +10,6 @@ import java.util.ArrayList;
 
 /**
  * Manages the sequence of execution of statements
- 
  *
  */
 public class ExecutionManager{
@@ -35,8 +31,8 @@ public class ExecutionManager{
 	private MainExecutionAdder mainExecutionAdder;
 	
 	private ExecutionManager() {
-		this.mainExecutionAdder = new MainExecutionAdder(this.executionList);
-		this.activeExecutionAdder = this.mainExecutionAdder;
+		mainExecutionAdder = new MainExecutionAdder(executionList);
+		activeExecutionAdder = mainExecutionAdder;
 	}
 	
 	public static void initialize() {
@@ -59,45 +55,44 @@ public class ExecutionManager{
 	}
 	
 	public boolean hasFoundEntryPoint() {
-		return this.foundEntryPoint;
+		return foundEntryPoint;
 	}
 	
 	public String getEntryClassName() {
-		return this.entryClassName;
+		return entryClassName;
 	}
 	
 	public void addCommand(ICommand command) {
-		this.activeExecutionAdder.addCommand(command);
+		activeExecutionAdder.addCommand(command);
 	}
 	
 	/*
 	 * Deletes a command from the main control flow
 	 */
 	public void deleteCommand(ICommand command) {
-		this.executionList.remove(command);
+		executionList.remove(command);
 	}
 	
 	/*
 	 * Opens a function. Any succeeding commands to be added will be put to the function control flow.
 	 */
 	public void openFunctionExecution(MyJAVAFunction myJAVAFunction) {
-		FunctionExecutionAdder functionExecutionAdder = new FunctionExecutionAdder(myJAVAFunction);
-		this.activeExecutionAdder = functionExecutionAdder;
+		activeExecutionAdder = new FunctionExecutionAdder(myJAVAFunction);
 	}
 	
 	/*
 	 * Returns true if the execution manager currently points to a function control flow.
 	 */
 	public boolean isInFunctionExecution() {
-		return (this.activeExecutionAdder instanceof FunctionExecutionAdder);
+		return (activeExecutionAdder instanceof FunctionExecutionAdder);
 	}
 	
 	/*
 	 * Returns the current function that the execution manager is populating.
 	 */
 	public MyJAVAFunction getCurrentFunction() {
-		if(this.isInFunctionExecution()) {
-			FunctionExecutionAdder functionExecAdder = (FunctionExecutionAdder) this.activeExecutionAdder;
+		if(isInFunctionExecution()) {
+			FunctionExecutionAdder functionExecAdder = (FunctionExecutionAdder) activeExecutionAdder;
 			
 			return functionExecAdder.getAssignedFunction();
 		}
@@ -111,21 +106,21 @@ public class ExecutionManager{
 	 * Closes a function. Control flow will be given back to the main execution adder.
 	 */
 	public void closeFunctionExecution() {
-		this.activeExecutionAdder = this.mainExecutionAdder;
+		activeExecutionAdder = mainExecutionAdder;
 	}
 	
 	/*
 	 * Blocks the execution of the thread. Can only be called once. At this point, resumeExecution() must be called by a specific command.
 	 */
 	public void blockExecution() {
-		this.executionMonitor.claimExecutionFlag();
+		executionMonitor.claimExecutionFlag();
 	}
 	
 	/*
 	 * Resumes the execution of thread. Can only be called once. At this point, the execution thread should continue to do other actions.
 	 */
 	public void resumeExecution() {
-		this.executionMonitor.releaseExecutionFlag();
+		executionMonitor.releaseExecutionFlag();
 	}
 	
 	/*
@@ -133,20 +128,20 @@ public class ExecutionManager{
 	 * This causes the execution thread to temporarily halt until released.
 	 */
 	public void executeAllActions() {
-		this.executionMonitor = new ExecutionMonitor();
-		this.executionThread = new ExecutionThread(this.executionList, this.executionMonitor);
-		this.executionThread.start();
+		executionMonitor = new ExecutionMonitor();
+		executionThread = new ExecutionThread(executionList, executionMonitor);
+		executionThread.start();
 	}
 	
 	public void clearAllActions() {
-		this.executionList.clear();
+		executionList.clear();
 	}
 	
 	/*
 	 * Gets the execution monitor. This is used for controlled commands that also needs to check prior to execution.
 	 */
 	public ExecutionMonitor getExecutionMonitor() {
-		return this.executionMonitor;
+		return executionMonitor;
 	}
 
 }

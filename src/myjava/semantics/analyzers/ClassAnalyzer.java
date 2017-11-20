@@ -3,7 +3,6 @@
  */
 package myjava.semantics.analyzers;
 
-import myjava.error.checkers.ClassNameChecker;
 import myjava.generatedexp.JavaLexer;
 import myjava.generatedexp.JavaParser.*;
 import myjava.ide.console.Console;

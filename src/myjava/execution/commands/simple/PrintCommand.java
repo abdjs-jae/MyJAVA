@@ -1,13 +1,12 @@
 package myjava.execution.commands.simple;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.LiteralContext;
 import myjava.generatedexp.JavaParser.PrimaryContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
@@ -21,13 +20,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Populates and handles the print command execution
-
  *
  */
-public class PrintCommand implements ICommand, ParseTreeListener {
+public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 
-	private final static String TAG = "MyJAVA_PrintCommand";
-	
 	private ExpressionContext expressionCtx;
 	
 	private String statementToPrint = "";
@@ -44,10 +40,10 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 	@Override
 	public void execute() {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
-		treeWalker.walk(this, this.expressionCtx);
-		
-		Console.log(LogType.VERBOSE, this.statementToPrint);
-		this.statementToPrint = ""; //reset statement to print afterwards
+		treeWalker.walk(this, expressionCtx);
+
+		txtWriter.writeMessage(StringUtils.formatProgram(statementToPrint));
+		statementToPrint = ""; //reset statement to print afterwards
 	}
 
 	@Override
@@ -68,8 +64,7 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 			
 			if(literalCtx.StringLiteral() != null) {
 				String quotedString = literalCtx.StringLiteral().getText(); 
-				
-				this.statementToPrint += StringUtils.removeQuotes(quotedString);
+				statementToPrint += StringUtils.removeQuotes(quotedString);
 			}
 			/*else if(literalCtx.IntegerLiteral() != null) {
 				int value = Integer.parseInt(literalCtx.IntegerLiteral().getText());
@@ -95,25 +90,25 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 			
 			if(primaryCtx.expression() != null) {
 				ExpressionContext exprCtx = primaryCtx.expression();
-				this.complexExpr = true;
-				Console.log(LogType.DEBUG, "Complex expression detected: " +exprCtx.getText());
+				complexExpr = true;
+				txtWriter.writeMessage(StringUtils.formatDebug("Complex expression detected: " + exprCtx.getText()));
 
 				EvaluationCommand evaluationCommand = new EvaluationCommand(exprCtx);
 				evaluationCommand.execute();
 				
-				this.statementToPrint += evaluationCommand.getResult().toEngineeringString();
+				statementToPrint += evaluationCommand.getResult().toEngineeringString();
 			}
 			
-			else if(primaryCtx.Identifier() != null && this.complexExpr == false) {
+			else if(primaryCtx.Identifier() != null && !complexExpr) {
 				String identifier = primaryCtx.getText();
 				
 				MyJAVAValue value = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
 				if(value.getPrimitiveType() == PrimitiveType.ARRAY) {
-					this.arrayAccess = true;
-					this.evaluateArrayPrint(value, primaryCtx);
+					arrayAccess = true;
+					evaluateArrayPrint(value, primaryCtx);
 				}
-				else if(this.arrayAccess == false) {
-					this.statementToPrint += value.getValue();
+				else if(!arrayAccess) {
+					statementToPrint += value.getValue();
 				}
 				
 				
@@ -127,7 +122,7 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 	}
 	
 	public String getStatementToPrint() {
-		return this.statementToPrint;
+		return statementToPrint;
 	}
 	
 	private void evaluateArrayPrint(MyJAVAValue myJAVAValue, PrimaryContext primaryCtx) {
@@ -142,7 +137,7 @@ public class PrintCommand implements ICommand, ParseTreeListener {
 		MyJAVAArray myJAVAArray = (MyJAVAArray) myJAVAValue.getValue();
 		MyJAVAValue arrayMyJAVAValue = myJAVAArray.getValueAt(evaluationCommand.getResult().intValue());
 		
-		this.statementToPrint += arrayMyJAVAValue.getValue().toString();
+		statementToPrint += arrayMyJAVAValue.getValue().toString();
 	}
 	
 	

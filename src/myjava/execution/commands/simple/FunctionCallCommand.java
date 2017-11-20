@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.execution.commands.simple;
 
 import myjava.error.ParserHandler;
@@ -20,11 +17,9 @@ import java.util.List;
 
 /**
  * Represents a function call command
-
  *
  */
 public class FunctionCallCommand implements ICommand {
-	private final static String TAG = "MyJAVAProg_FunctionCallCommand";
 	
 	private MyJAVAFunction myJAVAFunction;
 	private ExpressionContext exprCtx;
@@ -34,39 +29,36 @@ public class FunctionCallCommand implements ICommand {
 		this.functionName = functionName;
 		this.exprCtx = exprCtx;
 		
-		this.searchFunction();
+		searchFunction();
 		
 		ParseTreeWalker functionWalker = new ParseTreeWalker();
 		functionWalker.walk(new FunctionCallVerifier(), this.exprCtx);
 		
-		this.verifyParameters();
+		verifyParameters();
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.execution.commands.ICommand#execute()
-	 */
+
 	@Override
 	public void execute() {
-		this.mapParameters();
-		this.myJAVAFunction.execute();
+		mapParameters();
+		myJAVAFunction.execute();
 	}
 	
 	private void searchFunction() {
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-		this.myJAVAFunction = classScope.searchFunction(this.functionName);
+		myJAVAFunction = classScope.searchFunction(functionName);
 	}
 	
 	private void verifyParameters() {
-		if(this.exprCtx.arguments() == null || this.exprCtx.arguments().expressionList() == null
-				|| this.exprCtx.arguments().expressionList().expression() == null) {
+		if(exprCtx.arguments() == null || exprCtx.arguments().expressionList() == null
+				|| exprCtx.arguments().expressionList().expression() == null) {
 			return;
 		}
 		
-		List<ExpressionContext> exprCtxList = this.exprCtx.arguments().expressionList().expression();
+		List<ExpressionContext> exprCtxList = exprCtx.arguments().expressionList().expression();
 		//map values in parameters
 		for(int i = 0; i < exprCtxList.size(); i++) {
 			ExpressionContext parameterExprCtx = exprCtxList.get(i);
-			this.myJAVAFunction.verifyParameterByValueAt(parameterExprCtx, i);
+			myJAVAFunction.verifyParameterByValueAt(parameterExprCtx, i);
 		}	
 	}
 	
@@ -74,12 +66,12 @@ public class FunctionCallCommand implements ICommand {
 	 * Maps parameters when needed
 	 */
 	private void mapParameters() {
-		if(this.exprCtx.arguments() == null || this.exprCtx.arguments().expressionList() == null
-				|| this.exprCtx.arguments().expressionList().expression() == null) {
+		if(exprCtx.arguments() == null || exprCtx.arguments().expressionList() == null
+				|| exprCtx.arguments().expressionList().expression() == null) {
 			return;
 		}
 		
-		List<ExpressionContext> exprCtxList = this.exprCtx.arguments().expressionList().expression();
+		List<ExpressionContext> exprCtxList = exprCtx.arguments().expressionList().expression();
 		
 		//map values in parameters
 		for(int i = 0; i < exprCtxList.size(); i++) {
@@ -87,19 +79,19 @@ public class FunctionCallCommand implements ICommand {
 			
 			if(this.myJAVAFunction.getParameterAt(i).getPrimitiveType() == PrimitiveType.ARRAY) {
 				MyJAVAValue myJAVAValue = VariableSearcher.searchVariable(parameterExprCtx.getText());
-				this.myJAVAFunction.mapArrayAt(myJAVAValue, i, parameterExprCtx.getText());
+				myJAVAFunction.mapArrayAt(myJAVAValue, i, parameterExprCtx.getText());
 			}
 			else {
 				EvaluationCommand evaluationCommand = new EvaluationCommand(parameterExprCtx);
 				evaluationCommand.execute();
 				
-				this.myJAVAFunction.mapParameterByValueAt(evaluationCommand.getResult().toEngineeringString(), i);
+				myJAVAFunction.mapParameterByValueAt(evaluationCommand.getResult().toEngineeringString(), i);
 			}
 		}	
 	}
 	
 	public MyJAVAValue getReturnValue() {
-		return this.myJAVAFunction.getReturnValue();
+		return myJAVAFunction.getReturnValue();
 	}
 
 }

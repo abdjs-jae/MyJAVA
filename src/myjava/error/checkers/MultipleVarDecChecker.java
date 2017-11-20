@@ -1,10 +1,8 @@
-/**
- * 
- */
 package myjava.error.checkers;
 
 import myjava.error.BuildChecker;
 import myjava.error.ErrorRepository;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.generatedexp.JavaParser.VariableDeclaratorIdContext;
@@ -23,7 +21,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * Checks for multiple declarations of variables.
-
  *
  */
 public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
@@ -77,8 +74,8 @@ public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
 	private void verifyVariableOrConst(String identifierString) {
 		MyJAVAValue myJAVAValue = null;
 		
-		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
 			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, identifierString);
 		}
 		
@@ -95,7 +92,7 @@ public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
 		
 		
 		if(myJAVAValue != null) {
-			BuildChecker.reportCustomError(ErrorRepository.MULTIPLE_VARIABLE, "", identifierString, this.lineNumber);
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.MULTIPLE_VARIABLE, identifierString, this.lineNumber);
 		}
 	}
 	

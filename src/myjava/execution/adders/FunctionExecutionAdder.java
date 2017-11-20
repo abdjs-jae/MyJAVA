@@ -18,10 +18,7 @@ public class FunctionExecutionAdder implements IExecutionAdder {
 	public FunctionExecutionAdder(MyJAVAFunction myJAVAFunction) {
 		this.assignedMyJAVAFunction = myJAVAFunction;
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.execution.adders.IExecutionAdder#addCommand(myjava.execution.commands.ICommand)
-	 */
+
 	@Override
 	public void addCommand(ICommand command) {
 		this.assignedMyJAVAFunction.addCommand(command);

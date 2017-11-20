@@ -1,9 +1,4 @@
-/**
- * 
- */
 package myjava.execution;
-
-import android.util.Log;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -11,13 +6,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A monitor class for handling thread execution.
-
  *
  */
 public class ExecutionMonitor {
-
-	private final static String TAG = "MyJAVAProg_ExecutionMonitor";
-	
 	private boolean executionFlag = true;
 	
 	private final Lock lock = new ReentrantLock();
@@ -31,17 +22,17 @@ public class ExecutionMonitor {
 	 * Attempts to try execution process of a command. Thread sleeps if an existing command has claimed the flag.
 	 */
 	public void tryExecution() throws InterruptedException {
-		this.lock.lock();
+		lock.lock();
 		
 		try {
-			while(executionFlag == false) {
-				Log.i(TAG, "Execution flag has been set to false. Execution sleeps!");
-				this.executionGate.await();
+			while(!executionFlag) {
+				System.out.println("ExecutionMonitor: Execution flag has been set to false. Execution sleeps!");
+				executionGate.await();
 			}
 			
 		}
 		finally {
-			this.lock.unlock();
+			lock.unlock();
 		}	
 	}
 	
@@ -49,16 +40,16 @@ public class ExecutionMonitor {
 	 * Claims the execution flag. Call this function if a certain command needs to halt the execution of succeeding commands.
 	 */
 	public void claimExecutionFlag() {
-		this.executionFlag = false;
+		executionFlag = false;
 	}
 	
 	/*
 	 * Releases the execution flag. Do not forget to call this function on the command who claimed the execution flag to resume execution!
 	 */
 	public void releaseExecutionFlag() {
-		this.lock.lock();
-		this.executionFlag = true;
-		this.executionGate.signal();
-		this.lock.unlock();
+		lock.lock();
+		executionFlag = true;
+		executionGate.signal();
+		lock.unlock();
 	}
 }

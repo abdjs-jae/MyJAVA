@@ -1,6 +1,3 @@
-/**
- * 
- */
 package myjava.execution.commands.evaluation;
 
 import myjava.error.checkers.ConstChecker;
@@ -23,12 +20,9 @@ import java.util.List;
 /**
  * A new assignment command that walks a given expression and replaces values to it
  * before being passed to Eval-Ex library.
-
  * 
  */
 public class AssignmentCommand implements ICommand{
-
-	private final static String TAG = "MyJAVAProg_NewAssignmentCommand";
 
 	private ExpressionContext leftHandExprCtx;
 	private ExpressionContext rightHandExprCtx;
@@ -52,8 +46,8 @@ public class AssignmentCommand implements ICommand{
 		
 		//type check the myJAVAvalue
 		MyJAVAValue myJAVAValue;
-		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			myJAVAValue = VariableSearcher.searchVariableInFunction(ExecutionManager.getInstance().getCurrentFunction(), this.leftHandExprCtx.getText());
+		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+			myJAVAValue = VariableSearcher.searchVariableInFunction(ExecutionManager.getExecutionManager().getCurrentFunction(), this.leftHandExprCtx.getText());
 		}
 		else {
 			myJAVAValue = VariableSearcher.searchVariable(this.leftHandExprCtx.getText());
@@ -63,35 +57,30 @@ public class AssignmentCommand implements ICommand{
 		typeChecker.verify();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see myjava.execution.commands.ICommand#execute()
-	 */
 	@Override
 	public void execute() {
-		EvaluationCommand evaluationCommand = new EvaluationCommand(this.rightHandExprCtx);
+		EvaluationCommand evaluationCommand = new EvaluationCommand(rightHandExprCtx);
 		evaluationCommand.execute();
 		
-		if(this.isLeftHandArrayAccessor()) {
-			this.handleArrayAssignment(evaluationCommand.getResult().toEngineeringString());
+		if(isLeftHandArrayAccessor()) {
+			handleArrayAssignment(evaluationCommand.getResult().toEngineeringString());
 		}
 		else {
-			MyJAVAValue myJAVAValue = VariableSearcher.searchVariable(this.leftHandExprCtx.getText());
+			MyJAVAValue myJAVAValue = VariableSearcher.searchVariable(leftHandExprCtx.getText());
 			AssignmentUtils.assignAppropriateValue(myJAVAValue, evaluationCommand.getResult());
 		}
 	}
 	
 	private boolean isLeftHandArrayAccessor() {
-		List<TerminalNode> lBrackTokens = this.leftHandExprCtx.getTokens(JavaLexer.LBRACK);
-		List<TerminalNode> rBrackTokens = this.leftHandExprCtx.getTokens(JavaLexer.RBRACK);
+		List<TerminalNode> lBrackTokens = leftHandExprCtx.getTokens(JavaLexer.LBRACK);
+		List<TerminalNode> rBrackTokens = leftHandExprCtx.getTokens(JavaLexer.RBRACK);
 		
 		return(lBrackTokens.size() > 0 && rBrackTokens.size() > 0);
 	}
 	
 	private void handleArrayAssignment(String resultString) {
-		TerminalNode identifierNode = this.leftHandExprCtx.expression(0).primary().Identifier();
-		ExpressionContext arrayIndexExprCtx = this.leftHandExprCtx.expression(1);
+		TerminalNode identifierNode = leftHandExprCtx.expression(0).primary().Identifier();
+		ExpressionContext arrayIndexExprCtx = leftHandExprCtx.expression(1);
 		
 		MyJAVAValue myJAVAValue = VariableSearcher.searchVariable(identifierNode.getText());
 		MyJAVAArray myJAVAArray = (MyJAVAArray) myJAVAValue.getValue();

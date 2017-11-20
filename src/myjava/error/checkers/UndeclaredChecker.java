@@ -3,20 +3,21 @@
  */
 package myjava.error.checkers;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.error.BuildChecker;
 import myjava.error.ErrorRepository;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
 import myjava.generatedexp.JavaParser.StatementContext;
-import myjava.ide.console.Console;
-import myjava.ide.console.LogItemView.LogType;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
+import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -29,26 +30,20 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
  *
  */
-public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_UndeclaredChecker";
+public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeListener {
 	
 	private ExpressionContext exprCtx;
 	private int lineNumber;
 	
 	public UndeclaredChecker(ExpressionContext exprCtx) {
 		this.exprCtx = exprCtx;
-		
-		Token firstToken = this.exprCtx.getStart();
-		this.lineNumber = firstToken.getLine();
+		this.lineNumber = this.exprCtx.getStart().getLine();
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.error.checkers.IErrorChecker#verify()
-	 */
+
 	@Override
 	public void verify() {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
-		treeWalker.walk(this, this.exprCtx);
+		treeWalker.walk(this, exprCtx);
 	}
 
 	@Override
@@ -68,10 +63,10 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 		if(ctx instanceof ExpressionContext) {
 			ExpressionContext exprCtx = (ExpressionContext) ctx;
 			if(EvaluationCommand.isFunctionCall(exprCtx)) {
-				this.verifyFunctionCall(exprCtx);
+				verifyFunctionCall(exprCtx);
 			}
 			else if(EvaluationCommand.isVariableOrConst(exprCtx)) {
-				this.verifyVariableOrConst(exprCtx);
+				verifyVariableOrConst(exprCtx);
 			}
 		}
 	}
@@ -84,9 +79,6 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 	
 	private void verifyFunctionCall(ExpressionContext funcExprCtx) {
 		
-		ThisKeywordChecker thisChecker = new ThisKeywordChecker(funcExprCtx.expression(0));
-		thisChecker.verify();
-		
 		if(funcExprCtx.expression(0).Identifier() == null)
 			return;
 		
@@ -97,18 +89,18 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 		MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
 		
 		if(myJAVAFunction == null) {
-			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_FUNCTION, "", functionName, this.lineNumber);
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_FUNCTION, functionName, lineNumber);
 		}
 		else {
-			Console.log(LogType.DEBUG, "Function found: " +functionName);
+			txtWriter.writeMessage(StringUtils.formatDebug("Function found: " +functionName));
 		}
 	}
 	
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
 		MyJAVAValue myJAVAValue = null;
 		
-		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
 			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
 		}
 		
@@ -120,7 +112,7 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 		
 		//after second pass, we conclude if it cannot be found already
 		if(myJAVAValue == null) {
-			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_VARIABLE, "", varExprCtx.getText(), this.lineNumber);
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_VARIABLE, varExprCtx.getText(), lineNumber);
 		}
 	}
 	
@@ -134,7 +126,7 @@ public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 		Token firstToken = statementCtx.getStart();
 		
 		if(myJAVAValue == null) {
-			BuildChecker.reportCustomError(ErrorRepository.UNDECLARED_VARIABLE, "", identifier, firstToken.getLine());
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_VARIABLE, identifier, firstToken.getLine());
 		}
 	}
 

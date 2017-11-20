@@ -1,7 +1,6 @@
 package myjava.error.checkers;
 
-import myjava.error.BuildChecker;
-import myjava.error.ErrorRepository;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.EvaluationCommand;
@@ -12,29 +11,26 @@ import myjava.semantics.searching.VariableSearcher;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class ConstChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_ConstChecker";
 	
 	private ExpressionContext exprCtx;
 	private int lineNumber;
 	
 	public ConstChecker(ExpressionContext exprCtx) {
 		this.exprCtx = exprCtx;
-		
-		Token firstToken = this.exprCtx.getStart();
-		this.lineNumber = firstToken.getLine();
+
+		lineNumber = exprCtx.getStart().getLine();
 	}
 	
 	@Override
 	public void verify() {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
-		treeWalker.walk(this, this.exprCtx);
+		treeWalker.walk(this, exprCtx);
 	}
 
 	@Override
@@ -54,7 +50,7 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 		if(ctx instanceof ExpressionContext) {
 			ExpressionContext exprCtx = (ExpressionContext) ctx;
 			if(EvaluationCommand.isVariableOrConst(exprCtx)) {
-				this.verifyVariableOrConst(exprCtx);
+				verifyVariableOrConst(exprCtx);
 			}
 		}
 	}
@@ -68,8 +64,8 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
 		MyJAVAValue myJAVAValue = null;
 		
-		if(ExecutionManager.getInstance().isInFunctionExecution()) {
-			MyJAVAFunction myJAVAFunction = ExecutionManager.getInstance().getCurrentFunction();
+		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
+			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
 			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
 		}
 		
@@ -80,7 +76,7 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 		}
 		
 		if(myJAVAValue != null && myJAVAValue.isFinal()) {
-			BuildChecker.reportCustomError(ErrorRepository.CONST_REASSIGNMENT, "", varExprCtx.getText(), this.lineNumber);
+			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.CONST_REASSIGNMENT, varExprCtx.getText(), lineNumber);
 		}
 	}
 

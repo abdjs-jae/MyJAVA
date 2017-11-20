@@ -1,9 +1,5 @@
-/**
- * 
- */
 package myjava.execution.commands.evaluation;
 
-import android.util.Log;
 import myjava.error.ParserHandler;
 import myjava.execution.commands.ICommand;
 import myjava.generatedexp.JavaParser.ExpressionContext;
@@ -25,41 +21,36 @@ import java.util.List;
 
 /**
  * A command that evaluates a given expression at runtime.
-
  *
  */
 public class EvaluationCommand implements ICommand, ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_EvaluationCommand";
 	
 	private ExpressionContext parentExprCtx;
 	private String modifiedExp;
 	private BigDecimal resultValue;
 	
 	public EvaluationCommand(ExpressionContext exprCtx) {
-		this.parentExprCtx = exprCtx;
+		parentExprCtx = exprCtx;
 	}
-	
-	/* (non-Javadoc)
-	 * @see myjava.execution.commands.ICommand#execute()
-	 */
+
 	@Override
 	public void execute() {
-		this.modifiedExp = this.parentExprCtx.getText();
+		modifiedExp = parentExprCtx.getText();
 
 		//catch rules if the value has direct boolean flags
-		if(this.modifiedExp.contains(RecognizedKeywords.BOOLEAN_TRUE)) {
-			this.resultValue = new BigDecimal(1);
+		if(modifiedExp.contains(RecognizedKeywords.BOOLEAN_TRUE)) {
+			resultValue = new BigDecimal(1);
 		}
-		else if(this.modifiedExp.contains(RecognizedKeywords.BOOLEAN_FALSE)) {
-			this.resultValue = new BigDecimal(0);
+		else if(modifiedExp.contains(RecognizedKeywords.BOOLEAN_FALSE)) {
+			resultValue = new BigDecimal(0);
 		}
 		else {
 			ParseTreeWalker treeWalker = new ParseTreeWalker();
-			treeWalker.walk(this, this.parentExprCtx);
+			treeWalker.walk(this, parentExprCtx);
 			
-			Expression evalEx = new Expression(this.modifiedExp);
+			Expression evalEx = new Expression(modifiedExp);
 			//Log.i(TAG,"Modified exp to eval: " +this.modifiedExp);
-			this.resultValue = evalEx.eval();
+			resultValue = evalEx.eval();
 		}
 		
 	}
@@ -80,11 +71,11 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 		if (ctx instanceof ExpressionContext) {
 			ExpressionContext exprCtx = (ExpressionContext) ctx;
 			if (EvaluationCommand.isFunctionCall(exprCtx)) {
-				this.evaluateFunctionCall(exprCtx);
+				evaluateFunctionCall(exprCtx);
 			}
 
 			else if (EvaluationCommand.isVariableOrConst(exprCtx)) {
-				this.evaluateVariable(exprCtx);
+				evaluateVariable(exprCtx);
 			}
 		}
 	}
@@ -125,10 +116,10 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 
 		myJAVAFunction.execute();
 
-		Log.i(TAG, "Before modified EXP function call: " +this.modifiedExp);
-		this.modifiedExp = this.modifiedExp.replace(exprCtx.getText(),
+		System.out.println("EvaluationCommand: Before modified EXP function call: " + modifiedExp);
+		modifiedExp = modifiedExp.replace(exprCtx.getText(),
 				myJAVAFunction.getReturnValue().getValue().toString());
-		Log.i(TAG, "After modified EXP function call: " +this.modifiedExp);
+		System.out.println("EvaluationCommand: After modified EXP function call: " + modifiedExp);
 
 	}
 
@@ -136,7 +127,7 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 		MyJAVAValue myJAVAValue = VariableSearcher
 				.searchVariable(exprCtx.getText());
 
-		this.modifiedExp = this.modifiedExp.replaceFirst(exprCtx.getText(),
+		modifiedExp = modifiedExp.replaceFirst(exprCtx.getText(),
 				myJAVAValue.getValue().toString());
 	}
 
@@ -144,6 +135,6 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 	 * Returns the result
 	 */
 	public BigDecimal getResult() {
-		return this.resultValue;
+		return resultValue;
 	}
 }
