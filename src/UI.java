@@ -1,11 +1,10 @@
-import myjava.antlrgen.MyJAVABaseListener;
 import myjava.antlrgen.MyJAVALexer;
 import myjava.antlrgen.MyJAVAParser;
+import myjava.antlrgen.MyJAVATraveller;
 import myjava.error.ErrorListener;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
-import myjava.semantics.analyzers.MainAnalyzer;
 import myjava.semantics.statements.StatementControlOverseer;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
@@ -92,7 +91,7 @@ public class UI {
             public void actionPerformed(ActionEvent e) {
 
                 System.out.println("Run button clicked!");
-                code = "public class Main { " + txtArCode.getText() + " }";
+                code = txtArCode.getText();
                 removeHighlights(txtArCode);
 
                 ErrorListener.clearLog();
@@ -108,37 +107,16 @@ public class UI {
 
                 ParserRuleContext parserRuleContext = parser.compilationUnit();
                 ParseTreeWalker treeWalker = new ParseTreeWalker();
-                treeWalker.walk(new MyJAVABaseListener(), parserRuleContext);
+                // MyJAVATraveller is like the Implementor
+                // When it walks to a class declaration context, trigger si class analyzer
+                // When it walks to a main declaration context, triggered si main analyzer
+                treeWalker.walk(new MyJAVATraveller(), parserRuleContext);
+
+                System.out.println(parserRuleContext.toStringTree(parser));
 
                 // After semantic checking
                 ExecutionManager.getExecutionManager().executeAllActions();
 
-                // changed parse tree to method declaration context for the analyzing later on (context kinukuha ng analyzing)
-                // MyJAVAParser.MethodDeclarationContext parserRuleContext = parser.methodDeclaration();
-                //txtWriter.writeMessage(StringUtils.formatDebug(parserRuleContext.toStringTree(parser)));
-
-                /*
-                // main analyzer checks yung current stuff
-
-                // brute-forced print command - initialize and place the print statement rule
-                // then executes the print command
-                PrintCommand printCommand = new PrintCommand(parserRuleContext.methodBody().block().blockStatement(0).statement().printStatement());
-                printCommand.execute();
-                */
-                /*
-                for(int ctr = 0; ctr < allTokens.size(); ctr++) {
-
-                    Token t = allTokens.get(ctr);
-
-                    String line[] = t.toString().split(",<");
-                    String word[] = line[1].split(">");
-                    int index = Integer.parseInt(word[0]);
-
-                    String token = parser.getVocabulary().getDisplayName(index);
-                    System.out.println(token);
-
-                }
-                */
                 consoleListModel = new DefaultListModel();
                 consoleList.setSelectedIndex(0);
                 consoleListModel = errorListener.getConsoleListModel();
