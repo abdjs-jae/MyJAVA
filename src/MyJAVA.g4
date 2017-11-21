@@ -86,6 +86,7 @@ classBodyDeclaration
 
 memberDeclaration
     :   methodDeclaration
+    |   mainDeclaration
     |   fieldDeclaration
     |   classDeclaration
     ;
@@ -103,8 +104,16 @@ methodDeclaration
         )
     ;
 
+mainDeclaration
+    : 'void' 'main' formalParameters ('[' ']')*
+       ('throws' qualifiedNameList)?
+       (    methodBody
+       |    ';'
+       )
+    ;
+
 fieldDeclaration
-    :   (classOrInterfaceModifier)? typeType variableDeclarators ';'
+    :   typeType variableDeclarators ';'
     ;
 
 constDeclaration
