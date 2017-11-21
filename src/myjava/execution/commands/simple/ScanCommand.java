@@ -37,7 +37,7 @@ public class ScanCommand implements ICommand{
 		String valueEntered = "";
 		String[] options = {"OK"};
 		JPanel panel = new JPanel();
-		JTextField txtInput = new JTextField();
+		JTextField txtInput = new JTextField(20);
 		panel.add(new JLabel(messageToDisplay));
 		panel.add(txtInput);
 
