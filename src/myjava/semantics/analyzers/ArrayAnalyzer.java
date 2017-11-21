@@ -1,6 +1,7 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.ArrayInitializeCommand;
 import myjava.antlrgen.MyJAVAParser.ArrayCreatorRestContext;
@@ -70,7 +71,10 @@ public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
 		else if(ctx instanceof VariableDeclaratorIdContext) {
 			VariableDeclaratorIdContext varDecIdCtx = (VariableDeclaratorIdContext) ctx;
 			identifiedTokens.addToken(ARRAY_IDENTIFIER_KEY, varDecIdCtx.getText());
-			
+
+			MultipleVarDecChecker multipleDeclaredChecker = new MultipleVarDecChecker(varDecIdCtx);
+			multipleDeclaredChecker.verify();
+
 			analyzeArray();
 		}
 		else if(ctx instanceof CreatedNameContext) {

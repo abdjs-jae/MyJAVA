@@ -1,13 +1,12 @@
 package myjava.antlrgen;
 
 import myjava.semantics.analyzers.ClassAnalyzer;
-import myjava.semantics.analyzers.LocalVariableAnalyzer;
 import myjava.semantics.analyzers.MainAnalyzer;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class MyJAVATraveller implements MyJAVAListener {
+public class MyJAVATraveller extends MyJAVABaseListener {
 
     @Override
     public void enterCompilationUnit(MyJAVAParser.CompilationUnitContext ctx) {
@@ -363,8 +362,7 @@ public class MyJAVATraveller implements MyJAVAListener {
 
     @Override
     public void enterLocalVariableDeclaration(MyJAVAParser.LocalVariableDeclarationContext ctx) {
-        LocalVariableAnalyzer localVariableAnalyzer = new LocalVariableAnalyzer();
-        localVariableAnalyzer.analyze(ctx);
+
     }
 
     @Override

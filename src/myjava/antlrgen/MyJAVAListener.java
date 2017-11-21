@@ -1,4 +1,4 @@
-// Generated from C:/Users/JJ/Documents/Repository/MyJAVA/src\MyJAVA.g4 by ANTLR 4.7
+// Generated from /Users/jasonsapdos/Documents/workspace/myJAVA/src/MyJAVA.g4 by ANTLR 4.7
 package myjava.antlrgen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -107,6 +107,16 @@ public interface MyJAVAListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMethodDeclaration(MyJAVAParser.MethodDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyJAVAParser#mainDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterMainDeclaration(MyJAVAParser.MainDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyJAVAParser#mainDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitMainDeclaration(MyJAVAParser.MainDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MyJAVAParser#fieldDeclaration}.
 	 * @param ctx the parse tree

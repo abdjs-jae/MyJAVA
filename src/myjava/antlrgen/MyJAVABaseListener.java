@@ -1,7 +1,6 @@
-// Generated from C:/Users/JJ/Documents/Repository/MyJAVA/src\MyJAVA.g4 by ANTLR 4.7
+// Generated from /Users/jasonsapdos/Documents/workspace/myJAVA/src/MyJAVA.g4 by ANTLR 4.7
 package myjava.antlrgen;
 
-import myjava.semantics.analyzers.ClassAnalyzer;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -65,10 +64,7 @@ public class MyJAVABaseListener implements MyJAVAListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassDeclaration(MyJAVAParser.ClassDeclarationContext ctx) {
-		ClassAnalyzer classAnalyzer = new ClassAnalyzer();
-		classAnalyzer.analyze(ctx);
-	}
+	@Override public void enterClassDeclaration(MyJAVAParser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -135,6 +131,18 @@ public class MyJAVABaseListener implements MyJAVAListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMethodDeclaration(MyJAVAParser.MethodDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMainDeclaration(MyJAVAParser.MainDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMainDeclaration(MyJAVAParser.MainDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

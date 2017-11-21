@@ -24,7 +24,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  *
  */
 public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
-	private final static String TAG = "MyJAVAProg_MultipleVarDecChecker";
 	
 	private VariableDeclaratorIdContext varDecIdCtx;
 	private int lineNumber;

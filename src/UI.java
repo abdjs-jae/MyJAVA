@@ -90,8 +90,12 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                resetComponents();
                 System.out.println("Run button clicked!");
-                code = txtArCode.getText();
+                code = "public class Driver { " +
+                            txtArCode.getText() +
+                        " } ";
+
                 removeHighlights(txtArCode);
 
                 ErrorListener.clearLog();
@@ -105,6 +109,7 @@ public class UI {
                 parser.addErrorListener(errorListener);
                 parser.getInterpreter().setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
 
+                initializeInterpreter();
                 ParserRuleContext parserRuleContext = parser.compilationUnit();
                 ParseTreeWalker treeWalker = new ParseTreeWalker();
                 // MyJAVATraveller is like the Implementor
@@ -274,8 +279,6 @@ public class UI {
         LocalScopeCreator.initialize();
         StatementControlOverseer.initialize();
         FunctionTracker.initialize();
-
-        // Execution manager takes charge of thread
     }
 
     public static void resetComponents() {

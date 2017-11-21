@@ -75,7 +75,6 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 			if(ClassAnalyzer.isPrimitiveDeclaration(typeCtx)) {
 				PrimitiveTypeContext primitiveTypeCtx = typeCtx.primitiveType();
 				identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, primitiveTypeCtx.getText());
-				
 			}
 			
 			//check if its array declaration

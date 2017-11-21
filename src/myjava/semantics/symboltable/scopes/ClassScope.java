@@ -25,7 +25,6 @@ public class ClassScope implements IScope, ITextWriter {
 	
 	public ClassScope(String className) {
 		this.className = className;
-		System.out.println("New ClassScope: " + getClassName());
 
 		publicVariables = new HashMap<>();
 		privateVariables = new HashMap<>();
@@ -69,7 +68,7 @@ public class ClassScope implements IScope, ITextWriter {
 		
 		if(isPublic) {
 			publicVariables.put(identifierString, myJAVAValue);
-			txtWriter.writeMessage(StringUtils.formatDebug("Created public variable " +
+			txtWriter.writeMessage(StringUtils.formatDebug("Created variable " +
 					identifierString+ " type: " +myJAVAValue.getPrimitiveType()));
 		}
 		else {
@@ -94,7 +93,7 @@ public class ClassScope implements IScope, ITextWriter {
 		if(isPublic) {
 			MyJAVAValue myJAVAValue = this.publicVariables.get(identifierString);
 			myJAVAValue.setValue(valueString);
-			txtWriter.writeMessage(StringUtils.formatDebug("Updated public variable " +
+			txtWriter.writeMessage(StringUtils.formatDebug("Updated variable " +
 					identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 		}
 		else {
@@ -110,7 +109,7 @@ public class ClassScope implements IScope, ITextWriter {
 			return publicVariables.get(identifier);
 		}
 		else {
-			System.err.println("ClassScope: Public " + identifier + " is not found.");
+			System.err.println("ClassScope: " + identifier + " is not found.");
 			return null;
 		}
 	}
@@ -120,7 +119,7 @@ public class ClassScope implements IScope, ITextWriter {
 			return privateVariables.get(identifier);
 		}
 		else {
-			System.err.println("ClassScope: Private " + identifier + " is not found.");
+			System.err.println("ClassScope: " + identifier + " is not found.");
 			return null;
 		}
 	}
@@ -133,7 +132,7 @@ public class ClassScope implements IScope, ITextWriter {
 	
 	public void addPublicMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
 		publicFunctions.put(identifier, myJAVAFunction);
-		txtWriter.writeMessage(StringUtils.formatDebug("Created public function " +
+		txtWriter.writeMessage(StringUtils.formatDebug("Created function " +
 				identifier+ " with return type " +myJAVAFunction.getReturnType()));
 	}
 	
@@ -157,7 +156,7 @@ public class ClassScope implements IScope, ITextWriter {
 			return publicFunctions.get(identifier);
 		}
 		else {
-			System.err.println("ClassScope: Private " +identifier+ " function is not found.");
+			System.err.println("ClassScope: " +identifier+ " function is not found.");
 			return null;
 		}
 	}
@@ -173,7 +172,6 @@ public class ClassScope implements IScope, ITextWriter {
 	}
 	
 	public MyJAVAFunction searchFunction(String identifier) {
-		System.out.println("ClassScope VarSize: " + getNumOfFunctions());
 		if(containsPublicFunction(identifier)) {
 			return publicFunctions.get(identifier);
 		}
@@ -201,7 +199,6 @@ public class ClassScope implements IScope, ITextWriter {
 	 */
 	public MyJAVAValue searchVariableIncludingLocal(String identifier) {
 		MyJAVAValue value;
-		System.out.println("ClassScope VarSize: " + getNumOfVariables());
 		if(this.containsPrivateVariable(identifier)) {
 			value = getPrivateVariable(identifier);
 		}

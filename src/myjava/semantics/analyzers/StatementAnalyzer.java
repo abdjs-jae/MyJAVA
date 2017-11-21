@@ -1,6 +1,7 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.controlled.*;
@@ -128,7 +129,8 @@ public class StatementAnalyzer implements ITextWriter{
 	}
 	
 	private void handlePrintStatement(StatementContext ctx) {
-		PrintCommand printCommand = new PrintCommand(ctx.expression());
+		PrintStatementContext printCtx = ctx.printStatement();
+		PrintCommand printCommand = new PrintCommand(printCtx.parExpression().expression());
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
 		//add to conditional controlled command
@@ -154,8 +156,10 @@ public class StatementAnalyzer implements ITextWriter{
 	}
 	
 	private void handleScanStatement(StatementContext ctx) {
-		ScanCommand scanCommand = new ScanCommand(ctx.expression().getText(), ctx.Identifier().getText()); // not sure if edited right
-		UndeclaredChecker.verifyVarOrConstForScan(ctx.Identifier().getText(), ctx);
+		ScanStatementContext scanCtx = ctx.scanStatement();
+		ScanCommand scanCommand = new ScanCommand(scanCtx.expression().getText(),
+				scanCtx.variableDeclaratorId().Identifier().getText()); // not sure if edited right
+		UndeclaredChecker.verifyVarOrConstForScan(scanCtx.variableDeclaratorId().Identifier().getText(), ctx);
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
 		//add to conditional controlled command

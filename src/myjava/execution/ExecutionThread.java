@@ -26,7 +26,6 @@ public class ExecutionThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			System.out.println("Thread running! " + executionList.size());
 			for(ICommand command : executionList) {
 				executionMonitor.tryExecution();
 				command.execute();

@@ -1,4 +1,4 @@
-// Generated from C:/Users/JJ/Documents/Repository/MyJAVA/src\MyJAVA.g4 by ANTLR 4.7
+// Generated from /Users/jasonsapdos/Documents/workspace/myJAVA/src/MyJAVA.g4 by ANTLR 4.7
 package myjava.antlrgen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -70,6 +70,12 @@ public interface MyJAVAVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMethodDeclaration(MyJAVAParser.MethodDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyJAVAParser#mainDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMainDeclaration(MyJAVAParser.MainDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MyJAVAParser#fieldDeclaration}.
 	 * @param ctx the parse tree
