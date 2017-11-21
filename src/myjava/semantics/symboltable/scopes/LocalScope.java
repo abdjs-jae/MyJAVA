@@ -106,6 +106,12 @@ public class LocalScope implements IScope {
 		initializeLocalVariableMap();
 		localVariables.put(identifier, myJAVAValue);
 	}
+
+	public int getNumOfVariables(){
+		if(localVariables != null)
+			return localVariables.size();
+		return 0;
+	}
 	
 	/*
 	 * Returns the depth of this local scope.

@@ -164,7 +164,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 			this.identifiedTokens.addToken(ACCESS_CONTROL_KEY, ctx.getText());
 		}
 		else if(ctx.getTokens(MyJAVALexer.FINAL).size() > 0) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Detected const: " +ctx.getText()));
+			txtWriter.writeMessage(StringUtils.formatDebug("Detected const / final: " +ctx.getText()));
 			this.identifiedTokens.addToken(CONST_CONTROL_KEY, ctx.getText());
 		}
 		else if(ctx.getTokens(MyJAVALexer.STATIC).size() > 0) {

@@ -173,6 +173,7 @@ public class ClassScope implements IScope, ITextWriter {
 	}
 	
 	public MyJAVAFunction searchFunction(String identifier) {
+		System.out.println("ClassScope VarSize: " + getNumOfFunctions());
 		if(containsPublicFunction(identifier)) {
 			return publicFunctions.get(identifier);
 		}
@@ -200,6 +201,7 @@ public class ClassScope implements IScope, ITextWriter {
 	 */
 	public MyJAVAValue searchVariableIncludingLocal(String identifier) {
 		MyJAVAValue value;
+		System.out.println("ClassScope VarSize: " + getNumOfVariables());
 		if(this.containsPrivateVariable(identifier)) {
 			value = getPrivateVariable(identifier);
 		}
@@ -232,7 +234,15 @@ public class ClassScope implements IScope, ITextWriter {
 	public boolean containsPrivateVariable(String identifier) {
 		return privateVariables.containsKey(identifier);
 	}
-	
+
+	public int getNumOfVariables(){
+		return publicVariables.size();
+	}
+
+	public int getNumOfFunctions(){
+		return publicFunctions.size();
+	}
+
 	/*
 	 * Resets all stored variables. This is called after the execution manager finishes
 	 */

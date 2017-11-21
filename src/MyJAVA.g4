@@ -104,7 +104,7 @@ methodDeclaration
     ;
 
 fieldDeclaration
-    :   typeType variableDeclarators ';'
+    :   (classOrInterfaceModifier)? typeType variableDeclarators ';'
     ;
 
 constDeclaration

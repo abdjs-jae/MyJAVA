@@ -897,6 +897,9 @@ public class MyJAVAParser extends Parser {
 		public VariableDeclaratorsContext variableDeclarators() {
 			return getRuleContext(VariableDeclaratorsContext.class,0);
 		}
+		public ClassOrInterfaceModifierContext classOrInterfaceModifier() {
+			return getRuleContext(ClassOrInterfaceModifierContext.class,0);
+		}
 		public FieldDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}

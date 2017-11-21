@@ -92,7 +92,9 @@ public class LocalScopeCreator {
 		
 		while(!stack.isEmpty()) {
 			scope = stack.pop();
-			
+
+			System.out.println("LocalScope VarSize: " + scope.getNumOfVariables());
+
 			if(scope.containsVariable(identifier)) {
 				return scope.searchVariableIncludingLocal(identifier);
 			}
