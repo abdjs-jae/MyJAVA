@@ -37,7 +37,7 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 	
 	public UndeclaredChecker(ExpressionContext exprCtx) {
 		this.exprCtx = exprCtx;
-		this.lineNumber = this.exprCtx.getStart().getLine();
+		lineNumber = this.exprCtx.getStart().getLine();
 	}
 
 	@Override
@@ -101,13 +101,13 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 		
 		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
 			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
-			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.getText());
 		}
 		
 		//if after function finding, myJAVA value is still null, search class
 		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.getText());
 		}
 		
 		//after second pass, we conclude if it cannot be found already

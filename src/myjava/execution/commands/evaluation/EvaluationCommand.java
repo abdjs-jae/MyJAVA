@@ -90,7 +90,7 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 	}
 
 	public static boolean isVariableOrConst(ExpressionContext exprCtx) {
-        return exprCtx.primary() != null && exprCtx.primary().Identifier() != null;
+        return VariableSearcher.searchVariable(exprCtx.getText()) != null;
 	}
 
 	private void evaluateFunctionCall(ExpressionContext exprCtx) {

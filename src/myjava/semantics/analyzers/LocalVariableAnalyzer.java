@@ -1,6 +1,7 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.antlrgen.MyJAVALexer;
 import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
@@ -31,6 +32,8 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 	private IdentifiedTokens identifiedTokens;
 	private boolean executeMappingImmediate = false;
 	private boolean hasPassedArrayDeclaration = false;
+
+	public static boolean currentlyConst = false;
 	
 	public LocalVariableAnalyzer() {
 		
@@ -43,6 +46,8 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 		treeWalker.walk(this, localVarDecCtx);
 		
 	}
+
+	public void constDone() { currentlyConst = false; }
 
 	@Override
 	public void visitTerminal(TerminalNode node) {
@@ -93,10 +98,14 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 					identifiedTokens.addToken(PRIMITIVE_TYPE_KEY, classInterfaceCtx.getText());
 				}
 			}
-			
-			
 		}
-		
+		else if (ctx instanceof VariableModifierContext){
+			VariableModifierContext varModCtx = (VariableModifierContext) ctx;
+			if(varModCtx.getTokens(MyJAVALexer.FINAL).size() > 0){
+				txtWriter.writeMessage(StringUtils.formatDebug("Detected const / final: " + varModCtx.getText()));
+				currentlyConst = true;
+			}
+		}
 		else if(ctx instanceof VariableDeclaratorContext) {
 			
 			VariableDeclaratorContext varCtx = (VariableDeclaratorContext) ctx;
@@ -164,7 +173,7 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 	private void createMyJAVAValue() {
 		
 		if(identifiedTokens.containsTokens(PRIMITIVE_TYPE_KEY, IDENTIFIER_KEY)) {
-			
+
 			String primitiveTypeString = identifiedTokens.getToken(PRIMITIVE_TYPE_KEY);
 			String identifierString = identifiedTokens.getToken(IDENTIFIER_KEY);
 			String identifierValueString;

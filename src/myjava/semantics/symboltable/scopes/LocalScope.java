@@ -1,5 +1,7 @@
 package myjava.semantics.symboltable.scopes;
 
+import myjava.antlrgen.MyJAVALexer;
+import myjava.semantics.analyzers.ClassAnalyzer;
 import myjava.semantics.representations.MyJAVAValue;
 
 import java.util.ArrayList;
@@ -89,6 +91,29 @@ public class LocalScope implements IScope {
 		
 		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
 		localVariables.put(identifierString, myJAVAValue);
+	}
+
+	/*
+	 * Adds an empty variable based from keywords
+	 */
+	public void addEmptyConstFromKeywords(String primitiveTypeString, String identifierString) {
+		initializeLocalVariableMap();
+
+		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
+		myJAVAValue.markFinal();
+		localVariables.put(identifierString, myJAVAValue);
+	}
+
+	/*
+	 * Adds an empty variable based from keywords
+	 */
+	public void addInitializedConstVariableFromKeywords(String primitiveTypeString, String identifierString, String valueString) {
+		initializeLocalVariableMap();
+
+		addEmptyVariableFromKeywords(primitiveTypeString, identifierString);
+		MyJAVAValue myJAVAValue = localVariables.get(identifierString);
+		myJAVAValue.markFinal();
+		myJAVAValue.setValue(valueString);
 	}
 	
 	/*

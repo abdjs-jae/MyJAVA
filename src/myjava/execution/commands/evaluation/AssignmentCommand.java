@@ -1,6 +1,7 @@
 package myjava.execution.commands.evaluation;
 
 import myjava.antlrgen.MyJAVALexer;
+import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.checkers.ConstChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.error.checkers.UndeclaredChecker;
@@ -31,7 +32,7 @@ public class AssignmentCommand implements ICommand{
 			ExpressionContext rightHandExprCtx) {
 		this.leftHandExprCtx = leftHandExprCtx;
 		this.rightHandExprCtx = rightHandExprCtx;
-		
+
 		UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.leftHandExprCtx);
 		undeclaredChecker.verify();
 		

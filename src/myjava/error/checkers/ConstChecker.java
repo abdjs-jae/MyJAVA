@@ -5,6 +5,7 @@ import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.EvaluationCommand;
 import myjava.antlrgen.MyJAVAParser.ExpressionContext;
+import myjava.semantics.analyzers.LocalVariableAnalyzer;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.searching.VariableSearcher;
@@ -66,15 +67,18 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 		
 		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
 			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
-			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.getText());
 		}
 		
 		//if after function finding, myJAVA value is still null, search class
 		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.primary().Identifier().getText());
+			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.getText());
+			if(LocalVariableAnalyzer.currentlyConst){
+				myJAVAValue.markFinal();
+			}
 		}
-		
+
 		if(myJAVAValue != null && myJAVAValue.isFinal()) {
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.CONST_REASSIGNMENT, varExprCtx.getText(), lineNumber);
 		}
