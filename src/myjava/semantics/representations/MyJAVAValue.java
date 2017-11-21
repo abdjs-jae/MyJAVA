@@ -38,7 +38,7 @@ public class MyJAVAValue {
 			this.primitiveType = primitiveType;
 		}
 		else {
-			System.err.println("MyJAVAValue: " + "Value is not appropriate for  " +primitiveType+ "!");
+			System.err.println("MyJAVAValue: " + "Value " + value + " is not appropriate for  " + primitiveType+ "!");
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class MyJAVAValue {
 	public PrimitiveType getPrimitiveType() {
 		return primitiveType;
 	}
-	
+
 	
 	public static boolean checkValueType(Object value, PrimitiveType primitiveType) {
 		switch(primitiveType) {

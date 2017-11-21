@@ -37,10 +37,11 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 	}
 	
 	public void analyze(ClassDeclarationContext ctx) {
-		String className = ctx.Identifier().getText();
-		
-		this.declaredClassScope = new ClassScope(className);
-		this.identifiedTokens = new IdentifiedTokens();
+		// String className = ctx.Identifier().getText();
+		System.out.println("Class accessed: Main");
+
+		declaredClassScope = new ClassScope("Main");
+		identifiedTokens = new IdentifiedTokens();
 		
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, ctx);
@@ -74,7 +75,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 	
 	private void analyzeClassMembers(ParserRuleContext ctx) {
 		if(ctx instanceof ClassOrInterfaceModifierContext) {
-			ClassOrInterfaceTypeContext classModifierCtx = (ClassOrInterfaceTypeContext) ctx;
+			ClassOrInterfaceModifierContext classModifierCtx = (ClassOrInterfaceModifierContext) ctx;
 			
 			analyzeModifier(classModifierCtx);
 		}
@@ -156,7 +157,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 		return false;
 	}
 	
-	private void analyzeModifier(ClassOrInterfaceTypeContext ctx) {
+	private void analyzeModifier(ClassOrInterfaceModifierContext ctx) {
 		if(ctx.getTokens(MyJAVALexer.PUBLIC).size() > 0 || ctx.getTokens(MyJAVALexer.PRIVATE).size() > 0
 				|| ctx.getTokens(MyJAVALexer.PROTECTED).size() > 0) {
 			txtWriter.writeMessage(StringUtils.formatDebug("Detected accessor: " +ctx.getText()));

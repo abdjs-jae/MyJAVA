@@ -79,7 +79,7 @@ public class LocalScopeCreator {
 	public static MyJAVAValue searchVariableInLocalIterative(String identifier, LocalScope localScope) {
 		
 		if(localScope == null) {
-			System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
+			System.err.println("LocalScopeCreator: Oops! " + identifier + " not found in any local scope!");
 			return null;
 		}
 		
@@ -107,7 +107,7 @@ public class LocalScopeCreator {
 			}
 		}
 
-		System.err.println("LocalScopeCreator: " + identifier + " not found in any local scope!");
+		System.err.println("LocalScopeCreator: Hay... " + identifier + " not found in any local scope!");
 		return null;
 	}
 }

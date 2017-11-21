@@ -59,39 +59,39 @@ public class TypeChecker implements IErrorChecker, ParseTreeListener {
 			}
 			LiteralContext literalCtx = (LiteralContext) ctx;
 			String expressionString = literalCtx.getText();
-			
-			if(myJAVAValue.getPrimitiveType() == PrimitiveType.ARRAY) {
-				
-			}
-			else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
-				if(literalCtx.BooleanLiteral() == null) {
-					String additionalMessage = "Expected boolean.";
-					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH,  additionalMessage, lineNumber);
-				}
-			}
-			else if(myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
-				if(literalCtx.IntegerLiteral() == null) {
-					String additionalMessage = "Expected int.";
-					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH,  additionalMessage, lineNumber);
-				}
-			}
-			else if(myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT || this.myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
-				if(literalCtx.FloatingPointLiteral() == null) {
-					String additionalMessage = "Expected floating point or double.";
-					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH,  additionalMessage, lineNumber);
-				}
-			}
-			
-			else if(myJAVAValue.getPrimitiveType() == PrimitiveType.STRING) {
-				if(expressionString.charAt(0) != '\"' && expressionString.charAt(expressionString.length() - 1) != '\"') {
-					String additionalMessage = "Expected string.";
-					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH,  additionalMessage, this.lineNumber);
-				}
-				
-				else if(literalCtx.StringLiteral() == null) {
-					String additionalMessage = "Expected string.";
-					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH,  additionalMessage, this.lineNumber);
-				}
+
+			switch (myJAVAValue.getPrimitiveType()) {
+				case ARRAY:
+
+					break;
+				case BOOLEAN:
+					if (literalCtx.BooleanLiteral() == null) {
+						String additionalMessage = "Expected boolean.";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, lineNumber);
+					}
+					break;
+				case INT:
+					if (literalCtx.IntegerLiteral() == null) {
+						String additionalMessage = "Expected int.";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, lineNumber);
+					}
+					break;
+				case FLOAT:
+				case DOUBLE:
+					if (literalCtx.FloatingPointLiteral() == null) {
+						String additionalMessage = "Expected floating point or double.";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, lineNumber);
+					}
+					break;
+				case STRING:
+					if (expressionString.charAt(0) != '\"' && expressionString.charAt(expressionString.length() - 1) != '\"') {
+						String additionalMessage = "Expected string.";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, this.lineNumber);
+					} else if (literalCtx.StringLiteral() == null) {
+						String additionalMessage = "Expected string.";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, this.lineNumber);
+					}
+					break;
 			}
 		}
 	}

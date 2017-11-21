@@ -17,7 +17,7 @@ public class ClassScope implements IScope, ITextWriter {
 	
 	private HashMap<String, MyJAVAValue> publicVariables;
 	private HashMap<String, MyJAVAValue> privateVariables;
-	
+
 	private HashMap<String, MyJAVAFunction> publicFunctions;
 	private HashMap<String, MyJAVAFunction> privateFunctions;
 	
@@ -25,10 +25,11 @@ public class ClassScope implements IScope, ITextWriter {
 	
 	public ClassScope(String className) {
 		this.className = className;
-		
+		System.out.println("New ClassScope: " + getClassName());
+
 		publicVariables = new HashMap<>();
 		privateVariables = new HashMap<>();
-		
+
 		publicFunctions = new HashMap<>();
 		privateFunctions = new HashMap<>();
 	}
@@ -58,10 +59,10 @@ public class ClassScope implements IScope, ITextWriter {
 	 */
 	public void addEmptyVariableFromKeywords(String classModifierString, String primitiveTypeString, String identifierString) {
 		boolean isPublic = true;
-		
-		if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, classModifierString)) {
-			isPublic = false;
-		}
+
+		//if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, classModifierString)) {
+		//	isPublic = false;
+		//}
 		
 		//create empty myJAVA value
 		MyJAVAValue myJAVAValue = MyJAVAValue.createEmptyVariableFromKeywords(primitiveTypeString);
@@ -84,9 +85,9 @@ public class ClassScope implements IScope, ITextWriter {
 	public void addInitializedVariableFromKeywords(String classModifierString, String primitiveTypeString, String identifierString, String valueString) {
 		boolean isPublic = true;
 		
-		if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, classModifierString)) {
-			isPublic = false;
-		}
+		//if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, classModifierString)) {
+		//	isPublic = false;
+		//}
 		
 		addEmptyVariableFromKeywords(classModifierString, primitiveTypeString, identifierString);
 		
@@ -139,9 +140,9 @@ public class ClassScope implements IScope, ITextWriter {
 	public void addMyJAVAValue(String accessControlModifier, String identifier, MyJAVAValue myJAVAValue) {
 		boolean isPublic = true;
 		
-		if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, accessControlModifier)) {
-			isPublic = false;
-		}
+		//if(RecognizedKeywords.matchesKeyword(RecognizedKeywords.CLASS_MODIFIER_PRIVATE, accessControlModifier)) {
+		//	isPublic = false;
+		//}
 		
 		if(isPublic){
 			publicVariables.put(identifier, myJAVAValue);

@@ -162,6 +162,12 @@ public class MyJAVAParser extends Parser {
 	}
 	public static class CompilationUnitContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(MyJAVAParser.EOF, 0); }
+		public List<ClassDeclarationContext> classDeclaration() {
+			return getRuleContexts(ClassDeclarationContext.class);
+		}
+		public ClassDeclarationContext classDeclaration(int i) {
+			return getRuleContext(ClassDeclarationContext.class,i);
+		}
 		public List<MemberDeclarationContext> memberDeclaration() {
 			return getRuleContexts(MemberDeclarationContext.class);
 		}

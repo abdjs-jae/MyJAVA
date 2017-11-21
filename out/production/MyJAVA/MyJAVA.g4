@@ -42,7 +42,7 @@ grammar MyJAVA;
 
 // starting point for parsing a java file
 compilationUnit
-    :   memberDeclaration* EOF
+    :   classDeclaration* memberDeclaration* EOF
     ;
 
 variableModifier

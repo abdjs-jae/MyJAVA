@@ -97,7 +97,6 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 		}
 		
 		else if(ctx instanceof MethodBodyContext) {
-			
 			BlockContext blockCtx = ((MethodBodyContext) ctx).block();
 			
 			BlockAnalyzer blockAnalyzer = new BlockAnalyzer();
@@ -105,7 +104,6 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 			blockAnalyzer.analyze(blockCtx);
 			
 		}
-		
 	}
 	
 	private void analyzeClassOrInterfaceType(ClassOrInterfaceTypeContext classOrInterfaceCtx) {
@@ -120,7 +118,7 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 	}
 	
 	private void analyzeIdentifier(TerminalNode identifier) {
-		this.declaredMyJAVAFunction.setFunctionName(identifier.getText());
+		declaredMyJAVAFunction.setFunctionName(identifier.getText());
 	}
 	
 	private void analyzeParameters(FormalParametersContext formalParamsCtx) {
@@ -146,6 +144,8 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 			
 			identifiedTokens.clearTokens(); //clear tokens for reuse
 		}
+		declaredClassScope.addPublicMyJAVAFunction(declaredMyJAVAFunction.getFunctionName(), declaredMyJAVAFunction);
+		identifiedTokens.clearTokens(); //clear tokens for reuse
 	}
 
 }

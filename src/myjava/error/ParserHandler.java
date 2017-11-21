@@ -19,7 +19,7 @@ public class ParserHandler {
 		return parserHandler;
 	}
 	
-	private String currentClassName; //the current class being parsed
+	private String currentClassName = "Main"; //the current class being parsed
 	
 	private ParserHandler() {
 		

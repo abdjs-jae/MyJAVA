@@ -33,8 +33,8 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 	public PrintCommand(ExpressionContext expressionCtx) {
 		this.expressionCtx = expressionCtx;
 		
-		UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
-		undeclaredChecker.verify();
+		//UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
+		//undeclaredChecker.verify();
 	}
 	
 	@Override

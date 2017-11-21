@@ -5,6 +5,7 @@ import myjava.error.ErrorListener;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.execution.ExecutionManager;
 import myjava.execution.FunctionTracker;
+import myjava.semantics.analyzers.MainAnalyzer;
 import myjava.semantics.statements.StatementControlOverseer;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.LocalScopeCreator;
@@ -118,8 +119,6 @@ public class UI {
 
                 /*
                 // main analyzer checks yung current stuff
-                MainAnalyzer mainAnalyzer = new MainAnalyzer();
-                mainAnalyzer.analyze(parserRuleContext);
 
                 // brute-forced print command - initialize and place the print statement rule
                 // then executes the print command
