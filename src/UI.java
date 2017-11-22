@@ -130,6 +130,7 @@ public class UI {
                     consoleListModel.addElement("[DEBUG] No syntax errors were detected.");
                 }
 
+                ExecutionManager.getExecutionManager().consoleListModel = consoleListModel;
                 switch(consoleTabPane.getSelectedIndex()){
                     case 0: consoleList.setModel(generateDListModel(consoleListModel, 'A')); break;
                     case 1: consoleList.setModel(generateDListModel(consoleListModel, 'P')); break;
