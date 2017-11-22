@@ -164,6 +164,7 @@ primitiveType
     |   'long'
     |   'float'
     |   'double'
+    |   'String'
     |   'BOOLEAN'
     |   'CHAR'
     |   'BYTE'
@@ -172,6 +173,7 @@ primitiveType
     |   'LONG'
     |   'FLOAT'
     |   'DOUBLE'
+    |   'STRING'
     ;
 
 typeArguments
