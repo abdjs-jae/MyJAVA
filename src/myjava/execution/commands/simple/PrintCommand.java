@@ -40,6 +40,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
         ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, expressionCtx);
 		txtWriter.writeMessage(StringUtils.formatProgram(statementToPrint));
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatProgram(statementToPrint));
 		System.out.println(statementToPrint);
 		statementToPrint = ""; //reset statement to print afterwards
 	}
