@@ -92,7 +92,7 @@ public class LocalScopeCreator {
 		
 		while(!stack.isEmpty()) {
 			scope = stack.pop();
-
+			
 			if(scope.containsVariable(identifier)) {
 				return scope.searchVariableIncludingLocal(identifier);
 			}
@@ -107,7 +107,7 @@ public class LocalScopeCreator {
 			}
 		}
 
-		// System.err.println("LocalScopeCreator: Hay... " + identifier + " not found in any local scope!");
+		System.err.println("LocalScopeCreator: Hay... " + identifier + " not found in any local scope!");
 		return null;
 	}
 }

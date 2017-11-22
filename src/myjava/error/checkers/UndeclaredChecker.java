@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package myjava.error.checkers;
 
@@ -31,10 +31,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  *
  */
 public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeListener {
-	
+
 	private ExpressionContext exprCtx;
 	private int lineNumber;
-	
+
 	public UndeclaredChecker(ExpressionContext exprCtx) {
 		this.exprCtx = exprCtx;
 		lineNumber = this.exprCtx.getStart().getLine();
@@ -49,13 +49,13 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 	@Override
 	public void visitTerminal(TerminalNode node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitErrorNode(ErrorNode node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -74,20 +74,20 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 	@Override
 	public void exitEveryRule(ParserRuleContext ctx) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	private void verifyFunctionCall(ExpressionContext funcExprCtx) {
-		
+
 		if(funcExprCtx.expression(0).Identifier() == null)
 			return;
-		
+
 		String functionName = funcExprCtx.expression(0).Identifier().getText();
 
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(
 				ParserHandler.getInstance().getCurrentClassName());
 		MyJAVAFunction myJAVAFunction = classScope.searchFunction(functionName);
-		
+
 		if(myJAVAFunction == null) {
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_FUNCTION, functionName, lineNumber);
 		}
@@ -95,36 +95,36 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 			txtWriter.writeMessage(StringUtils.formatDebug("Function found: " +functionName));
 		}
 	}
-	
+
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
 		MyJAVAValue myJAVAValue = null;
-		
+
 		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
 			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
 			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.getText());
 		}
-		
+
 		//if after function finding, myJAVA value is still null, search class
 		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.getText());
 		}
-		
+
 		//after second pass, we conclude if it cannot be found already
 		if(myJAVAValue == null) {
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_VARIABLE, varExprCtx.getText(), lineNumber);
 		}
 	}
-	
+
 	/*
 	 * Verifies a var or const identifier from a scan statement since scan grammar is different.
 	 */
 	public static void verifyVarOrConstForScan(String identifier, StatementContext statementCtx) {
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 		MyJAVAValue myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, identifier);
-		
+
 		Token firstToken = statementCtx.getStart();
-		
+
 		if(myJAVAValue == null) {
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_VARIABLE, identifier, firstToken.getLine());
 		}

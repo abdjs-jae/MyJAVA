@@ -103,7 +103,7 @@ public class FieldAnalyzer implements ITextWriter, ParseTreeListener {
 			String identifierString = identifiedTokens.getToken(ClassAnalyzer.IDENTIFIER_KEY);
 			String identifierValueString;
 
-			txtWriter.writeMessage(StringUtils.formatDebug("Class modifier: " + classModifierString));
+			txtWriter.writeMessage(StringUtils.formatDebug("Class modifier: " +classModifierString));
 			
 			if(identifiedTokens.containsTokens(ClassAnalyzer.IDENTIFIER_VALUE_KEY)) {
 				identifierValueString = identifiedTokens.getToken(ClassAnalyzer.IDENTIFIER_VALUE_KEY);

@@ -1,6 +1,7 @@
 package myjava.error;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.execution.ExecutionManager;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
@@ -53,7 +54,11 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
 
         // Read log.txt
         // Add each line to consoleListModel
+        // Stop thread execution while getting input.
+        ExecutionManager.getExecutionManager().blockExecution();
         String[] messages = txtReader.read();
+        // Continue executing the thread
+        ExecutionManager.getExecutionManager().resumeExecution();
         for(String m : messages){
             consoleListModel.addElement(m);
         }

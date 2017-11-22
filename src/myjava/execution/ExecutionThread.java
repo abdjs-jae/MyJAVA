@@ -26,10 +26,12 @@ public class ExecutionThread extends Thread {
 	@Override
 	public void run() {
 		try {
+			System.out.println("Thread running! " + executionList.size());
 			for(ICommand command : executionList) {
 				executionMonitor.tryExecution();
 				command.execute();
 			}
+			ExecutionManager.executionDone = false;
 		}
 		catch(InterruptedException e) {
 			System.err.println("ExecutionThread: Monitor block interrupted! " + e.getMessage());

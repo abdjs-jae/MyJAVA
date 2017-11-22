@@ -50,7 +50,7 @@ public class ScanCommand implements ICommand{
 
 		// Saves the value to identifier
 		MyJAVAValue myJAVAValue = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
-		myJAVAValue.setValue(valueEntered);
+        myJAVAValue.setValue(valueEntered);
 
 		// Continue executing the thread
 		ExecutionManager.getExecutionManager().resumeExecution();

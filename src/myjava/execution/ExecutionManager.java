@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ExecutionManager{
 	
 	private static ExecutionManager executionManager = null;
-	
+	public static boolean executionDone = true;
 	public static ExecutionManager getExecutionManager() {
 		return executionManager;
 	}

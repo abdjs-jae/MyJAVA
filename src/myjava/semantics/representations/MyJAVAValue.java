@@ -65,9 +65,6 @@ public class MyJAVAValue {
 		if(primitiveType == PrimitiveType.NOT_YET_IDENTIFIED) {
 			System.err.println("MyJAVAValue: " +  "Primitive type not yet identified!");
 		}
-		else if(primitiveType == PrimitiveType.STRING) {
-			value = StringUtils.removeQuotes(value);
-		}
 		else if(primitiveType == PrimitiveType.ARRAY) {
 			System.err.println("MyJAVAValue: " +  primitiveType + " is an array. Cannot directly change value.");
 		}

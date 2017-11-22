@@ -1,14 +1,10 @@
 package myjava.error.checkers;
 
-import myjava.error.BuildChecker;
-import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.antlrgen.MyJAVAParser.ExpressionContext;
 import myjava.antlrgen.MyJAVAParser.LiteralContext;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;

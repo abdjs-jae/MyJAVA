@@ -24,11 +24,11 @@ import java.util.List;
  *
  */
 public class EvaluationCommand implements ICommand, ParseTreeListener {
-	
+
 	private ExpressionContext parentExprCtx;
 	private String modifiedExp;
 	private BigDecimal resultValue;
-	
+
 	public EvaluationCommand(ExpressionContext exprCtx) {
 		parentExprCtx = exprCtx;
 	}
@@ -47,12 +47,12 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 		else {
 			ParseTreeWalker treeWalker = new ParseTreeWalker();
 			treeWalker.walk(this, parentExprCtx);
-			
+
 			Expression evalEx = new Expression(modifiedExp);
 			//Log.i(TAG,"Modified exp to eval: " +this.modifiedExp);
 			resultValue = evalEx.eval();
 		}
-		
+
 	}
 
 	@Override
@@ -86,11 +86,11 @@ public class EvaluationCommand implements ICommand, ParseTreeListener {
 	}
 
 	public static boolean isFunctionCall(ExpressionContext exprCtx) {
-        return exprCtx.arguments() != null;
+		return exprCtx.arguments() != null;
 	}
 
 	public static boolean isVariableOrConst(ExpressionContext exprCtx) {
-        return VariableSearcher.searchVariable(exprCtx.getText()) != null;
+		return VariableSearcher.searchVariable(exprCtx.getText()) != null;
 	}
 
 	private void evaluateFunctionCall(ExpressionContext exprCtx) {

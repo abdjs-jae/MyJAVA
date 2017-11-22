@@ -1,7 +1,5 @@
 package myjava.error.checkers;
 
-import myjava.error.BuildChecker;
-import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
@@ -24,6 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  *
  */
 public class MultipleVarDecChecker implements IErrorChecker, ParseTreeListener {
+	private final static String TAG = "MyJAVAProg_MultipleVarDecChecker";
 	
 	private VariableDeclaratorIdContext varDecIdCtx;
 	private int lineNumber;

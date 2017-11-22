@@ -1,12 +1,10 @@
 package myjava.execution.commands.simple;
 
 import myjava.antlrgen.ITextWriter;
-import myjava.error.checkers.UndeclaredChecker;
+import myjava.antlrgen.MyJAVAParser.*;
+import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
-import myjava.antlrgen.MyJAVAParser.ExpressionContext;
-import myjava.antlrgen.MyJAVAParser.LiteralContext;
-import myjava.antlrgen.MyJAVAParser.PrimaryContext;
 import myjava.semantics.representations.MyJAVAArray;
 import myjava.semantics.representations.MyJAVAValue;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
@@ -24,13 +22,13 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  */
 public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 
-	private ExpressionContext expressionCtx;
+	private PrintStatementContext expressionCtx;
 	
 	private String statementToPrint = "";
 	private boolean complexExpr = false;
 	private boolean arrayAccess = false;
 	
-	public PrintCommand(ExpressionContext expressionCtx) {
+	public PrintCommand(PrintStatementContext expressionCtx) {
 		this.expressionCtx = expressionCtx;
 		
 		//UndeclaredChecker undeclaredChecker = new UndeclaredChecker(this.expressionCtx);
@@ -39,10 +37,10 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 	
 	@Override
 	public void execute() {
-		ParseTreeWalker treeWalker = new ParseTreeWalker();
+        ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, expressionCtx);
-
 		txtWriter.writeMessage(StringUtils.formatProgram(statementToPrint));
+		System.out.println(statementToPrint);
 		statementToPrint = ""; //reset statement to print afterwards
 	}
 
@@ -63,10 +61,10 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 			LiteralContext literalCtx = (LiteralContext) ctx;
 			
 			if(literalCtx.StringLiteral() != null) {
-				String quotedString = literalCtx.StringLiteral().getText(); 
+			    String quotedString = literalCtx.StringLiteral().getText();
 				statementToPrint += StringUtils.removeQuotes(quotedString);
 			}
-			/*else if(literalCtx.IntegerLiteral() != null) {
+			else if(literalCtx.IntegerLiteral() != null) {
 				int value = Integer.parseInt(literalCtx.IntegerLiteral().getText());
 				this.statementToPrint += value;
 			}
@@ -82,7 +80,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 			
 			else if(literalCtx.CharacterLiteral() != null) {
 				this.statementToPrint += literalCtx.CharacterLiteral().getText();
-			}*/
+			}
 		}
 		
 		else if(ctx instanceof PrimaryContext) {

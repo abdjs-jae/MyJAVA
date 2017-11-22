@@ -1,7 +1,6 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
-import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.controlled.*;
@@ -129,8 +128,7 @@ public class StatementAnalyzer implements ITextWriter{
 	}
 	
 	private void handlePrintStatement(StatementContext ctx) {
-		PrintStatementContext printCtx = ctx.printStatement();
-		PrintCommand printCommand = new PrintCommand(printCtx.parExpression().expression());
+		PrintCommand printCommand = new PrintCommand(ctx.printStatement());
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
 		//add to conditional controlled command
@@ -156,10 +154,9 @@ public class StatementAnalyzer implements ITextWriter{
 	}
 	
 	private void handleScanStatement(StatementContext ctx) {
-		ScanStatementContext scanCtx = ctx.scanStatement();
-		ScanCommand scanCommand = new ScanCommand(scanCtx.expression().getText(),
-				scanCtx.variableDeclaratorId().Identifier().getText()); // not sure if edited right
-		UndeclaredChecker.verifyVarOrConstForScan(scanCtx.variableDeclaratorId().Identifier().getText(), ctx);
+		System.out.println("Hi! " + ctx.scanStatement().getText());
+	    ScanCommand scanCommand = new ScanCommand(ctx.scanStatement().expression().getText(), ctx.scanStatement().variableDeclaratorId().getText()); // not sure if edited right
+		UndeclaredChecker.verifyVarOrConstForScan(ctx.scanStatement().variableDeclaratorId().getText(), ctx);
 		
 		StatementControlOverseer statementControl = StatementControlOverseer.getInstance();
 		//add to conditional controlled command

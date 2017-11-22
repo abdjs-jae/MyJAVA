@@ -18,16 +18,16 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class ConstChecker implements IErrorChecker, ParseTreeListener {
-	
+
 	private ExpressionContext exprCtx;
 	private int lineNumber;
-	
+
 	public ConstChecker(ExpressionContext exprCtx) {
 		this.exprCtx = exprCtx;
 
 		lineNumber = exprCtx.getStart().getLine();
 	}
-	
+
 	@Override
 	public void verify() {
 		ParseTreeWalker treeWalker = new ParseTreeWalker();
@@ -37,13 +37,13 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 	@Override
 	public void visitTerminal(TerminalNode node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitErrorNode(ErrorNode node) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -59,17 +59,17 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 	@Override
 	public void exitEveryRule(ParserRuleContext ctx) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	private void verifyVariableOrConst(ExpressionContext varExprCtx) {
 		MyJAVAValue myJAVAValue = null;
-		
+
 		if(ExecutionManager.getExecutionManager().isInFunctionExecution()) {
 			MyJAVAFunction myJAVAFunction = ExecutionManager.getExecutionManager().getCurrentFunction();
 			myJAVAValue = VariableSearcher.searchVariableInFunction(myJAVAFunction, varExprCtx.getText());
 		}
-		
+
 		//if after function finding, myJAVA value is still null, search class
 		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());

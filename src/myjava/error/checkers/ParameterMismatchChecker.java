@@ -3,8 +3,6 @@
  */
 package myjava.error.checkers;
 
-import myjava.error.BuildChecker;
-import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.antlrgen.MyJAVAParser.ArgumentsContext;
 import myjava.antlrgen.MyJAVAParser.ExpressionContext;

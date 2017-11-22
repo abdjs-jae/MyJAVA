@@ -28,9 +28,9 @@ public class MainAnalyzer implements ITextWriter, ParseTreeListener {
 	}
 	
 	public void analyze(MainDeclarationContext ctx) {
-		if(!ExecutionManager.getExecutionManager().hasFoundEntryPoint()) {
+	    if(!ExecutionManager.getExecutionManager().hasFoundEntryPoint()) {
 			ExecutionManager.getExecutionManager().reportFoundEntryPoint(ParserHandler.getInstance().getCurrentClassName());
-			
+
 			//automatically create a local scope for main() whose parent is the class scope
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 			LocalScope localScope = LocalScopeCreator.getInstance().openLocalScope();
@@ -39,6 +39,7 @@ public class MainAnalyzer implements ITextWriter, ParseTreeListener {
 			
 			ParseTreeWalker treeWalker = new ParseTreeWalker();
 			treeWalker.walk(this, ctx);
+
 		}
 		else {
 			txtWriter.writeMessage(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName()));

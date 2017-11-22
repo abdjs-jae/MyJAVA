@@ -32,6 +32,7 @@ public class ExecutionMonitor {
 			
 		}
 		finally {
+			System.out.println("Thread executing!");
 			lock.unlock();
 		}	
 	}
