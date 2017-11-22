@@ -6,6 +6,7 @@ import myjava.execution.adders.MainExecutionAdder;
 import myjava.execution.commands.ICommand;
 import myjava.semantics.representations.MyJAVAFunction;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  *
  */
 public class ExecutionManager{
-	
+	public DefaultListModel consoleListModel = new DefaultListModel();
 	private static ExecutionManager executionManager = null;
 	public static boolean executionDone = true;
 	public static ExecutionManager getExecutionManager() {
