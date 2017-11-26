@@ -13,14 +13,16 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.fife.ui.autocomplete.AutoCompletion;
-import org.fife.ui.autocomplete.BasicCompletion;
-import org.fife.ui.autocomplete.CompletionProvider;
-import org.fife.ui.autocomplete.DefaultCompletionProvider;
+import org.fife.ui.autocomplete.*;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 import uicomp.LinePainter;
 import uicomp.SquigglePainter;
 import uicomp.TextLineNumber;
 
+import javax.management.JMException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -32,6 +34,7 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -41,20 +44,22 @@ public class UI {
 
     // UI ELEMENTS
     private JPanel mainPane;
-    private JTextArea txtArCode;
-    private JPanel actionPane;
-    private JScrollPane codePane;
     private JScrollPane consolePane;
+    private JList consoleList;
     private JButton btnRun;
     private JButton btnClear;
-    private JList consoleList;
+    private JPanel actionPane;
     private JPanel codeCasePane;
     private JTabbedPane consoleTabPane;
     private JPanel allTab;
     private JPanel verboseTab;
     private JPanel errorTab;
     private JPanel debugTab;
-    public DefaultListModel consoleListModel;
+    private DefaultListModel consoleListModel;
+    private RSyntaxTextArea txtArCode;
+    private JTextField searchField;
+    private JCheckBox regexCB;
+    private JCheckBox matchCaseCB;
 
     // INPUT ELEMENTS
     private String code;
@@ -64,12 +69,12 @@ public class UI {
 
     public UI() {
 
-        // Highlights the line currently beign typed on
-        LinePainter painter = new LinePainter(txtArCode);
-        // Adds the line numbers on the side of the textarea
-        TextLineNumber tln = new TextLineNumber(txtArCode);
-        tln.setFont(new Font("Mono", Font.PLAIN, 12));
-        codePane.setRowHeaderView( tln );
+        txtArCode = new RSyntaxTextArea(10, 60);
+        txtArCode.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        txtArCode.setCodeFoldingEnabled(true);
+        RTextScrollPane textScrollPane = new RTextScrollPane(txtArCode);
+        codeCasePane.add(textScrollPane);
+        changeStyle();
         implementAutoComplete();
         addListeners();
         initializeInterpreter();
@@ -340,15 +345,25 @@ public class UI {
 
         // Add a couple of "shorthand" completions. These completions don't
         // require the input text to be the same thing as the replacement text.
-            /*
+
             provider.addCompletion(new ShorthandCompletion(provider, "print",
-                    "print(", print("));
+                    "print(", "print("));
             provider.addCompletion(new ShorthandCompletion(provider, "scan",
                     "scan(", "scan("));
-            */
+
 
         return provider;
 
+    }
+
+    private void changeStyle() {
+        try {
+            Theme theme = Theme.load(getClass().getResourceAsStream(
+                    "uicomp/eclipse.xml"));
+            theme.apply(txtArCode);
+        } catch (IOException ioe) { // Never happens
+            ioe.printStackTrace();
+        }
     }
 
 }

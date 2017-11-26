@@ -17,36 +17,35 @@ public class AssignmentUtils {
 	 * to properly cast it. All expression commands accept INT, LONG, BYTE, SHORT, FLOAT and DOUBLE.
 	 */
 	public static void assignAppropriateValue(MyJAVAValue myJAVAValue, BigDecimal evaluationValue) {
-		if(myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
-			myJAVAValue.setValue(Integer.toString(evaluationValue.intValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.LONG) {
-			myJAVAValue.setValue(Long.toString(evaluationValue.longValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BYTE) {
-			myJAVAValue.setValue(Byte.toString(evaluationValue.byteValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.SHORT) {
-			myJAVAValue.setValue(Short.toString(evaluationValue.shortValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT) {
-			myJAVAValue.setValue(Float.toString(evaluationValue.floatValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
-			myJAVAValue.setValue(Double.toString(evaluationValue.doubleValue()));
-		}
-		else if(myJAVAValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
-			int result = evaluationValue.intValue();
-			
-			if(result == 1) {
-				myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_TRUE);
-			}
-			else {
-				myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_FALSE);
-			}
+
+		// No type specified
+		if(myJAVAValue == null){
+			System.out.println("MyJAVAValue: No type specified :(");
 		}
 		else {
-			System.out.println("MyJAVAValue: No appropriate type :(");
+			if (myJAVAValue.getPrimitiveType() == PrimitiveType.INT) {
+				myJAVAValue.setValue(Integer.toString(evaluationValue.intValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.LONG) {
+				myJAVAValue.setValue(Long.toString(evaluationValue.longValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.BYTE) {
+				myJAVAValue.setValue(Byte.toString(evaluationValue.byteValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.SHORT) {
+				myJAVAValue.setValue(Short.toString(evaluationValue.shortValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.FLOAT) {
+				myJAVAValue.setValue(Float.toString(evaluationValue.floatValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.DOUBLE) {
+				myJAVAValue.setValue(Double.toString(evaluationValue.doubleValue()));
+			} else if (myJAVAValue.getPrimitiveType() == PrimitiveType.BOOLEAN) {
+				int result = evaluationValue.intValue();
+
+				if (result == 1) {
+					myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_TRUE);
+				} else {
+					myJAVAValue.setValue(RecognizedKeywords.BOOLEAN_FALSE);
+				}
+			} else {
+				System.out.println("MyJAVAValue: No appropriate type :(");
+			}
 		}
 	}
 

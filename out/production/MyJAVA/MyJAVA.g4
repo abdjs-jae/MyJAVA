@@ -86,6 +86,7 @@ classBodyDeclaration
 
 memberDeclaration
     :   methodDeclaration
+    |   mainDeclaration
     |   fieldDeclaration
     |   classDeclaration
     ;
@@ -103,8 +104,16 @@ methodDeclaration
         )
     ;
 
+mainDeclaration
+    : 'void' 'main' formalParameters ('[' ']')*
+       ('throws' qualifiedNameList)?
+       (    methodBody
+       |    ';'
+       )
+    ;
+
 fieldDeclaration
-    :   (classOrInterfaceModifier)? typeType variableDeclarators ';'
+    :   typeType variableDeclarators ';'
     ;
 
 constDeclaration
@@ -155,6 +164,7 @@ primitiveType
     |   'long'
     |   'float'
     |   'double'
+    |   'String'
     |   'BOOLEAN'
     |   'CHAR'
     |   'BYTE'
@@ -163,6 +173,7 @@ primitiveType
     |   'LONG'
     |   'FLOAT'
     |   'DOUBLE'
+    |   'STRING'
     ;
 
 typeArguments
