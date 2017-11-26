@@ -1,6 +1,5 @@
 package myjava.semantics.representations;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
@@ -22,7 +21,7 @@ import java.util.List;
  * Represents the intermediate representation of a function
  *
  */
-public class MyJAVAFunction implements ITextWriter, IControlledCommand{
+public class MyJAVAFunction implements IControlledCommand{
 	
 	public enum FunctionType {
 		INT_TYPE,
@@ -153,7 +152,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand{
 	
 	public void addParameter(String identifierString, MyJAVAValue myJAVAValue) {
 		parameterValues.put(identifierString, myJAVAValue);
-		txtWriter.writeMessage(StringUtils.formatDebug(functionName + " added an empty parameter " +
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug(functionName + " added an empty parameter " +
 				identifierString+ " type " +myJAVAValue.getPrimitiveType()));
 	}
 	
@@ -202,7 +201,7 @@ public class MyJAVAFunction implements ITextWriter, IControlledCommand{
 	
 	public MyJAVAValue getReturnValue() {
 		if(this.returnType == FunctionType.VOID_TYPE) {
-			txtWriter.writeMessage(StringUtils.formatDebug(functionName + " is a void function. Null myJAVA value is returned"));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug(functionName + " is a void function. Null myJAVA value is returned"));
 			return null;
 		}
 		else {

@@ -1,8 +1,8 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.antlrgen.MyJAVALexer;
 import myjava.antlrgen.MyJAVAParser.*;
+import myjava.execution.ExecutionManager;
 import myjava.semantics.symboltable.SymbolTableManager;
 import myjava.semantics.symboltable.scopes.ClassScope;
 import myjava.semantics.utils.IdentifiedTokens;
@@ -20,7 +20,7 @@ import java.util.List;
  * A bridge for analyzing creation of a class
  *
  */
-public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
+public class ClassAnalyzer implements ParseTreeListener {
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;
@@ -101,7 +101,7 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 				
 				//check if its array declaration
 				else if(ClassAnalyzer.isPrimitiveArrayDeclaration(typeCtx)) {
-					txtWriter.writeMessage(StringUtils.formatDebug("Primitive array declaration: " +fieldCtx.getText()));
+					ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Primitive array declaration: " +fieldCtx.getText()));
 					ArrayAnalyzer arrayAnalyzer = new ArrayAnalyzer(identifiedTokens, declaredClassScope);
 					arrayAnalyzer.analyze(fieldCtx);
 				}
@@ -160,15 +160,15 @@ public class ClassAnalyzer implements ITextWriter, ParseTreeListener {
 	private void analyzeModifier(ClassOrInterfaceModifierContext ctx) {
 		if(ctx.getTokens(MyJAVALexer.PUBLIC).size() > 0 || ctx.getTokens(MyJAVALexer.PRIVATE).size() > 0
 				|| ctx.getTokens(MyJAVALexer.PROTECTED).size() > 0) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Detected accessor: " +ctx.getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Detected accessor: " +ctx.getText()));
 			this.identifiedTokens.addToken(ACCESS_CONTROL_KEY, ctx.getText());
 		}
 		else if(ctx.getTokens(MyJAVALexer.FINAL).size() > 0) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Detected const: " +ctx.getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Detected const: " +ctx.getText()));
 			this.identifiedTokens.addToken(CONST_CONTROL_KEY, ctx.getText());
 		}
 		else if(ctx.getTokens(MyJAVALexer.STATIC).size() > 0) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Detected static: " +ctx.getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Detected static: " +ctx.getText()));
 			this.identifiedTokens.addToken(STATIC_CONTROL_KEY, ctx.getText());
 		}
 	}

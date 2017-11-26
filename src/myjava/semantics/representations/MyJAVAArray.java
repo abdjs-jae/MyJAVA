@@ -1,16 +1,14 @@
 package myjava.semantics.representations;
 
-import myjava.antlrgen.ITextWriter;
-import myjava.error.MyJAVAErrorStrategy;
+import myjava.execution.ExecutionManager;
 import myjava.semantics.representations.MyJAVAValue.PrimitiveType;
 import myjava.semantics.utils.AssignmentUtils;
-import myjava.semantics.utils.RecognizedKeywords;
 import myjava.semantics.utils.StringUtils;
 
 /**
  * A representation of an array. For now, we only accept 1D array.
  */
-public class MyJAVAArray implements ITextWriter{
+public class MyJAVAArray {
 	
 	private MyJAVAValue[] myJAVAValueArray;
 	private PrimitiveType arrayPrimitiveType;
@@ -49,7 +47,7 @@ public class MyJAVAArray implements ITextWriter{
 	
 	public void updateValueAt(MyJAVAValue myJAVAValue, int index) {
 		if(index >= myJAVAValueArray.length) {
-			txtWriter.writeMessage(StringUtils.formatError(
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatError(
 					"MyJAVAArray: Out of bounds exception for array " + arrayIdentifier + " Index: " + index));
 			return;
 		}
@@ -58,7 +56,7 @@ public class MyJAVAArray implements ITextWriter{
 	
 	public MyJAVAValue getValueAt(int index) {
 		if(index >= myJAVAValueArray.length) {
-			txtWriter.writeMessage(StringUtils.formatError(
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatError(
 					"MyJAVAArray: Out of bounds exception for array " + arrayIdentifier + " Index: " + index));
 			return myJAVAValueArray[myJAVAValueArray.length - 1];
 		}

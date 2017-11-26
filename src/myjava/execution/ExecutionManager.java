@@ -14,9 +14,11 @@ import java.util.ArrayList;
  *
  */
 public class ExecutionManager{
+
 	public DefaultListModel consoleListModel = new DefaultListModel();
 	private static ExecutionManager executionManager = null;
 	public static boolean executionDone = true;
+	public static boolean hasErrors = false;
 	public static ExecutionManager getExecutionManager() {
 		return executionManager;
 	}

@@ -1,6 +1,5 @@
 package myjava.execution.commands.controlled;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
 import myjava.execution.commands.ICommand;
@@ -17,7 +16,7 @@ import java.util.List;
  * Representation of a while command
  *
  */
-public class WhileCommand implements IControlledCommand, ITextWriter{
+public class WhileCommand implements IControlledCommand {
 	
 	protected List<ICommand> commandSequences; //the list of commands inside the WHILE statement
 	
@@ -66,7 +65,7 @@ public class WhileCommand implements IControlledCommand, ITextWriter{
 	@Override
 	public void addCommand(ICommand command) {
 
-		txtWriter.writeMessage(StringUtils.formatDebug("Added command to WHILE"));
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Added command to WHILE"));
 		commandSequences.add(command);
 	}
 	

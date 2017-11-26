@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
@@ -21,7 +20,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * The entry point for the program. Only one main is allowed.
  *
  */
-public class MainAnalyzer implements ITextWriter, ParseTreeListener {
+public class MainAnalyzer implements ParseTreeListener {
 
 	public MainAnalyzer() {
 		
@@ -42,7 +41,7 @@ public class MainAnalyzer implements ITextWriter, ParseTreeListener {
 
 		}
 		else {
-			txtWriter.writeMessage(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Already found main in " +ExecutionManager.getExecutionManager().getEntryClassName()));
 		}
 	}
 

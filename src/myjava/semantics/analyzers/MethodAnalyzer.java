@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.antlrgen.MyJAVAParser.*;
 import myjava.error.checkers.MultipleFuncDecChecker;
 import myjava.execution.ExecutionManager;
@@ -21,7 +20,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * Analyzes method declarations and properly stores them in the symbol table
  *
  */
-public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
+public class MethodAnalyzer implements ParseTreeListener {
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;
@@ -113,7 +112,7 @@ public class MethodAnalyzer implements ITextWriter, ParseTreeListener {
 		}
 		//a class identified
 		else {
-			txtWriter.writeMessage(StringUtils.formatDebug("Class identified: " + classOrInterfaceCtx.getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Class identified: " + classOrInterfaceCtx.getText()));
 		}
 	}
 	

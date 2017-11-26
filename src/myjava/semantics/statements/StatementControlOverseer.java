@@ -1,6 +1,5 @@
 package myjava.semantics.statements;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand;
@@ -15,7 +14,7 @@ import java.util.Stack;
  * This class makes nested statements possible.
  *
  */
-public class StatementControlOverseer implements ITextWriter{
+public class StatementControlOverseer {
 	
 	private static StatementControlOverseer scOverseer = null;
 	
@@ -98,7 +97,7 @@ public class StatementControlOverseer implements ITextWriter{
 			IControlledCommand controlledCommand = (IControlledCommand) activeControlledCommand;
 			controlledCommand.addCommand(command);
 
-			txtWriter.writeMessage(StringUtils.formatDebug("Adding command to " + controlledCommand.getControlType()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Adding command to " + controlledCommand.getControlType()));
 			
 			procedureCallStack.push(command);
 			activeControlledCommand = command;

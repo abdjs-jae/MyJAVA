@@ -74,8 +74,12 @@ public class UI {
         txtArCode.setCodeFoldingEnabled(true);
         RTextScrollPane textScrollPane = new RTextScrollPane(txtArCode);
         codeCasePane.add(textScrollPane);
+
+        CompletionProvider provider = createCompletionProvider();
+        AutoCompletion ac = new AutoCompletion(provider);
+        ac.install(txtArCode);
+
         changeStyle();
-        implementAutoComplete();
         addListeners();
         initializeInterpreter();
 
@@ -98,8 +102,6 @@ public class UI {
                 code = "public class Main {" + txtArCode.getText() + "}";
                 removeHighlights(txtArCode);
 
-                ErrorListener.clearLog();
-
                 MyJAVALexer lex = new MyJAVALexer(new ANTLRInputStream(code));
                 CommonTokenStream tokens = new CommonTokenStream(lex);
                 MyJAVAParser parser = new MyJAVAParser(tokens);
@@ -119,15 +121,13 @@ public class UI {
                 System.out.println(parserRuleContext.toStringTree(parser));
 
                 // After semantic checking
-                ExecutionManager.getExecutionManager().executeAllActions();
-                /*
-                while(ExecutionManager.executionDone) {
+                if(!ExecutionManager.hasErrors)
+                    ExecutionManager.getExecutionManager().executeAllActions();
 
-                }
-                */
                 consoleListModel = new DefaultListModel();
                 consoleList.setSelectedIndex(0);
-                consoleListModel = errorListener.getConsoleListModel();
+                consoleListModel = ExecutionManager.getExecutionManager().consoleListModel;
+                // consoleListModel = errorListener.getConsoleListModel();
                 errorPositionList = errorListener.getErrorPositionList();
                 underlineErrors(errorPositionList);
 
@@ -295,38 +295,10 @@ public class UI {
         FunctionTracker.reset();
     }
 
-    private void implementAutoComplete(){
-        // A CompletionProvider is what knows of all possible completions, and
-        // analyzes the contents of the text area at the caret position to
-        // determine what completion choices should be presented. Most instances
-        // of CompletionProvider (such as DefaultCompletionProvider) are designed
-        // so that they can be shared among multiple text components.
-        CompletionProvider provider = createCompletionProvider();
-
-        // An AutoCompletion acts as a "middle-man" between a text component
-        // and a CompletionProvider. It manages any options associated with
-        // the auto-completion (the popup trigger key, whether to display a
-        // documentation window along with completion choices, etc.). Unlike
-        // CompletionProviders, instances of AutoCompletion cannot be shared
-        // among multiple text components.
-        AutoCompletion ac = new AutoCompletion(provider);
-        ac.install(txtArCode);
-    }
-
-    /*
-     * Create a simple provider that adds some Java-related completions.
-     */
     private CompletionProvider createCompletionProvider() {
 
-        // A DefaultCompletionProvider is the simplest concrete implementation
-        // of CompletionProvider. This provider has no understanding of
-        // language semantics. It simply checks the text entered up to the
-        // caret position for a match against known completions. This is all
-        // that is needed in the majority of cases.
         DefaultCompletionProvider provider = new DefaultCompletionProvider();
 
-        // Add completions for all Java keywords. A BasicCompletion is just
-        // a straightforward word completion.
         // lower case
         provider.addCompletion(new BasicCompletion(provider, "break"));
         provider.addCompletion(new BasicCompletion(provider, "case"));
@@ -343,14 +315,10 @@ public class UI {
         provider.addCompletion(new BasicCompletion(provider, "VOID"));
         provider.addCompletion(new BasicCompletion(provider, "WHILE"));
 
-        // Add a couple of "shorthand" completions. These completions don't
-        // require the input text to be the same thing as the replacement text.
-
-            provider.addCompletion(new ShorthandCompletion(provider, "print",
+        provider.addCompletion(new ShorthandCompletion(provider, "print",
                     "print(", "print("));
-            provider.addCompletion(new ShorthandCompletion(provider, "scan",
+        provider.addCompletion(new ShorthandCompletion(provider, "scan",
                     "scan(", "scan("));
-
 
         return provider;
 

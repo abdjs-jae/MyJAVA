@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.evaluation.ArrayInitializeCommand;
@@ -25,7 +24,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * Analyzes a given array declaration. Only accepts primitive declaration
  *
  */
-public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
+public class ArrayAnalyzer implements ParseTreeListener{
 	
 	private final static String ARRAY_PRIMITIVE_KEY = "ARRAY_PRIMITIVE_KEY";
 	private final static String ARRAY_IDENTIFIER_KEY = "ARRAY_IDENTIFIER_KEY";
@@ -77,7 +76,7 @@ public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
 		}
 		else if(ctx instanceof CreatedNameContext) {
 			CreatedNameContext createdNameCtx = (CreatedNameContext) ctx;
-			txtWriter.writeMessage(StringUtils.formatDebug("Array created name: " +createdNameCtx.getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Array created name: " +createdNameCtx.getText()));
 		}
 		
 		else if(ctx instanceof ArrayCreatorRestContext) {
@@ -104,7 +103,7 @@ public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
 				MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
 				
 				declaredClassScope.addMyJAVAValue(accessControlString, arrayIdentifierString, myJAVAValue);
-				txtWriter.writeMessage(StringUtils.formatDebug("Creating array with type " +
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Creating array with type " +
 						arrayTypeString+ " variable " +arrayIdentifierString));
 				
 				identifiedTokens.clearTokens();
@@ -120,7 +119,7 @@ public class ArrayAnalyzer implements ITextWriter, ParseTreeListener{
 				MyJAVAValue myJAVAValue = new MyJAVAValue(declaredArray, PrimitiveType.ARRAY);
 				
 				localScope.addMyJAVAValue(arrayIdentifierString, myJAVAValue);
-				txtWriter.writeMessage(StringUtils.formatDebug("Creating array with type " +
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Creating array with type " +
 						arrayTypeString+ " variable " +arrayIdentifierString));
 				
 				identifiedTokens.clearTokens();

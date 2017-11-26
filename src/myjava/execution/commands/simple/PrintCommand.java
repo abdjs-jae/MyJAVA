@@ -1,7 +1,7 @@
 package myjava.execution.commands.simple;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.antlrgen.MyJAVAParser.*;
+import myjava.error.MyJAVAErrorStrategy;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.evaluation.EvaluationCommand;
@@ -20,7 +20,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * Populates and handles the print command execution
  *
  */
-public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
+public class PrintCommand implements ICommand, ParseTreeListener {
 
 	private PrintStatementContext expressionCtx;
 	
@@ -39,7 +39,6 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 	public void execute() {
         ParseTreeWalker treeWalker = new ParseTreeWalker();
 		treeWalker.walk(this, expressionCtx);
-		txtWriter.writeMessage(StringUtils.formatProgram(statementToPrint));
 		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatProgram(statementToPrint));
 		System.out.println(statementToPrint);
 		statementToPrint = ""; //reset statement to print afterwards
@@ -90,7 +89,7 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 			if(primaryCtx.expression() != null) {
 				ExpressionContext exprCtx = primaryCtx.expression();
 				complexExpr = true;
-				txtWriter.writeMessage(StringUtils.formatDebug("Complex expression detected: " + exprCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Complex expression detected: " + exprCtx.getText()));
 
 				EvaluationCommand evaluationCommand = new EvaluationCommand(exprCtx);
 				evaluationCommand.execute();
@@ -100,17 +99,19 @@ public class PrintCommand implements ICommand, ITextWriter, ParseTreeListener {
 			
 			else if(primaryCtx.Identifier() != null && !complexExpr) {
 				String identifier = primaryCtx.getText();
-				
+
 				MyJAVAValue value = MyJAVAValueSearcher.searchMyJAVAValue(identifier);
-				if(value.getPrimitiveType() == PrimitiveType.ARRAY) {
-					arrayAccess = true;
-					evaluateArrayPrint(value, primaryCtx);
+				if(value != null) {
+					if (value.getPrimitiveType() == PrimitiveType.ARRAY) {
+						arrayAccess = true;
+						evaluateArrayPrint(value, primaryCtx);
+					} else if (!arrayAccess) {
+						statementToPrint += value.getValue();
+					}
+				} else{
+					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_VARIABLE,
+							primaryCtx.getText(), primaryCtx.getStart().getLine());
 				}
-				else if(!arrayAccess) {
-					statementToPrint += value.getValue();
-				}
-				
-				
 			}
 		}
 	}

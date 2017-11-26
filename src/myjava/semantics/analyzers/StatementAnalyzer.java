@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.UndeclaredChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.controlled.*;
@@ -22,7 +21,7 @@ import java.util.List;
  * A bridge for statement listener
  *
  */
-public class StatementAnalyzer implements ITextWriter{
+public class StatementAnalyzer {
 
 	public StatementAnalyzer() {
 		
@@ -71,7 +70,7 @@ public class StatementAnalyzer implements ITextWriter{
 		}
 
 		else if(isWHILEStatement(ctx)) {
-			txtWriter.writeMessage(StringUtils.formatDebug("While par expression: " +ctx.parExpression().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("While par expression: " +ctx.parExpression().getText()));
 
 			StatementContext statementCtx = ctx.statement(0);
 
@@ -82,11 +81,11 @@ public class StatementAnalyzer implements ITextWriter{
 			statementAnalyzer.analyze(statementCtx);
 
 			StatementControlOverseer.getInstance().compileControlledCommand();
-			txtWriter.writeMessage(StringUtils.formatDebug("End of WHILE expression: " +ctx.parExpression().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("End of WHILE expression: " +ctx.parExpression().getText()));
 		}
 
 		else if(isDOWHILEStatement(ctx)) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Do while expression: " +ctx.parExpression().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Do while expression: " +ctx.parExpression().getText()));
 
 			StatementContext statementCtx = ctx.statement(0);
 
@@ -97,11 +96,11 @@ public class StatementAnalyzer implements ITextWriter{
 			statementAnalyzer.analyze(statementCtx);
 
 			StatementControlOverseer.getInstance().compileControlledCommand();
-			txtWriter.writeMessage(StringUtils.formatDebug("End of DO-WHILE expression: " +ctx.parExpression().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("End of DO-WHILE expression: " +ctx.parExpression().getText()));
 		}
 
 		else if(isFORStatement(ctx)) {
-			txtWriter.writeMessage(StringUtils.formatDebug("FOR expression: " +ctx.forControl().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("FOR expression: " +ctx.forControl().getText()));
 
 			LocalScopeCreator.getInstance().openLocalScope();
 
@@ -118,11 +117,11 @@ public class StatementAnalyzer implements ITextWriter{
 			StatementControlOverseer.getInstance().compileControlledCommand();
 
 			LocalScopeCreator.getInstance().closeLocalScope();
-			txtWriter.writeMessage(StringUtils.formatDebug("End of FOR loop"));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("End of FOR loop"));
 		}
 
 		else if(isRETURNStatement(ctx) && ExecutionManager.getExecutionManager().isInFunctionExecution()) {
-			txtWriter.writeMessage(StringUtils.formatDebug("Detected return expression: " +ctx.expression().getText()));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Detected return expression: " +ctx.expression().getText()));
 			handleReturnStatement(ctx.expression());
 		}
 	}

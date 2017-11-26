@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.checkers.ConstChecker;
 import myjava.execution.ExecutionManager;
@@ -28,7 +27,7 @@ import java.util.List;
  * This does not include field declaration analysis.
  *
  */
-public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListener {
+public class StatementExpressionAnalyzer implements ParseTreeListener {
 
 	private ExpressionContext readRightHandExprCtx; //used to avoid mistakenly reading right hand expressions as direct function calls as well.
 	
@@ -68,7 +67,7 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 			ExpressionContext exprCtx = (ExpressionContext) ctx;
 			
 			if(isAssignmentExpression(exprCtx)) {
-				txtWriter.writeMessage(StringUtils.formatDebug("Assignment expr detected: " +exprCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Assignment expr detected: " +exprCtx.getText()));
 				
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				AssignmentCommand assignmentCommand = new AssignmentCommand(exprListCtx.get(0), exprListCtx.get(1));
@@ -78,7 +77,7 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 				
 			}
 			else if(isIncrementExpression(exprCtx)) {
-				txtWriter.writeMessage(StringUtils.formatDebug("Increment expr detected: " +exprCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Increment expr detected: " +exprCtx.getText()));
 
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				if(!ConstChecker.isConstFormat(exprListCtx.get(0))) {
@@ -91,7 +90,7 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 			}
 
 			else if(isDecrementExpression(exprCtx)) {
-				txtWriter.writeMessage(StringUtils.formatDebug("Decrement expr detected: " +exprCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Decrement expr detected: " +exprCtx.getText()));
 
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
 				if(!ConstChecker.isConstFormat(exprListCtx.get(0))) {
@@ -152,7 +151,7 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 		FunctionCallCommand functionCallCommand = new FunctionCallCommand(functionName, funcExprCtx);
 		this.handleStatementExecution(functionCallCommand);
 
-		txtWriter.writeMessage(StringUtils.formatDebug("Function call with params detected: " +functionName));
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Function call with params detected: " +functionName));
 	}
 	
 	private void handleFunctionCallWithNoParams(ExpressionContext funcExprCtx) {
@@ -161,7 +160,7 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 		FunctionCallCommand functionCallCommand = new FunctionCallCommand(functionName, funcExprCtx);
 		this.handleStatementExecution(functionCallCommand);
 
-		txtWriter.writeMessage(StringUtils.formatDebug("Function call with no params detected: " +functionName));
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Function call with no params detected: " +functionName));
 	}
 	
 	public static boolean isAssignmentExpression(ExpressionContext exprCtx) {

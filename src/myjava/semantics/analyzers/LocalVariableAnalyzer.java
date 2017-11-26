@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.antlrgen.MyJAVALexer;
 import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.error.checkers.TypeChecker;
@@ -23,7 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * Analyzes a local variable declaration
  *
  */
-public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
+public class LocalVariableAnalyzer implements ParseTreeListener {
 
 	private final static String PRIMITIVE_TYPE_KEY = "PRIMITIVE_TYPE_KEY";
 	private final static String IDENTIFIER_KEY = "IDENTIFIER_KEY";
@@ -84,7 +83,7 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 
 			//check if its array declaration
 			else if(ClassAnalyzer.isPrimitiveArrayDeclaration(typeCtx)) {
-				txtWriter.writeMessage(StringUtils.formatDebug("Primitive array declaration: " +typeCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Primitive array declaration: " +typeCtx.getText()));
 				ArrayAnalyzer arrayAnalyzer = new ArrayAnalyzer(identifiedTokens, LocalScopeCreator.getInstance().getActiveLocalScope());
 				arrayAnalyzer.analyze(typeCtx.getParent());
 				hasPassedArrayDeclaration = true;
@@ -102,7 +101,7 @@ public class LocalVariableAnalyzer implements ITextWriter, ParseTreeListener {
 		else if (ctx instanceof VariableModifierContext){
 			VariableModifierContext varModCtx = (VariableModifierContext) ctx;
 			if(varModCtx.getTokens(MyJAVALexer.FINAL).size() > 0){
-				txtWriter.writeMessage(StringUtils.formatDebug("Detected const / final: " + varModCtx.getText()));
+				ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Detected const / final: " + varModCtx.getText()));
 				currentlyConst = true;
 			}
 		}

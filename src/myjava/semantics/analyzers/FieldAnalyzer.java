@@ -1,6 +1,5 @@
 package myjava.semantics.analyzers;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.MultipleVarDecChecker;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
@@ -22,7 +21,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * Analyzes the fields in the member declaration part
  *
  */
-public class FieldAnalyzer implements ITextWriter, ParseTreeListener {
+public class FieldAnalyzer implements ParseTreeListener {
 	
 	private ClassScope declaredClassScope;
 	private IdentifiedTokens identifiedTokens;
@@ -103,7 +102,7 @@ public class FieldAnalyzer implements ITextWriter, ParseTreeListener {
 			String identifierString = identifiedTokens.getToken(ClassAnalyzer.IDENTIFIER_KEY);
 			String identifierValueString;
 
-			txtWriter.writeMessage(StringUtils.formatDebug("Class modifier: " +classModifierString));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Class modifier: " +classModifierString));
 			
 			if(identifiedTokens.containsTokens(ClassAnalyzer.IDENTIFIER_VALUE_KEY)) {
 				identifierValueString = identifiedTokens.getToken(ClassAnalyzer.IDENTIFIER_VALUE_KEY);

@@ -3,9 +3,6 @@
  */
 package myjava.error.checkers;
 
-import myjava.antlrgen.ITextWriter;
-import myjava.error.BuildChecker;
-import myjava.error.ErrorRepository;
 import myjava.error.MyJAVAErrorStrategy;
 import myjava.error.ParserHandler;
 import myjava.execution.ExecutionManager;
@@ -30,7 +27,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
  *
  */
-public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeListener {
+public class UndeclaredChecker implements IErrorChecker, ParseTreeListener {
 
 	private ExpressionContext exprCtx;
 	private int lineNumber;
@@ -92,7 +89,7 @@ public class UndeclaredChecker implements ITextWriter, IErrorChecker, ParseTreeL
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.UNDECLARED_FUNCTION, functionName, lineNumber);
 		}
 		else {
-			txtWriter.writeMessage(StringUtils.formatDebug("Function found: " +functionName));
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Function found: " +functionName));
 		}
 	}
 

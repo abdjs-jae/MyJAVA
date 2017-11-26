@@ -1,6 +1,5 @@
 package myjava.execution.commands.controlled;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
 import myjava.execution.commands.ICommand;
@@ -19,7 +18,7 @@ import java.util.List;
  * Represents the for command
  *
  */
-public class ForCommand implements IControlledCommand, ITextWriter {
+public class ForCommand implements IControlledCommand{
 	
 	private List<ICommand> commandSequences;
 	
@@ -83,7 +82,7 @@ public class ForCommand implements IControlledCommand, ITextWriter {
 
 	@Override
 	public void addCommand(ICommand command) {
-		txtWriter.writeMessage(StringUtils.formatDebug("Added command to FOR"));
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Added command to FOR"));
 		commandSequences.add(command);
 	}
 	

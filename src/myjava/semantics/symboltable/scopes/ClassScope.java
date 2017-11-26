@@ -1,9 +1,8 @@
 package myjava.semantics.symboltable.scopes;
 
-import myjava.antlrgen.ITextWriter;
+import myjava.execution.ExecutionManager;
 import myjava.semantics.representations.MyJAVAFunction;
 import myjava.semantics.representations.MyJAVAValue;
-import myjava.semantics.utils.RecognizedKeywords;
 import myjava.semantics.utils.StringUtils;
 
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 /**
  * Represents a class scope with mappings of variables and functions
  */
-public class ClassScope implements IScope, ITextWriter {
+public class ClassScope implements IScope {
 	
 	private String className;
 	
@@ -69,12 +68,12 @@ public class ClassScope implements IScope, ITextWriter {
 		
 		if(isPublic) {
 			publicVariables.put(identifierString, myJAVAValue);
-			txtWriter.writeMessage(StringUtils.formatDebug("Created public variable " +
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Created public variable " +
 					identifierString+ " type: " +myJAVAValue.getPrimitiveType()));
 		}
 		else {
 			privateVariables.put(identifierString, myJAVAValue);
-			txtWriter.writeMessage(StringUtils.formatDebug("Created private variable " +
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Created private variable " +
 					identifierString+ " type: " +myJAVAValue.getPrimitiveType()));
 		}
 	}
@@ -94,13 +93,13 @@ public class ClassScope implements IScope, ITextWriter {
 		if(isPublic) {
 			MyJAVAValue myJAVAValue = this.publicVariables.get(identifierString);
 			myJAVAValue.setValue(valueString);
-			txtWriter.writeMessage(StringUtils.formatDebug("Updated public variable " +
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Updated public variable " +
 					identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 		}
 		else {
 			MyJAVAValue myJAVAValue = this.privateVariables.get(identifierString);
 			myJAVAValue.setValue(valueString);
-			txtWriter.writeMessage(StringUtils.formatDebug("Updated private variable " +
+			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Updated private variable " +
 					identifierString+ " of type " +myJAVAValue.getPrimitiveType()+ " with value " +valueString));
 		}
 	}
@@ -127,13 +126,13 @@ public class ClassScope implements IScope, ITextWriter {
 	
 	public void addPrivateMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
 		privateFunctions.put(identifier, myJAVAFunction);
-		txtWriter.writeMessage(StringUtils.formatDebug("Created private function " +
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Created private function " +
 				identifier+ " with return type " +myJAVAFunction.getReturnType()));
 	}
 	
 	public void addPublicMyJAVAFunction(String identifier, MyJAVAFunction myJAVAFunction) {
 		publicFunctions.put(identifier, myJAVAFunction);
-		txtWriter.writeMessage(StringUtils.formatDebug("Created public function " +
+		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug("Created public function " +
 				identifier+ " with return type " +myJAVAFunction.getReturnType()));
 	}
 	

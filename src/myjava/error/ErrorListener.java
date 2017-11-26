@@ -1,6 +1,5 @@
 package myjava.error;
 
-import myjava.antlrgen.ITextWriter;
 import myjava.execution.ExecutionManager;
 import myjava.semantics.utils.StringUtils;
 import org.antlr.v4.runtime.BaseErrorListener;
@@ -8,13 +7,10 @@ import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
-public class ErrorListener extends BaseErrorListener implements ITextWriter{
+public class ErrorListener extends BaseErrorListener{
 
-    TXTReader txtReader = new TXTReader();
-    private DefaultListModel consoleListModel = new DefaultListModel();
     private ArrayList<Integer> errorPositionList = new ArrayList<>();
 
     @Override
@@ -25,7 +21,7 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
                             RecognitionException e)
     {
 
-        txtWriter.writeMessage(StringUtils.formatError("Line " + line + ": " + msg));
+        ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatError("Line " + line + ": " + msg));
         underlineError(recognizer, (Token)offendingSymbol, line, charPositionInLine);
 
     }
@@ -42,28 +38,6 @@ public class ErrorListener extends BaseErrorListener implements ITextWriter{
         errorPositionList.add(start);
         errorPositionList.add(stop);
 
-    }
-
-    public static void clearLog(){
-        // Clear log.txt after getting the errors
-        txtWriter.clear();
-    }
-
-    // Gets the generated errors at the log.txt
-    public DefaultListModel getConsoleListModel() {
-
-        // Read log.txt
-        // Add each line to consoleListModel
-        // Stop thread execution while getting input.
-        ExecutionManager.getExecutionManager().blockExecution();
-        String[] messages = txtReader.read();
-        // Continue executing the thread
-        ExecutionManager.getExecutionManager().resumeExecution();
-        for(String m : messages){
-            consoleListModel.addElement(m);
-        }
-
-        return consoleListModel;
     }
 
     public ArrayList<Integer> getErrorPositionList() {
