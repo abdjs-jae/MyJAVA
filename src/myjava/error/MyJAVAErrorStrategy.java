@@ -18,6 +18,7 @@ public class MyJAVAErrorStrategy extends DefaultErrorStrategy implements ITextWr
     public static final int MULTIPLE_VARIABLE = 4;
     public static final int MULTIPLE_FUNCTION = 5;
     public static final int PARAMETER_COUNT_MISMATCH = 6;
+    public static final int CONST_INTDEC = 7;
 
     @Override
     public void recover(Parser recognizer, RecognitionException e) {
@@ -65,6 +66,8 @@ public class MyJAVAErrorStrategy extends DefaultErrorStrategy implements ITextWr
                     + "Oops! Multiple declaration of function " + message + " detected.")); break;
             case PARAMETER_COUNT_MISMATCH: txtWriter.writeMessage(StringUtils.formatError("Line " + lineNum + ": "
                     + "Oops! Number of arguments for function call " + message + " do not match with original declaration.")); break;
+            case CONST_INTDEC: txtWriter.writeMessage(StringUtils.formatError("Line " + lineNum + ": "
+                    + "Oops! Constant " + message + " cannot be incremented or decremented.")); break;
         }
     }
 

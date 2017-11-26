@@ -1,7 +1,473 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4382db5-65e8-4516-8257-c2ca7476564c" name="Default" comment="" />
+    <list default="true" id="b4382db5-65e8-4516-8257-c2ca7476564c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/UI.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MainActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVABaseListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVABaseVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVALexer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ArrayCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$BlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$BlockStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CatchClauseContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CatchTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassBodyDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassOrInterfaceModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ClassOrInterfaceTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CompilationUnitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ConstantExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CreatedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$CreatorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$EnhancedForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ExpressionListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FieldDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FinallyBlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForInitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ForUpdateContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParameterListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$FormalParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LastFormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LiteralContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$LocalVariableDeclarationStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MemberDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$MethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$NonWildcardTypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ParExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimaryContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrimitiveTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$PrintStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$QualifiedNameListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ResourceContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ResourceSpecificationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ResourcesContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$ScanStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$StatementExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchBlockStatementGroupContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$SwitchLabelContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeArgumentsOrDiamondContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$TypeTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorIdContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableDeclaratorsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser$VariableModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAParser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/MyJAVAVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/ITextWriter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVABaseListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVABaseVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVALexer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ArrayCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$BlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$BlockStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$CatchClauseContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$CatchTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassBodyDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassOrInterfaceModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ClassOrInterfaceTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$CompilationUnitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ConstDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ConstantDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ConstantExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$CreatedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$CreatorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$EnhancedForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ExpressionListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$FieldDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$FinallyBlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ForInitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ForUpdateContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$FormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$FormalParameterListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$FormalParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$LastFormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$LiteralContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$LocalVariableDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$LocalVariableDeclarationStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$MemberDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$MethodBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$MethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$NonWildcardTypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ParExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$PrimaryContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$PrimitiveTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$PrintStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$QualifiedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$QualifiedNameListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ResourceContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ResourceSpecificationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ResourcesContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$ScanStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$StatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$StatementExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$SwitchBlockStatementGroupContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$SwitchLabelContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeArgumentContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeArgumentsOrDiamondContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$TypeTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$VariableDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$VariableDeclaratorIdContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$VariableDeclaratorsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$VariableInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser$VariableModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAParser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/antlrgen/MyJAVAVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/BuildChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/ErrorListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/ErrorRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/MyJAVAErrorStrategy.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/ParserHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/TXTReader.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/TXTWriter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/ConstChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/IErrorChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/MultipleFuncDecChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/MultipleVarDecChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/ParameterMismatchChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/TypeChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/error/checkers/UndeclaredChecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/ExecutionManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/ExecutionMonitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/ExecutionThread.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/FunctionTracker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/adders/FunctionExecutionAdder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/adders/IExecutionAdder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/adders/MainExecutionAdder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/ICommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/DoWhileCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/ForCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/IConditionalCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/IControlledCommand$ControlTypeEnum.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/IControlledCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/IfCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/controlled/WhileCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/evaluation/ArrayInitializeCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/evaluation/AssignmentCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/evaluation/EvaluationCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/evaluation/MappingCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/FunctionCallCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/IncDecCommand$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/IncDecCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/PrintCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/ReturnCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/simple/ScanCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/utils/ConditionEvaluator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/execution/commands/utils/ExecutionUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaBaseListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationConstantRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationMethodOrConstantRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationMethodRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationTypeBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationTypeDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationTypeElementDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$AnnotationTypeElementRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ArrayCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$BlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$BlockStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$CatchClauseContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$CatchTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassBodyDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassOrInterfaceModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ClassOrInterfaceTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$CompilationUnitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ConstDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ConstantDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ConstantExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ConstructorBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ConstructorDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$CreatedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$CreatorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$DefaultValueContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ElementValueArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ElementValueContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ElementValuePairContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ElementValuePairsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnhancedForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnumBodyDeclarationsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnumConstantContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnumConstantNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnumConstantsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$EnumDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ExplicitGenericInvocationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ExplicitGenericInvocationSuffixContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ExpressionListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$FieldDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$FinallyBlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ForInitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ForUpdateContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$FormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$FormalParameterListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$FormalParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$GenericConstructorDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$GenericInterfaceMethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$GenericMethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ImportDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InnerCreatorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InterfaceBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InterfaceBodyDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InterfaceDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InterfaceMemberDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$InterfaceMethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$LastFormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$LiteralContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$LocalVariableDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$LocalVariableDeclarationStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$MainDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$MemberDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$MethodBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$MethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$NonWildcardTypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$NonWildcardTypeArgumentsOrDiamondContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$PackageDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ParExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$PrimaryContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$PrimitiveTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$QualifiedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$QualifiedNameListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ResourceContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ResourceSpecificationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$ResourcesContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$StatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$StatementExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$SuperSuffixContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$SwitchBlockStatementGroupContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$SwitchLabelContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeArgumentContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeArgumentsOrDiamondContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeBoundContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$TypeParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$VariableDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$VariableDeclaratorIdContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$VariableDeclaratorsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$VariableInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser$VariableModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaParser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/generatedexp/JavaReservedWords.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/ArrayAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/BlockAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/ClassAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/FieldAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/ForControlAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/FunctionCallVerifier.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/LocalVariableAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/MainAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/MethodAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/ParameterAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/StatementAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/analyzers/StatementExpressionAnalyzer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/mapping/ClassIdentifierMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/mapping/FunctionIdentifierMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/mapping/IValueMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/mapping/IdentifierMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAFunction$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAFunction$FunctionType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAFunction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAValue$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAValue$PrimitiveType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAValue.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/representations/MyJAVAValueSearcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/searching/VariableSearcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/statements/StatementControlOverseer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/symboltable/SymbolTableManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/symboltable/scopes/ClassScope.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/symboltable/scopes/IScope.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/symboltable/scopes/LocalScope.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/symboltable/scopes/LocalScopeCreator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/AssignmentUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$11.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$12.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$13.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$14.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$15.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$16.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$17.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$18.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$19.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$20.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$21.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$22.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$23.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$24.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$25.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$26.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$27.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$28.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$29.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$30.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$31.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$32.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$33.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$34.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$35.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$ExpressionException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$Function.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$Operator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression$Tokenizer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/Expression.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/IdentifiedTokens.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/RecognizedKeywords.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/semantics/utils/StringUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/myjava/templates/CodeTemplates.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/uicomp/LinePainter$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/uicomp/LinePainter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/uicomp/SquigglePainter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/uicomp/TextLineNumber$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyJAVA/uicomp/TextLineNumber.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/MainActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/ITextWriter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVA.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVABaseListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVABaseVisitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVALexer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVALexer.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVAListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVAParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVATraveller.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/antlrgen/MyJAVAVisitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/BuildChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/ErrorListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/ErrorRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/MyJAVAErrorStrategy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/ParserHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/TXTReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/TXTWriter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/ConstChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/IErrorChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/MultipleFuncDecChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/MultipleVarDecChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/ParameterMismatchChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/TypeChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/error/checkers/UndeclaredChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/ExecutionManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/ExecutionMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/ExecutionThread.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/FunctionTracker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/adders/FunctionExecutionAdder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/adders/IExecutionAdder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/adders/MainExecutionAdder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/ICommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/DoWhileCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/ForCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IConditionalCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/IfCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/controlled/WhileCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/ArrayInitializeCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/AssignmentCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/EvaluationCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/evaluation/MappingCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/simple/FunctionCallCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/simple/IncDecCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/simple/PrintCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/simple/ReturnCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/simple/ScanCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/utils/ConditionEvaluator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/execution/commands/utils/ExecutionUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/generatedexp/JavaBaseListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/generatedexp/JavaListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/generatedexp/JavaParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/generatedexp/JavaReservedWords.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ArrayAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/BlockAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ClassAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/FieldAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ForControlAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/FunctionCallVerifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/LocalVariableAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/MainAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/MethodAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/ParameterAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/analyzers/StatementExpressionAnalyzer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/mapping/ClassIdentifierMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/mapping/FunctionIdentifierMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/mapping/IValueMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/mapping/IdentifierMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAArray.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/representations/MyJAVAValueSearcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/searching/VariableSearcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/statements/StatementControlOverseer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/SymbolTableManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/ClassScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/IScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScope.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/symboltable/scopes/LocalScopeCreator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/AssignmentUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/Expression.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/IdentifiedTokens.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/RecognizedKeywords.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/semantics/utils/StringUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/myjava/templates/CodeTemplates.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/uicomp/LinePainter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/uicomp/SquigglePainter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/uicomp/TextLineNumber.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/uicomp/autocomplete/autocomplete.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,118 +477,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="IConditionalCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IConditionalCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-              <folding>
-                <marker date="1511183307618" expanded="true" signature="183:257" ph="/**...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IControlledCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuildChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/error/BuildChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ErrorRepository.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/myjava/error/ErrorRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ITextWriter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/antlrgen/ITextWriter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyJAVA.tokens" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/antlrgen/MyJAVA.tokens">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassNameChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ClassNameChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-              <folding>
-                <marker date="1511183339773" expanded="true" signature="151:218" ph="/**...*/" />
-                <marker date="1511183339773" expanded="false" signature="460:465" ph=" { " />
-                <marker date="1511183339773" expanded="false" signature="496:499" ph=" }" />
-                <marker date="1511183339773" expanded="true" signature="535:887" ph="{...}" />
-                <marker date="1511183339773" expanded="true" signature="1005:1137" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ConstChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MultipleFuncDecChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/MultipleFuncDecChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -254,7 +609,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="804" />
@@ -275,47 +630,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
+              <item name="myJAVA" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
+              <item name="myJAVA" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="error" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyJAVA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyJAVA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="error" type="462c0819:PsiDirectoryNode" />
-              <item name="checkers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,15 +669,15 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/myjava/antlrgen" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/uicomp" />
-      <recent name="$PROJECT_DIR$/src/myjava" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/myjava/builder" />
       <recent name="$PROJECT_DIR$/src/uicomp/autocomplete" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/myjava/antlrgen" />
+      <recent name="$PROJECT_DIR$/src/uicomp" />
+      <recent name="$PROJECT_DIR$/src/myjava" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -393,53 +727,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
@@ -653,6 +940,53 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -775,11 +1109,12 @@
       <workItem from="1511027499749" duration="3612000" />
       <workItem from="1511157002418" duration="10391000" />
       <workItem from="1511180463648" duration="953000" />
+      <workItem from="1511680786110" duration="199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133830000" />
+    <option name="totallyTimeSpent" value="134029000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -791,69 +1126,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1440" height="789" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32344633" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="true" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994253" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16972478" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2453125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32454127" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32205883" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="26" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1686217" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="24" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="25" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25250357" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994253" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32205883" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1686217" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="24" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="25" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25250357" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994253" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32205883" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32454127" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -880,7 +1192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-33">
           <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,9 +1199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-350">
           <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,7 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,9 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -937,7 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1262">
           <caret line="146" column="39" lean-forward="false" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -946,20 +1249,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/semantics/implementors/JavaBaseImplementor.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/ide/console/Console.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/io/ClassFileLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/io/ClassFileSaver.java" />
@@ -968,7 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,7 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,23 +1278,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ThisKeywordChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ThisKeywordChecker.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/TypeChecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1011,7 +1293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,7 +1300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,7 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +1321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,7 +1328,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,15 +1342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding>
-            <marker date="1511183308731" expanded="true" signature="272:364" ph="/**...*/" />
-            <marker date="1511183308731" expanded="false" signature="536:541" ph=" { " />
-            <marker date="1511183308731" expanded="false" signature="559:562" ph=" }" />
-            <marker date="1511183308731" expanded="true" signature="676:737" ph="{...}" />
-            <marker date="1511183308731" expanded="true" signature="894:1254" ph="{...}" />
-            <marker date="1511183308731" expanded="false" signature="1307:1312" ph=" { " />
-            <marker date="1511183308731" expanded="false" signature="1352:1355" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1083,34 +1349,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="23" column="2" lean-forward="false" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
-          <folding>
-            <marker date="1511183308897" expanded="true" signature="686:729" ph="/**...*/" />
-            <marker date="1511183308897" expanded="true" signature="1334:1514" ph="{...}" />
-            <marker date="1511183308897" expanded="true" signature="1628:2301" ph="{...}" />
-            <marker date="1511183308897" expanded="true" signature="2342:2555" ph="{...}" />
-            <marker date="1511183308897" expanded="true" signature="2592:2803" ph="{...}" />
-            <marker date="1511183308897" expanded="false" signature="2961:2966" ph=" { " />
-            <marker date="1511183308897" expanded="false" signature="3001:3004" ph=" }" />
-            <marker date="1511183308897" expanded="true" signature="3194:3295" ph="{...}" />
-            <marker date="1511183308897" expanded="false" signature="3327:3332" ph=" { " />
-            <marker date="1511183308897" expanded="false" signature="3368:3371" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IConditionalCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding>
-            <marker date="1511183307618" expanded="true" signature="183:257" ph="/**...*/" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/execution/commands/controlled/IControlledCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="90">
           <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
           <folding />
         </state>
@@ -1126,7 +1378,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/antlrgen/ITextWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
+        <state relative-caret-position="30">
           <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
@@ -1140,50 +1392,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ClassNameChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <marker date="1511183339773" expanded="true" signature="151:218" ph="/**...*/" />
-            <marker date="1511183339773" expanded="false" signature="460:465" ph=" { " />
-            <marker date="1511183339773" expanded="false" signature="496:499" ph=" }" />
-            <marker date="1511183339773" expanded="true" signature="535:887" ph="{...}" />
-            <marker date="1511183339773" expanded="true" signature="1005:1137" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ClassNameChecker.java" />
     <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/ConstChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        <state relative-caret-position="255">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/error/checkers/MultipleFuncDecChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        <state relative-caret-position="165">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/error/BuildChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myjava/error/ErrorRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="90">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

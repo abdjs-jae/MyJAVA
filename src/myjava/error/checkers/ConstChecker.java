@@ -74,14 +74,25 @@ public class ConstChecker implements IErrorChecker, ParseTreeListener {
 		if(myJAVAValue == null) {
 			ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
 			myJAVAValue = VariableSearcher.searchVariableInClassIncludingLocal(classScope, varExprCtx.getText());
-			if(LocalVariableAnalyzer.currentlyConst){
-				myJAVAValue.markFinal();
-			}
 		}
 
-		if(myJAVAValue != null && myJAVAValue.isFinal()) {
+		if(myJAVAValue != null && isConstFormat(varExprCtx)) {
+			myJAVAValue.markFinal();
 			MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.CONST_REASSIGNMENT, varExprCtx.getText(), lineNumber);
 		}
+	}
+
+	public static boolean isConstFormat(ExpressionContext exprCtx)
+	{
+		String s = exprCtx.getText();
+		for (int i=0; i<s.length(); i++)
+		{
+			if (Character.isLowerCase(s.charAt(i)))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

@@ -1,6 +1,8 @@
 package myjava.semantics.analyzers;
 
 import myjava.antlrgen.ITextWriter;
+import myjava.error.MyJAVAErrorStrategy;
+import myjava.error.checkers.ConstChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.commands.ICommand;
 import myjava.execution.commands.controlled.IConditionalCommand;
@@ -77,21 +79,28 @@ public class StatementExpressionAnalyzer implements ITextWriter, ParseTreeListen
 			}
 			else if(isIncrementExpression(exprCtx)) {
 				txtWriter.writeMessage(StringUtils.formatDebug("Increment expr detected: " +exprCtx.getText()));
-				
+
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
-				
-				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,MyJAVALexer.INC);
-				handleStatementExecution(incDecCommand);
+				if(!ConstChecker.isConstFormat(exprListCtx.get(0))) {
+					IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0), MyJAVALexer.INC);
+					handleStatementExecution(incDecCommand);
+				} else {
+					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.CONST_INTDEC,
+							exprListCtx.get(0).getText(), exprListCtx.get(0).getStart().getLine());
+				}
 			}
-			
+
 			else if(isDecrementExpression(exprCtx)) {
 				txtWriter.writeMessage(StringUtils.formatDebug("Decrement expr detected: " +exprCtx.getText()));
-				
+
 				List<ExpressionContext> exprListCtx = exprCtx.expression();
-				
-				IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0) ,MyJAVALexer.DEC);
-				handleStatementExecution(incDecCommand);
-				
+				if(!ConstChecker.isConstFormat(exprListCtx.get(0))) {
+					IncDecCommand incDecCommand = new IncDecCommand(exprListCtx.get(0), MyJAVALexer.DEC);
+					handleStatementExecution(incDecCommand);
+				} else {
+					MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.CONST_INTDEC,
+							exprListCtx.get(0).getText(), exprListCtx.get(0).getStart().getLine());
+				}
 			}
 			
 			else if(isFunctionCallWithParams(exprCtx)) {

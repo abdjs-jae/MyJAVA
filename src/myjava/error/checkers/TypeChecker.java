@@ -58,7 +58,10 @@ public class TypeChecker implements IErrorChecker, ParseTreeListener {
 
 			switch (myJAVAValue.getPrimitiveType()) {
 				case ARRAY:
-
+					if (literalCtx.FloatingPointLiteral() != null){
+						String additionalMessage = "Incompatible type";
+						MyJAVAErrorStrategy.reportSemanticError(MyJAVAErrorStrategy.TYPE_MISMATCH, additionalMessage, lineNumber);
+					}
 					break;
 				case BOOLEAN:
 					if (literalCtx.BooleanLiteral() == null) {
