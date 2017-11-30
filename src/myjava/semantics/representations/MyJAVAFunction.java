@@ -1,5 +1,6 @@
 package myjava.semantics.representations;
 
+import myjava.antlrgen.ITextWriter;
 import myjava.error.checkers.TypeChecker;
 import myjava.execution.ExecutionManager;
 import myjava.execution.ExecutionMonitor;
@@ -21,7 +22,7 @@ import java.util.List;
  * Represents the intermediate representation of a function
  *
  */
-public class MyJAVAFunction implements IControlledCommand{
+public class MyJAVAFunction implements ITextWriter, IControlledCommand{
 	
 	public enum FunctionType {
 		INT_TYPE,
@@ -51,6 +52,17 @@ public class MyJAVAFunction implements IControlledCommand{
 		parameterValues = new LinkedHashMap<>();
 		parameterReferences = new LinkedHashMap<>();
 	}
+
+	// for the recursion stuff
+	public MyJAVAFunction(MyJAVAFunction myJAVAFunction) {
+	    this.functionName = myJAVAFunction.functionName;
+	    this.commandSequences = new ArrayList<>(myJAVAFunction.commandSequences);
+	    this.parentLocalScope = myJAVAFunction.parentLocalScope;
+	    this.parameterReferences = new LinkedHashMap<>(myJAVAFunction.parameterReferences);
+	    this.parameterValues = new LinkedHashMap<>(myJAVAFunction.parameterValues);
+	    this.returnValue = myJAVAFunction.returnValue;
+	    this.returnType = myJAVAFunction.returnType;
+    }
 	
 	public void setParentLocalScope(LocalScope localScope) {
 		parentLocalScope = localScope;
@@ -152,7 +164,7 @@ public class MyJAVAFunction implements IControlledCommand{
 	
 	public void addParameter(String identifierString, MyJAVAValue myJAVAValue) {
 		parameterValues.put(identifierString, myJAVAValue);
-		ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug(functionName + " added an empty parameter " +
+		txtWriter.writeMessage(StringUtils.formatDebug(functionName + " added an empty parameter " +
 				identifierString+ " type " +myJAVAValue.getPrimitiveType()));
 	}
 	
@@ -201,7 +213,7 @@ public class MyJAVAFunction implements IControlledCommand{
 	
 	public MyJAVAValue getReturnValue() {
 		if(this.returnType == FunctionType.VOID_TYPE) {
-			ExecutionManager.getExecutionManager().consoleListModel.addElement(StringUtils.formatDebug(functionName + " is a void function. Null myJAVA value is returned"));
+			txtWriter.writeMessage(StringUtils.formatDebug(functionName + " is a void function. Null myJAVA value is returned"));
 			return null;
 		}
 		else {
