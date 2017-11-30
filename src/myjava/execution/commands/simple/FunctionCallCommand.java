@@ -45,7 +45,7 @@ public class FunctionCallCommand implements ICommand {
 	
 	private void searchFunction() {
 		ClassScope classScope = SymbolTableManager.getInstance().getClassScope(ParserHandler.getInstance().getCurrentClassName());
-		myJAVAFunction = classScope.searchFunction(functionName);
+		this.myJAVAFunction = new MyJAVAFunction(classScope.searchFunction(functionName));
 	}
 	
 	private void verifyParameters() {
