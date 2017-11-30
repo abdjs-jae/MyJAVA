@@ -341,6 +341,7 @@ forUpdate
 parExpression
     :   '(' Identifier '=' expression ')' {notifyErrorListeners("Assignment of variable is not allowed.");}
     |   '(' Identifier Identifier+ ')' {notifyErrorListeners("Too many parameters in one function.");}
+    |   '(' '+' Identifier '+' ')' {notifyErrorListeners("expected expression before ‘)’ token");}
     |   '(' expression ')'
     ;
 
